@@ -1,4 +1,1 @@
-wparad.github.io
-================
-
-Warren Parad
+[Warren Parad](https://wparad.github.io)
