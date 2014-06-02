@@ -1,1 +1,7 @@
-
+dev.container
+{
+  width: 600px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
