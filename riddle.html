@@ -1,0 +1,71 @@
+<html>
+<link rel="stylesheet" type="text/css" href="style.css" />
+<!-- private.html -->
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js" type="text/javascript"></script>
+<script language="Javascript" type="text/javascript">
+var myUrl = "http://wparad.github.io";
+var req = new XMLHttpRequest();
+
+req.open(
+    "GET",
+    "/proxy.php?url="+encodeURIComponent(myUrl),
+    true);
+req.onreadystatechange = statusListener;
+req.send(null);
+
+function statusListener()
+{
+if (xmlhttp.readyState == 4) 
+    {
+        var docx=xmlhttp.responseXML;
+        alert(docx);
+    }
+}
+</script>
+
+<body bgcolor="#FFFF00">
+<!--	
+	<div id="wrapper" class="container" style="text-align: center">    
+		<img src="./images/checkmark.png" width="125" height="100" />
+	</div>
+	<div>
+		-->
+There is a nightclub on the island of Knights and Knaves, known as the Prime Club. The Prime Club has one strict rule: the number of occupants in the club must be a prime number at all times.
+<br />
+The Prime Club also has strict bouncers (who stand outside the doors and do not count as occupants) enforcing this rule. In addition, a strange tradition has become customary at the Prime Club: Every so often the occupants form a conga line, and sing a song. The first lyric of the song is:
+<br /><br />
+“At least one of us in the club is a Knave."
+<br /><br />
+and is sung by the first person in the line. The second lyric of the song is:
+<br /><br />
+“At least two of us in the club are Knaves."
+<br /><br />
+and is sung by the second person in the line. The third person (if there is one) sings:
+<br /><br />
+“At least three of us in the club are Knaves."
+<br /><br />
+And so on down the line, until everyone has sung a verse.
+<br /><br />
+One day you walk by the club, and hear the song being sung. How many people are in the club?
+	<br />
+	(<a href="http://en.wikipedia.org/wiki/Knights_and_Knaves">What is a Knave?</a>)
+	<br />
+	</div>
+
+<!--	<div id="wrapper" class="container" style="text-align: center">
+		<iframe src="http://www.merriam-webster.com/word-of-the-day/" width="680" height="800" scrolling="no" />
+	</div>
+-->
+<!--
+<br />
+<br />
+	<center>
+		<div>
+			Subpages: <br />
+			<a href="./jokes.html">Jokes</a><br />
+		</div>
+	</center>
+</body>
+-->
+</html>
