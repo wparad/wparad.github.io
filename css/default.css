@@ -606,3 +606,10 @@
 		padding: 10px;
 		border: 1px solid #cccccc;
 	}
+
+
+.social-icon-container {
+	display: flex;
+	align-items: center;
+	justify-content: start;
+}

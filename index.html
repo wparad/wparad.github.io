@@ -19,10 +19,6 @@
             home_button();
             return false;
           }
-          document.getElementById("resume-button").onclick = function() {
-            $('#page-body').load('./content/resume.html #page-body');
-            return false;
-          }
           document.getElementById("contact-button").onclick = function() {
             $('#page-body').load('./content/contact.html #page-body');
             return false;
@@ -33,10 +29,6 @@
           }
           document.getElementById("riddle-button").onclick = function() {
             $('#page-body').load('./content/riddle.html #page-body');
-            return false;
-          }
-          document.getElementById("favorite-button").onclick = function() {
-            $('#page-body').load('./content/favorite.html #page-body');
             return false;
           }
         }
@@ -67,8 +59,6 @@
                 <li><a id="home-button" href="#" title="Home">Home</a></li>
                 <li><a id="humor-button" href="#" title="Humor">Humor</a></li>
                 <li><a id="riddle-button" href="#" title="Riddles">Riddles</a></li>
-                <li><a id="favorite-button" href="#" title="Favorites">Favorites</a></li>
-                <li><a id="resume-button" href="#" title="Resume">Resume</a></li>
                 <li><a id="contact-button" href="#" title="Contact">Contact</a></li>
             </ul>
         </div>
@@ -89,12 +79,17 @@
 <footer id="footer">
     <div class="container marketing">
         <div style="padding-top: 10px; padding-bottom: 10px;">
-            <p style="float:left;color:#000000;font-size:12px;line-height:1.3em;">&copy; 2015 Warren Parad</p>
+            <p style="float:left;color:#000000;font-size:12px;line-height:1.3em;">&copy; <span id="year">2000</span> Warren Parad</p>
             <p style="float:right;color:#000000;font-size:12px;line-height:1.3em;">
             </p>
             <div style="clear: both;"></div>
         </div>
     </div>
 </footer>
+
+<script>
+  var year = document.getElementById("year");
+  year.innerHTML = '' + new Date().toISOString().slice(0, 4);
+</script>
 
 </html>
