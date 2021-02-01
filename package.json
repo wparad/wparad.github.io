@@ -1,0 +1,22 @@
+{
+  "name": "wparad.github.io",
+  "version": "1.0.0",
+  "description": "If you were looknig for my expertise with CSS, then you almost found [it](http://wparad.github.io).",
+  "scripts": {
+    "start": "serve -l 8080"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wparad/wparad.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wparad/wparad.github.io/issues"
+  },
+  "homepage": "https://github.com/wparad/wparad.github.io#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.7",
+    "serve": "^11.3.2"
+  }
+}

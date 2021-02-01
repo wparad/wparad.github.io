@@ -12,7 +12,10 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
 
     <script type="text/javascript">
-        function home_button() { $('#page-body').load('./content/home.html #page-body'); }
+        function home_button() {
+          window.location.hash = '';
+          $('#page-body').load('./content/home.html #page-body');
+        }
 
         window.onload = function() {
           document.getElementById("home-button").onclick = function() {
@@ -21,14 +24,22 @@
           }
           document.getElementById("contact-button").onclick = function() {
             $('#page-body').load('./content/contact.html #page-body');
+            window.location.hash = 'contact';
             return false;
           }
           document.getElementById("humor-button").onclick = function() {
             $('#page-body').load('./content/humor.html #page-body');
+            window.location.hash = 'humor';
             return false;
           }
           document.getElementById("riddle-button").onclick = function() {
             $('#page-body').load('./content/riddle.html #page-body');
+            window.location.hash = 'riddle';
+            return false;
+          }
+          document.getElementById("mentor-button").onclick = function() {
+            $('#page-body').load('./content/mentoring.html #page-body');
+            window.location.hash = 'mentoring';
             return false;
           }
         }
@@ -60,6 +71,7 @@
                 <li><a id="humor-button" href="#" title="Humor">Humor</a></li>
                 <li><a id="riddle-button" href="#" title="Riddles">Riddles</a></li>
                 <li><a id="contact-button" href="#" title="Contact">Contact</a></li>
+                <li><a id="mentor-button" href="#" title="Mentorship">Mentorship</a></li>
             </ul>
         </div>
 
@@ -73,13 +85,18 @@
 </body>
 
 <!-- Set default page load out, now that the page-body object has been created -->
-<script> home_button(); </script>
+<script>
+  if (window.location.hash.match(/#.+/)) {
+    $('#page-body').load(`./content/${window.location.hash.slice(1)}.html #page-body`);
+  } else {
+    home_button();
+  }
+</script>
 
 
 <footer id="footer">
     <div class="container marketing">
         <div style="padding-top: 10px; padding-bottom: 10px;">
-            <p style="float:left;color:#000000;font-size:12px;line-height:1.3em;">&copy; <span id="year">2000</span> Warren Parad</p>
             <p style="float:right;color:#000000;font-size:12px;line-height:1.3em;">
             </p>
             <div style="clear: both;"></div>
