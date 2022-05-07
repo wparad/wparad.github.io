@@ -1,0 +1,30 @@
+{
+    "search.exclude": {
+        "**/lib": true,
+        "lib/*": true
+    },
+    "cSpell.words": [
+        "Dropzone",
+        "exportparts",
+        "fontawesome",
+        "fortawesome",
+        "jszip",
+        "kyleshockey",
+        "ONEZONE",
+        "Parad",
+        "prismjs",
+        "rapidoc",
+        "redoc",
+        "sublicensees",
+        "tbody",
+        "thead",
+        "vite",
+        "vitejs"
+    ],
+    "files.exclude": {
+        "**/lib": true,
+        "dist/**": true,
+        "lib/*": true,
+        "yarn-error.log": true
+    }
+}

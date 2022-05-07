@@ -1,111 +1,16 @@
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head id="head">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Warren Parad</title>
-
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800|Open+Sans+Condensed:300,700" rel="stylesheet" />
-    <link href="./css/default.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="./css/fonts.css" rel="stylesheet" type="text/css" media="all" />
-
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
-
-    <script type="text/javascript">
-        function home_button() {
-          window.location.hash = '';
-          $('#page-body').load('./content/home.html #page-body');
-        }
-
-        window.onload = function() {
-          document.getElementById("home-button").onclick = function() {
-            home_button();
-            return false;
-          }
-          document.getElementById("contact-button").onclick = function() {
-            $('#page-body').load('./content/contact.html #page-body');
-            window.location.hash = 'contact';
-            return false;
-          }
-          document.getElementById("humor-button").onclick = function() {
-            $('#page-body').load('./content/humor.html #page-body');
-            window.location.hash = 'humor';
-            return false;
-          }
-          document.getElementById("riddle-button").onclick = function() {
-            $('#page-body').load('./content/riddle.html #page-body');
-            window.location.hash = 'riddle';
-            return false;
-          }
-          document.getElementById("mentor-button").onclick = function() {
-            $('#page-body').load('./content/mentoring.html #page-body');
-            window.location.hash = 'mentoring';
-            return false;
-          }
-        }
-    </script>
-</head>
-
-<script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-71331230-2', 'auto');
-    ga('send', 'pageview');
-</script>
-
-<body class="wrap">
-  <body>
-
-    <div id="logo" class="container">
-        <center><h1>Warren Parad</h1></center>
-    </div>
-
-    <div id="wrapper" class="container">
-        <div id="menu" class="container">
-            <ul id="primaryNavItems">
-                <li><a id="home-button" href="#" title="Home">Home</a></li>
-                <li><a id="humor-button" href="#" title="Humor">Humor</a></li>
-                <li><a id="riddle-button" href="#" title="Riddles">Riddles</a></li>
-                <li><a id="contact-button" href="#" title="Contact">Contact</a></li>
-                <li><a id="mentor-button" href="#" title="Mentorship">Mentorship</a></li>
-            </ul>
-        </div>
-
-        <div id="three-column" class="container">
-            <div><span class="arrow-down"></span></div>
-            <div id="page-body" style="text-align: left; margin: 25px;"></div>
-        </div>
-    </div>
-
+<!DOCTYPE html>
+<html lang="en" style="min-height: 100%">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="images/icons/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Warren Parad - Fractional CTO</title>
+    <link rel="shortcut icon" href="images/icons/favicon.ico">
+  </head>
+  <body style="height: 100%;margin: 0; background-color: #3E6077;">
+    <div id="app" style="height: 100%"></div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script type="module" src="/src/main.js"></script>
   </body>
-</body>
-
-<!-- Set default page load out, now that the page-body object has been created -->
-<script>
-  if (window.location.hash.match(/#.+/)) {
-    $('#page-body').load(`./content/${window.location.hash.slice(1)}.html #page-body`);
-  } else {
-    home_button();
-  }
-</script>
-
-
-<footer id="footer">
-    <div class="container marketing">
-        <div style="padding-top: 10px; padding-bottom: 10px;">
-            <p style="float:right;color:#000000;font-size:12px;line-height:1.3em;">
-            </p>
-            <div style="clear: both;"></div>
-        </div>
-    </div>
-</footer>
-
-<script>
-  var year = document.getElementById("year");
-  year.innerHTML = '' + new Date().toISOString().slice(0, 4);
-</script>
-
 </html>
