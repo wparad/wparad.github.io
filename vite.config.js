@@ -30,9 +30,9 @@ export default defineConfig({
       }
     }
   },
-  base: '/app/',
+  base: '/',
   build: {
-    outDir: 'dist/app',
+    outDir: 'dist',
     rollupOptions: {
       plugins: [
         RollupNodePolyFill()

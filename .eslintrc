@@ -27,7 +27,7 @@
     "arrow-parens": ["error", "as-needed"],
     "curly": ["error", "all"],
     "indent": ["error", 2, { "SwitchCase": 1, "MemberExpression": "off" }],
-    "max-len": ["error", { "code": 200, "tabWidth": 2, "ignoreStrings": true, "ignoreUrls": true, "ignoreTemplateLiterals": true, "ignoreComments": true, "ignoreTrailingComments": true }],
+    "max-len": ["off", { "code": 200, "tabWidth": 2, "ignoreStrings": true, "ignoreUrls": true, "ignoreTemplateLiterals": true, "ignoreComments": true, "ignoreTrailingComments": true }],
     "node/no-unsupported-features": ["off"],
     "no-console": "error",
     "prefer-const": ["error"],
