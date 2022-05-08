@@ -301,17 +301,16 @@
         <h2 class="pb-2 border-bottom">Compensation and rates</h2>
         <div class="g-4 my-2 row row-cols-1 row-cols-lg-2">
           <div class="col px-5 d-flex align-items-start">
-            <div>The optimal fits for me are engagements that are about 10 hours a week, and the standard rate is applied to this. In cases where more time or flexibility is required, there are other options available to us. In certain cases, some clients request retainers for guaranteed time, which is also possible.
+            <div>The optimal fits for me are engagements that are about 10 hours a week, and the standard rate is applied to this. In cases where more time or flexibility is required, there are other options available to us. Additionally, retainers can be requested for guaranteed and flexible time.
             </div>
           </div>
           <div class="col px-5 d-flex align-items-start">
             <div>
-              <p class="d-flex justify-content-center">
+              <h5 class="d-flex justify-content-center">
                 <ul>
-                  <li>Standard rate: $360/hr</li>
+                  <li>Standard rate: $360 / hour</li>
                 </ul>
-              </p>
-              <p>If for some reason this does not work for you we can find other possible arrangements.</p>
+              </h5>
             </div>
           </div>
 
