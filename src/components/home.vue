@@ -1,5 +1,7 @@
 <template>
   <div>
+    <custom-navbar />
+
     <div class="container py-4">
       <!-- <header class="pb-3 mb-4 border-bottom">
         <div class="d-flex align-items-center text-dark text-decoration-none">
@@ -19,9 +21,9 @@
             </div>
           </div>
         </div>
-        <div class="d-flex justify-content-end">
+        <div class="d-flex justify-content-end flex-wrap">
           <div class="p-4 justify-content-end bg-secondary callout-section" style="border-radius: 0.5rem">
-            <p>Technology strategist, architecture reviewer with a security expertise. Also focuses on team leadership development.
+            <p>Technology strategist, architecture reviewer with a security expertise. Also focusing on team leadership development.
               <br><br>
               Solve challenging technology issues with a flexible subject matter expert and hands-on fractional CTO.
               <br>
@@ -36,7 +38,7 @@
       <div class="row align-items-lg-stretch">
         <div class="col-lg-6 mb-4">
           <div class="h-100 p-5 text-white bg-dark" style="border-radius: 0.5rem;">
-            <h2>What's important?</h2>
+            <h2>What's important for you</h2>
             <p>You’re currently out looking to start, improve, change, or scale your existing product and teams that deliver it.
               <br><br>
               It’s possible you are the expert in the area, or potentially don’t know the hands on tech that well. Or perhaps you are interested in improving your teams’ leadership capabilities,
@@ -47,7 +49,7 @@
         </div>
         <div class="col-lg-6 mb-4">
           <div class="h-100 p-5 bg-light border" style="border-radius: 0.5rem;">
-            <h2>The Fractional CTO:</h2>
+            <h2>The Fractional CTO</h2>
             <p>This is where I come in. I’m Warren and I’m a Fractional CTO.
               <br><br>Transparency is important for me, so let me share a bit about what that means:
               <ul>
@@ -84,7 +86,7 @@
             <div class="flex-shrink-0 me-3">
               <i class="mt-1 fa-solid fa-code-branch fa-2x fa-fw" />
             </div>
-            <div><h2>Development</h2><p>I work hands on when needed, authoring and reviewing pull requests, sometimes having extra people jumping into solving a problem is what’s necessary. I have a long experience of using many different technologies and patterns at my disposal.</p></div>
+            <div><h2>Engineering</h2><p>I work hands on when needed, authoring and reviewing pull requests, sometimes having extra people jumping into solving a problem is what’s necessary. I have a long experience of using many different technologies and patterns at my disposal.</p></div>
           </div>
         </div>
 
@@ -141,8 +143,8 @@
 
     <div class="container py-4">
       <div class="d-flex mt-4 justify-content-around">
-        <div class="p-4 justify-content-end bg-light text-dark d-flex align-items-center" style="border-radius: 0.5rem">
-          <div class="me-4">Does this sound like your current situation, we can set up a meeting to discuss:</div>
+        <div class="d-flex flex-wrap p-4 justify-content-end bg-light text-dark d-flex align-items-center" style="border-radius: 0.5rem">
+          <div class="mb-2 mb-lg-0 me-4">Does this sound like your current situation, we can set up a meeting to discuss:</div>
           <div>
             <button class="btn btn-primary btn-sm" type="button" @click="() => openSchedulingPage()">Schedule a meeting <i class="fa-solid fa-circle-chevron-right" /></button>
           </div>
@@ -165,7 +167,7 @@
     </div>
 
     <div class="w-100">
-      <div class="m-0 p-5 bg-dark text-light">
+      <div class="m-0 p-4 p-md-5 bg-dark text-light">
         <h2 class="pb-2 border-bottom">My Specific Skills</h2>
         <div class="row g-4 my-2 row-cols-1 row-cols-lg-2">
           <div class="col d-flex align-items-start">
@@ -214,32 +216,41 @@
       </div>
     </div>
 
-    <div class="w-100">
-      <div class="m-0 p-5 bg-secondary text-dark">
+    <div id="contact" class="w-100">
+      <div class="m-0 p-md-5 bg-secondary text-dark">
         <div class="align-items-lg-stretch">
-          <div class="">
-            <div class="h-100 p-5 text-white bg-primary" style="border-radius: 0.5rem;">
-              <h2>My community presence</h2>
-              <a href="https://wparad.medium.com/" target="_blank" class="text-dark networking-link">
+          <div class="row h-100 p-5 text-white bg-primary" style="border-radius: 0.5rem;">
+            <h2>My community presence</h2>
+
+            <div class="col-lg-6 mb-4">
+              <a href="https://linkedin.com/in/warren-parad" target="_blank" class="text-dark networking-link">
                 <div class="d-flex align-items-center my-4">
-                  <i class="fa-brands fa-medium fa-fw fa-2x me-3" />
-                  <div>Check out my articles on Medium</div>
+                  <i class="fa-brands fa-linkedin fa-fw fa-2x me-3" style="color: #0077B5" />
+                  <div>
+                    Connect on LinkedIn
+                  </div>
                 </div>
               </a>
-              <a href="https://discord.com/users/401675887927623692" target="_blank" class="text-dark networking-link">
+
+              <a href="https://wparad.medium.com/" target="_blank" class="text-dark networking-link">
                 <div class="d-flex align-items-center my-4">
-                  <i class="fa-brands fa-discord fa-fw fa-2x me-3" />
-                  <div>
-                  Leading multiple communities on Discord
-                  </div>
+                  <i class="fa-brands fa-medium fa-fw fa-2x me-3" style="color: #00ab6c" />
+                  <div>Medium blog articles</div>
+                </div>
+              </a>
+
+              <a href="https://dev.to/wparad" target="_blank" class="text-dark networking-link">
+                <div class="d-flex align-items-center my-4">
+                  <i class="fa-brands fa-dev fa-fw fa-2x me-3" style="color: #000000" />
+                  <div>DEV technical guides</div>
                 </div>
               </a>
 
               <a href="https://github.com/wparad" target="_blank" class="text-dark networking-link">
                 <div class="d-flex align-items-center my-4">
-                  <i class="fa-brands fa-github fa-fw fa-2x me-3" />
+                  <i class="fa-brands fa-github fa-fw fa-2x me-3" style="color: #171515" />
                   <div>
-                    Contributing to open source, some of my work on GitHub
+                    OSS on GitHub
                   </div>
                 </div>
               </a>
@@ -248,29 +259,35 @@
                 <div class="d-flex align-items-center my-4">
                   <i class="fa-solid fa-lock fa-fw fa-2x me-3" />
                   <div>
-                    Participating in security community via IETF OAuth Working Group
+                    IETF OAuth Working Group
                   </div>
                 </div>
               </a>
-              <a href="https://linkedin.com/in/warren-parad" target="_blank" class="text-dark networking-link">
-                <div class="d-flex align-items-center my-4">
-                  <i class="fa-brands fa-linkedin fa-fw fa-2x me-3" />
-                  <div>
-                    Growing leaders and mentoring throughout my network
-                  </div>
-                </div>
-              </a>
-              <br>
-              <p>
-                I wouldn’t have been able to do these in a vacuum though; my experiences are from a wide array of industries, with a leadership focus everywhere I’ve been. I owe my skills to the awesome individuals and companies I’ve worked with in exchange for helping them become successful.
 
-              </p>
-              <div class="d-flex mt-4 justify-content-around">
-                <div class="p-4 justify-content-end bg-light text-dark d-flex align-items-center" style="border-radius: 0.5rem">
-                  <div class="me-4">I hope that I’ll be able to add our experience to my personal list. Interested in a meeting:</div>
+              <a href="https://discord.com/users/401675887927623692" target="_blank" class="text-dark networking-link">
+                <div class="d-flex align-items-center my-4">
+                  <i class="fa-brands fa-discord fa-fw fa-2x me-3" style="color: #5865F2" />
                   <div>
-                    <button class="btn btn-primary btn-sm" type="button" @click="() => openSchedulingPage()">Schedule a meeting <i class="fa-solid fa-circle-chevron-right" /></button>
+                  Discord contact
                   </div>
+                </div>
+              </a>
+            </div>
+
+            <div class="col-lg-6 mb-4 d-flex flex-column justify-content-around">
+              <p>
+                In these communities I write articles and answer questions to help engineers and aspiring leaders discover new technologies and techniques to deliver effectively. My engagements lead to new stories and experiences that I often write down for the benefit of future opportunities.
+              </p>
+              <p>
+                I wouldn’t have been able to do these in a vacuum though; my experiences are from a wide array of industries, with a leadership focus everywhere I’ve been. I owe my skills to the awesome individuals and companies I’ve worked with.
+              </p>
+            </div>
+            
+            <div class="d-flex mt-4 justify-content-around">
+              <div class="d-flex flex-wrap  p-4 justify-content-end bg-light text-dark d-flex align-items-center" style="border-radius: 0.5rem">
+                <div class="mb-2 mb-lg-0 me-4">I hope that I’ll be able to add our experience to my personal list. Interested in a meeting:</div>
+                <div>
+                  <button class="btn btn-primary btn-sm" type="button" @click="() => openSchedulingPage()">Schedule a meeting <i class="fa-solid fa-circle-chevron-right" /></button>
                 </div>
               </div>
             </div>
@@ -279,10 +296,34 @@
       </div>
     </div>
 
+    <div id="pricing" class="w-100">
+      <div class="m-0 p-4 p-md-5 bg-primary text-light">
+        <h2 class="pb-2 border-bottom">Compensation and rates</h2>
+        <div class="g-4 my-2 row row-cols-1 row-cols-lg-2">
+          <div class="col px-5 d-flex align-items-start">
+            <div>The optimal fits for me are engagements that are about 10 hours a week, and the standard rate is applied to this. In cases where more time or flexibility is required, there are other options available to us. In certain cases, some clients request retainers for guaranteed time, which is also possible.
+            </div>
+          </div>
+          <div class="col px-5 d-flex align-items-start">
+            <div>
+              <p class="d-flex justify-content-center">
+                <ul>
+                  <li>Standard rate: $360/hr</li>
+                </ul>
+              </p>
+              <p>If for some reason this does not work for you we can find other possible arrangements.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
   </div>
 </template>
 
 <script setup>
+import customNavbar from './customNavbar.vue';
 import profilePicture from '../assets/profile.jpg';
 
 const openSchedulingPage = () => {
@@ -307,7 +348,7 @@ a {
 
 .callout-section {
   margin-top: 1rem;
-  @include media-breakpoint-up(lg) {
+  @include media-breakpoint-up(xl) {
     margin-top: -2rem;
     max-width: 50%;
   }
