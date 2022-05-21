@@ -2,14 +2,8 @@
   <div>
     <custom-navbar />
 
-    <div class="container py-4">
-      <!-- <header class="pb-3 mb-4 border-bottom">
-        <div class="d-flex align-items-center text-dark text-decoration-none">
-          <span class="fs-4"><i class="fa-solid fa-code" /> Warren Parad - Fractional CTO</span>
-        </div>
-      </header> -->
-
-      <div class="p-3 p-md-5 mb-4 bg-dark text-light" style="border-radius: 0.5rem">
+    <div class="container pt-sm-4">
+      <div class="p-4 p-md-5 mb-4 bg-dark text-light" style="border-radius: 0.5rem">
         <div class="container-fluid pt-4">
           <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <div class="me-md-5">
@@ -38,38 +32,40 @@
         </div>
       </div>
 
-      <div class="rowa align-items-lg-stretch">
-        <div class="col-lg-6 mb-4">
-          <div class="h-100 p-3 p-md-5 text-white bg-dark" style="border-radius: 0.5rem;">
-            <h2>What's important for you</h2>
-            <p>You’re currently out looking to start, improve, change, or scale your existing product and teams that deliver it.
-              <br><br>
-              It’s possible you are the expert in the area, or potentially don’t know the hands on tech that well. Or perhaps you are interested in improving your teams’ leadership capabilities,
-              delegation, and ownership for their solutions.
-              <br><br>
-            Maybe there’s a big architectural change looming, or the need to perform difficult migration. Does the strategy for the technology we are building match the business initiatives?</p>
+      <div class="container-fluid mb-4 w-100">
+        <div class="d-flex row">
+          <div class="col-12 col-lg-6 mb-4 mb-lg-0">
+            <div class="h-100 p-4 p-md-5 text-white bg-dark" style="border-radius: 0.5rem;">
+              <h2>What's important for you</h2>
+              <p>You’re currently out looking to start, improve, change, or scale your existing product and teams that deliver it.
+                <br><br>
+                It’s possible you are the expert in the area, or potentially don’t know the hands on tech that well. Or perhaps you are interested in improving your teams’ leadership capabilities,
+                delegation, and ownership for their solutions.
+                <br><br>
+              Maybe there’s a big architectural change looming, or the need to perform difficult migration. Does the strategy for the technology we are building match the business initiatives?</p>
+            </div>
           </div>
-        </div>
-        <div class="col-lg-6 mb-4">
-          <div class="h-100 p-3 p-md-5 bg-light border" style="border-radius: 0.5rem;">
-            <h2>The Fractional CTO</h2>
-            <p>This is where I come in. I’m Warren and I’m a Fractional CTO.
-              <br><br>Transparency is important for me, so let me share a bit about what that means:
-              <ul>
-                <li>Those challenging problems I’ve listed above–I come in and join your teams to help them deliver. This may mean being hands on,
-                  ruthlessly delegating and fostering ownership in the right places, or setting up the necessary processes to ensure long term sustainability.</li>
-                <li>I make sure that the direction your teams and org are going match the business and encourage the changes at the appropriate time and velocity.</li>
-              </ul>
-            </p>
+          <div class="col-12 col-lg-6">
+            <div class="h-100 p-4 p-md-5 bg-light border" style="border-radius: 0.5rem;">
+              <h2>The Fractional CTO</h2>
+              <p>This is where I come in. I’m Warren and I’m a Fractional CTO.
+                <br><br>Transparency is important for me, so let me share a bit about what that means:
+                <ul>
+                  <li>Those challenging problems I’ve listed above–I come in and join your teams to help them deliver. This may mean being hands on,
+                    ruthlessly delegating and fostering ownership in the right places, or setting up the necessary processes to ensure long term sustainability.</li>
+                  <li>I make sure that the direction your teams and org are going match the business and encourage the changes at the appropriate time and velocity.</li>
+                </ul>
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <div class="w-100">
-      <div class="m-0 p-3 p-md-5 bg-dark text-light">
+      <div class="m-0 p-4 p-md-5 bg-dark text-light">
         <h2 class="pb-2 border-bottom">Here’s some of the activities I'll dive into:</h2>
-        <div class="rowa g-4 my-2 row-cols-1 row-cols-lg-3">
+        <div class="row g-4 my-2 row-cols-1 row-cols-lg-3">
           <div class="col d-flex align-items-start">
             <div class="flex-shrink-0 me-3">
               <i class="mt-1 fa-solid fa-cubes fa-2x fa-fw" />
@@ -93,7 +89,7 @@
           </div>
         </div>
 
-        <div class="rowa g-4 my-2 row-cols-1 row-cols-lg-3">
+        <div class="row g-4 my-2 row-cols-1 row-cols-lg-3">
           <div class="col d-flex align-items-start">
             <div class="flex-shrink-0 me-3">
               <i class="mt-1 fa-solid fa-shield-halved fa-2x fa-fw" />
@@ -119,7 +115,7 @@
           </div>
         </div>
 
-        <div class="rowa g-4 my-2 row-cols-1 row-cols-lg-3">
+        <div class="row g-4 my-2 row-cols-1 row-cols-lg-3">
           <div class="col d-flex align-items-start">
             <div class="flex-shrink-0 me-3">
               <i class="mt-1 fa-regular fa-object-ungroup fa-2x fa-fw" />
@@ -144,7 +140,7 @@
       </div>
     </div>
 
-    <div class="container py-4">
+    <div class="container">
       <div class="d-flex mt-4 justify-content-around">
         <div class="d-flex flex-wrap p-4 justify-content-end bg-light text-dark d-flex align-items-center" style="border-radius: 0.5rem">
           <div class="mb-2 mb-lg-0 me-4">Does this sound like your current situation, we can set up a meeting to discuss:</div>
@@ -157,7 +153,7 @@
 
       <div class="align-items-lg-stretch mt-4">
         <div class="mb-4">
-          <div class="h-100 p-3 p-md-5 bg-dark text-light" style="border-radius: 0.5rem;">
+          <div class="h-100 p-4 p-md-5 bg-dark text-light" style="border-radius: 0.5rem;">
             <h2>Why Fractional CTO?</h2>
             <p>
               I recognize not everything moves as fast as we want it to. Often for what is available to us, putting the chips in the right place is most of the work, and then making fine adjustments as we go. In most cases this takes a variable amount of time. It’s possible it is 40 hours a week, but could also be 5. Rather than attempting to commit to work that might not exist, we get the benefit of utilizing only what makes sense.
@@ -171,9 +167,9 @@
     </div>
 
     <div class="w-100">
-      <div class="m-0 p-4 p-3 p-md-5 bg-dark text-light">
+      <div class="m-0 p-4 p-4 p-md-5 bg-dark text-light">
         <h2 class="pb-2 border-bottom">My Specific Skills</h2>
-        <div class="rowa g-4 my-2 row-cols-1 row-cols-lg-2">
+        <div class="row g-4 my-2 row-cols-1 row-cols-lg-2">
           <div class="col d-flex align-items-start">
             <div class="d-none d-md-flex flex-shrink-0 me-3">
               <i class="mt-1 fa-solid fa-person-dots-from-line fa-2x fa-fw" />
@@ -220,76 +216,78 @@
       </div>
     </div>
 
-    <div id="contact" class="w-100 mw-100">
-      <div class="m-0 p-3 p-md-5 bg-secondary text-dark">
-        <div class="align-items-lg-stretch">
-          <div class="h-100 p-3 p-md-5 text-white bg-primary mw-100" style="border-radius: 0.5rem;">
+    <div id="contact" class="container mb-4 px-0 px-md-4 py-4 align-items-lg-stretch mw-100 bg-secondary">
+      <div class="m-0 text-dark">
+        <div class="">
+          <div class="h-100 p-5 text-white bg-primary mw-100" style="border-radius: 0.5rem;">
             <h2>My community presence</h2>
 
-            <div class="col-lg-6 mb-4">
-              <a href="https://linkedin.com/in/warren-parad" target="_blank" class="text-dark networking-link">
-                <div class="d-flex align-items-center my-4">
-                  <i class="fa-brands fa-linkedin fa-fw fa-2x me-3" style="color: #0077B5" />
-                  <div>
-                    Connect on LinkedIn
+            <div class="d-flex justify-content-around flex-wrap flex-md-nowrap">
+              <div class="flex-shrink-md-0 me-md-4 mb-4">
+                <a href="https://linkedin.com/in/warren-parad" target="_blank" class="text-dark networking-link">
+                  <div class="d-flex align-items-center my-4">
+                    <i class="fa-brands fa-linkedin fa-fw fa-2x me-3" style="color: #0077B5" />
+                    <div>
+                      Connect on LinkedIn
+                    </div>
                   </div>
-                </div>
-              </a>
+                </a>
 
-              <a href="https://wparad.medium.com/" target="_blank" class="text-dark networking-link">
-                <div class="d-flex align-items-center my-4">
-                  <i class="fa-brands fa-medium fa-fw fa-2x me-3" style="color: #00ab6c" />
-                  <div>Medium blog articles</div>
-                </div>
-              </a>
-
-              <a href="https://dev.to/wparad" target="_blank" class="text-dark networking-link">
-                <div class="d-flex align-items-center my-4">
-                  <i class="fa-brands fa-dev fa-fw fa-2x me-3" style="color: #000000" />
-                  <div>DEV technical guides</div>
-                </div>
-              </a>
-
-              <a href="https://github.com/wparad" target="_blank" class="text-dark networking-link">
-                <div class="d-flex align-items-center my-4">
-                  <i class="fa-brands fa-github fa-fw fa-2x me-3" style="color: #171515" />
-                  <div>
-                    OSS on GitHub
+                <a href="https://wparad.medium.com/" target="_blank" class="text-dark networking-link">
+                  <div class="d-flex align-items-center my-4">
+                    <i class="fa-brands fa-medium fa-fw fa-2x me-3" style="color: #00ab6c" />
+                    <div>Medium blog articles</div>
                   </div>
-                </div>
-              </a>
+                </a>
 
-              <a href="https://oauth.net/2/" target="_blank" class="text-dark networking-link">
-                <div class="d-flex align-items-center my-4">
-                  <i class="fa-solid fa-lock fa-fw fa-2x me-3" />
-                  <div>
-                    IETF OAuth Working Group
+                <a href="https://dev.to/wparad" target="_blank" class="text-dark networking-link">
+                  <div class="d-flex align-items-center my-4">
+                    <i class="fa-brands fa-dev fa-fw fa-2x me-3" style="color: #000000" />
+                    <div>DEV technical guides</div>
                   </div>
-                </div>
-              </a>
+                </a>
 
-              <a href="https://discord.com/users/401675887927623692" target="_blank" class="text-dark networking-link">
-                <div class="d-flex align-items-center my-4">
-                  <i class="fa-brands fa-discord fa-fw fa-2x me-3" style="color: #5865F2" />
-                  <div>
-                  Discord contact
+                <a href="https://github.com/wparad" target="_blank" class="text-dark networking-link">
+                  <div class="d-flex align-items-center my-4">
+                    <i class="fa-brands fa-github fa-fw fa-2x me-3" style="color: #171515" />
+                    <div>
+                      OSS on GitHub
+                    </div>
                   </div>
-                </div>
-              </a>
-            </div>
+                </a>
 
-            <div class="col-lg-6 mb-4 d-flex flex-column justify-content-around">
-              <p>
-                In these communities I write articles and answer questions to help engineers and aspiring leaders discover new technologies and techniques to deliver effectively. My engagements lead to new stories and experiences that I often write down for the benefit of future opportunities.
-              </p>
-              <p>
-                I wouldn’t have been able to do these in a vacuum though; my experiences are from a wide array of industries, with a leadership focus everywhere I’ve been. I owe my skills to the awesome individuals and companies I’ve worked with.
-              </p>
+                <a href="https://oauth.net/2/" target="_blank" class="text-dark networking-link">
+                  <div class="d-flex align-items-center my-4">
+                    <i class="fa-solid fa-lock fa-fw fa-2x me-3" />
+                    <div>
+                      IETF OAuth Working Group
+                    </div>
+                  </div>
+                </a>
+
+                <a href="https://discord.com/users/401675887927623692" target="_blank" class="text-dark networking-link">
+                  <div class="d-flex align-items-center my-4">
+                    <i class="fa-brands fa-discord fa-fw fa-2x me-3" style="color: #5865F2" />
+                    <div>
+                    Discord contact
+                    </div>
+                  </div>
+                </a>
+              </div>
+
+              <div class="mb-4 d-flex flex-column justify-content-around" style="max-width: 600px">
+                <p>
+                  In these communities I write articles and answer questions to help engineers and aspiring leaders discover new technologies and techniques to deliver effectively. My engagements lead to new stories and experiences that I often write down for the benefit of future opportunities.
+                </p>
+                <p>
+                  I wouldn’t have been able to do these in a vacuum though; my experiences are from a wide array of industries, with a leadership focus everywhere I’ve been. I owe my skills to the awesome individuals and companies I’ve worked with.
+                </p>
+              </div>
             </div>
             
             <div class="d-flex mt-4 justify-content-around">
               <div class="d-flex flex-wrap  p-4 justify-content-end bg-light text-dark d-flex align-items-center" style="border-radius: 0.5rem">
-                <div class="mb-2 mb-lg-0 me-4">I hope that I’ll be able to add our experience to my personal list. Interested in a meeting:</div>
+                <div class="mb-2 mb-lg-0 me-4">I hope that I’ll be able to add our experience to my personal list. If you're interested in a meeting:</div>
                 <div>
                   <button class="btn btn-primary btn-sm d-flex align-items-center" type="button" @click="() => openSchedulingPage()">
                     Schedule a meeting <i class="fa-solid fa-circle-chevron-right ms-1" /></button>
@@ -301,10 +299,10 @@
       </div>
     </div>
 
-    <div id="pricing" class="w-100">
-      <div class="m-0 p-4 p-3 p-md-5 bg-primary text-light">
+    <div id="pricing" class="container w-100">
+      <div class="m-0 p-4 p-4 p-md-5 bg-primary text-light">
         <h2 class="pb-2 border-bottom">Compensation and rates</h2>
-        <div class="g-4 my-2 rowa row-cols-1 row-cols-lg-2">
+        <div class="g-4 my-2 row row-cols-1 row-cols-lg-2">
           <div class="col px-3 px-md-5 d-flex align-items-start">
             <div>The optimal fits for me are engagements that are about 10 hours a week, and the standard rate is applied to this. In cases where more time or flexibility is required, there are other options available to us. Additionally, retainers can be requested for guaranteed and flexible time.
             </div>

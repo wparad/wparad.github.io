@@ -6,16 +6,17 @@
 // @import "node_modules/bootstrap/scss/mixins";
 
 html, body {
-  width: 100vw;
-}
-
-* {
-  // border: 1px red solid;
+  width: 100%;
 }
 
 // Overrides
 
 @include media-breakpoint-down(md) {
+  .row > * {
+    max-width: 100%;
+    padding-right: unset;
+    padding-left: unset;
+  }
   .container {
     padding-left: 0px;
     padding-right: 0px;
