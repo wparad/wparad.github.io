@@ -9,7 +9,7 @@
         </div>
       </header> -->
 
-      <div class="p-5 mb-4 bg-dark text-light" style="border-radius: 0.5rem">
+      <div class="p-3 p-md-5 mb-4 bg-dark text-light" style="border-radius: 0.5rem">
         <div class="container-fluid pt-4">
           <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <div class="me-md-5">
@@ -29,15 +29,18 @@
               <br>
             </p>
             <div class="d-flex justify-content-end">
-              <button class="btn btn-primary btn-sm" type="button" @click="() => openSchedulingPage()">Schedule a meeting <i class="fa-solid fa-circle-chevron-right" /></button>
+              <button class="btn btn-primary btn-sm align-items-center" type="button" @click="() => openSchedulingPage()">
+                <i class="fa-regular fa-calendar-check me-1" />Schedule a meeting</button>
+              <button class="btn btn-dark btn-sm ms-2 d-flex align-items-center" type="button" @click="() => openEmail()">
+                <i class="fa-solid fa-envelope me-1" />Drop me a message</button>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="row align-items-lg-stretch">
+      <div class="rowa align-items-lg-stretch">
         <div class="col-lg-6 mb-4">
-          <div class="h-100 p-5 text-white bg-dark" style="border-radius: 0.5rem;">
+          <div class="h-100 p-3 p-md-5 text-white bg-dark" style="border-radius: 0.5rem;">
             <h2>What's important for you</h2>
             <p>You’re currently out looking to start, improve, change, or scale your existing product and teams that deliver it.
               <br><br>
@@ -48,7 +51,7 @@
           </div>
         </div>
         <div class="col-lg-6 mb-4">
-          <div class="h-100 p-5 bg-light border" style="border-radius: 0.5rem;">
+          <div class="h-100 p-3 p-md-5 bg-light border" style="border-radius: 0.5rem;">
             <h2>The Fractional CTO</h2>
             <p>This is where I come in. I’m Warren and I’m a Fractional CTO.
               <br><br>Transparency is important for me, so let me share a bit about what that means:
@@ -64,9 +67,9 @@
     </div>
 
     <div class="w-100">
-      <div class="m-0 p-5 bg-dark text-light">
+      <div class="m-0 p-3 p-md-5 bg-dark text-light">
         <h2 class="pb-2 border-bottom">Here’s some of the activities I'll dive into:</h2>
-        <div class="row g-4 my-2 row-cols-1 row-cols-lg-3">
+        <div class="rowa g-4 my-2 row-cols-1 row-cols-lg-3">
           <div class="col d-flex align-items-start">
             <div class="flex-shrink-0 me-3">
               <i class="mt-1 fa-solid fa-cubes fa-2x fa-fw" />
@@ -90,7 +93,7 @@
           </div>
         </div>
 
-        <div class="row g-4 my-2 row-cols-1 row-cols-lg-3">
+        <div class="rowa g-4 my-2 row-cols-1 row-cols-lg-3">
           <div class="col d-flex align-items-start">
             <div class="flex-shrink-0 me-3">
               <i class="mt-1 fa-solid fa-shield-halved fa-2x fa-fw" />
@@ -116,7 +119,7 @@
           </div>
         </div>
 
-        <div class="row g-4 my-2 row-cols-1 row-cols-lg-3">
+        <div class="rowa g-4 my-2 row-cols-1 row-cols-lg-3">
           <div class="col d-flex align-items-start">
             <div class="flex-shrink-0 me-3">
               <i class="mt-1 fa-regular fa-object-ungroup fa-2x fa-fw" />
@@ -146,14 +149,15 @@
         <div class="d-flex flex-wrap p-4 justify-content-end bg-light text-dark d-flex align-items-center" style="border-radius: 0.5rem">
           <div class="mb-2 mb-lg-0 me-4">Does this sound like your current situation, we can set up a meeting to discuss:</div>
           <div>
-            <button class="btn btn-primary btn-sm" type="button" @click="() => openSchedulingPage()">Schedule a meeting <i class="fa-solid fa-circle-chevron-right" /></button>
+            <button class="btn btn-primary btn-sm d-flex align-items-center" type="button" @click="() => openSchedulingPage()">
+              Schedule a meeting <i class="fa-solid fa-circle-chevron-right ms-1" /></button>
           </div>
         </div>
       </div>
 
       <div class="align-items-lg-stretch mt-4">
         <div class="mb-4">
-          <div class="h-100 p-5 bg-dark text-light" style="border-radius: 0.5rem;">
+          <div class="h-100 p-3 p-md-5 bg-dark text-light" style="border-radius: 0.5rem;">
             <h2>Why Fractional CTO?</h2>
             <p>
               I recognize not everything moves as fast as we want it to. Often for what is available to us, putting the chips in the right place is most of the work, and then making fine adjustments as we go. In most cases this takes a variable amount of time. It’s possible it is 40 hours a week, but could also be 5. Rather than attempting to commit to work that might not exist, we get the benefit of utilizing only what makes sense.
@@ -167,11 +171,11 @@
     </div>
 
     <div class="w-100">
-      <div class="m-0 p-4 p-md-5 bg-dark text-light">
+      <div class="m-0 p-4 p-3 p-md-5 bg-dark text-light">
         <h2 class="pb-2 border-bottom">My Specific Skills</h2>
-        <div class="row g-4 my-2 row-cols-1 row-cols-lg-2">
+        <div class="rowa g-4 my-2 row-cols-1 row-cols-lg-2">
           <div class="col d-flex align-items-start">
-            <div class="flex-shrink-0 me-3">
+            <div class="d-none d-md-flex flex-shrink-0 me-3">
               <i class="mt-1 fa-solid fa-person-dots-from-line fa-2x fa-fw" />
             </div>
             <div>
@@ -190,12 +194,12 @@
           </div>
           <div class="col d-flex align-items-start">
             <div class="col d-flex align-items-start">
-              <div class="flex-shrink-0 me-3">
+              <div class="d-none d-md-flex flex-shrink-0 me-3">
                 <i class="mt-1 fa-solid fa-user-check fa-2x fa-fw" />
               </div>
               <div>
                 <h2>Strategic preferences</h2>
-                <p>I’ve worked with many technology stacks across many different clouds and platforms, and every time is unique. This makes it hard to gauge which knowledge is necessary, but I like to focus on being flexible so I apply what I’ve learned to every new situation. This list would be too long to enumerate, so instead I’ll list which platforms I prefer to work with, and when given an option would choose by default:
+                <p>I’ve worked with many technology stacks across many different clouds and platforms, and every circumstance is unique. This makes it hard to gauge which knowledge is necessary before hand, but I like to focus on being flexible, so I apply what I’ve learned to every new situation. This list would be too long to enumerate, so instead I’ll list which platforms I prefer to work with, and when given an option would choose by default:
                   <ul>
                     <li><strong><i class="fa-brands fa-aws fa-fw me-2" />AWS:</strong> Their global reach, attention to serverless technology, understanding of security, and speed of delivery match my expectations around Clouds</li>
                     <li><strong><i class="fa-brands fa-js fa-fw me-2" />Javascript:</strong> The expansive community and available packages, allows for quick speed when introducing new features and technology, there’s already a package for that. Also its use in UIs and services, and being one of the most performant serverless technology, makes its usage seamless across applications</li>
@@ -216,10 +220,10 @@
       </div>
     </div>
 
-    <div id="contact" class="w-100">
-      <div class="m-0 p-md-5 bg-secondary text-dark">
+    <div id="contact" class="w-100 mw-100">
+      <div class="m-0 p-3 p-md-5 bg-secondary text-dark">
         <div class="align-items-lg-stretch">
-          <div class="row h-100 p-5 text-white bg-primary" style="border-radius: 0.5rem;">
+          <div class="h-100 p-3 p-md-5 text-white bg-primary mw-100" style="border-radius: 0.5rem;">
             <h2>My community presence</h2>
 
             <div class="col-lg-6 mb-4">
@@ -287,7 +291,8 @@
               <div class="d-flex flex-wrap  p-4 justify-content-end bg-light text-dark d-flex align-items-center" style="border-radius: 0.5rem">
                 <div class="mb-2 mb-lg-0 me-4">I hope that I’ll be able to add our experience to my personal list. Interested in a meeting:</div>
                 <div>
-                  <button class="btn btn-primary btn-sm" type="button" @click="() => openSchedulingPage()">Schedule a meeting <i class="fa-solid fa-circle-chevron-right" /></button>
+                  <button class="btn btn-primary btn-sm d-flex align-items-center" type="button" @click="() => openSchedulingPage()">
+                    Schedule a meeting <i class="fa-solid fa-circle-chevron-right ms-1" /></button>
                 </div>
               </div>
             </div>
@@ -297,14 +302,14 @@
     </div>
 
     <div id="pricing" class="w-100">
-      <div class="m-0 p-4 p-md-5 bg-primary text-light">
+      <div class="m-0 p-4 p-3 p-md-5 bg-primary text-light">
         <h2 class="pb-2 border-bottom">Compensation and rates</h2>
-        <div class="g-4 my-2 row row-cols-1 row-cols-lg-2">
-          <div class="col px-5 d-flex align-items-start">
+        <div class="g-4 my-2 rowa row-cols-1 row-cols-lg-2">
+          <div class="col px-3 px-md-5 d-flex align-items-start">
             <div>The optimal fits for me are engagements that are about 10 hours a week, and the standard rate is applied to this. In cases where more time or flexibility is required, there are other options available to us. Additionally, retainers can be requested for guaranteed and flexible time.
             </div>
           </div>
-          <div class="col px-5 d-flex align-items-start">
+          <div class="col px-3 px-md-5 d-flex align-items-start">
             <div>
               <h5 class="d-flex justify-content-center">
                 <ul>
@@ -318,15 +323,23 @@
       </div>
     </div>
 
+    <!-- Testimonials: https://docs.google.com/document/d/1-tPEjvbxgoP0sOS7P_TFKyibh_mkp0jpYmM3xW50_rE/edit#heading=h.z4vfzgar6saq -->
+
   </div>
 </template>
 
 <script setup>
+import shortUUID from 'short-uuid';
 import customNavbar from './customNavbar.vue';
 import profilePicture from '../assets/profile.jpg';
 
 const openSchedulingPage = () => {
   window.open('https://calendar.google.com/calendar/appointments/schedules/AcZssZ1L4ydEJ2y99C8uDGwI2eoIeu7DVwX9a1slXrRQUquyNAZ-CHGkX98GQk5TDkEEuhZ7QvjFGYvp');
+};
+const openEmail = () => {
+  const email = `"Warren Parad<fractional+${shortUUID.generate().slice(0, 7)}`;
+  const subject = 'Fraction CTO Inquiry';
+  window.open(`mailto:${encodeURIComponent(email)}@rhosys.ch%3e?subject=${encodeURIComponent(subject)}`);
 };
 </script>
 

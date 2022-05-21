@@ -1,2 +1,23 @@
 @import "bootstrap";
 @import "colors.module.scss";
+
+// @import "node_modules/bootstrap/scss/functions";
+// @import "node_modules/bootstrap/scss/variables";
+// @import "node_modules/bootstrap/scss/mixins";
+
+html, body {
+  width: 100vw;
+}
+
+* {
+  // border: 1px red solid;
+}
+
+// Overrides
+
+@include media-breakpoint-down(md) {
+  .container {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
