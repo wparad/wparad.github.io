@@ -269,7 +269,16 @@
                   <div class="d-flex align-items-center my-4">
                     <i class="fa-brands fa-discord fa-fw fa-2x me-3" style="color: #5865F2" />
                     <div>
-                    Discord contact
+                    Message me on Discord
+                    </div>
+                  </div>
+                </a>
+
+                <a href="#" @click.prevent="() => openEmail()" target="_blank" class="text-dark networking-link">
+                  <div class="d-flex align-items-center my-4">
+                    <i class="fa-solid fa-envelope fa-fw fa-2x me-3" />
+                    <div>
+                    Send me an Email
                     </div>
                   </div>
                 </a>
@@ -351,7 +360,7 @@ a {
 .networking-link {
   text-decoration: none;
   color: $light !important;
-  &:hover {
+  &:hover, &:hover * {
     color: $dark !important;
   }
 }
