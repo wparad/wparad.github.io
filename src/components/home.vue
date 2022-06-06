@@ -39,10 +39,9 @@
               <h2>What's important for you</h2>
               <p>You’re currently out looking to start, improve, change, or scale your existing product and teams that deliver it.
                 <br><br>
-                It’s possible you are the expert in the area, or potentially don’t know the hands on tech that well. Or perhaps you are interested in improving your teams’ leadership capabilities,
-                delegation, and ownership for their solutions.
+                It’s possible you are the expert in the area, or potentially don’t know the hands on tech that well. Or perhaps you are interested in improving your teams’ leadership capabilities, organization, delegation, and ownership for their solutions. As well as designing your engineering organization for success.
                 <br><br>
-              Maybe there’s a big architectural change looming, or the need to perform difficult migration. Does the strategy for the technology we are building match the business initiatives?</p>
+              Maybe there’s a big architectural change looming, or the need to perform difficult migration. Do we have the right people, if not, how do we hire them? Does the strategy for the technology we are building match the business initiatives?</p>
             </div>
           </div>
           <div class="col-12 col-lg-6">
@@ -71,15 +70,15 @@
               <i class="mt-1 fa-solid fa-cubes fa-2x fa-fw" />
             </div>
             <div>
-              <h2>Architecture reviews</h2>
-              <p>Designing new patterns for new usages or reviewing existing architecture solutions for potential improvements.</p>
+              <h2>Architecture and Org design</h2>
+              <p>Designing new patterns for new usages or reviewing existing architecture solutions for potential improvements and designing the engineering organization to deliver this goal effectively.</p>
             </div>
           </div>
           <div class="col d-flex align-items-start">
             <div class="flex-shrink-0 me-3">
               <i class="mt-1 fa-solid fa-seedling fa-2x fa-fw" />
             </div>
-            <div><h2>Developing teams</h2><p>Creating high performing teams. Focusing on team growth and developing leaders, from team leads, tech leads, platform architects to engineers of all levels.</p></div>
+            <div><h2>Leading and developing</h2><p>Creating high performing teams. Focusing on team growth and developing leaders--from team leads, tech leads, platform architects to engineers of all levels.</p></div>
           </div>
           <div class="col d-flex align-items-start">
             <div class="flex-shrink-0 me-3">
@@ -94,7 +93,7 @@
             <div class="flex-shrink-0 me-3">
               <i class="mt-1 fa-solid fa-shield-halved fa-2x fa-fw" />
             </div>
-            <div><h2>DevOps and Cloud Security</h2>
+            <div><h2>DevOps and cloud security</h2>
               <p>Automating and/or optimizing anything and everything that is available, from the software development life-cycle to cloud deployed technologies and access rights for those environments. This includes CI/CD, IaC automation and Cloud DevSecOps.</p>
             </div>
           </div>
@@ -219,13 +218,13 @@
     <div id="contact" class="container mb-4 px-0 px-md-4 py-4 align-items-lg-stretch mw-100 bg-secondary">
       <div class="m-0 text-dark">
         <div class="">
-          <div class="h-100 p-5 text-white bg-primary mw-100" style="border-radius: 0.5rem;">
+          <div class="h-100 p-4 p-md-5 text-white bg-primary mw-100" style="border-radius: 0.5rem;">
             <h2>My community presence</h2>
 
             <div class="d-flex justify-content-around flex-wrap flex-md-nowrap">
               <div class="flex-shrink-md-0 me-md-4 mb-4">
                 <a href="https://linkedin.com/in/warren-parad" target="_blank" class="text-dark networking-link">
-                  <div class="d-flex align-items-center my-4">
+                  <div class="community-presence-item">
                     <i class="fa-brands fa-linkedin fa-fw fa-2x me-3" style="color: #0077B5" />
                     <div>
                       Connect on LinkedIn
@@ -234,21 +233,21 @@
                 </a>
 
                 <a href="https://wparad.medium.com/" target="_blank" class="text-dark networking-link">
-                  <div class="d-flex align-items-center my-4">
+                  <div class="community-presence-item">
                     <i class="fa-brands fa-medium fa-fw fa-2x me-3" style="color: #00ab6c" />
                     <div>Medium blog articles</div>
                   </div>
                 </a>
 
                 <a href="https://dev.to/wparad" target="_blank" class="text-dark networking-link">
-                  <div class="d-flex align-items-center my-4">
+                  <div class="community-presence-item">
                     <i class="fa-brands fa-dev fa-fw fa-2x me-3" style="color: #000000" />
                     <div>DEV technical guides</div>
                   </div>
                 </a>
 
                 <a href="https://github.com/wparad" target="_blank" class="text-dark networking-link">
-                  <div class="d-flex align-items-center my-4">
+                  <div class="community-presence-item">
                     <i class="fa-brands fa-github fa-fw fa-2x me-3" style="color: #171515" />
                     <div>
                       OSS on GitHub
@@ -257,7 +256,7 @@
                 </a>
 
                 <a href="https://oauth.net/2/" target="_blank" class="text-dark networking-link">
-                  <div class="d-flex align-items-center my-4">
+                  <div class="community-presence-item">
                     <i class="fa-solid fa-lock fa-fw fa-2x me-3" />
                     <div>
                       IETF OAuth Working Group
@@ -266,7 +265,7 @@
                 </a>
 
                 <a href="https://discord.com/users/401675887927623692" target="_blank" class="text-dark networking-link">
-                  <div class="d-flex align-items-center my-4">
+                  <div class="community-presence-item">
                     <i class="fa-brands fa-discord fa-fw fa-2x me-3" style="color: #5865F2" />
                     <div>
                     Message me on Discord
@@ -275,7 +274,7 @@
                 </a>
 
                 <a href="#" @click.prevent="() => openEmail()" target="_blank" class="text-dark networking-link">
-                  <div class="d-flex align-items-center my-4">
+                  <div class="community-presence-item">
                     <i class="fa-solid fa-envelope fa-fw fa-2x me-3" />
                     <div>
                     Send me an Email
@@ -309,7 +308,7 @@
     </div>
 
     <div id="pricing" class="container w-100">
-      <div class="m-0 p-4 p-4 p-md-5 bg-primary text-light">
+      <div class="m-0 p-4 p-md-5 bg-primary text-light">
         <h2 class="pb-2 border-bottom">Compensation and rates</h2>
         <div class="g-4 my-2 row row-cols-1 row-cols-lg-2">
           <div class="col px-3 px-md-5 d-flex align-items-start">
@@ -373,4 +372,15 @@ a {
   }
 }
 
+.d-flex .fa-brands + div {
+  flex-shrink: 0;
+}
+
+.community-presence-item {
+  display: flex;
+  align-items: center;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  min-width: 300px;
+}
 </style>
