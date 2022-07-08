@@ -78,7 +78,7 @@
             <div class="flex-shrink-0 me-3">
               <i class="mt-1 fa-solid fa-seedling fa-2x fa-fw" />
             </div>
-            <div><h2>Leading and developing</h2><p>Creating high performing teams. Focusing on team growth and developing leaders--from team leads, tech leads, platform architects to engineers of all levels.</p></div>
+            <div><h2>Leading and developing</h2><p>Creating high performing teams able to deliver quickly the right solutions at the right time. Focusing on team growth and developing leaders--from team leads, tech leads, platform architects to engineers of all levels.</p></div>
           </div>
           <div class="col d-flex align-items-start">
             <div class="flex-shrink-0 me-3">
@@ -125,14 +125,14 @@
             <div class="flex-shrink-0 me-3">
               <i class="mt-1 fa-solid fa-magnifying-glass fa-2x fa-fw" />
             </div>
-            <div><h2>Running internal audits</h2><p>Diving into existing solutions to lead and review a internal audits for potential security or other user data related issues.</p></div>
+            <div><h2>Running internal audits</h2><p>Diving into existing solutions to lead and review internal audits for potential security problems, other user data related issues, and usage of general best practices.</p></div>
           </div>
           <div class="col d-flex align-items-start">
             <div class="flex-shrink-0 me-3">
               <i class="mt-1 fa-solid fa-money-bill-transfer fa-2x fa-fw" />
             </div>
             <div><h2>Build versus buy</h2>
-            <p>Vendor selection can be a challenge, sometimes the right answer isn’t obvious, picking the right technology solution for the situation is important.</p></div>
+            <p>Vendor selection can be a challenge. Sometimes the right answer isn’t obvious, and picking the right technology solution for the situation is important. Afterwards, I work to continually evaluate your cloud spend and make sure it's inline with standard expectations.</p></div>
           </div>
         </div>
 
@@ -155,7 +155,7 @@
           <div class="h-100 p-4 p-md-5 bg-dark text-light" style="border-radius: 0.5rem;">
             <h2>Why Fractional CTO?</h2>
             <p>
-              I recognize not everything moves as fast as we want it to. Often for what is available to us, putting the chips in the right place is most of the work, and then making fine adjustments as we go. In most cases this takes a variable amount of time. It’s possible it is 40 hours a week, but could also be 5. Rather than attempting to commit to work that might not exist, we get the benefit of utilizing only what makes sense.
+              I recognize not everything moves as fast as we want it to. Often, for what is available to us, putting the chips in the right place is most of the work, and then making fine adjustments as we go. In most cases this takes a variable amount of time. It’s possible it is 40 hours a week, but could also be 5. Rather than attempting to commit to work that might not exist, we get the benefit of utilizing only what makes sense.
             </p>
             <p>
               This also encourages having short feedback loops on our successes. If it isn’t working out, we know as soon as possible, because we are constantly reviewing the effectiveness of our delivery. It is also more affordable and more flexible. In the size of the companies I specialize with, cash is tight and usually all accounted for. It’s better to get the focused value, rather than paying a multiple for a salaried worker. And a further benefit is that Fractional CTOs don’t need equity.
