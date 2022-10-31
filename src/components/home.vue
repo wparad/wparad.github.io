@@ -50,8 +50,8 @@
               <p>This is where I come in. I’m Warren and I’m a Fractional CTO.
                 <br><br>Transparency is important for me, so let me share a bit about what that means:
                 <ul>
-                  <li>Those challenging problems I’ve listed above–I come in and join your teams to help them deliver. This may mean being hands on,
-                    ruthlessly delegating and fostering ownership in the right places, or setting up the necessary processes to ensure long term sustainability.</li>
+                  <li>Those challenging problems I’ve listed above–I come in, and then manage, organize, and lead your teams to help them deliver. This may mean being hands on,
+                    delegating and fostering ownership in the right places, or setting up the necessary processes to ensure long term sustainability.</li>
                   <li>I make sure that the direction your teams and org are going match the business and encourage the changes at the appropriate time and velocity.</li>
                 </ul>
               </p>
