@@ -1,6 +1,6 @@
 <template>
   <div>
-    <custom-navbar />
+    <home-navbar />
 
     <div class="container pt-sm-4">
       <div class="p-4 p-md-5 mb-4 bg-dark text-light" style="border-radius: 0.5rem">
@@ -180,7 +180,7 @@
                   <li>Delivering the business value</li>
                   <li>Doing it transparently</li>
                   <li>Holding myself and others accountable</li>
-                  <li>I’m flexible and when circumstances shift I adapt</li>
+                  <li>I'm flexible, and when circumstances shift, I adapt</li>
                   <li>Long term sustainability in technology and architecture choices</li>
                   <li>Identifying the right level solution for the problem, I break everything down into short, medium, and long term and select the type most appropriate</li>
                 </ul>
@@ -336,7 +336,7 @@
 
 <script setup>
 import shortUUID from 'short-uuid';
-import customNavbar from './customNavbar.vue';
+import homeNavbar from './homeNavbar.vue';
 import profilePicture from '../assets/profile.jpg';
 
 const openSchedulingPage = () => {
