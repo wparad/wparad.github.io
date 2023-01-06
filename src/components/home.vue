@@ -319,7 +319,7 @@
             <div>
               <h5 class="d-flex justify-content-center">
                 <ul>
-                  <li>Standard rate: $360 / hour</li>
+                  <li>Standard rate: $380 / hour</li>
                 </ul>
               </h5>
             </div>
