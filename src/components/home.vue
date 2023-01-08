@@ -70,7 +70,7 @@
               <i class="mt-1 fa-solid fa-cubes fa-2x fa-fw" />
             </div>
             <div>
-              <h2>Architecture and Org design</h2>
+              <h2>Architecture and org design</h2>
               <p>Designing new patterns for new usages or reviewing existing architecture solutions for potential improvements and designing the engineering organization to deliver this goal effectively.</p>
             </div>
           </div>
@@ -119,7 +119,7 @@
             <div class="flex-shrink-0 me-3">
               <i class="mt-1 fa-regular fa-object-ungroup fa-2x fa-fw" />
             </div>
-            <div><h2>Technology migrations</h2><p>Handling all kinds such as--cloud migrations, complex database changes, service orchestration, breaking apart monoliths, choreographing microservices.</p></div>
+            <div><h2>Migrations & site reliability</h2><p>Orchestrating and managing all kinds such as--cloud migrations, complex database changes, service orchestration, breaking apart monoliths, choreographing microservices. Additionally--lead, support, and manage the setup of monitoring, logging, alerting, reporting, and SLAs.</p></div>
           </div>
           <div class="col d-flex align-items-start">
             <div class="flex-shrink-0 me-3">
