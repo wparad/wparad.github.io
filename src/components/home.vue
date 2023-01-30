@@ -221,6 +221,25 @@
           <div class="h-100 p-4 p-md-5 text-white bg-primary mw-100" style="border-radius: 0.5rem;">
             <h2>My community presence</h2>
 
+            <br>
+            <div class="d-flex justify-content-around flex-wrap flex-lg-nowrap">
+              <div style="margin-right: 5rem; margin-left: 5rem;" class="d-flex flex-column mb-3">
+                <h5>Agile Meets Architecture Conference</h5>
+                <div style="width: 300px;" class="d-flex align-items-center flex-grow-1">
+                  <iframe style="border-radius: 10px" width="300" height="200" src="https://www.youtube.com/embed/mgmylBHSH-g?controls=0" title="YouTube video player"
+                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen />
+                </div>
+              </div>
+              <div style="margin-right: 5rem; margin-left: 5rem;" class="d-flex flex-column">
+                <h5>Challenges of Open Source podcast</h5> 
+                <div style="width: 300px;" class="d-flex align-items-center flex-grow-1">
+                  <iframe style="border-radius: 10px; width: 300px; width:1px; min-width:100%;" height="170" scrolling="no"
+                    src="https://redcircle.com/embedded-player/sh/110a2de8-4780-43d0-8b2d-3c99c04df809/ep/98139e42-b508-454c-9778-05a32d430027" />
+                </div>
+              </div>
+            </div>
+            <br>
+
             <div class="d-flex justify-content-around flex-wrap flex-md-nowrap">
               <div class="flex-shrink-md-0 me-md-4 mb-4">
                 <a href="https://linkedin.com/in/warren-parad" target="_blank" class="text-dark networking-link">
