@@ -231,11 +231,15 @@
                 </div>
               </div>
 
-              <div class="d-flex align-items-center flex-column mb-3">
-                <h5>The Challenges of Open Source</h5>
-                <div class="d-flex align-items-center flex-grow-1">
+              <!-- The youtube version alternative
                   <iframe style="border-radius: 10px" width="300" height="200" src="https://www.youtube.com/embed/w_PcmZ8ugK0?controls=0" title="YouTube video player"
                     frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen />
+              -->
+              <div class="d-flex align-items-center flex-column mb-3">
+                <h5>Challenges of Open Source podcast</h5>
+                <div style="width: 300px;" class="d-flex align-items-center flex-grow-1">
+                  <iframe style="border-radius: 10px; width: 300px; width:1px; min-width:100%;" height="170" scrolling="no"
+                    src="https://redcircle.com/embedded-player/sh/110a2de8-4780-43d0-8b2d-3c99c04df809/ep/98139e42-b508-454c-9778-05a32d430027" />
                 </div>
               </div>
             </div>
