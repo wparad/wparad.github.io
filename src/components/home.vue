@@ -71,7 +71,7 @@
             </div>
             <div>
               <h2>Architecture and org design</h2>
-              <p>Designing new patterns for new usages or reviewing existing architecture solutions for potential improvements and designing the engineering organization to deliver this goal effectively.</p>
+              <p>Designing new patterns for new usages or reviewing existing architecture solutions for potential improvements and designing the engineering organization to deliver them effectively.</p>
             </div>
           </div>
           <div class="col d-flex align-items-start">
