@@ -215,6 +215,12 @@
       </div>
     </div>
 
+    <div id="testimonials" class="container px-0 px-md-4 py-4 align-items-lg-stretch mw-100 bg-secondary">
+      <div class="m-0 text-dark">
+        <testimonials />
+      </div>
+    </div>
+
     <div id="contact" class="container mb-4 px-0 px-md-4 py-4 align-items-lg-stretch mw-100 bg-secondary">
       <div class="m-0 text-dark">
         <div class="">
@@ -362,6 +368,7 @@
 import shortUUID from 'short-uuid';
 import homeNavbar from './homeNavbar.vue';
 import profilePicture from '../assets/profile.jpg';
+import Testimonials from './testimonials.vue';
 
 const openSchedulingPage = () => {
   window.open('https://calendar.google.com/calendar/appointments/schedules/AcZssZ1L4ydEJ2y99C8uDGwI2eoIeu7DVwX9a1slXrRQUquyNAZ-CHGkX98GQk5TDkEEuhZ7QvjFGYvp');

@@ -386,8 +386,6 @@ performance, and skills, and rapidly delivering the next innovation for the busi
       </div>
     </div>
 
-    <!-- Testimonials: https://docs.google.com/document/d/1-tPEjvbxgoP0sOS7P_TFKyibh_mkp0jpYmM3xW50_rE/edit#heading=h.z4vfzgar6saq -->
-
   </div>
 </template>
 
