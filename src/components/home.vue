@@ -215,7 +215,7 @@
       </div>
     </div>
 
-    <div id="testimonials" class="container px-0 px-md-4 py-4 align-items-lg-stretch mw-100 bg-secondary">
+    <div id="testimonials" class="container px-0 px-md-4 pt-4 align-items-lg-stretch mw-100 bg-secondary">
       <div class="m-0 text-dark">
         <testimonials />
       </div>

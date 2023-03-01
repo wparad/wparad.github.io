@@ -1,11 +1,11 @@
 <template>
   <div class="">
-    <div class="h-100 p-4 p-md-5 text-white bg-primary mw-100" style="border-radius: 0.5rem;">
+    <div class="h-100 p-4 p-md-5 pb-0 text-white bg-primary mw-100" style="border-radius: 0.5rem;">
       <!-- Testimonials: https://docs.google.com/document/d/1-tPEjvbxgoP0sOS7P_TFKyibh_mkp0jpYmM3xW50_rE/edit#heading=h.z4vfzgar6saq -->
       <h2>Testimonials</h2>
 
       <section>
-        <div style="max-width: 1200px; display: flex; justify-content: space-around; margin: 0em auto 2em; flex-wrap: wrap">
+        <div style="max-width: 1200px; display: flex; justify-content: space-around; margin: 0em auto; flex-wrap: wrap">
           <div class="carousel-wrapper">
             <div class="carousel">
               <div class="testimonial-wrapper">
@@ -57,8 +57,6 @@
           </div>
         </div>
       </section>
-
-      <br>
     </div>
   </div>
 </template>
@@ -95,22 +93,22 @@ import JustinAvatar from '../assets/avatar-justin.jpg';
   width: 0.7em;
   height: 0.7em;
   border-radius: 100em;
-  animation: dot-color 35s linear infinite;
+  animation: dot-color 30s linear infinite;
 }
 
 .carousel-nav:nth-child(1) {
   animation-name: dot-color-first, dot-color;
-  animation-duration: 35s;
+  animation-duration: 30s;
   animation-iteration-count: 1, infinite;
-  animation-delay: 0s, 35s;
+  animation-delay: 0s, 30s;
 }
 
 .carousel-nav:nth-child(2) {
-  animation-delay: Calc(35s * .33);
+  animation-delay: Calc(30s * .33);
 }
 
 .carousel-nav:nth-child(3) {
-  animation-delay: Calc(35s * .66);
+  animation-delay: Calc(30s * .66);
 }
 
 @keyframes dot-color-first {
@@ -132,7 +130,7 @@ import JustinAvatar from '../assets/avatar-justin.jpg';
   height: 100%;
   width: 550px;
   max-width: 100%;
-  animation: carousel 35s linear infinite;
+  animation: carousel 30s linear infinite;
   transform: translateX(110%);
 }
 
@@ -144,16 +142,16 @@ import JustinAvatar from '../assets/avatar-justin.jpg';
 
 .carousel > .testimonial-wrapper:nth-child(1) {
   animation-name: first-testimonial, carousel;
-  animation-duration: 35s;
+  animation-duration: 30s;
   animation-iteration-count: 1, infinite;
-  animation-delay: 0s, 35s;
+  animation-delay: 0s, 30s;
   transform: translateX(0%);
 }
 .carousel > .testimonial-wrapper:nth-child(2) {
-  animation-delay: Calc(35s * .33);
+  animation-delay: Calc(30s * .33);
 }
 .carousel > .testimonial-wrapper:nth-child(3) {
-  animation-delay: Calc(35s * .66);
+  animation-delay: Calc(30s * .66);
 }
 
 @keyframes first-testimonial {
