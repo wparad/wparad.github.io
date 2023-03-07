@@ -37,9 +37,7 @@
               <div class="testimonial-wrapper">
                 <div class="testimonial">
                   <div class="speech-bubble">
-                    <p>Pulling Warren in helped us to navigate challenging situations where it looked like there were no better options. His recommendations minimized and helped eliminate the amount of work required. We were able to pivot and focus on long-term architecture instead of quick hacks! That significantly reduced the amount of wasted engineering resources and kept throw-away effort to a minimum. Overall the maintainability of our software and technology was greatly improved.</p>
-
-                    <p>There were many great insights Warren shared. Frequently, he was able to find solutions that we hadn't thought about, providing a third option when we had none. The solutions he recommended were elegant and amazingly well thought out. Most importantly they were simple to understand and implement, saving a lot of time. Because Warren continually pushed to consider the long-term architectures, the output of our teams became sustainable and reduced the huge mental burden that was once required.</p>
+                    <p>Working with Warren was a game-changer for our software development team. He helped us navigate tricky situations and presented innovative solutions that we hadn't considered before. Warren's focus on elegant solutions reduced our workload and minimized the amount of throw-away code, which ultimately improved the maintainability of our software. We appreciate Warren's dedication to long-term architecture and his ability to steer us away from quick hacks that would have been more trouble than they were worth. Thanks to Warren, our codebase is cleaner, easier to maintain, and ready for the future.</p>
                   </div>
                   <div class="sig"><img class="avatar" :src="AndrejAvatar" alt="Andrej Kincel">
                     <p>
