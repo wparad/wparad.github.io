@@ -349,7 +349,7 @@
             <div>
               <h5 class="d-flex justify-content-center">
                 <ul>
-                  <li>Standard rate: $380 / hour</li>
+                  <li>Standard rate: 350 CHF / hour</li>
                 </ul>
               </h5>
             </div>
