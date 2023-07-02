@@ -1,11 +1,7 @@
 /* eslint-disable no-console */
 
-const aws = require('aws-sdk');
 const commander = require('commander');
 const fs = require('fs-extra');
-// const githubActionsRunner = require('ci-build-tools')(process.env.GITHUB_TOKEN);
-
-aws.config.update({ region: 'eu-west-1' });
 
 function getVersion() {
   let release_version = '0.0';
