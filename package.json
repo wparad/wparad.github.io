@@ -54,7 +54,7 @@
     "js-yaml": "^4.1.0",
     "rollup-plugin-polyfill-node": "^0.9.0",
     "sass": "^1.38.2",
-    "vite": "^2.9.13"
+    "vite": "^2.9.16"
   },
   "engines": {
     "node": ">=12"
