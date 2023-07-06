@@ -61,7 +61,7 @@
       </div>
     </div>
 
-    <div class="w-100">
+    <div id="activities" class="w-100">
       <div class="m-0 p-4 p-md-5 bg-dark text-light">
         <h2 class="pb-2 border-bottom">Here’s some of the activities I'll dive into:</h2>
         <div class="row g-4 my-2 row-cols-1 row-cols-lg-3">
@@ -165,7 +165,7 @@
       </div>
     </div>
 
-    <div class="w-100">
+    <div id="skills" class="w-100">
       <div class="m-0 p-4 p-4 p-md-5 bg-dark text-light">
         <h2 class="pb-2 border-bottom">My Specific Skills</h2>
         <div class="row g-4 my-2 row-cols-1 row-cols-lg-2">
