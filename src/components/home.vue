@@ -342,14 +342,20 @@
         <h2 class="pb-2 border-bottom">Compensation and rates</h2>
         <div class="g-4 my-2 row row-cols-1 row-cols-lg-2">
           <div class="col px-3 px-md-5 d-flex align-items-start">
-            <div>The optimal fits for me are engagements that are about 10 hours a week, and the standard rate is applied to this. In cases where more time or flexibility is required, there are other options available to us. Additionally, retainers can be requested for guaranteed and flexible time.
+            <div>The optimal fits for me are engagements that are about 3-10 hours a week. In cases where more time or flexibility is required, I have shared a standard rate, and there are other options available to us. Additionally, further retainers can be requested for guaranteed and flexible time.
             </div>
           </div>
           <div class="col px-3 px-md-5 d-flex align-items-start">
             <div>
               <h5 class="d-flex justify-content-center">
                 <ul>
-                  <li>Standard rate: 350 CHF / hour</li>
+                  <li>
+                    <div class="d-flex align-items-center">
+                      <span>Monthly Retainer: 5k CHF</span>
+                      <span style="margin-left:0.5rem; font-size: 12px">- Guarantees 4 hours / week</span>
+                    </div>
+                  </li>
+                  <li>Or Standard rate: 350 CHF / hour</li>
                 </ul>
               </h5>
             </div>
