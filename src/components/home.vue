@@ -329,7 +329,7 @@
             
             <div class="d-flex mt-4 justify-content-around">
               <div class="d-flex flex-wrap  p-4 justify-content-end bg-light text-dark d-flex align-items-center" style="border-radius: 0.5rem">
-                <div class="mb-2 mb-lg-0 me-4">I hope that I’ll be able to add our experience to my personal list. If you're interested in a meeting:</div>
+                <div class="mb-2 mb-lg-0 me-4">Think this is an opportunity for collaboration:</div>
                 <div>
                   <button class="btn btn-primary btn-sm d-flex align-items-center" type="button" @click="() => openSchedulingPage()">
                     Schedule a meeting <i class="fa-solid fa-circle-chevron-right ms-1" /></button>
