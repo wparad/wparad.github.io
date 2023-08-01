@@ -228,7 +228,7 @@
             <h2>My community presence</h2>
 
             <br>
-            <div class="d-flex justify-content-around flex-wrap flex-lg-nowrap">
+            <div class="d-flex justify-content-around flex-wrap">
               <div class="d-flex align-items-center flex-column mb-3">
                 <div class="d-flex align-items-center flex-grow-1">
                   <iframe style="border-radius: 10px" width="400" height="267" src="https://www.youtube.com/embed/bwpoo2bJWaQ" title="Why you should check your secrets into Git"
