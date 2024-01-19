@@ -221,12 +221,11 @@
       </div>
     </div>
 
-    <div id="contact" class="container mb-4 px-0 px-md-4 py-4 align-items-lg-stretch mw-100 bg-secondary">
+    <div id="speaker" class="container mb-4 px-0 px-md-4 py-4 align-items-lg-stretch mw-100 bg-secondary">
       <div class="m-0 text-dark">
         <div class="">
           <div class="h-100 p-4 p-md-5 text-white bg-primary mw-100" style="border-radius: 0.5rem;">
-            <h2>My community presence</h2>
-
+            <h2>Speaker engagements</h2>
             <br>
             <div class="d-flex justify-content-around flex-wrap">
               <div class="d-flex align-items-center flex-column mb-3">
@@ -254,6 +253,8 @@
               </div>
             </div>
             <br>
+
+            <h2 id="contact">My community presence</h2>
 
             <div class="d-flex justify-content-around flex-wrap flex-md-nowrap">
               <div class="flex-shrink-md-0 me-md-4 mb-4">
