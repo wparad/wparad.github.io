@@ -362,7 +362,7 @@
                     <li>
                       <div class="d-flex align-items-center">
                         <span>Monthly Retainer: $6k</span>
-                        <span style="margin-left:0.5rem; font-size: 12px">- Guarantees 6 hours / week</span>
+                        <span style="margin-left:0.5rem; font-size: 12px">- Guarantees 5 hours / week</span>
                       </div>
                     </li>
                     <li>Or Standard rate: $380 / hour</li>
