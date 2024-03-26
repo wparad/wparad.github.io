@@ -1,118 +1,111 @@
 <template>
   <div>
-    <home-navbar />
+    <div style="margin-bottom: 4rem;">
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark border-bottom">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Warren Parad - Authress CTO</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon" />
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav ms-auto me-4 mb-2 mb-md-0">
+              <li class="nav-item">
+                <a class="nav-link" href="#speaker">Speaking</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="?fractional">Fractional</a>
+              </li>
 
-    <div class="container pt-sm-4">
-      <div class="p-4 p-md-5 mb-4 bg-dark text-light" style="border-radius: 0.5rem">
-        <div class="container-fluid pt-4">
-          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <div class="me-md-5">
-              <img :src="profilePicture" style="border-radius: 100%" height="250">
-            </div>
-            <div class="mt-4">
-              <h1 class="display-5 fw-bold">Warren Parad</h1>
-              <a href="https://authress.io" class="authressCallout" target="_blank"><h4 class="">Authress CTO</h4></a>
+              <li class="nav-item">
+                <a class="nav-link" href="?resume">Resume</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <div class="body d-flex flex-column justify-content-center align-items-center">
+      <div class="container my-4">
+        <div class="text-light">
+          <div class="container-fluid d-flex justify-content-center">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start bg-dark p-5" style="border-radius: 0.5rem">
+              <div class="me-md-5">
+                <img :src="profilePicture" style="border-radius: 100%" height="250">
+              </div>
+              <div class="mt-4">
+                <h1 class="display-5 fw-bold">Warren Parad</h1>
+                <h4>
+                  <div><a href="https://authress.io" class="authressCallout" target="_blank">Authress</a> CTO • Public Speaker</div>
+                  <div class="mt-2">Adventures in DevOps Host</div>
+                </h4>
+
+                <div class="mt-4">
+                  <div class="d-flex justify-content-around flex-md-nowrap">
+                    <a href="https://warrenparad.net/links/linkedin" target="_blank" class="text-dark networking-link">
+                      <div>
+                        <i class="fa-brands fa-linkedin fa-2x" style="color: #0077B5" title="LinkedIn" />
+                      </div>
+                    </a>
+
+                    <a href="https://dev.to/wparad" target="_blank" class="text-dark networking-link">
+                      <div>
+                        <i class="fa-brands fa-dev fa-2x" title="Blog" />
+                      </div>
+                    </a>
+
+                    <a href="https://github.com/wparad" target="_blank" class="text-dark networking-link">
+                      <div>
+                        <i class="fa-brands fa-github fa-2x" title="GitHub" />
+                      </div>
+                    </a>
+
+                    <a href="https://rhosys.ch/community" target="_blank" class="text-dark networking-link">
+                      <div>
+                        <img :src="oauthImage" title="IETF OAuth Working Group" width="32">
+                      </div>
+                    </a>
+
+                    <a href="https://rhosys.ch/community" target="_blank" class="text-dark networking-link">
+                      <div>
+                        <i class="fa-brands fa-discord fa-2x" style="color: #5865F2" title="Connect with me on discord" />
+                      </div>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="mt-4">
+                  <h5 class="mb-0">Get in touch</h5>
+                  <div class="d-flex flex-wrap justify-content-center">
+                    <button class="btn btn-outline-info flex-shrink-0 me-2 mt-2" type="submit" @click="() => openEmail('speaker')">Speaking Engagement</button>
+                    <button class="btn btn-outline-info flex-shrink-0 me-2 mt-2" type="submit" @click="() => openEmail('fractional')">Fractional CTO</button>
+                    <button class="btn btn-outline-info flex-shrink-0 me-2 mt-2" type="submit" @click="() => openEmail('podcast')">Podcast Request</button>
+                  </div>
+                </div>
+
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div id="speaker" class="p-4 bg-dark">
-      <div class="container px-0 align-items-lg-stretch mw-100 bg-secondary" style="border-radius: 10px">
-        <div class="m-0 text-dark">
-          <div class="">
-            <div class="h-100 p-4 p-md-5 text-white bg-primary mw-100" style="border-radius: 0.5rem;">
-              <h2>Speaker engagements</h2>
-              <br>
+      <div id="speaker" class="p-4 bg-dark">
+        <div class="container px-0 align-items-lg-stretch mw-100 bg-secondary" style="border-radius: 10px">
+          <div class="m-0 text-dark">
+            <div class="">
+              <div class="h-100 p-4 p-md-5 text-white bg-primary mw-100" style="border-radius: 0.5rem;">
+                <h2>Speaker engagements</h2>
+                <br>
 
-              <videos />
+                <videos />
 
-              <br>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div id="contact" class="p-4 bg-dark">
-      <div class="container px-0 align-items-lg-stretch mw-100 bg-secondary" style="border-radius: 10px">
-        <div class="m-0 text-dark">
-          <div class="">
-            <div class="h-100 p-4 p-md-5 text-white bg-primary mw-100" style="border-radius: 0.5rem;">
-              <h2>My community presence</h2>
-              <br>
-
-              <div class="d-flex justify-content-around flex-wrap flex-md-nowrap">
-                <div class="flex-shrink-md-0 me-md-4 mb-4">
-                  <a href="https://linkedin.com/in/warren-parad" target="_blank" class="text-dark networking-link">
-                    <div class="community-presence-item">
-                      <i class="fa-brands fa-linkedin fa-fw fa-2x me-3" style="color: #0077B5" />
-                      <div>
-                        Connect on LinkedIn
-                      </div>
-                    </div>
-                  </a>
-
-                  <a href="https://wparad.medium.com/" target="_blank" class="text-dark networking-link">
-                    <div class="community-presence-item">
-                      <i class="fa-brands fa-medium fa-fw fa-2x me-3" style="color: #00ab6c" />
-                      <div>Medium blog articles</div>
-                    </div>
-                  </a>
-
-                  <a href="https://dev.to/wparad" target="_blank" class="text-dark networking-link">
-                    <div class="community-presence-item">
-                      <i class="fa-brands fa-dev fa-fw fa-2x me-3" style="color: #000000" />
-                      <div>DEV technical guides</div>
-                    </div>
-                  </a>
-
-                  <a href="https://github.com/wparad" target="_blank" class="text-dark networking-link">
-                    <div class="community-presence-item">
-                      <i class="fa-brands fa-github fa-fw fa-2x me-3" style="color: #171515" />
-                      <div>
-                        OSS on GitHub
-                      </div>
-                    </div>
-                  </a>
-
-                  <a href="https://oauth.net/2/" target="_blank" class="text-dark networking-link">
-                    <div class="community-presence-item">
-                      <i class="fa-solid fa-lock fa-fw fa-2x me-3" />
-                      <div>
-                        IETF OAuth Working Group
-                      </div>
-                    </div>
-                  </a>
-
-                  <a href="https://discord.com/users/401675887927623692" target="_blank" class="text-dark networking-link">
-                    <div class="community-presence-item">
-                      <i class="fa-brands fa-discord fa-fw fa-2x me-3" style="color: #5865F2" />
-                      <div>
-                      Message me on Discord
-                      </div>
-                    </div>
-                  </a>
-
-                  <a href="#" @click.prevent="() => openEmail()" target="_blank" class="text-dark networking-link">
-                    <div class="community-presence-item">
-                      <i class="fa-solid fa-envelope fa-fw fa-2x me-3" />
-                      <div>
-                      Send me an Email
-                      </div>
-                    </div>
-                  </a>
+                <div class="mt-4">
+                  <div class="d-flex flex-wrap justify-content-center">
+                    <button class="btn btn-dark flex-shrink-0 me-2 mt-2" type="submit" @click="() => openEmail('speaker')">Book a speaking engagement with me</button>
+                  </div>
                 </div>
 
-                <div class="mb-4 d-flex flex-column justify-content-around" style="max-width: 600px">
-                  <p>
-                    In these communities I write articles and answer questions to help engineers and aspiring leaders discover new technologies and techniques to deliver effectively. My engagements lead to new stories and experiences that I often write down for the benefit of future opportunities.
-                  </p>
-                  <p>
-                    I wouldn’t have been able to do these in a vacuum though; my experiences are from a wide array of industries, with a leadership focus everywhere I’ve been. I owe my skills to the awesome individuals and companies I’ve worked with.
-                  </p>
-                </div>
+                <br>
               </div>
             </div>
           </div>
@@ -123,9 +116,30 @@
 </template>
 
 <script setup>
-import homeNavbar from './homeNavbar.vue';
+import shortUUID from 'short-uuid';
+
 import profilePicture from '../assets/profile.jpg';
 import Videos from './videos.vue';
+import oauthImage from './oauth.svg';
+
+const key = shortUUID.generate().slice(0, 7);
+const openEmail = type => {
+  const props = {
+    speaker: {
+      email: `${encodeURIComponent(`Warren Parad<speaking+${key}`)}@rhosys.ch`,
+      subject: 'Speaking appearence request for Warren Parad'
+    },
+    fractional: {
+      email: `${encodeURIComponent(`Warren Parad<fractional+${key}`)}@rhosys.ch`,
+      subject: 'Fractional CTO Inquiry'
+    },
+    podcast: {
+      email: `${encodeURIComponent(`Warren Parad<podcast+${key}`)}@authress.io`,
+      subject: 'Adventures in DevOps Podcast invite request'
+    }
+  }[type];
+  window.open(`mailto:${props.email}%3e?subject=${encodeURIComponent(props.subject)}`);
+};
 
 </script>
 
@@ -137,16 +151,16 @@ import Videos from './videos.vue';
   color: white
 }
 
-a {
+.body a {
   color: #2e6da4;
   text-decoration: none;
 }
 
 .networking-link {
   text-decoration: none;
-  color: $light !important;
+  color: #0077B5 !important;
   &:hover, &:hover * {
-    color: $dark !important;
+    color: white !important;
   }
 }
 
@@ -160,13 +174,5 @@ a {
 
 .d-flex .fa-brands + div {
   flex-shrink: 0;
-}
-
-.community-presence-item {
-  display: flex;
-  align-items: center;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-  min-width: 300px;
 }
 </style>
