@@ -46,7 +46,7 @@
           </div>
           <div class="d-flex justify-content-end flex-wrap">
             <div class="p-4 justify-content-end bg-secondary callout-section" style="border-radius: 0.5rem">
-              <p>Technology strategist, architecture reviewer with a security expertise. Also focusing on team leadership development.
+              <p>Technology strategist, DevOps, architecture reviewer with a security expertise. Also focusing on team leadership development.
                 <br><br>
                 Solve challenging technology issues with a flexible subject matter expert and hands-on fractional CTO.
                 <br>
