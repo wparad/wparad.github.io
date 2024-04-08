@@ -361,11 +361,11 @@
                   <ul>
                     <li>
                       <div class="d-flex align-items-center">
-                        <span>Monthly Retainer: $6k</span>
+                        <span>Monthly Retainer: {{ pricingSymbol }}6k</span>
                         <span style="margin-left:0.5rem; font-size: 12px">- Guarantees ~4 hours / week</span>
                       </div>
                     </li>
-                    <li>Or Standard rate: $380 / hour</li>
+                    <li>Or Standard rate: {{ pricingSymbol }}380 / hour</li>
                   </ul>
                 </h5>
               </div>
@@ -388,6 +388,7 @@ import shortUUID from 'short-uuid';
 import profilePicture from '../assets/profile.jpg';
 import Testimonials from './testimonials.vue';
 import Videos from './videos.vue';
+import { DateTime, IANAZone } from 'luxon';
 
 const openSchedulingPage = () => {
   window.open('https://calendar.google.com/calendar/appointments/schedules/AcZssZ1L4ydEJ2y99C8uDGwI2eoIeu7DVwX9a1slXrRQUquyNAZ-CHGkX98GQk5TDkEEuhZ7QvjFGYvp');
@@ -397,6 +398,10 @@ const openEmail = () => {
   const subject = 'Fraction CTO Inquiry';
   window.open(`mailto:${encodeURIComponent(email)}@rhosys.ch%3e?subject=${encodeURIComponent(subject)}`);
 };
+
+const offset = IANAZone.create(DateTime.now().zoneName).offset(DateTime.utc());
+// eslint-disable-next-line yoda
+const pricingSymbol = -600 < offset && offset < -110 ? '$' : '€';
 </script>
 
 <style lang="scss" scoped>
