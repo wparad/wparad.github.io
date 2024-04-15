@@ -25,7 +25,7 @@
       </nav>
     </div>
 
-    <div class="body d-flex flex-column justify-content-center align-items-center">
+    <div class="d-flex flex-column justify-content-center align-items-center">
       <div class="container my-4">
         <div class="text-light">
           <div class="container-fluid d-flex justify-content-center">
@@ -105,6 +105,43 @@
                   </div>
                 </div>
 
+                <br><br>
+                <div class="d-flex justify-content-center">
+                  <h4>All engagements</h4>
+                </div>
+                <div class="speaker-history-list-wrapper d-flex justify-content-center">
+                  <ul class="speakerhistory-list">
+                    <li><a href="https://www.developer-week.de/en/speaker/#/speaker/22025-warren-parad">
+                      <span>DWX24 2024 - Nuremburg</span><br>
+                      <span>Why you Should Check Your Secrets Into Git</span>
+                    </a></li>
+                    <li><a href="https://techspot.onthespotdev.com/#rec488449235">
+                      <span>TechSpot 2024 Warsaw</span>
+                      <br><span>Build a Security-First API</span>
+                    </a></li>
+                    <li><a href="https://conferences.codemotion.com/madrid2024/en/speakers/">
+                      <span>Code Motiion 2024 - Madrid</span>
+                      <br><span>Build a Security-First API</span>
+                    </a></li>
+                    <li><a href="https://decompiled.de/schedule">
+                      <span>Decompiled 2024 - Dresden</span>
+                      <br><span>Adding security to your architecture and mindset</span>
+                    </a></li>
+                    <li><a href="https://fosdem.org/2024/schedule/event/fosdem-2024-2352-stopping-all-the-attacks-before-they-start-building-a-security-first-api/" target="_blank">
+                      <span>FOSDEM 2024 - Brussels</span>
+                      <br><span>Stoping all the attacks</span>
+                    </a></li>
+                    <li><a href="https://extra.codemotion.com/ma23ce-agenda/">
+                      <span>Code Motiion 2023 - Madrid</span>
+                      <br><span>Why you should check your secrets into Git</span>
+                    </a></li>
+                    <li><a href="https://www.agile-meets-architecture.com/2022/speakers">
+                      <span>Agile Meets Architecture 2022 - Berlin</span>
+                      <br><span>Adding security to your architecture one step at a time</span>
+                    </a></li>
+                  </ul>
+                </div>
+
                 <br>
               </div>
             </div>
@@ -151,16 +188,25 @@ const openEmail = type => {
   color: white
 }
 
-.body a {
-  color: #2e6da4;
-  text-decoration: none;
-}
-
 .networking-link {
   text-decoration: none;
   color: #0077B5 !important;
   &:hover, &:hover * {
     color: white !important;
+  }
+}
+
+.speaker-history-list-wrapper {
+  .speakerhistory-list > * {
+    margin: 0.5rem 0;
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+    &:hover, &:hover * {
+      color: $info;
+    }
   }
 }
 
