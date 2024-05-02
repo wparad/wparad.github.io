@@ -115,9 +115,11 @@
                       <span>DWX24 2024 - Nuremburg</span><br>
                       <span>Why you Should Check Your Secrets Into Git</span>
                     </a></li>
-                    <li><a href="https://techspot.onthespotdev.com/#rec488449235">
+                    <li><a href="https://techspot.onthespotdev.com/cybersecurity-focused-techspot">
                       <span>TechSpot 2024 Warsaw</span>
-                      <br><span>Build a Security-First API</span>
+                      <!-- Swap this back in after the presentation -->
+                      <!-- <br><span><a href="https://docs.google.com/presentation/d/e/2PACX-1vRKFjZUSXWhlL0wNZG9xQ1T1gxPn0ut3C_1YHgZkOCqQWPZffIep6t-U3GZEQ9HUxGHW6a__dE7kyfp/pub?start=false&loop=false&delayms=30000">Build a Security-First API</a></span> -->
+                      <br><span><a href="https://docs.google.com/presentation/d/10kIAr8Blo-FQ83UKkpPB7EWR_Dp5tDgRdNmR9KAt_z8/edit?usp=sharing">Build a Security-First API</a></span>
                     </a></li>
                     <li><a href="https://conferences.codemotion.com/madrid2024/en/speakers/">
                       <span>Code Motiion 2024 - Madrid</span>
@@ -201,7 +203,7 @@ const openEmail = type => {
     margin: 0.5rem 0;
   }
 
-  a {
+  a, li {
     text-decoration: none;
     color: white;
     &:hover, &:hover * {
