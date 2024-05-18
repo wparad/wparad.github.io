@@ -115,27 +115,27 @@
                       <span>DWX24 2024 - Nuremburg</span><br>
                       <span>Why you Should Check Your Secrets Into Git</span>
                     </a></li>
-                    <li><a href="https://techspot.onthespotdev.com/cybersecurity-focused-techspot">
+                    <li><a href="https://authress.io/knowledge-base/articles/2024/05/10/techspot-building-security-first-apis">
                       <span>TechSpot 2024 Warsaw</span>
-                      <br><span><a href="https://docs.google.com/presentation/d/e/2PACX-1vRKFjZUSXWhlL0wNZG9xQ1T1gxPn0ut3C_1YHgZkOCqQWPZffIep6t-U3GZEQ9HUxGHW6a__dE7kyfp/pub?start=false&loop=false&delayms=30000">Build a Security-First API</a></span>
+                      <br><span>Build a Security-First API</span>
                     </a></li>
                     <li><a href="https://conferences.codemotion.com/madrid2024/en/speakers/">
                       <span>Code Motiion 2024 - Madrid</span>
                       <br><span>Build a Security-First API</span>
                     </a></li>
-                    <li><a href="https://decompiled.de/schedule">
+                    <li><a href="https://authress.io/knowledge-base/articles/2024/03/08/decompiled-adding-security-to-your-architecture">
                       <span>Decompiled 2024 - Dresden</span>
                       <br><span>Adding security to your architecture and mindset</span>
                     </a></li>
-                    <li><a href="https://fosdem.org/2024/schedule/event/fosdem-2024-2352-stopping-all-the-attacks-before-they-start-building-a-security-first-api/" target="_blank">
+                    <li><a href="https://authress.io/knowledge-base/articles/2024/02/04/fosdem-building-security-first-apis">
                       <span>FOSDEM 2024 - Brussels</span>
                       <br><span>Stoping all the attacks</span>
                     </a></li>
-                    <li><a href="https://extra.codemotion.com/ma23ce-agenda/">
+                    <li><a href="https://authress.io/knowledge-base/articles/2023/07/11/codemotion-why-you-should-check-your-secrets-into-git">
                       <span>Code Motiion 2023 - Madrid</span>
                       <br><span>Why you should check your secrets into Git</span>
                     </a></li>
-                    <li><a href="https://www.agile-meets-architecture.com/2022/speakers">
+                    <li><a href="https://authress.io/knowledge-base/articles/2024/03/08/decompiled-adding-security-to-your-architecture">
                       <span>Agile Meets Architecture 2022 - Berlin</span>
                       <br><span>Adding security to your architecture one step at a time</span>
                     </a></li>
