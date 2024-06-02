@@ -361,7 +361,7 @@
                   <ul>
                     <li>
                       <div class="d-flex align-items-center">
-                        <span>Monthly Retainer: {{ pricingSymbol }}6k</span>
+                        <span>Monthly Retainer: {{ pricingSymbol }}8k</span>
                         <span style="margin-left:0.5rem; font-size: 12px">- Guarantees ~4 hours / week</span>
                       </div>
                     </li>
