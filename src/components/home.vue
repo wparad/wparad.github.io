@@ -111,8 +111,8 @@
                 </div>
                 <div class="speaker-history-list-wrapper d-flex justify-content-center">
                   <ul class="speakerhistory-list">
-                    <li><a href="https://www.developer-week.de/en/speaker/#/speaker/22025-warren-parad">
-                      <span>DWX24 2024 - Nuremburg</span><br>
+                    <li><a href="https://authress.io/knowledge-base/articles/2024/07/02/devweek-why-you-should-check-your-secrets-into-git">
+                      <span>DWX24 2024 - Nuremberg</span><br>
                       <span>Why you Should Check Your Secrets Into Git</span>
                     </a></li>
                     <li><a href="https://authress.io/knowledge-base/articles/2024/05/10/techspot-building-security-first-apis">
