@@ -110,7 +110,11 @@
                   <h4 id="engagements">All engagements</h4>
                 </div>
                 <div class="speaker-history-list-wrapper d-flex justify-content-center">
-                  <ul class="speakerhistory-list">
+                  <ul class="speaker-history-list">
+                    <li><a href="https://authress.io/knowledge-base/articles/2024/09/04/aws-ensuring-reliability-of-authress">
+                      <span>AWS Global Summit 2024 - Zurich</span>
+                      <br><span>Meeting SLAs: What it takes to be 99.999% reliable</span>
+                    </a></li>
                     <li><a href="https://authress.io/knowledge-base/articles/2024/07/02/devweek-why-you-should-check-your-secrets-into-git">
                       <span>DWX24 2024 - Nuremberg</span><br>
                       <span>Why you Should Check Your Secrets Into Git</span>
@@ -120,7 +124,7 @@
                       <br><span>Build a Security-First API</span>
                     </a></li>
                     <li><a href="https://conferences.codemotion.com/madrid2024/en/speakers/">
-                      <span>Code Motiion 2024 - Madrid</span>
+                      <span>Code Motion 2024 - Madrid</span>
                       <br><span>Build a Security-First API</span>
                     </a></li>
                     <li><a href="https://authress.io/knowledge-base/articles/2024/03/08/decompiled-adding-security-to-your-architecture">
@@ -129,10 +133,10 @@
                     </a></li>
                     <li><a href="https://authress.io/knowledge-base/articles/2024/02/04/fosdem-building-security-first-apis">
                       <span>FOSDEM 2024 - Brussels</span>
-                      <br><span>Stoping all the attacks</span>
+                      <br><span>Stopping all the attacks</span>
                     </a></li>
                     <li><a href="https://authress.io/knowledge-base/articles/2023/07/11/codemotion-why-you-should-check-your-secrets-into-git">
-                      <span>Code Motiion 2023 - Madrid</span>
+                      <span>Code Motion 2023 - Madrid</span>
                       <br><span>Why you should check your secrets into Git</span>
                     </a></li>
                     <li><a href="https://authress.io/knowledge-base/articles/2024/03/08/decompiled-adding-security-to-your-architecture">
@@ -197,7 +201,7 @@ const openEmail = type => {
 }
 
 .speaker-history-list-wrapper {
-  .speakerhistory-list > * {
+  .speaker-history-list > * {
     margin: 0.5rem 0;
   }
 
