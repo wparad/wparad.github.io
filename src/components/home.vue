@@ -168,7 +168,7 @@ const openEmail = type => {
   const props = {
     speaker: {
       email: `${encodeURIComponent(`Warren Parad<speaking+${key}`)}@rhosys.ch`,
-      subject: 'Speaking appearence request for Warren Parad'
+      subject: 'Speaking appearance request for Warren Parad'
     },
     fractional: {
       email: `${encodeURIComponent(`Warren Parad<fractional+${key}`)}@rhosys.ch`,
