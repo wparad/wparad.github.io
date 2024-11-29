@@ -111,10 +111,10 @@
                 </div>
                 <div class="speaker-history-list-wrapper d-flex justify-content-center">
                   <ul class="speaker-history-list">
-                    <!-- <li><a href="https://authress.io/knowledge-base/articles/2024/09/04/aws-ensuring-reliability-of-authress">
+                    <li><a href="https://authress.io/knowledge-base/articles/2024/09/04/aws-ensuring-reliability-of-authress">
                       <span>AWS Global Summit 2024 - Zurich</span>
                       <br><span>Meeting SLAs: What it takes to be 99.999% reliable</span>
-                    </a></li> -->
+                    </a></li>
                     <li><a href="https://authress.io/knowledge-base/articles/2024/07/02/devweek-why-you-should-check-your-secrets-into-git">
                       <span>DWX24 2024 - Nuremberg</span><br>
                       <span>Why you Should Check Your Secrets Into Git</span>
