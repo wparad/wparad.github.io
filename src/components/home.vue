@@ -111,6 +111,10 @@
                 </div>
                 <div class="speaker-history-list-wrapper d-flex justify-content-center">
                   <ul class="speaker-history-list">
+                    <li><a href="https://authress.io/knowledge-base/articles/2025/03/18/meeting-impossible-slas">
+                      <span>L8Conf 2025 - Warsaw</span>
+                      <br><span>Meeting Impossible SLAs: How we made our uptime 99.999%</span>
+                    </a></li>
                     <li><a href="https://authress.io/knowledge-base/articles/2024/09/04/aws-ensuring-reliability-of-authress">
                       <span>AWS Global Summit 2024 - Zurich</span>
                       <br><span>Meeting SLAs: What it takes to be 99.999% reliable</span>
