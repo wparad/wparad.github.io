@@ -111,6 +111,10 @@
                 </div>
                 <div class="speaker-history-list-wrapper d-flex justify-content-center">
                   <ul class="speaker-history-list">
+                    <li><a href="https://authress.io/knowledge-base/articles/2025/05/26/what-the-heck-is-auth">
+                      <span>Tech Internals 2025 - Berlin</span>
+                      <br><span>What the @#!? is Auth</span>
+                    </a></li>
                     <li><a href="https://authress.io/knowledge-base/articles/2025/03/18/meeting-impossible-slas">
                       <span>L8Conf 2025 - Warsaw</span>
                       <br><span>Meeting Impossible SLAs: How we made our uptime 99.999%</span>
