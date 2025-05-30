@@ -79,7 +79,7 @@
                   <div class="d-flex flex-wrap justify-content-center">
                     <button class="btn btn-outline-info flex-shrink-0 me-2 mt-2" type="submit" @click="() => openEmail('speaker')">Speaking Engagement</button>
                     <button class="btn btn-outline-info flex-shrink-0 me-2 mt-2" type="submit" @click="() => openEmail('fractional')">Fractional CTO</button>
-                    <button class="btn btn-outline-info flex-shrink-0 me-2 mt-2" type="submit" @click="() => openEmail('podcast')">Podcast Request</button>
+                    <button class="btn btn-outline-info flex-shrink-0 me-2 mt-2" type="submit" @click="navigateToPodcast">Podcast Request</button>
                   </div>
                 </div>
 
@@ -172,6 +172,10 @@ import Videos from './videos.vue';
 import oauthImage from './oauth.svg';
 
 const key = shortUUID.generate().slice(0, 7);
+const navigateToPodcast = () => {
+  window.location.assign('https://adventuresindevops.com/docs/guests');
+};
+
 const openEmail = type => {
   const props = {
     speaker: {
@@ -181,10 +185,6 @@ const openEmail = type => {
     fractional: {
       email: `${encodeURIComponent(`Warren Parad<fractional+${key}`)}@rhosys.ch`,
       subject: 'Fractional CTO Inquiry'
-    },
-    podcast: {
-      email: `${encodeURIComponent(`Warren Parad<podcast+${key}`)}@authress.io`,
-      subject: 'Adventures in DevOps Podcast invite request'
     }
   }[type];
   window.open(`mailto:${props.email}%3e?subject=${encodeURIComponent(props.subject)}`);
