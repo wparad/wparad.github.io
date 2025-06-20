@@ -111,6 +111,10 @@
                 </div>
                 <div class="speaker-history-list-wrapper d-flex justify-content-center">
                   <ul class="speaker-history-list">
+                    <li><a href="https://youtu.be/8_-QiLzNM7w?t=3627">
+                      <span>TechTalkThursday 2025 - Zurich</span>
+                      <br><span>What the @#!? is Auth</span>
+                    </a></li>
                     <li><a href="https://authress.io/knowledge-base/articles/2025/05/26/what-the-heck-is-auth">
                       <span>Tech Internals 2025 - Berlin</span>
                       <br><span>What the @#!? is Auth</span>
