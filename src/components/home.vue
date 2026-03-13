@@ -111,6 +111,10 @@
                 </div>
                 <div class="speaker-history-list-wrapper d-flex justify-content-center">
                   <ul class="speaker-history-list">
+                    <li><a href="https://vdz26.voxxeddays.ch/talk/?id=8065">
+                      <span>Voxxed Days 2026 - Zurich</span>
+                      <br><span>Meeting Impossible SLAs: How we made our uptime 99.999%</span>
+                    </a></li>
                     <li><a href="https://youtu.be/8_-QiLzNM7w?t=3627">
                       <span>TechTalkThursday 2025 - Zurich</span>
                       <br><span>What the @#!? is Auth</span>
