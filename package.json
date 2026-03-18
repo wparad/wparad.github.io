@@ -30,7 +30,7 @@
     "serve": "vite preview --port=8080",
     "lint": "eslint --ext .js src make.js",
     "setup": "node make.js setup",
-    "test": "babel src -d lib && mocha -r esm tests/*.test.js"
+    "test": "vitest run"
   },
   "devDependencies": {
     "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
@@ -54,7 +54,8 @@
     "tailwindcss": "^4.0.0",
     "unplugin-vue-markdown": "^30.0.0",
     "vite": "^5.4.21",
-    "vite-ssg": "^0.23.0"
+    "vite-ssg": "^0.23.0",
+    "vitest": "^4.1.0"
   },
   "engines": {
     "node": ">=22"

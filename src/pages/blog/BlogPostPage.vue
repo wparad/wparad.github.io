@@ -65,6 +65,7 @@ useHead(computed(() => {
   if (!p) return { title: 'Blog — Warren Parad' };
   return {
     title: `${p.title} — Warren Parad`,
+    link: [{ rel: 'canonical', href: `https://warrenparad.net/blog/${p.slug}` }],
     meta: [
       { name: 'description', content: p.description },
       { property: 'og:title', content: `${p.title} — Warren Parad` },
