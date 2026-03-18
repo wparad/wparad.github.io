@@ -24,8 +24,7 @@
             :href="talk.eventUrl"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-4 py-2 text-sm rounded-lg bg-accent text-white font-medium hover:bg-accent/80 transition-colors no-underline"
-          >
+            class="inline-flex items-center gap-2 px-4 py-2 text-sm rounded-lg bg-accent text-white font-medium hover:bg-accent/80 transition-colors no-underline">
             <i class="fa-solid fa-calendar-days" />
             {{ [talk.conference, talk.location, talk.year].filter(Boolean).join(' · ') }} Event
           </a>
@@ -36,8 +35,7 @@
             :href="talk.articleUrl"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-4 py-2 text-sm rounded-lg border border-border text-muted hover:border-accent hover:text-accent transition-colors no-underline"
-          >
+            class="inline-flex items-center gap-2 px-4 py-2 text-sm rounded-lg border border-border text-muted hover:border-accent hover:text-accent transition-colors no-underline">
             <i class="fa-solid fa-file-lines" /> Full article &amp; transcript
           </a>
 
@@ -47,8 +45,7 @@
             :href="talk.canonicalUrl"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-4 py-2 text-sm rounded-lg border border-border text-muted hover:border-accent hover:text-accent transition-colors no-underline"
-          >
+            class="inline-flex items-center gap-2 px-4 py-2 text-sm rounded-lg border border-border text-muted hover:border-accent hover:text-accent transition-colors no-underline">
             <i class="fa-solid fa-display" /> View slides
           </a>
         </div>

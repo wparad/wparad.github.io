@@ -9,15 +9,13 @@
         <button
           @click="activeTag = null"
           class="px-3 py-1 rounded-full text-xs font-medium transition-colors cursor-pointer"
-          :class="activeTag === null ? 'bg-accent text-white' : 'bg-surface-2 text-muted hover:text-text'"
-        >All</button>
+          :class="activeTag === null ? 'bg-accent text-white' : 'bg-surface-2 text-muted hover:text-text'">All</button>
         <button
           v-for="tag in allTags"
           :key="tag"
           @click="activeTag = tag"
           class="px-3 py-1 rounded-full text-xs font-medium transition-colors cursor-pointer"
-          :class="activeTag === tag ? 'bg-accent text-white' : 'bg-surface-2 text-muted hover:text-text'"
-        >{{ tag }}</button>
+          :class="activeTag === tag ? 'bg-accent text-white' : 'bg-surface-2 text-muted hover:text-text'">{{ tag }}</button>
       </div>
 
       <!-- Posts grouped by year -->
@@ -125,7 +123,7 @@ const groupedPosts = computed(() => {
   }
   return Object.entries(groups)
     .sort(([a], [b]) => b.localeCompare(a))
-    .map(([year, posts]) => ({ year, posts }));
+    .map(([year, items]) => ({ year, posts: items }));
 });
 </script>
 

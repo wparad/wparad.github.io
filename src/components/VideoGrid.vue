@@ -5,8 +5,7 @@
         <!-- Spinner overlay -->
         <div
           v-if="loadingState[talk.slug]"
-          class="absolute inset-0 flex items-center justify-center bg-surface z-10"
-        >
+          class="absolute inset-0 flex items-center justify-center bg-surface z-10">
           <i class="fa-solid fa-circle-notch fa-spin fa-xl text-accent" />
         </div>
         <iframe
