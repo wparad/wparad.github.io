@@ -15,6 +15,7 @@
           :src="talk.embedUrl"
           :title="talk.videoTitle"
           frameborder="0"
+          loading="lazy"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen
           @load="onLoad(talk.slug)"

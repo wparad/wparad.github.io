@@ -1,7 +1,7 @@
 <template>
   <main class="pt-14 min-h-screen">
     <div class="max-w-3xl mx-auto px-4 py-12">
-      <h1 class="text-3xl font-bold text-text mb-2">Writing</h1>
+      <h1 class="text-3xl font-bold text-text mb-2">Articles</h1>
       <p class="text-muted mb-10">Thoughts on engineering, security, reliability, and technical leadership.</p>
 
       <!-- Tag filters -->
@@ -91,7 +91,7 @@ import { useHead } from '@unhead/vue';
 import { posts } from '../data/posts.js';
 import { externalPosts } from '../data/externalPosts.js';
 
-useHead({ title: 'Writing — Warren Parad' });
+useHead({ title: 'Articles — Warren Parad' });
 
 const activeTag = ref(null);
 

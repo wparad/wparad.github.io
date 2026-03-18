@@ -24,8 +24,8 @@ export const talks = [
     eventUrl: 'https://youtu.be/8_-QiLzNM7w?t=3627',
     articleUrl: 'https://authress.io/knowledge-base/academy/topics/implementating-user-login',
     slidesUrl: null,
-    videoUrl: null,
-    videoTitle: null,
+    videoUrl: 'https://youtu.be/8_-QiLzNM7w?t=3627',
+    videoTitle: 'TechTalkThursdays',
     description: 'Auth is everywhere, but nobody really understands it. This talk demystifies the full auth ecosystem — tokens, OAuth, OIDC, WebAuthn — and gives developers a clear mental model without the jargon.',
   },
   {
@@ -145,8 +145,8 @@ export const talks = [
     eventUrl: 'https://conferences.codemotion.com/milan2023-live/agenda/',
     articleUrl: 'https://authress.io/knowledge-base/academy/topics/credential-management',
     slidesUrl: 'https://authress.io/knowledge-base/articles/2023/07/11/codemotion-why-you-should-check-your-secrets-into-git',
-    videoUrl: 'https://www.youtube.com/watch?v=bwpoo2bJWaQ',
-    videoTitle: 'Why you should check your secrets into Git',
+    videoUrl: null,
+    videoTitle: null,
     description: 'Every team eventually wrestles with secrets management. This talk makes the case that git — with proper tooling and encryption — is actually the best place to keep them, and shows you how.',
   },
 

@@ -2,9 +2,9 @@
   <main class="pt-14 min-h-screen">
     <div class="max-w-3xl mx-auto px-4 py-12">
       <!-- Back nav -->
-      <RouterLink to="/" class="inline-flex items-center gap-2 text-muted hover:text-accent text-sm mb-8 transition-colors no-underline">
+      <button class="inline-flex items-center gap-2 text-muted hover:text-accent text-sm mb-8 transition-colors cursor-pointer bg-transparent border-none p-0" @click="goBack">
         <i class="fa-solid fa-arrow-left" /> All talks
-      </RouterLink>
+      </button>
 
       <template v-if="talk">
         <!-- Conference header -->
@@ -69,6 +69,7 @@
               :src="embedUrl"
               :title="talk.videoTitle || talk.title"
               frameborder="0"
+              loading="lazy"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen
               @load="onVideoLoad"
@@ -96,12 +97,17 @@
 
 <script setup>
 import { ref, computed } from 'vue';
-import { useRoute, RouterLink } from 'vue-router';
+import { useRoute, useRouter, RouterLink } from 'vue-router';
 import { useHead } from '@unhead/vue';
 import { talks, youtubeEmbedUrl } from '../../data/talks.js';
 
 const route = useRoute();
+const router = useRouter();
 const talk = computed(() => talks.find(t => t.slug === route.params.slug));
+const goBack = () => {
+  if (window.history.length > 1) { router.back(); }
+  else { router.push('/'); }
+};
 const embedUrl = computed(() => youtubeEmbedUrl(talk.value?.videoUrl));
 
 const videoLoading = ref(true);

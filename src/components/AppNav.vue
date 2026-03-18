@@ -11,7 +11,7 @@
 
       <!-- Desktop links -->
       <div class="hidden md:flex items-center gap-6">
-        <a href="/#engagements" class="nav-link text-sm">Appearances</a>
+        <a href="/#appearances" class="nav-link text-sm">Appearances</a>
         <RouterLink to="/blog" class="nav-link text-sm">Blog</RouterLink>
         <RouterLink to="/resume" class="nav-link text-sm">Resume</RouterLink>
       </div>
@@ -25,7 +25,7 @@
 
     <!-- Mobile menu — shown/hidden via CSS when checkbox is checked -->
     <div class="mobile-menu md:hidden bg-surface border-t border-border px-4 py-4 flex flex-col gap-4">
-      <a href="/#engagements" class="nav-link text-sm">Appearances</a>
+      <a href="/#appearances" class="nav-link text-sm">Appearances</a>
       <RouterLink to="/blog" class="nav-link text-sm">Blog</RouterLink>
       <RouterLink to="/resume" class="nav-link text-sm">Resume</RouterLink>
     </div>

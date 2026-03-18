@@ -92,7 +92,7 @@
 
         <div class="mt-14">
           <div class="flex items-center gap-3 mb-6">
-            <RouterLink to="/blog" class="text-xs font-mono tracking-widest uppercase text-accent hover:text-accent/70 transition-colors no-underline cursor-pointer">Writing</RouterLink>
+            <RouterLink to="/blog" class="text-xs font-mono tracking-widest uppercase text-accent hover:text-accent/70 transition-colors no-underline cursor-pointer">Articles</RouterLink>
             <div class="flex-1 h-px bg-border" />
             <RouterLink to="/blog" class="text-xs text-muted hover:text-accent transition-colors no-underline">All articles →</RouterLink>
           </div>
