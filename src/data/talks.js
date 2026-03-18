@@ -169,9 +169,9 @@ export const talks = [
   {
     slug: 'challenges-of-open-source',
     title: 'The Challenges of Open Source',
-    conference: '',
-    location: '',
-    year: null,
+    conference: 'Adventures in DevOps Podcast',
+    location: 'Switzerland',
+    year: 2024,
     eventUrl: null,
     articleUrl: null,
     canonicalUrl: null,
