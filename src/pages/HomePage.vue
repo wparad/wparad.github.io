@@ -13,15 +13,15 @@
         </div>
 
         <div class="min-w-0">
-          <!-- Eyebrow label -->
-          <p class="text-xs font-mono tracking-widest uppercase text-accent mb-3">CTO · International Speaker · Tech Entertainer · AWS Community Builder</p>
-
           <h1 class="text-5xl md:text-6xl font-bold text-text leading-tight">Warren Parad</h1>
+
+          <!-- Subtitle — "International" hidden on small screens to prevent wrapping -->
+          <p class="text-xs font-mono tracking-widest uppercase text-accent mt-2 mb-3">CTO · <span class="hidden sm:inline">International </span>Speaker · Tech Entertainer · AWS Community Builder</p>
 
           <p class="mt-3 text-muted text-base leading-relaxed">
             CTO at <a href="https://authress.io" target="_blank" class="text-accent hover:underline">Authress</a>
             &nbsp;&mdash; building auth infrastructure for developers.
-            Host of <em>Adventures in DevOps</em>. Conference speaker on security, architecture complexity, and engineering leadership.
+            Host of <a href="https://adventuresindevops.com" target="_blank" class="text-accent hover:underline"><em>Adventures in DevOps</em></a>. Conference speaker on security, architecture complexity, and engineering leadership.
           </p>
 
           <!-- Social links -->
@@ -38,12 +38,15 @@
             <a href="https://rhosys.ch/community" target="_blank" class="opacity-70 hover:opacity-100 transition-opacity cursor-pointer" title="Connect with me on Discord">
               <i class="fa-brands fa-discord fa-xl" style="color:#5865F2" />
             </a>
+            <a href="https://adventuresindevops.com" target="_blank" rel="noopener noreferrer" class="opacity-70 hover:opacity-100 transition-opacity cursor-pointer" title="Adventures in DevOps Podcast" style="color:#1db954;">
+              <i class="fa-solid fa-podcast fa-xl" />
+            </a>
           </div>
 
-          <!-- CTAs -->
+          <!-- CTAs — plain <a> tags so they work with JS disabled -->
           <div class="mt-6 flex flex-wrap gap-2">
-            <button class="px-4 py-2 text-sm rounded-lg bg-accent text-white font-medium hover:bg-accent/80 transition-colors cursor-pointer" @click="router.push('/fractional')">Hire me as an Advisor</button>
-            <button class="px-4 py-2 text-sm rounded-lg font-medium text-white hover:opacity-80 transition-opacity cursor-pointer" style="background-color:#1db954;" @click="openPodcast"><i class="fa-solid fa-podcast fa-sm mr-1" /> Adventures in DevOps Podcast</button>
+            <a href="/fractional" class="inline-block px-4 py-2 text-sm rounded-lg bg-accent text-white font-medium hover:bg-accent/80 transition-colors cursor-pointer">Hire me as an Advisor</a>
+            <a href="https://adventuresindevops.com" target="_blank" rel="noopener noreferrer" class="inline-block px-4 py-2 text-sm rounded-lg font-medium text-white hover:opacity-80 transition-opacity cursor-pointer" style="background-color:#1db954;"><i class="fa-solid fa-podcast fa-sm mr-1" /> Adventures in DevOps Podcast</a>
           </div>
         </div>
       </div>
@@ -51,20 +54,17 @@
 
     <!-- Speaker engagements -->
     <section id="speaker" class="py-14 px-4">
-      <span id="appearances" class="sr-only" />
       <div class="max-w-5xl mx-auto">
-        <div class="flex items-center gap-3 mb-8">
-          <span class="text-xs font-mono tracking-widest uppercase text-accent">Public Appearances</span>
-          <div class="flex-1 h-px bg-border" />
-        </div>
-
-        <VideoGrid />
-
-        <div class="mt-12">
+        <div id="engagements">
           <div class="flex items-center gap-3 mb-6">
-            <h4 id="engagements" class="text-xs font-mono tracking-widest uppercase text-accent">All engagements</h4>
+            <h4 id="appearances" class="section-anchor text-xs font-mono tracking-widest uppercase text-accent cursor-pointer group/anchor" @click="copyAnchor('appearances')">
+              Public appearances
+              <i class="fa-solid fa-link fa-xs ml-1 opacity-0 group-hover/anchor:opacity-50 transition-opacity" />
+              <span v-if="copied === 'appearances'" class="ml-1 text-accent opacity-75">✓</span>
+            </h4>
             <div class="flex-1 h-px bg-border" />
-            <button class="text-xs text-muted hover:text-accent transition-colors cursor-pointer shrink-0" @click="openEmail('speaker')">Book a speaking engagement →</button>
+            <button class="text-xs text-muted hover:text-accent transition-colors cursor-pointer shrink-0 js-only" @click="openEmail('speaker')">Book a speaking engagement →</button>
+            <noscript><span class="text-xs text-muted shrink-0">Enable JavaScript to book a speaking engagement</span></noscript>
           </div>
           <ul class="space-y-4 max-w-2xl">
             <li v-for="talk in talks" :key="talk.slug" class="border-l border-border pl-4 hover:border-accent transition-colors group">
@@ -76,18 +76,40 @@
           </ul>
         </div>
 
-        <div v-if="posts.length" class="mt-14">
-          <div class="flex items-center gap-3 mb-6">
-            <span class="text-xs font-mono tracking-widest uppercase text-accent">Writing</span>
+        <div class="mt-12">
+          <div class="flex items-center gap-3 mb-8">
+            <span id="recordings" class="section-anchor text-xs font-mono tracking-widest uppercase text-accent cursor-pointer group/anchor" @click="copyAnchor('recordings')">
+              Recorded speaking engagements
+              <i class="fa-solid fa-link fa-xs ml-1 opacity-0 group-hover/anchor:opacity-50 transition-opacity" />
+              <span v-if="copied === 'recordings'" class="ml-1 text-accent opacity-75">✓</span>
+            </span>
             <div class="flex-1 h-px bg-border" />
-            <RouterLink to="/blog" class="text-xs text-muted hover:text-accent transition-colors no-underline">All posts →</RouterLink>
+            <button class="text-xs text-muted hover:text-accent transition-colors cursor-pointer shrink-0 js-only" @click="openEmail('speaker')">Book a speaking engagement →</button>
+            <noscript><span class="text-xs text-muted shrink-0">Enable JavaScript to book a speaking engagement</span></noscript>
           </div>
-          <ul class="space-y-4 max-w-2xl">
-            <li v-for="post in posts" :key="post.slug" class="border-l border-border pl-4 hover:border-accent transition-colors group">
-              <RouterLink :to="`/blog/${post.slug}`" class="block no-underline">
-                <span class="text-xs text-muted font-mono">{{ post.date }}</span>
-                <p class="text-text group-hover:text-accent transition-colors mt-0.5 text-sm">{{ post.title }}</p>
-              </RouterLink>
+          <VideoGrid />
+        </div>
+
+        <div class="mt-14">
+          <div class="flex items-center gap-3 mb-6">
+            <RouterLink to="/blog" class="text-xs font-mono tracking-widest uppercase text-accent hover:text-accent/70 transition-colors no-underline cursor-pointer">Writing</RouterLink>
+            <div class="flex-1 h-px bg-border" />
+            <RouterLink to="/blog" class="text-xs text-muted hover:text-accent transition-colors no-underline">All articles →</RouterLink>
+          </div>
+          <ul class="space-y-5 max-w-2xl">
+            <li v-for="post in recentPosts" :key="post.key" class="group">
+              <component
+                :is="post.external ? 'a' : RouterLink"
+                v-bind="post.external ? { href: post.url, target: '_blank', rel: 'noopener noreferrer' } : { to: `/blog/${post.slug}` }"
+                class="block no-underline"
+              >
+                <div class="flex items-start gap-2">
+                  <span class="text-xs text-muted font-mono mt-0.5 shrink-0">{{ post.date }}</span>
+                  <span v-if="post.source === 'authress'" class="text-xs px-1.5 py-0.5 rounded bg-teal/20 text-teal font-medium shrink-0">Authress Engineering Blog</span>
+                </div>
+                <p class="text-text group-hover:text-accent transition-colors text-sm font-medium mt-1">{{ post.title }}</p>
+                <p v-if="post.description" class="text-xs text-muted mt-0.5 leading-relaxed line-clamp-2">{{ post.description }}</p>
+              </component>
             </li>
           </ul>
         </div>
@@ -97,6 +119,7 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import { useHead } from '@unhead/vue';
 import { RouterLink, useRouter } from 'vue-router';
 import shortUUID from 'short-uuid';
@@ -106,22 +129,34 @@ import oauthImage from '../components/oauth.svg';
 import VideoGrid from '../components/VideoGrid.vue';
 import { talks } from '../data/talks.js';
 import { posts } from '../data/posts.js';
+import { externalPosts } from '../data/externalPosts.js';
 
 useHead({ title: 'Warren Parad — Authress CTO & Public Speaker' });
 
 const router = useRouter();
 const key = shortUUID.generate().slice(0, 7);
+const copied = ref(null);
 
-const openPodcast = () => { window.open('https://adventuresindevops.com/docs/guests', '_blank'); };
+const copyAnchor = id => {
+  const url = `${window.location.origin}${window.location.pathname}#${id}`;
+  router.replace({ hash: `#${id}` });
+  navigator.clipboard?.writeText(url);
+  copied.value = id;
+  setTimeout(() => { copied.value = null; }, 2000);
+};
+
+const recentPosts = [
+  ...posts.map(p => ({ ...p, key: `local-${p.slug}`, external: false })),
+  ...externalPosts.map(p => ({ ...p, key: `ext-${p.url}`, external: true })),
+].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 10);
 
 const openEmail = type => {
   const props = {
     speaker: {
       email: `${encodeURIComponent(`Warren Parad<speaking+${key}`)}@rhosys.ch`,
-      subject: 'Speaking appearance request for Warren Parad'
-    }
+      subject: 'Speaking appearance request for Warren Parad',
+    },
   }[type];
   window.open(`mailto:${props.email}%3e?subject=${encodeURIComponent(props.subject)}`);
 };
-
 </script>

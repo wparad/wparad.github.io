@@ -21,28 +21,28 @@
     </section>
 
     <!-- Recognition -->
-    <section class="py-10 px-4 border-b border-border">
+    <section class="py-10 px-4">
       <div class="max-w-5xl mx-auto">
         <div class="flex items-center gap-3 mb-8">
           <span class="text-xs font-mono tracking-widest uppercase text-accent">Recognition</span>
           <div class="flex-1 h-px bg-border" />
         </div>
         <div class="flex flex-wrap gap-6">
-          <div class="flex items-center gap-4 border border-border rounded-xl px-5 py-4 bg-surface">
+          <div class="flex items-center gap-4 rounded-xl px-5 py-4 bg-surface">
             <i class="fa-brands fa-aws fa-xl text-accent shrink-0" />
             <div>
               <h3 class="font-semibold text-text text-sm">AWS Community Builder</h3>
               <p class="text-xs text-muted mt-0.5">Security &amp; Serverless · 2024 – Present</p>
             </div>
           </div>
-          <div class="flex items-center gap-4 border border-border rounded-xl px-5 py-4 bg-surface">
+          <div class="flex items-center gap-4 rounded-xl px-5 py-4 bg-surface">
             <i class="fa-solid fa-lock fa-xl text-accent shrink-0" />
             <div>
               <h3 class="font-semibold text-text text-sm">IETF OAuth Working Group</h3>
               <p class="text-xs text-muted mt-0.5">Active contributor</p>
             </div>
           </div>
-          <div class="flex items-center gap-4 border border-border rounded-xl px-5 py-4 bg-surface">
+          <div class="flex items-center gap-4 rounded-xl px-5 py-4 bg-surface">
             <i class="fa-solid fa-microphone fa-xl text-accent shrink-0" />
             <div>
               <h3 class="font-semibold text-text text-sm">International Conference Speaker</h3>
@@ -108,7 +108,7 @@
     </section>
 
     <!-- Experience -->
-    <section id="experience" class="py-14 px-4 border-t border-border">
+    <section id="experience" class="py-14 px-4">
       <div class="max-w-5xl mx-auto">
         <div class="flex items-center gap-3 mb-10">
           <span class="text-xs font-mono tracking-widest uppercase text-accent">Experience</span>
@@ -244,7 +244,7 @@
     </section>
 
     <!-- Skills -->
-    <section id="skills" class="py-14 px-4 border-t border-border">
+    <section id="skills" class="py-14 px-4">
       <div class="max-w-5xl mx-auto">
         <div class="flex items-center gap-3 mb-10">
           <span class="text-xs font-mono tracking-widest uppercase text-accent">Skills and preferences</span>
@@ -285,7 +285,7 @@
     </section>
 
     <!-- Community -->
-    <section id="communities" class="py-14 px-4 border-t border-border">
+    <section id="communities" class="py-14 px-4">
       <div class="max-w-5xl mx-auto">
         <div class="flex items-center gap-3 mb-10">
           <span class="text-xs font-mono tracking-widest uppercase text-accent">Community</span>

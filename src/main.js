@@ -13,7 +13,15 @@ export const createApp = ViteSSG(
     routes,
     scrollBehavior(to, from, savedPosition) {
       if (savedPosition) { return savedPosition; }
-      if (to.hash) { return { el: to.hash, behavior: 'smooth' }; }
+      if (to.hash) {
+        // When navigating cross-page, the target element may not exist yet.
+        // Wait for the page to render before scrolling.
+        const sameRoute = from && to.path === from.path;
+        const delay = sameRoute ? 0 : 100;
+        return new Promise(resolve =>
+          setTimeout(() => resolve({ el: to.hash, behavior: 'smooth', top: 64 }), delay)
+        );
+      }
       return { top: 0 };
     },
   },

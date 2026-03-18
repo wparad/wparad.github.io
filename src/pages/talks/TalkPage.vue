@@ -2,7 +2,7 @@
   <main class="pt-14 min-h-screen">
     <div class="max-w-3xl mx-auto px-4 py-12">
       <!-- Back nav -->
-      <RouterLink to="/#engagements" class="inline-flex items-center gap-2 text-muted hover:text-accent text-sm mb-8 transition-colors no-underline">
+      <RouterLink to="/" class="inline-flex items-center gap-2 text-muted hover:text-accent text-sm mb-8 transition-colors no-underline">
         <i class="fa-solid fa-arrow-left" /> All talks
       </RouterLink>
 
@@ -17,7 +17,8 @@
         <h1 class="text-3xl font-bold text-text mb-6 leading-tight">{{ talk.title }}</h1>
 
         <!-- Links row -->
-        <div v-if="talk.eventUrl || talk.articleUrl" class="flex flex-wrap gap-3 mb-8">
+        <div v-if="talk.eventUrl || talk.articleUrl || talk.slidesUrl" class="flex flex-wrap gap-3 mb-8">
+          <!-- Event page — primary CTA -->
           <a
             v-if="talk.eventUrl"
             :href="talk.eventUrl"
@@ -26,8 +27,10 @@
             class="inline-flex items-center gap-2 px-4 py-2 text-sm rounded-lg bg-accent text-white font-medium hover:bg-accent/80 transition-colors no-underline"
           >
             <i class="fa-solid fa-calendar-days" />
-            {{ talk.conference }}{{ talk.location ? ` ${talk.location}` : '' }}{{ talk.year ? ` ${talk.year}` : '' }} Event
+            {{ [talk.conference, talk.location, talk.year].filter(Boolean).join(' · ') }} Event
           </a>
+
+          <!-- Article / transcript — mutually exclusive with slides -->
           <a
             v-if="talk.articleUrl"
             :href="talk.articleUrl"
@@ -35,7 +38,18 @@
             rel="noopener noreferrer"
             class="inline-flex items-center gap-2 px-4 py-2 text-sm rounded-lg border border-border text-muted hover:border-accent hover:text-accent transition-colors no-underline"
           >
-            <i class="fa-solid fa-file-lines" /> Read article / transcript
+            <i class="fa-solid fa-file-lines" /> Full article &amp; transcript
+          </a>
+
+          <!-- Slides — shown independently alongside article if both exist -->
+          <a
+            v-if="talk.slidesUrl"
+            :href="talk.slidesUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-4 py-2 text-sm rounded-lg border border-border text-muted hover:border-accent hover:text-accent transition-colors no-underline"
+          >
+            <i class="fa-solid fa-display" /> View slides
           </a>
         </div>
 
@@ -95,6 +109,9 @@ const onVideoLoad = () => { videoLoading.value = false; };
 
 useHead(computed(() => ({
   title: talk.value ? `${talk.value.title} — Warren Parad` : 'Talk — Warren Parad',
+  link: talk.value?.articleUrl
+    ? [{ rel: 'canonical', href: talk.value.articleUrl }]
+    : [],
 })));
 </script>
 

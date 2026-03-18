@@ -181,7 +181,7 @@ import oauthImage from './oauth.svg';
 
 const key = shortUUID.generate().slice(0, 7);
 const navigateToPodcast = () => {
-  window.location.assign('https://adventuresindevops.com/docs/guests');
+  window.location.assign('https://adventuresindevops.com');
 };
 
 const openEmail = type => {

@@ -11,25 +11,28 @@
         </div>
 
         <div class="min-w-0">
-          <p class="text-xs font-mono tracking-widest uppercase text-accent mb-3">Fractional CTO</p>
           <h1 class="text-5xl md:text-6xl font-bold text-text leading-tight">Warren Parad</h1>
+          <p class="text-xs font-mono tracking-widest uppercase text-accent mt-2 mb-3">Fractional CTO</p>
           <p class="mt-3 text-muted text-base leading-relaxed max-w-xl">
             Technology strategist, DevOps architect, and security expert. I work with growing companies to solve hard engineering challenges and build high-performing teams — on a flexible, fractional basis.
           </p>
 
           <div class="mt-6 flex flex-wrap gap-2">
-            <button
-              class="flex items-center gap-2 px-4 py-2 text-sm rounded-lg bg-accent text-bg font-medium hover:bg-accent/80 transition-colors cursor-pointer"
-              @click="openSchedulingPage"
+            <a
+              href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1L4ydEJ2y99C8uDGwI2eoIeu7DVwX9a1slXrRQUquyNAZ-CHGkX98GQk5TDkEEuhZ7QvjFGYvp"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 px-4 py-2 text-sm rounded-lg bg-accent text-white font-medium hover:bg-accent/80 transition-colors cursor-pointer"
             >
               <i class="fa-regular fa-calendar-check" /> Schedule a meeting
-            </button>
+            </a>
             <button
-              class="flex items-center gap-2 px-4 py-2 text-sm rounded-lg border border-border text-muted hover:border-accent hover:text-accent transition-colors cursor-pointer"
+              class="js-only inline-flex items-center gap-2 px-4 py-2 text-sm rounded-lg border border-border text-muted hover:border-accent hover:text-accent transition-colors cursor-pointer"
               @click="openEmail"
             >
               <i class="fa-solid fa-envelope" /> Drop me a message
             </button>
+            <noscript><span class="inline-flex items-center gap-2 px-4 py-2 text-sm rounded-lg border border-border text-muted">Enable JavaScript to send email</span></noscript>
           </div>
         </div>
       </div>
@@ -154,12 +157,14 @@
       <div class="max-w-5xl mx-auto">
         <div class="rounded-xl p-6 flex flex-wrap items-center justify-between gap-4 border border-accent/30 bg-accent/5">
           <p class="text-muted">Does this sound like your current situation? Let's set up a meeting to discuss.</p>
-          <button
-            class="flex items-center gap-2 px-4 py-2 text-sm rounded-lg bg-accent text-bg font-medium hover:bg-accent/80 transition-colors cursor-pointer shrink-0"
-            @click="openSchedulingPage"
+          <a
+            href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1L4ydEJ2y99C8uDGwI2eoIeu7DVwX9a1slXrRQUquyNAZ-CHGkX98GQk5TDkEEuhZ7QvjFGYvp"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-4 py-2 text-sm rounded-lg bg-accent text-white font-medium hover:bg-accent/80 transition-colors cursor-pointer shrink-0"
           >
             Schedule a meeting <i class="fa-solid fa-circle-chevron-right" />
-          </button>
+          </a>
         </div>
       </div>
     </section>
@@ -259,21 +264,29 @@
               <i class="fa-brands fa-discord fa-xl fa-fw" style="color: #5865F2" />
               <span>Message me on Discord</span>
             </a>
-            <a href="#" class="community-link" @click.prevent="openEmail">
+            <button class="js-only community-link" @click="openEmail">
               <i class="fa-solid fa-envelope fa-xl fa-fw" />
               <span>Send me an email</span>
-            </a>
+            </button>
+            <noscript>
+              <span class="community-link opacity-50 cursor-not-allowed">
+                <i class="fa-solid fa-envelope fa-xl fa-fw" />
+                <span>Enable JavaScript to send email</span>
+              </span>
+            </noscript>
           </div>
           <div class="space-y-4 text-muted text-sm leading-relaxed">
             <p>I write and answer questions across these communities to help engineers and aspiring leaders discover new technologies and techniques. My talks and engagements lead to new stories that I write down for the benefit of others.</p>
             <p>My skills come from a wide array of industries with a leadership focus everywhere I've been — I owe them to the awesome individuals and companies I've worked with.</p>
             <div class="pt-2">
-              <button
-                class="flex items-center gap-2 px-4 py-2 text-sm rounded-lg border border-border text-muted hover:border-accent hover:text-accent transition-colors cursor-pointer"
-                @click="openSchedulingPage"
+              <a
+                href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1L4ydEJ2y99C8uDGwI2eoIeu7DVwX9a1slXrRQUquyNAZ-CHGkX98GQk5TDkEEuhZ7QvjFGYvp"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-4 py-2 text-sm rounded-lg border border-border text-muted hover:border-accent hover:text-accent transition-colors cursor-pointer"
               >
                 Think this is an opportunity for collaboration? Schedule a meeting <i class="fa-solid fa-circle-chevron-right" />
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -302,12 +315,14 @@
                 <span class="text-muted text-sm">/ hour — standard rate</span>
               </li>
             </ul>
-            <button
-              class="mt-6 flex items-center gap-2 px-4 py-2 text-sm rounded-lg bg-accent text-bg font-medium hover:bg-accent/80 transition-colors cursor-pointer"
-              @click="openSchedulingPage"
+            <a
+              href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1L4ydEJ2y99C8uDGwI2eoIeu7DVwX9a1slXrRQUquyNAZ-CHGkX98GQk5TDkEEuhZ7QvjFGYvp"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-6 inline-flex items-center gap-2 px-4 py-2 text-sm rounded-lg bg-accent text-white font-medium hover:bg-accent/80 transition-colors cursor-pointer"
             >
               <i class="fa-regular fa-calendar-check" /> Schedule a meeting
-            </button>
+            </a>
           </div>
         </div>
       </div>
