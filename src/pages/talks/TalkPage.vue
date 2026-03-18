@@ -17,7 +17,7 @@
         <h1 class="text-3xl font-bold text-text mb-6 leading-tight">{{ talk.title }}</h1>
 
         <!-- Links row -->
-        <div v-if="talk.eventUrl || talk.articleUrl || talk.slidesUrl" class="flex flex-wrap gap-3 mb-8">
+        <div v-if="talk.eventUrl || talk.articleUrl || talk.canonicalUrl" class="flex flex-wrap gap-3 mb-8">
           <!-- Event page — primary CTA -->
           <a
             v-if="talk.eventUrl"
@@ -43,8 +43,8 @@
 
           <!-- Slides — shown independently alongside article if both exist -->
           <a
-            v-if="talk.slidesUrl"
-            :href="talk.slidesUrl"
+            v-if="talk.canonicalUrl"
+            :href="talk.canonicalUrl"
             target="_blank"
             rel="noopener noreferrer"
             class="inline-flex items-center gap-2 px-4 py-2 text-sm rounded-lg border border-border text-muted hover:border-accent hover:text-accent transition-colors no-underline"
@@ -115,8 +115,8 @@ const onVideoLoad = () => { videoLoading.value = false; };
 
 useHead(computed(() => ({
   title: talk.value ? `${talk.value.title} — Warren Parad` : 'Talk — Warren Parad',
-  link: talk.value?.articleUrl
-    ? [{ rel: 'canonical', href: talk.value.articleUrl }]
+  link: talk.value?.canonicalUrl
+    ? [{ rel: 'canonical', href: talk.value.canonicalUrl }]
     : [],
 })));
 </script>

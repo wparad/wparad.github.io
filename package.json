@@ -49,6 +49,7 @@
     "eslint-plugin-vue": "^7.17.0",
     "fs-extra": "^8.1.0",
     "glob": "^7.1.6",
+    "gray-matter": "^4.0.3",
     "js-yaml": "^4.1.1",
     "tailwindcss": "^4.0.0",
     "unplugin-vue-markdown": "^30.0.0",

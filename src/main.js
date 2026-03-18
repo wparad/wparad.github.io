@@ -17,13 +17,13 @@ export const createApp = ViteSSG(
   },
   ({ app }) => {
     app.use(createPinia());
-  }
+  },
 );
 
 export function includedRoutes(paths) {
   return paths.flatMap(path => {
-    if (path === '/talks/:slug') return talks.map(t => `/talks/${t.slug}`);
-    if (path === '/blog/:slug') return posts.map(p => `/blog/${p.slug}`);
+    if (path === '/talks/:slug') {return talks.map(t => `/talks/${t.slug}`);}
+    if (path === '/blog/:slug') {return posts.map(p => `/blog/${p.slug}`);}
     return [path];
   });
 }

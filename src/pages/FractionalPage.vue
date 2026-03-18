@@ -1,7 +1,7 @@
 <template>
   <main class="pt-14">
     <!-- Hero -->
-    <section class="relative overflow-hidden border-b border-border">
+    <section class="relative overflow-hidden">
       <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-accent/5 rounded-full blur-3xl pointer-events-none" />
 
       <div class="relative max-w-5xl mx-auto px-6 py-16 md:py-20 grid grid-cols-1 md:grid-cols-[auto_1fr] items-center gap-8 md:gap-12">
@@ -77,7 +77,7 @@
     </section>
 
     <!-- Activities -->
-    <section id="activities" class="py-14 px-4 border-t border-border">
+    <section id="activities" class="py-14 px-4">
       <div class="max-w-5xl mx-auto">
         <div class="flex items-center gap-3 mb-10">
           <span class="text-xs font-mono tracking-widest uppercase text-accent">What I do</span>
@@ -170,7 +170,7 @@
     </section>
 
     <!-- Why Fractional CTO -->
-    <section class="py-10 px-4 border-t border-border">
+    <section class="py-10 px-4">
       <div class="max-w-5xl mx-auto">
         <div class="flex items-center gap-3 mb-8">
           <span class="text-xs font-mono tracking-widest uppercase text-accent">Why fractional</span>
@@ -188,7 +188,7 @@
     </section>
 
     <!-- Skills -->
-    <section id="skills" class="py-14 px-4 border-t border-border">
+    <section id="skills" class="py-14 px-4">
       <div class="max-w-5xl mx-auto">
         <div class="flex items-center gap-3 mb-10">
           <span class="text-xs font-mono tracking-widest uppercase text-accent">Skills and preferences</span>
@@ -232,14 +232,14 @@
     </section>
 
     <!-- Testimonials -->
-    <section id="testimonials" class="py-10 px-4 border-t border-border">
+    <section id="testimonials" class="py-10 px-4">
       <div class="max-w-5xl mx-auto">
         <TestimonialCarousel />
       </div>
     </section>
 
     <!-- Community -->
-    <section id="contact" class="py-14 px-4 border-t border-border">
+    <section id="contact" class="py-14 px-4">
       <div class="max-w-5xl mx-auto">
         <div class="flex items-center gap-3 mb-10">
           <span class="text-xs font-mono tracking-widest uppercase text-accent">Community</span>
@@ -294,7 +294,7 @@
     </section>
 
     <!-- Pricing -->
-    <section id="pricing" class="py-14 px-4 border-t border-border">
+    <section id="pricing" class="py-14 px-4">
       <div class="max-w-5xl mx-auto">
         <div class="flex items-center gap-3 mb-10">
           <span class="text-xs font-mono tracking-widest uppercase text-accent">Compensation and rates</span>

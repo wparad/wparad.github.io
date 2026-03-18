@@ -11,9 +11,9 @@ export const posts = Object.keys(rawModules)
   .map(path => {
     const dirName = path.split('/').at(-2); // "2025-03-18-meeting-impossible-slas"
     const match = dirName.match(DATE_PREFIX);
-    if (!match) return null;
-    const date = match[1];                           // "2025-03-18"
-    const slug = dirName.replace(DATE_PREFIX, '');   // "meeting-impossible-slas"
+    if (!match) {return null;}
+    const date = match[1]; // "2025-03-18"
+    const slug = dirName.replace(DATE_PREFIX, ''); // "meeting-impossible-slas"
     const { data: fm } = matter(rawModules[path]);
     return {
       slug,

@@ -88,7 +88,7 @@ tags: [reliability, sla, devops]
 - [x] Add `src/posts/` with at least one example post directory (`YYYY-MM-DD-slug/index.md`)
 
 #### Build config
-- [x] Install `unplugin-vue-markdown` (converts `.md` → Vue SFCs; frontmatter via `gray-matter` + `?raw` import)
+- [x] Install `unplugin-vue-markdown` (converts `.md` → Vue SFCs;)
 - [x] Update `vite.config.js`: add `Markdown()` plugin, `vue({ include: [/\.vue$/, /\.md$/] })`
 - [x] Update `src/main.js` `includedRoutes`: import `posts` from `src/data/posts.js`, map `/blog/:slug` → all slugs
 

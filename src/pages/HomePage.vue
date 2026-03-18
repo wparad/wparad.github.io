@@ -45,7 +45,7 @@
 
           <!-- CTAs — plain <a> tags so they work with JS disabled -->
           <div class="mt-6 flex flex-wrap gap-2">
-            <a href="/fractional" class="inline-block px-4 py-2 text-sm rounded-lg bg-accent text-white font-medium hover:bg-accent/80 transition-colors cursor-pointer">Hire me as an Advisor</a>
+            <a href="/fractional" class="inline-block px-4 py-2 text-sm rounded-lg bg-accent text-white font-medium hover:bg-accent/80 transition-colors cursor-pointer">Hire me as Advisor</a>
             <a href="https://adventuresindevops.com" target="_blank" rel="noopener noreferrer" class="inline-block px-4 py-2 text-sm rounded-lg font-medium text-white hover:opacity-80 transition-opacity cursor-pointer" style="background-color:#1db954;"><i class="fa-solid fa-podcast fa-sm mr-1" /> Adventures in DevOps Podcast</a>
           </div>
         </div>
