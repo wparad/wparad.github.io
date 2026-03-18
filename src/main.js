@@ -1,11 +1,31 @@
-import './styles/main.scss';
-
-// https://v3.vuejs.org/api/application-api.html
-import { createApp } from 'vue';
+import { ViteSSG } from 'vite-ssg';
+import { createPinia } from 'pinia';
 
 import App from './App.vue';
-const app = createApp(App);
+import routes from './router.js';
+import { talks } from './data/talks.js';
+import { posts } from './data/posts.js';
+import './styles/main.css';
 
-import 'bootstrap/dist/js/bootstrap.js';
+export const createApp = ViteSSG(
+  App,
+  {
+    routes,
+    scrollBehavior(to, from, savedPosition) {
+      if (savedPosition) { return savedPosition; }
+      if (to.hash) { return { el: to.hash, behavior: 'smooth' }; }
+      return { top: 0 };
+    },
+  },
+  ({ app }) => {
+    app.use(createPinia());
+  }
+);
 
-app.mount('#app');
+export function includedRoutes(paths) {
+  return paths.flatMap(path => {
+    if (path === '/talks/:slug') return talks.map(t => `/talks/${t.slug}`);
+    if (path === '/blog/:slug') return posts.map(p => `/blog/${p.slug}`);
+    return [path];
+  });
+}

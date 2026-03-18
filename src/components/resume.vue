@@ -188,7 +188,7 @@ performance, and skills, and rapidly delivering the next innovation for the busi
               <li>Architecture, Test pyramid, DDD, TDD</li>
               <li>Interviewing, training, mentoring</li>
               <li>Extensive use of Javascript, Typescript, C#, as well as a number of other languages</li>
-              <li>GDPR, Auth0 user management</li>
+              <li>GDPR, User management</li>
             </ul>
           </div>
         </div>

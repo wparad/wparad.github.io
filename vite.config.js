@@ -1,58 +1,33 @@
+import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
-import RollupNodePolyFill from 'rollup-plugin-polyfill-node';
+import Markdown from 'unplugin-vue-markdown/vite';
 import NodeGlobalsPolyfillPlugin from '@esbuild-plugins/node-globals-polyfill';
-
-// https://vitejs.dev/config/
-// https://vitejs.dev/guide/build.html#public-base-path
 
 export default defineConfig({
   resolve: {
     alias: {
-      '@': require('path').resolve(__dirname, './src')
+      '@': resolve(__dirname, './src')
     }
   },
   plugins: [
-    vue({
-      preprocessStyles: true
-    })
+    Markdown({}),
+    vue({ include: [/\.vue$/, /\.md$/] }),
   ],
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData(source, fp) {
-          if (fp.endsWith('colors.module.scss')) {
-            return source;
-          }
-
-          return `@use "@/styles/colors.module.scss" as *;\n\n${source}`;
-        }
-      }
-    }
-  },
   base: '/',
   build: {
     outDir: 'dist',
-    rollupOptions: {
-      plugins: [
-        RollupNodePolyFill()
-      ]
-    }
   },
-
   optimizeDeps: {
     esbuildOptions: {
-      // Node.js global to browser globalThis
       define: {
         global: 'globalThis'
       },
-      // Enable esbuild polyfill plugins
       plugins: [
         NodeGlobalsPolyfillPlugin({ buffer: true })
       ]
     }
   },
-
   define: {
     VERSION_INFO: JSON.stringify({
       releaseDate: new Date().toISOString(),
