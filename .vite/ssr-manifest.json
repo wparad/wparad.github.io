@@ -860,7 +860,7 @@
     "/assets/avatar-hal-CE5sbnrf.jpeg",
     "/assets/avatar-justin-BCBDbnaK.jpg"
   ],
-  "src/components/AppNav.vue?vue&type=style&index=0&scoped=87218a66&lang.css": [
+  "src/components/AppNav.vue?vue&type=style&index=0&scoped=3a219bdd&lang.css": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
     "/assets/avatar-andrej-BB2SG8F7.jpeg",
@@ -930,7 +930,7 @@
     "/assets/avatar-hal-CE5sbnrf.jpeg",
     "/assets/avatar-justin-BCBDbnaK.jpg"
   ],
-  "src/pages/BlogIndexPage.vue?vue&type=style&index=0&scoped=7c35ffde&lang.css": [
+  "src/pages/BlogIndexPage.vue?vue&type=style&index=0&scoped=e646719a&lang.css": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
     "/assets/avatar-andrej-BB2SG8F7.jpeg",
@@ -944,7 +944,7 @@
     "/assets/avatar-hal-CE5sbnrf.jpeg",
     "/assets/avatar-justin-BCBDbnaK.jpg"
   ],
-  "src/pages/FractionalPage.vue?vue&type=style&index=0&scoped=d3a801b9&lang.css": [
+  "src/pages/FractionalPage.vue?vue&type=style&index=0&scoped=0047f304&lang.css": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
     "/assets/avatar-andrej-BB2SG8F7.jpeg",
@@ -965,7 +965,7 @@
     "/assets/avatar-hal-CE5sbnrf.jpeg",
     "/assets/avatar-justin-BCBDbnaK.jpg"
   ],
-  "src/pages/ResumePage.vue?vue&type=style&index=0&scoped=6ec983e4&lang.css": [
+  "src/pages/ResumePage.vue?vue&type=style&index=0&scoped=1af9bbb0&lang.css": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
     "/assets/avatar-andrej-BB2SG8F7.jpeg",
@@ -993,21 +993,7 @@
     "/assets/avatar-hal-CE5sbnrf.jpeg",
     "/assets/avatar-justin-BCBDbnaK.jpg"
   ],
-  "src/pages/talks/TalkPage.vue?vue&type=style&index=0&scoped=aae66dcd&lang.css": [
-    "/assets/profile-C4OvL-ns.jpg",
-    "/assets/oauth-BaRAULWV.svg",
-    "/assets/avatar-andrej-BB2SG8F7.jpeg",
-    "/assets/avatar-hal-CE5sbnrf.jpeg",
-    "/assets/avatar-justin-BCBDbnaK.jpg"
-  ],
-  "src/posts/2025-03-18-meeting-impossible-slas/index.md": [
-    "/assets/profile-C4OvL-ns.jpg",
-    "/assets/oauth-BaRAULWV.svg",
-    "/assets/avatar-andrej-BB2SG8F7.jpeg",
-    "/assets/avatar-hal-CE5sbnrf.jpeg",
-    "/assets/avatar-justin-BCBDbnaK.jpg"
-  ],
-  "src/posts/2025-03-18-meeting-impossible-slas/index.md?raw": [
+  "src/pages/talks/TalkPage.vue?vue&type=style&index=0&scoped=24117425&lang.css": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
     "/assets/avatar-andrej-BB2SG8F7.jpeg",
