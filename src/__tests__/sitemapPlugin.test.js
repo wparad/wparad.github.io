@@ -1,5 +1,5 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { readFileSync, readdirSync, existsSync } from 'fs';
+import { describe, it, expect } from 'vitest';
+import { readFileSync } from 'fs';
 
 // Replicate the helpers from vite.config.js so we can test them in isolation
 const DATE_PREFIX_RE = /^\d{4}-\d{2}-\d{2}-/;
@@ -26,7 +26,7 @@ describe('getTalkSlugs (regex over talks.js source)', () => {
   });
 
   it('handles slugs with hyphens and numbers', () => {
-    const src = `{ slug: 'dwx24-nuremberg-2024' }`;
+    const src = '{ slug: \'dwx24-nuremberg-2024\' }';
     expect(getTalkSlugs(src)).toEqual(['dwx24-nuremberg-2024']);
   });
 

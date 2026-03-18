@@ -19,10 +19,10 @@ describe('talks data integrity', () => {
   });
 
   it('all talks have the expected shape (no missing keys)', () => {
-    const requiredKeys = ['slug', 'title', 'conference', 'location', 'year', 'eventUrl', 'articleUrl', 'canonicalUrl', 'videoUrl', 'videoTitle', 'description'];
+    const requiredKeys = ['slug', 'title', 'conference', 'location', 'date', 'eventUrl', 'articleUrl', 'canonicalUrl', 'videoUrl', 'videoTitle', 'description'];
     for (const talk of talks) {
       for (const key of requiredKeys) {
-        expect(key in talk, `key "${key}" missing on "${talk.slug}"`).toBe(true);
+        expect(Object.hasOwn(talk, key), `key "${key}" missing on "${talk.slug}"`).toBe(true);
       }
     }
   });
@@ -39,12 +39,15 @@ describe('talks data integrity', () => {
     }
   });
 
-  it('year is a number or null', () => {
+  it('date is an ISO 8601 string or null', () => {
+    const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
     for (const talk of talks) {
-      if (talk.year !== null) {
-        expect(typeof talk.year, `year on "${talk.slug}" should be number or null`).toBe('number');
-        expect(talk.year).toBeGreaterThan(2000);
-        expect(talk.year).toBeLessThan(2100);
+      if (talk.date !== null) {
+        expect(typeof talk.date, `date on "${talk.slug}" should be string or null`).toBe('string');
+        expect(talk.date, `date on "${talk.slug}" must be YYYY-MM-DD`).toMatch(ISO_DATE);
+        const year = Number(talk.date.slice(0, 4));
+        expect(year).toBeGreaterThan(2000);
+        expect(year).toBeLessThan(2100);
       }
     }
   });
@@ -56,6 +59,16 @@ describe('talks data integrity', () => {
         const val = talk[field];
         expect(val === null || typeof val === 'string', `"${field}" on "${talk.slug}" must be string or null, got ${typeof val}`).toBe(true);
       }
+    }
+  });
+});
+
+describe('talks ordering', () => {
+  it('talks are sorted newest-first by date', () => {
+    for (let i = 1; i < talks.length; i++) {
+      const prev = talks[i - 1].date ?? '';
+      const curr = talks[i].date ?? '';
+      expect(prev >= curr, `"${talks[i - 1].slug}" (${prev}) should come before "${talks[i].slug}" (${curr})`).toBe(true);
     }
   });
 });

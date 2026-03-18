@@ -46,7 +46,6 @@ describe('externalPosts data integrity', () => {
 
   it('no duplicate URLs', () => {
     const urls = externalPosts.map(p => p.url);
-    const unique = new Set(urls);
     const duplicates = urls.filter((url, i) => urls.indexOf(url) !== i);
     expect(duplicates, `duplicate URLs found: ${duplicates.join(', ')}`).toHaveLength(0);
   });
@@ -55,7 +54,7 @@ describe('externalPosts data integrity', () => {
     for (let i = 1; i < externalPosts.length; i++) {
       expect(
         externalPosts[i - 1].date >= externalPosts[i].date,
-        `"${externalPosts[i - 1].title}" (${externalPosts[i - 1].date}) should come before "${externalPosts[i].title}" (${externalPosts[i].date})`
+        `"${externalPosts[i - 1].title}" (${externalPosts[i - 1].date}) should come before "${externalPosts[i].title}" (${externalPosts[i].date})`,
       ).toBe(true);
     }
   });

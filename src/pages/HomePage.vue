@@ -69,7 +69,7 @@
           <ul class="space-y-4 max-w-2xl">
             <li v-for="talk in talks" :key="talk.slug" class="border-l border-border pl-4 hover:border-accent transition-colors group">
               <RouterLink :to="`/talks/${talk.slug}`" class="block no-underline">
-                <span class="text-xs text-muted font-mono">{{ talk.conference }}{{ talk.location ? ` · ${talk.location}` : '' }}{{ talk.year ? ` · ${talk.year}` : '' }}</span>
+                <span class="text-xs text-muted font-mono">{{ talk.conference }}{{ talk.location ? ` · ${talk.location}` : '' }}{{ talk.date ? ` · ${talk.date.slice(0, 4)}` : '' }}</span>
                 <p class="text-text group-hover:text-accent transition-colors mt-0.5 text-sm">{{ talk.title }}</p>
               </RouterLink>
             </li>

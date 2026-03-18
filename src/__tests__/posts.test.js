@@ -31,8 +31,8 @@ describe('post directory name parsing', () => {
   });
 
   it('returns null for partial date prefixes', () => {
-    expect(parsePostDir('2025-03-slug')).toBeNull();       // missing day
-    expect(parsePostDir('2025-slug')).toBeNull();           // missing month + day
+    expect(parsePostDir('2025-03-slug')).toBeNull(); // missing day
+    expect(parsePostDir('2025-slug')).toBeNull(); // missing month + day
   });
 
   it('handles single-word slugs after date', () => {

@@ -10,7 +10,7 @@
         <!-- Conference header -->
         <div class="mb-2 text-xs font-mono text-accent tracking-widest uppercase">
           {{ [talk.conference, talk.location].filter(Boolean).join(' · ') }}
-          <span v-if="talk.year"> · {{ talk.year }}</span>
+          <span v-if="talk.date"> · {{ talk.date.slice(0, 4) }}</span>
         </div>
 
         <!-- Talk title -->
@@ -26,7 +26,7 @@
             rel="noopener noreferrer"
             class="inline-flex items-center gap-2 px-4 py-2 text-sm rounded-lg bg-accent text-white font-medium hover:bg-accent/80 transition-colors no-underline">
             <i class="fa-solid fa-calendar-days" />
-            {{ [talk.conference, talk.location, talk.year].filter(Boolean).join(' · ') }} Event
+            {{ [talk.conference, talk.location, talk.date?.slice(0, 4)].filter(Boolean).join(' · ') }} Event
           </a>
 
           <!-- Article / transcript — mutually exclusive with slides -->
