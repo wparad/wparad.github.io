@@ -1,8 +1,8 @@
 <template>
   <main class="pt-14">
-    <div class="max-w-3xl mx-auto px-4 py-12">
+    <div class="max-w-3xl mx-auto px-4 py-8 sm:py-12">
       <!-- Back nav -->
-      <button class="inline-flex items-center gap-2 text-muted hover:text-accent text-sm mb-8 transition-colors cursor-pointer bg-transparent border-none p-0" @click="goBack">
+      <button class="hidden sm:inline-flex items-center gap-2 text-muted hover:text-accent text-sm mb-8 transition-colors cursor-pointer bg-transparent border-none p-0" @click="goBack">
         <i class="fa-solid fa-arrow-left" /> All talks
       </button>
 
@@ -80,8 +80,13 @@
         </div>
 
         <!-- Description -->
-        <div v-if="talk.description" class="text-muted leading-relaxed space-y-4 mb-8">
-          <p v-for="(paragraph, i) in talk.description.split('\n\n')" :key="i">{{ paragraph }}</p>
+        <div v-if="talk.description" :class="['text-muted leading-relaxed', isEventMode && 'mb-8']">
+          <!-- Event mode mobile: flattened + clamped at ~300px -->
+          <p v-if="isEventMode" class="sm:hidden description-clamp">{{ talk.description.replace(/\n\n/g, ' ') }}</p>
+          <!-- Normal mode (all sizes) + event mode desktop: multi-paragraph -->
+          <div :class="isEventMode ? 'hidden sm:block space-y-4' : 'space-y-4'">
+            <p v-for="(paragraph, i) in talk.description.split('\n\n')" :key="i">{{ paragraph }}</p>
+          </div>
         </div>
 
         <!-- Event mode: connect cards (desktop) / buttons (mobile) -->
@@ -203,5 +208,12 @@ useHead(computed(() => ({
 <style scoped>
 .no-underline {
   text-decoration: none;
+}
+
+.description-clamp {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 11;
+  overflow: hidden;
 }
 </style>

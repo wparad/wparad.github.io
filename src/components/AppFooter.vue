@@ -1,5 +1,5 @@
 <template>
-  <footer class="border-t border-border mt-16 py-8">
+  <footer class="border-t border-border py-8">
     <div class="max-w-7xl mx-auto px-4 flex flex-wrap gap-4 items-center justify-between text-sm text-muted">
       <span>© Warren Parad</span>
       <div class="flex gap-5">

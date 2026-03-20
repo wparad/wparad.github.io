@@ -1,5 +1,5 @@
 <template>
-  <main class="pt-14 min-h-screen">
+  <main class="pt-14">
     <div class="max-w-3xl mx-auto px-4 py-12">
       <h1 class="text-3xl font-bold text-text mb-2">Articles</h1>
       <p class="text-muted mb-10">Thoughts on engineering, security, reliability, and technical leadership.</p>

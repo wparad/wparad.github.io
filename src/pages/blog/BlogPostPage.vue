@@ -1,5 +1,5 @@
 <template>
-  <main class="pt-14 min-h-screen">
+  <main class="pt-14">
     <div class="max-w-3xl mx-auto px-4 py-12">
       <!-- Back nav -->
       <RouterLink :to="{ name: 'articles' }" class="inline-flex items-center gap-2 text-muted hover:text-accent text-sm mb-8 transition-colors no-underline">
