@@ -23,7 +23,7 @@ export const createApp = ViteSSG(
 export function includedRoutes(paths) {
   return paths.flatMap(path => {
     if (path === '/talks/:slug') {return talks.map(t => `/talks/${t.slug}`);}
-    if (path === '/blog/:slug') {return posts.map(p => `/blog/${p.slug}`);}
+    if (path === '/articles/:slug') {return posts.map(p => `/articles/${p.slug}`);}
     return [path];
   });
 }

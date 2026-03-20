@@ -36,7 +36,7 @@
                 <div class="flex-1 min-w-0">
                   <div class="flex items-center gap-2 mb-1">
                     <span class="text-xs font-mono text-muted">{{ post.date }}</span>
-                    <span v-if="post.source === 'authress'" class="text-xs px-1.5 py-0.5 rounded font-medium bg-teal/20 text-teal">Authress Engineering Blog</span>
+                    <span v-if="post.source === 'authress'" class="text-xs px-1.5 py-0.5 rounded font-medium bg-teal/20 text-teal">Authress Engineering KB</span>
                   </div>
                   <p class="text-base font-semibold text-text group-hover:text-accent transition-colors leading-snug">{{ post.title }}</p>
                   <p v-if="post.description" class="text-sm text-muted mt-1 leading-relaxed">{{ post.description }}</p>
@@ -46,8 +46,7 @@
                       :key="tag"
                       @click.prevent="activeTag = tag"
                       class="text-xs px-2 py-0.5 rounded-full transition-colors cursor-pointer"
-                      :class="activeTag === tag ? 'bg-accent text-white' : 'bg-surface-2 text-muted hover:text-text'"
-                    >{{ tag }}</button>
+                      :class="activeTag === tag ? 'bg-accent text-white' : 'bg-surface-2 text-muted hover:text-text'">{{ tag }}</button>
                   </div>
                 </div>
                 <i class="fa-solid fa-arrow-up-right-from-square text-xs text-muted mt-1 shrink-0" />
@@ -55,7 +54,7 @@
             </a>
 
             <!-- Local post -->
-            <RouterLink v-else :to="`/blog/${post.slug}`" class="block no-underline">
+            <RouterLink v-else :to="{ name: 'article', params: { slug: post.slug } }" class="block no-underline">
               <div class="flex items-start gap-4 p-4 rounded-lg bg-surface hover:bg-surface-2 border border-border hover:border-accent transition-all duration-200">
                 <div class="flex-1 min-w-0">
                   <span class="text-xs font-mono text-muted">{{ post.date }}</span>
@@ -67,8 +66,7 @@
                       :key="tag"
                       @click.prevent="activeTag = tag"
                       class="text-xs px-2 py-0.5 rounded-full transition-colors cursor-pointer"
-                      :class="activeTag === tag ? 'bg-accent text-white' : 'bg-surface-2 text-muted hover:text-text'"
-                    >{{ tag }}</button>
+                      :class="activeTag === tag ? 'bg-accent text-white' : 'bg-surface-2 text-muted hover:text-text'">{{ tag }}</button>
                   </div>
                 </div>
               </div>
@@ -110,7 +108,7 @@ const allTags = computed(() => {
 });
 
 const filteredPosts = computed(() =>
-  activeTag.value ? allPosts.filter(p => p.tags?.includes(activeTag.value)) : allPosts
+  activeTag.value ? allPosts.filter(p => p.tags?.includes(activeTag.value)) : allPosts,
 );
 
 // Group filtered posts by year, most recent first

@@ -27,9 +27,9 @@ function sitemapPlugin() {
     closeBundle() {
       const base = 'https://warrenparad.net';
       const routes = [
-        '/', '/fractional', '/resume', '/blog',
+        '/', '/fractional', '/resume', '/articles',
         ...getTalkSlugs().map(s => `/talks/${s}`),
-        ...getPostSlugs().map(s => `/blog/${s}`),
+        ...getPostSlugs().map(s => `/articles/${s}`),
       ];
       const xml = [
         '<?xml version="1.0" encoding="UTF-8"?>',

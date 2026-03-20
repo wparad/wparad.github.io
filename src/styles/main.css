@@ -24,6 +24,7 @@
     width: 100%;
     overflow-x: hidden;
     margin: 0;
+    scrollbar-gutter: stable;
   }
 
   *, *::before, *::after {

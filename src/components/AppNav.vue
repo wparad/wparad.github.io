@@ -5,15 +5,15 @@
 
     <!-- Header row -->
     <div class="nav-bar max-w-7xl mx-auto px-4 flex items-center h-14 gap-6">
-      <RouterLink to="/" class="nav-link flex items-center gap-1.5 text-sm font-medium shrink-0">
+      <RouterLink :to="{ name: 'home' }" class="nav-link flex items-center gap-1.5 text-sm font-medium shrink-0">
         <i class="fa-solid fa-house fa-sm" /> Me
       </RouterLink>
 
       <!-- Desktop links -->
       <div class="hidden md:flex items-center gap-6">
         <a href="/#appearances" class="nav-link text-sm">Appearances</a>
-        <RouterLink to="/blog" class="nav-link text-sm">Blog</RouterLink>
-        <RouterLink to="/resume" class="nav-link text-sm">Resume</RouterLink>
+        <RouterLink :to="{ name: 'articles' }" class="nav-link text-sm">Articles</RouterLink>
+        <RouterLink :to="{ name: 'resume' }" class="nav-link text-sm">Resume</RouterLink>
       </div>
 
       <!-- Hamburger label — clicking toggles the checkbox -->
@@ -26,8 +26,8 @@
     <!-- Mobile menu — shown/hidden via CSS when checkbox is checked -->
     <div class="mobile-menu md:hidden bg-surface border-t border-border px-4 py-4 flex flex-col gap-4">
       <a href="/#appearances" class="nav-link text-sm">Appearances</a>
-      <RouterLink to="/blog" class="nav-link text-sm">Blog</RouterLink>
-      <RouterLink to="/resume" class="nav-link text-sm">Resume</RouterLink>
+      <RouterLink :to="{ name: 'articles' }" class="nav-link text-sm">Articles</RouterLink>
+      <RouterLink :to="{ name: 'resume' }" class="nav-link text-sm">Resume</RouterLink>
     </div>
   </nav>
 </template>

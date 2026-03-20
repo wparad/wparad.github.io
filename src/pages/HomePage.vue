@@ -68,7 +68,7 @@
           </div>
           <ul class="space-y-4 max-w-2xl">
             <li v-for="talk in talks" :key="talk.slug" class="border-l border-border pl-4 hover:border-accent transition-colors group">
-              <RouterLink :to="`/talks/${talk.slug}`" class="block no-underline">
+              <RouterLink :to="{ name: 'talk', params: { slug: talk.slug } }" class="block no-underline">
                 <span class="text-xs text-muted font-mono">{{ talk.conference }}{{ talk.location ? ` · ${talk.location}` : '' }}{{ talk.date ? ` · ${talk.date.slice(0, 4)}` : '' }}</span>
                 <p class="text-text group-hover:text-accent transition-colors mt-0.5 text-sm">{{ talk.title }}</p>
               </RouterLink>
@@ -92,20 +92,20 @@
 
         <div class="mt-14">
           <div class="flex items-center gap-3 mb-6">
-            <RouterLink to="/blog" class="text-xs font-mono tracking-widest uppercase text-accent hover:text-accent/70 transition-colors no-underline cursor-pointer">Articles</RouterLink>
+            <RouterLink :to="{ name: 'articles' }" class="text-xs font-mono tracking-widest uppercase text-accent hover:text-accent/70 transition-colors no-underline cursor-pointer">Articles</RouterLink>
             <div class="flex-1 h-px bg-border" />
-            <RouterLink to="/blog" class="text-xs text-muted hover:text-accent transition-colors no-underline">All articles →</RouterLink>
+            <RouterLink :to="{ name: 'articles' }" class="text-xs text-muted hover:text-accent transition-colors no-underline">All articles →</RouterLink>
           </div>
           <ul class="space-y-5 max-w-2xl">
             <li v-for="post in recentPosts" :key="post.key" class="group">
               <component
                 :is="post.external ? 'a' : RouterLink"
-                v-bind="post.external ? { href: post.url, target: '_blank', rel: 'noopener noreferrer' } : { to: `/blog/${post.slug}` }"
+                v-bind="post.external ? { href: post.url, target: '_blank', rel: 'noopener noreferrer' } : { to: { name: 'article', params: { slug: post.slug } } }"
                 class="block no-underline"
               >
                 <div class="flex items-start gap-2">
                   <span class="text-xs text-muted font-mono mt-0.5 shrink-0">{{ post.date }}</span>
-                  <span v-if="post.source === 'authress'" class="text-xs px-1.5 py-0.5 rounded bg-teal/20 text-teal font-medium shrink-0">Authress Engineering Blog</span>
+                  <span v-if="post.source === 'authress'" class="text-xs px-1.5 py-0.5 rounded bg-teal/20 text-teal font-medium shrink-0">Authress Engineering KB</span>
                 </div>
                 <p class="text-text group-hover:text-accent transition-colors text-sm font-medium mt-1">{{ post.title }}</p>
                 <p v-if="post.description" class="text-xs text-muted mt-0.5 leading-relaxed line-clamp-2">{{ post.description }}</p>

@@ -2,8 +2,8 @@
   <main class="pt-14 min-h-screen">
     <div class="max-w-3xl mx-auto px-4 py-12">
       <!-- Back nav -->
-      <RouterLink to="/blog" class="inline-flex items-center gap-2 text-muted hover:text-accent text-sm mb-8 transition-colors no-underline">
-        <i class="fa-solid fa-arrow-left" /> Back to blog
+      <RouterLink :to="{ name: 'articles' }" class="inline-flex items-center gap-2 text-muted hover:text-accent text-sm mb-8 transition-colors no-underline">
+        <i class="fa-solid fa-arrow-left" /> Back to articles
       </RouterLink>
 
       <template v-if="post">
@@ -19,12 +19,11 @@
             <span
               v-for="tag in post.tags"
               :key="tag"
-              class="text-xs px-2 py-0.5 rounded-full bg-surface-2 text-muted"
-            >{{ tag }}</span>
+              class="text-xs px-2 py-0.5 rounded-full bg-surface-2 text-muted">{{ tag }}</span>
           </div>
         </div>
 
-        <hr class="border-border mb-8" />
+        <hr class="border-border mb-8">
 
         <!-- Markdown content rendered as Vue component -->
         <div class="prose">
@@ -36,8 +35,8 @@
       <template v-else>
         <h1 class="text-2xl font-bold text-text mb-4">Post not found</h1>
         <p class="text-muted">This post doesn't exist or may have been removed.</p>
-        <RouterLink to="/blog" class="inline-flex items-center gap-2 text-accent hover:underline mt-4 no-underline">
-          <i class="fa-solid fa-arrow-left" /> Back to blog
+        <RouterLink :to="{ name: 'articles' }" class="inline-flex items-center gap-2 text-accent hover:underline mt-4 no-underline">
+          <i class="fa-solid fa-arrow-left" /> Back to articles
         </RouterLink>
       </template>
     </div>
@@ -54,7 +53,7 @@ const route = useRoute();
 const post = computed(() => posts.find(p => p.slug === route.params.slug));
 
 const readingTime = computed(() => {
-  if (!post.value) return null;
+  if (!post.value) {return null;}
   // Approximate: 200 wpm, estimate from description length as proxy
   // Actual word count comes from the rendered component; use a conservative estimate
   return null; // populated client-side only — omit from SSG to avoid mismatch
@@ -62,16 +61,16 @@ const readingTime = computed(() => {
 
 useHead(computed(() => {
   const p = post.value;
-  if (!p) return { title: 'Blog — Warren Parad' };
+  if (!p) { return { title: 'Articles — Warren Parad' }; }
   return {
     title: `${p.title} — Warren Parad`,
-    link: [{ rel: 'canonical', href: `https://warrenparad.net/blog/${p.slug}` }],
+    link: [{ rel: 'canonical', href: `https://warrenparad.net/articles/${p.slug}` }],
     meta: [
       { name: 'description', content: p.description },
       { property: 'og:title', content: `${p.title} — Warren Parad` },
       { property: 'og:description', content: p.description },
       { property: 'og:type', content: 'article' },
-      { property: 'og:url', content: `https://warrenparad.net/blog/${p.slug}` },
+      { property: 'og:url', content: `https://warrenparad.net/articles/${p.slug}` },
       { name: 'article:published_time', content: p.date },
     ],
     script: [
@@ -80,11 +79,11 @@ useHead(computed(() => {
         innerHTML: JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'Article',
-          headline: p.title,
-          description: p.description,
-          datePublished: p.date,
-          author: { '@type': 'Person', name: 'Warren Parad', url: 'https://warrenparad.net' },
-          url: `https://warrenparad.net/blog/${p.slug}`,
+          'headline': p.title,
+          'description': p.description,
+          'datePublished': p.date,
+          'author': { '@type': 'Person', 'name': 'Warren Parad', 'url': 'https://warrenparad.net' },
+          'url': `https://warrenparad.net/articles/${p.slug}`,
         }),
       },
     ],

@@ -35,13 +35,6 @@ export const externalPosts = [
     tags: ['aws', 'security', 'api'],
   },
   {
-    title: 'The Blog Post Release Automation',
-    url: 'https://dev.to/aws-builders/the-blog-post-release-automation-3kbd',
-    date: '2025-05-19', source: 'devto',
-    description: 'Building a fully automated blog publishing pipeline that takes a draft from a git repo to production on authress.io and dev.to without manual steps.',
-    tags: ['devops', 'automation'],
-  },
-  {
     title: 'The Risks of User Impersonation',
     url: 'https://dev.to/authress/the-risks-of-user-impersonation-58nf',
     date: '2025-01-24', source: 'devto',

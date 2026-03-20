@@ -8,35 +8,41 @@ import BlogPostPage from './pages/blog/BlogPostPage.vue';
 const routes = [
   {
     path: '/',
+    name: 'home',
     component: HomePage,
     meta: { title: 'Warren Parad — Authress CTO & Public Speaker' },
   },
   {
     path: '/fractional',
+    name: 'fractional',
     component: FractionalPage,
     meta: { title: 'Fractional CTO — Warren Parad' },
   },
   {
     path: '/resume',
+    name: 'resume',
     component: ResumePage,
     meta: { title: 'Resume — Warren Parad' },
   },
   {
     path: '/talks/:slug',
+    name: 'talk',
     component: TalkPage,
   },
   {
-    path: '/blog',
+    path: '/articles',
+    name: 'articles',
     component: BlogIndexPage,
-    meta: { title: 'Blog — Warren Parad' },
+    meta: { title: 'Articles — Warren Parad' },
   },
   {
-    path: '/blog/:slug',
+    path: '/articles/:slug',
+    name: 'article',
     component: BlogPostPage,
   },
   {
     path: '/:pathMatch(.*)*',
-    redirect: '/',
+    redirect: { name: 'home' },
   },
 ];
 

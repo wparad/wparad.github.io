@@ -1,5 +1,5 @@
 <template>
-  <main class="pt-14 min-h-screen">
+  <main class="pt-14">
     <div class="max-w-3xl mx-auto px-4 py-12">
       <!-- Back nav -->
       <button class="inline-flex items-center gap-2 text-muted hover:text-accent text-sm mb-8 transition-colors cursor-pointer bg-transparent border-none p-0" @click="goBack">
@@ -16,9 +16,8 @@
         <!-- Talk title -->
         <h1 class="text-3xl font-bold text-text mb-6 leading-tight">{{ talk.title }}</h1>
 
-        <!-- Links row -->
-        <div v-if="talk.eventUrl || talk.articleUrl || talk.canonicalUrl" class="flex flex-wrap gap-3 mb-8">
-          <!-- Event page — primary CTA -->
+        <!-- Normal mode: links row -->
+        <div v-if="!isEventMode && (talk.eventUrl || talk.articleUrl || talk.canonicalUrl)" class="flex flex-wrap gap-3 mb-8">
           <a
             v-if="talk.eventUrl"
             :href="talk.eventUrl"
@@ -28,8 +27,6 @@
             <i class="fa-solid fa-calendar-days" />
             {{ [talk.conference, talk.location, talk.date?.slice(0, 4)].filter(Boolean).join(' · ') }} Event
           </a>
-
-          <!-- Article / transcript — mutually exclusive with slides -->
           <a
             v-if="talk.articleUrl"
             :href="talk.articleUrl"
@@ -38,8 +35,6 @@
             class="inline-flex items-center gap-2 px-4 py-2 text-sm rounded-lg border border-border text-muted hover:border-accent hover:text-accent transition-colors no-underline">
             <i class="fa-solid fa-file-lines" /> Full article &amp; transcript
           </a>
-
-          <!-- Slides — shown independently alongside article if both exist -->
           <a
             v-if="talk.canonicalUrl"
             :href="talk.canonicalUrl"
@@ -50,14 +45,25 @@
           </a>
         </div>
 
+        <!-- Cover image fallback (no video) -->
+        <a
+          v-if="!embedUrl && talk.imageUrl && talk.eventUrl"
+          :href="talk.eventUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block mb-8 rounded-xl overflow-hidden no-underline">
+          <img :src="talk.imageUrl" :alt="talk.title" class="w-full object-cover">
+        </a>
+        <div v-else-if="!embedUrl && talk.imageUrl" class="mb-8 rounded-xl overflow-hidden">
+          <img :src="talk.imageUrl" :alt="talk.title" class="w-full object-cover">
+        </div>
+
         <!-- YouTube embed with loading spinner -->
         <div v-if="embedUrl" class="mb-8">
           <div class="relative aspect-video rounded-xl overflow-hidden bg-surface">
-            <!-- Spinner overlay -->
             <div
               v-if="videoLoading"
-              class="absolute inset-0 flex items-center justify-center bg-surface z-10"
-            >
+              class="absolute inset-0 flex items-center justify-center bg-surface z-10">
               <i class="fa-solid fa-circle-notch fa-spin fa-2x text-accent" />
             </div>
             <iframe
@@ -69,14 +75,83 @@
               loading="lazy"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen
-              @load="onVideoLoad"
-            />
+              @load="onVideoLoad" />
           </div>
         </div>
 
         <!-- Description -->
-        <div v-if="talk.description" class="text-muted leading-relaxed">
-          <p>{{ talk.description }}</p>
+        <div v-if="talk.description" class="text-muted leading-relaxed space-y-4 mb-8">
+          <p v-for="(paragraph, i) in talk.description.split('\n\n')" :key="i">{{ paragraph }}</p>
+        </div>
+
+        <!-- Event mode: connect cards (desktop) / buttons (mobile) -->
+        <div v-if="isEventMode" class="mb-8">
+          <!-- Mobile: stacked buttons -->
+          <div class="flex flex-col gap-3 sm:hidden">
+            <a
+              href="https://warrenparad.net/links/linkedin"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 px-6 py-3 text-base rounded-lg font-medium text-white transition-colors no-underline"
+              style="background-color:#0077B5">
+              <i class="fa-brands fa-linkedin" /> Connect on LinkedIn
+            </a>
+            <a
+              href="https://adventuresindevops.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 px-6 py-3 text-base rounded-lg font-medium text-white transition-colors no-underline"
+              style="background-color:#1db954">
+              <i class="fa-solid fa-podcast" /> Adventures in DevOps
+            </a>
+          </div>
+
+          <!-- Desktop: side-by-side cards -->
+          <div class="hidden sm:grid grid-cols-2 gap-4">
+            <a
+              href="https://warrenparad.net/links/linkedin"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex flex-col items-center gap-3 p-6 rounded-xl border border-border hover:border-accent transition-colors no-underline">
+              <img :src="profilePicture" class="rounded-full w-16 h-16 object-cover" alt="Warren Parad">
+              <i class="fa-brands fa-linkedin fa-2x" style="color:#0077B5" />
+              <div class="text-center">
+                <p class="text-text font-medium text-sm">Warren Parad</p>
+                <p class="text-muted text-xs mt-0.5">Connect on LinkedIn</p>
+              </div>
+            </a>
+            <a
+              href="https://adventuresindevops.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex flex-col items-center justify-center gap-3 p-6 rounded-xl border border-border hover:border-accent transition-colors no-underline">
+              <i class="fa-solid fa-podcast fa-3x" style="color:#1db954" />
+              <div class="text-center">
+                <p class="text-text font-medium text-sm">Adventures in DevOps</p>
+                <p class="text-muted text-xs mt-0.5">Listen to the podcast</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Event mode: slides + share buttons -->
+        <div v-if="isEventMode && (talk.articleUrl || talk.canonicalUrl || canShare)" class="flex flex-col sm:flex-row flex-wrap gap-3">
+          <a
+            v-if="talk.articleUrl || talk.canonicalUrl"
+            :href="talk.articleUrl ?? talk.canonicalUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-3 px-6 py-3 text-base rounded-lg border border-border text-muted hover:border-accent hover:text-accent transition-colors no-underline sm:w-auto">
+            <i class="fa-solid fa-display" /> Slides for {{ talk.conference }} talk
+          </a>
+          <button
+            v-if="canShare"
+            class="inline-flex items-center justify-center gap-3 px-6 py-3 text-base rounded-lg font-medium text-white transition-colors border-0 cursor-pointer sm:w-auto"
+            :class="{ 'sm:hidden': !isDev }"
+            style="background-color:#7c3aed"
+            @click="shareTalk">
+            <i class="fa-solid fa-share-nodes" /> Share talk
+          </button>
         </div>
       </template>
 
@@ -84,7 +159,7 @@
       <template v-else>
         <h1 class="text-2xl font-bold text-text mb-4">Talk not found</h1>
         <p class="text-muted">This talk doesn't exist or may have been removed.</p>
-        <RouterLink to="/" class="inline-flex items-center gap-2 text-accent hover:underline mt-4 no-underline">
+        <RouterLink :to="{ name: 'home' }" class="inline-flex items-center gap-2 text-accent hover:underline mt-4 no-underline">
           <i class="fa-solid fa-arrow-left" /> Back to home
         </RouterLink>
       </template>
@@ -97,18 +172,25 @@ import { ref, computed } from 'vue';
 import { useRoute, useRouter, RouterLink } from 'vue-router';
 import { useHead } from '@unhead/vue';
 import { talks, youtubeEmbedUrl } from '../../data/talks.js';
+import profilePicture from '../../assets/profile.jpg';
 
 const route = useRoute();
 const router = useRouter();
 const talk = computed(() => talks.find(t => t.slug === route.params.slug));
+const isEventMode = computed(() => route.query.E !== undefined);
 const goBack = () => {
-  if (window.history.length > 1) { router.back(); }
-  else { router.push('/'); }
+  if (window.history.length > 1) { router.back(); } else { router.push({ name: 'home' }); }
 };
 const embedUrl = computed(() => youtubeEmbedUrl(talk.value?.videoUrl));
 
 const videoLoading = ref(true);
 const onVideoLoad = () => { videoLoading.value = false; };
+
+const isDev = typeof location !== 'undefined' && location.hostname === 'localhost';
+const canShare = isDev || (typeof navigator !== 'undefined' && !!navigator.share);
+const shareTalk = () => {
+  navigator.share({ title: talk.value?.title, url: window.location.href });
+};
 
 useHead(computed(() => ({
   title: talk.value ? `${talk.value.title} — Warren Parad` : 'Talk — Warren Parad',
