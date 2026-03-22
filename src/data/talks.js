@@ -1,3 +1,5 @@
+import voxxedZurich2026Image from './talks/voxxed-days-zurich-2026/index.jpg';
+
 export const talks = [
   // 2026
   {
@@ -11,6 +13,7 @@ export const talks = [
     canonicalUrl: null,
     videoUrl: null,
     videoTitle: null,
+    imageUrl: voxxedZurich2026Image,
     description: `Here I'll share, how when our cloud provider was down, how we were still up. Running critical components requires a completely different mindset when the required uptime is five nines. Can a service even have a 99.999% uptime guarantee? It's easy to promise, but delivering on that is something else. What works at two or three nines can't work when components become critical. The math actually tells us this.
 
     You'll get a full review of how we managed to promise such a high up time, if it is even possible to make it happen, and how we think about it. From this talk attendees will learn key trade-offs in elevating the reliability of their solutions.
