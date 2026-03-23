@@ -10,6 +10,7 @@ export const talks = [
     date: '2026-03-19',
     eventUrl: 'https://vdz26.voxxeddays.ch/talk/?id=8065',
     articleUrl: 'https://authress.io/knowledge-base/articles/2025/11/01/how-we-prevent-aws-downtime-impacts',
+    slidesUrl: 'https://docs.google.com/presentation/d/e/2PACX-1vTPeeTwgC3TUl0dNynk7BBVcTIqxPEguahsuDBalcSlPpMaP1Fg8gH3RyWg2bl8BAC7g4YGsd3k8DLY/pub?start=false&loop=false&delayms=5000',
     canonicalUrl: null,
     videoUrl: null,
     videoTitle: null,

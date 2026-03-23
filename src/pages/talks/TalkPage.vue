@@ -17,7 +17,7 @@
         <h1 class="text-3xl font-bold text-text mb-6 leading-tight">{{ talk.title }}</h1>
 
         <!-- Normal mode: links row -->
-        <div v-if="!isEventMode && (talk.eventUrl || talk.articleUrl || talk.canonicalUrl)" class="flex flex-wrap gap-3 mb-8">
+        <div v-if="!isEventMode && (talk.eventUrl || talk.articleUrl || talk.canonicalUrl || talk.slidesUrl)" class="flex flex-wrap gap-3 mb-8">
           <a
             v-if="talk.eventUrl"
             :href="talk.eventUrl"
@@ -36,8 +36,8 @@
             <i class="fa-solid fa-file-lines" /> Full article &amp; transcript
           </a>
           <a
-            v-if="talk.canonicalUrl"
-            :href="talk.canonicalUrl"
+            v-if="talk.slidesUrl || talk.canonicalUrl"
+            :href="talk.slidesUrl ?? talk.canonicalUrl"
             target="_blank"
             rel="noopener noreferrer"
             class="inline-flex items-center gap-2 px-4 py-2 text-sm rounded-lg border border-border text-muted hover:border-accent hover:text-accent transition-colors no-underline">
