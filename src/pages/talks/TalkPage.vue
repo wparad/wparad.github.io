@@ -140,14 +140,22 @@
         </div>
 
         <!-- Event mode: slides + share buttons -->
-        <div v-if="isEventMode && (talk.articleUrl || talk.canonicalUrl || canShare)" class="flex flex-col sm:flex-row flex-wrap gap-3">
+        <div v-if="isEventMode && (talk.articleUrl || talk.canonicalUrl || talk.slidesUrl || canShare)" class="flex flex-col sm:flex-row flex-wrap gap-3">
           <a
             v-if="talk.articleUrl || talk.canonicalUrl"
             :href="talk.articleUrl ?? talk.canonicalUrl"
             target="_blank"
             rel="noopener noreferrer"
             class="inline-flex items-center justify-center gap-3 px-6 py-3 text-base rounded-lg border border-border text-muted hover:border-accent hover:text-accent transition-colors no-underline sm:w-auto">
-            <i class="fa-solid fa-display" /> Slides for {{ talk.conference }} talk
+            <i class="fa-solid fa-file-lines" /> Full article &amp; transcript
+          </a>
+          <a
+            v-if="talk.slidesUrl"
+            :href="talk.slidesUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-3 px-6 py-3 text-base rounded-lg border border-border text-muted hover:border-accent hover:text-accent transition-colors no-underline sm:w-auto">
+            <i class="fa-solid fa-display" /> View slides
           </a>
           <button
             v-if="canShare"
