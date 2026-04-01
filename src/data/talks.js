@@ -12,8 +12,8 @@ export const talks = [
     articleUrl: 'https://authress.io/knowledge-base/articles/2025/11/01/how-we-prevent-aws-downtime-impacts',
     slidesUrl: 'https://docs.google.com/presentation/d/e/2PACX-1vTPeeTwgC3TUl0dNynk7BBVcTIqxPEguahsuDBalcSlPpMaP1Fg8gH3RyWg2bl8BAC7g4YGsd3k8DLY/pub?start=false&loop=false&delayms=5000',
     canonicalUrl: null,
-    videoUrl: null,
-    videoTitle: null,
+    videoUrl: 'https://youtu.be/ZSv6HHQjS2o?list=PLRsbF2sD7JVrH2IcCB1mdAUJMFr8ukKRS&t=1016',
+    videoTitle: 'Voxxed Zurich — Meeting Impossible SLAs: How we made our uptime 99.999% by Warren Parad',
     imageUrl: voxxedZurich2026Image,
     description: `Here I'll share, how when our cloud provider was down, how we were still up. Running critical components requires a completely different mindset when the required uptime is five nines. Can a service even have a 99.999% uptime guarantee? It's easy to promise, but delivering on that is something else. What works at two or three nines can't work when components become critical. The math actually tells us this.
 
@@ -189,16 +189,26 @@ export const talks = [
   },
 ];
 
-function youtubeEmbedUrl(videoUrl) {
+function youtubeEmbedUrl(videoUrl, { keepParams = false } = {}) {
   if (!videoUrl) { return null; }
-  const match = videoUrl.match(/(?:v=|youtu\.be\/)([A-Za-z0-9_-]{11})/);
-  return match ? `https://www.youtube.com/embed/${match[1]}` : null;
+  const url = new URL(videoUrl);
+  const isShort = url.hostname === 'youtu.be';
+  const videoId = isShort ? url.pathname.slice(1) : url.searchParams.get('v');
+  if (!videoId) { return null; }
+  if (!keepParams) { return `https://www.youtube.com/embed/${videoId}`; }
+
+  if (!isShort) { url.searchParams.delete('v'); }
+  const embedParams = new URLSearchParams(isShort ? url.search : url.searchParams);
+  const t = embedParams.get('t');
+  if (t) { embedParams.delete('t'); embedParams.set('start', t); }
+  const query = embedParams.toString() ? `?${embedParams}` : '';
+  return `https://www.youtube.com/embed/${videoId}${query}`;
 }
 
 talks.sort((a, b) => (b.date ?? '').localeCompare(a.date ?? ''));
 
 export const featuredTalks = talks
   .filter(t => t.videoUrl)
-  .map(t => ({ ...t, embedUrl: youtubeEmbedUrl(t.videoUrl) }));
+  .map(t => ({ ...t, embedUrl: youtubeEmbedUrl(t.videoUrl, { keepParams: true }) }));
 
 export { youtubeEmbedUrl };

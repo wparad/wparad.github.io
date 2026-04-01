@@ -17,8 +17,7 @@
           loading="lazy"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen
-          @load="onLoad(talk.slug)"
-        />
+          @load="onLoad(talk.slug)" />
       </div>
       <p class="mt-2 text-xs text-muted font-mono">
         <template v-if="talk.conference">
