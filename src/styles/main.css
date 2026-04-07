@@ -71,10 +71,16 @@
   background: color-mix(in srgb, var(--color-accent) 80%, white);
 }
 
-/* Firefox */
-html {
+* {
   scrollbar-width: auto;
-  scrollbar-color: var(--color-accent) var(--color-surface);
+}
+
+/* Firefox only — scrollbar-color is now also supported in Chrome, so scope it */
+@supports (-moz-appearance: none) {
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: var(--color-accent) var(--color-surface);
+  }
 }
 
 /* Prose list overrides — must be unlayered to beat Tailwind preflight */
