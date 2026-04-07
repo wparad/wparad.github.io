@@ -1,5 +1,5 @@
 <template>
-  <nav class="fixed top-0 w-full z-50 bg-surface border-b border-border">
+  <nav class="w-full z-50 bg-surface border-b border-border">
     <!-- Header row -->
     <div class="max-w-7xl mx-auto px-4 flex items-center h-14 gap-6">
       <RouterLink :to="{ name: 'home' }" class="nav-link flex items-center gap-1.5 text-sm font-medium shrink-0">

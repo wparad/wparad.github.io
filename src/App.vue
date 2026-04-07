@@ -1,14 +1,14 @@
 <template>
-  <div class="bg-bg text-text flex flex-col" style="min-height: 100dvh">
+  <div class="bg-bg text-text flex flex-col" style="height: 100dvh; overflow: hidden">
     <AppNav />
-    <div class="flex-1 min-w-0 pt-14">
+    <div class="flex-1 min-w-0 overflow-y-auto">
       <RouterView v-slot="{ Component }">
         <Transition name="page" mode="out-in">
           <component :is="Component" />
         </Transition>
       </RouterView>
+      <AppFooter />
     </div>
-    <AppFooter />
   </div>
 </template>
 

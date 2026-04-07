@@ -26,9 +26,8 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     width: 100%;
-    overflow-x: hidden;
+    overflow: hidden;
     margin: 0;
-    scrollbar-gutter: stable;
   }
 
   *, *::before, *::after {
@@ -43,7 +42,7 @@
 
   /* Offset all anchor targets by the fixed navbar height (h-14 = 3.5rem) */
   [id] {
-    scroll-margin-top: 4.5rem;
+    scroll-margin-top: 2rem;
   }
 
   /* Increase base font size across all pages to 20px */
@@ -51,6 +50,31 @@
     font-size: 1.25rem;
   }
 
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 14px;
+}
+::-webkit-scrollbar-button {
+  display: none;
+  background: var(--color-surface);
+}
+::-webkit-scrollbar-track {
+  background: var(--color-surface);
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-accent);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--color-accent) 80%, white);
+}
+
+/* Firefox */
+html {
+  scrollbar-width: auto;
+  scrollbar-color: var(--color-accent) var(--color-surface);
 }
 
 /* Prose list overrides — must be unlayered to beat Tailwind preflight */
