@@ -5,3 +5,4 @@ dist-ssr
 *.local
 template/cloudformationTemplate.json
 yarn-error.log
+package-lock.json

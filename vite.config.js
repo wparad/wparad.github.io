@@ -66,11 +66,12 @@ export default defineConfig({
       async markdownItSetup(md) {
         const { createHighlighter } = await import('shiki');
         const { fromHighlighter } = await import('@shikijs/markdown-it');
+        const { transformerNotationHighlight, transformerNotationDiff } = await import('@shikijs/transformers');
         const highlighter = await createHighlighter({
           themes: ['github-dark'],
           langs: ['javascript', 'typescript', 'json', 'jsonc', 'bash', 'shell', 'yaml', 'html', 'css', 'markdown', 'python'],
         });
-        md.use(fromHighlighter(highlighter, { theme: 'github-dark' }));
+        md.use(fromHighlighter(highlighter, { theme: 'github-dark', transformers: [transformerNotationHighlight(), transformerNotationDiff()] }));
         md.use(anchor, {
           slugify: s => s.toLowerCase().replace(/[^\w\s-]/g, '').trim().replace(/\s+/g, '-'),
           permalink: anchor.permalink.linkInsideHeader({

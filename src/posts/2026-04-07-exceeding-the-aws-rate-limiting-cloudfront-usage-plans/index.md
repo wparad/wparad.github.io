@@ -140,10 +140,15 @@ const apiGatewayClient = new ApiGatewayClient();
 async function authorizer() {
     const userId = 'user_001';
 
+    // [!code ++]
     const apiKey = await apiGatewayClient.getApiKeys({ nameQuery: userId, includeValues: true, limit: 1 });
+    // [!code ++]
     if (!apiKey.items.length) {
+        // [!code ++]
         const apiKey = await apiGatewayClient.createApiKey({ name: userId, value: userId });
+        // [!code ++]
         await apiGatewayClient.createUsagePlanKey({ keyId: apiKey.id, usagePlanId });
+    // [!code ++]
     }
     
     return {
@@ -396,6 +401,7 @@ For kicks, I gave this problem to Gemini to see what hot garbage it returns (and
 ```python title="DynamoDB incorrect rate limiting"
 table.update_item(
     Key={'PK': user_id},
+    # [!code ++]
     UpdateExpression="SET req_count = if_not_exists(req_count, :zero) + :inc, ttl_attr = :ttl",
     ConditionExpression="if_not_exists(req_count, :zero) < :limit",
     ExpressionAttributeValues={
@@ -414,12 +420,16 @@ async function rateLimitCheck(userId) {
     await {
         TableName: "RateLimits",
         Key: { PK: userId },
+    // [!code ++]
         UpdateExpression: `
+    // [!code ++]
         SET lastRefillTime = :now, 
+    // [!code ++]
             tokens = (if_not_exists(tokens, :cap)
+    // [!code ++]
               + (:now - if_not_exists(lastRefillTime, :now)) * :rate),
-            tokens = (if_not_exists(tokens, :cap) > :cap ? :cap : tokens) - :one
-        `,
+    // [!code ++]
+            tokens = (if_not_exists(tokens, :cap) > :cap ? :cap : tokens) - :one`,
         ExpressionAttributeValues: {
             ":now": Math.floor(Date.now() / 1000),
             ":rate": 10,
@@ -515,6 +525,7 @@ Statement:
   RateBasedStatement:
     Limit: 600
     EvaluationWindowSec: 60
+    # [!code ++]
     AggregateKeyType: CUSTOM_KEYS
     CustomKeys:
       - IP: {}
@@ -552,6 +563,7 @@ Statement:
     AggregateKeyType: CUSTOM_KEYS
     CustomKeys:
       - Header:
+# [!code ++]
           Name: Authorization
           TextTransformations:
             - Priority: 0
@@ -760,6 +772,7 @@ Statement:
     AggregateKeyType: CUSTOM_KEYS
     CustomKeys:
       - Header:
+# [!code ++]
           Name: x-ratelimit-user-id
           TextTransformations:
             - Priority: 0
@@ -925,9 +938,9 @@ Having a CloudFront as part of your architecture is almost always the best pract
 
 This converts the question into, what can we do with a function running at the edge?
 
-The good thing with functions is that they aren't Lambda functions, they are primitive and simple javascript functions, and as compared with APIGW usage plans, they don't really need any warm up time. The bad thing with functions is that they are primitive and simple javascript functions. But that might not be a complete failure.
+The good thing with functions is that they aren't Lambda functions, they are primitive and simple javascript functions, and as compared with APIGW usage plans, they don't have a cold-start problem. The bad thing with functions is that they are primitive and simple javascript functions. But that might not be a complete failure.
 
-There are two solution paths here. WAF before CloudFront, WAF after CloudFront.
+There are two solution paths here. **WAF `before` CloudFront** and **WAF `after` CloudFront**.
 
 ### WAF after
 
@@ -968,7 +981,7 @@ async function handler(event) {
 }
 ```
 
-Honestly, I would much prefer to do JWT verification using EdDSA public keys, but the CF function can neither access the internet, nor perform JWT signature validation ... yet. Weirdly [it supports CWT signature verification](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cwt-support-cloudfront-functions.html), just not for JWTs. The limited cryptographic functions it has access to can be seen by reviewing [the custom javascript runtime](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/functions-javascript-runtime-20.html#writing-functions-javascript-features-builtin-modules-crypto-20) AWS has created for CF Functions. Maybe CWTs are coming to a SaaS Identity Provider near you, but I wouldn't know anything about that.
+Honestly, I would much prefer to do JWT verification using EdDSA public keys, but the CF function can neither access the internet, nor perform JWT signature validation ... yet. Weirdly [it supports CWT signature verification](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cwt-support-cloudfront-functions.html), just not for JWTs. The limited cryptographic functions it has access to can be seen by reviewing the [AWS custom javascript runtime](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/functions-javascript-runtime-20.html#writing-functions-javascript-features-builtin-modules-crypto-20). Maybe CWTs are coming to a SaaS Identity Provider near you, but I wouldn't know anything about that.
 
 With the CF Function approach, the flow becomes:
 
@@ -982,9 +995,11 @@ With the CF Function approach, the flow becomes:
 
 With this, the client never sees or touches the `x-ratelimit-user-id`. It's computed at the edge, validated at the edge, and aggregated at the edge. Your origin just handles business logic. Since the header is generated at the edge, we never need to validate the `x-ratelimit-user-id` header.
 
-This means you can block APIGW requests before they get there to the APIGW in the first place. And we wouldn't even need to pass the request or configuration onto the APIGW. And your authorizer can focus on the Authorization Header JWT without paying attention to this new header.
+This means you can block APIGW requests before they get there to the APIGW in the first place. And we wouldn't even need to pass the request or configuration onto the APIGW. Your authorizer can focus on the Authorization Header JWT without paying attention to this new header.
 
-And there are other benefits. An attacker that fabricates the `x-ratelimit-user-id`s would normally still hit your origin, and our APIGW authorizer, since the WAF can't block invalid IDs. Each fabricated ID would have a new rate limit that starts at zero, so the attacker never triggers the limit. Your origin is still called. Now, those `x-ratelimit-user-id`s are completely internal both from the client, and most importantly from the origin. They are generated and passed directly to the WAF. You don't even need to secure them, a simple hash is sufficient.
+And there are other benefits. Previously, an attacker that fabricates the `x-ratelimit-user-id`s would normally still hit your origin, and our APIGW authorizer, since the WAF can't block invalid IDs. Each fabricated ID would have a new rate limit that starts at zero, so the attacker never triggers the limit. Your origin would still be called.
+
+Now, those `x-ratelimit-user-id`s are completely internal both from the client, and most importantly, from the origin. They are generated and passed directly to the WAF. You don't even need to secure them, a simple hash is sufficient.
 
 So there are real, very tangible benefits.
 
@@ -992,16 +1007,16 @@ It's worth calling out that [CF Functions have compute limits](https://docs.aws.
 
 ### WAF before
 
-If there is a way to put the WAF before CloudFront, we will have solved every problem in the book. When I say before I mean executes before the CloudFront Function executes. It would grant us the ability to rate limit with any origin configuration, not just ones that accept a WAF, and it would allow us to do it without the user needing to understand how rate limiting works.
+If there is a way to put the WAF before CloudFront, we will have solved every problem in the book. When I say before, I mean it executes before the CloudFront Function executes. It would grant us the ability to rate limit with any origin configuration, not just ones that accept a WAF, and it would allow us to do it without the user needing to understand how rate limiting works.
 
 In practice, this can be done by attaching a WAF directly to a CloudFront Distribution. And while this architecture feels the best it opens you up to dealing with those two annoying edge cases:
 
 1. How to get the header to be evaluated by the WAF when it is being generated afterwards by the CF Function?
-2. And likewise how can we get the header to be available to the WAF in the first place?
+2. And likewise how can we receive the header, to be available to the WAF, in the first place?
 
 Since the WAF header evaluation is based on the request coming from the client, the only conclusion we can come from is that the client must have knowledge of the new header in order to utilize it. That means we need to provide it.
 
-This is a real change in your architecture strategy to make this happen. As discussed before, this could be generated by a dedicated endpoint, such as `GET /ratelimit-user-id`. However this time, we rate limit the endpoint using the WAF without complexity, and at the same time generate it by the same CloudFront function.
+This is a real change in your architecture strategy to make this happen. As discussed before, this could be generated by a dedicated endpoint, such as `GET /ratelimit-user-id`. However this time, we can rate limit the endpoint using the WAF without origin complexity, all while also generating it in the same CloudFront Function.
 
 So like the previous scenario, we can completely avoid knowledge of the header, rate limiting, or origin technology when setting up our architecture. However, we do need to account for the fact that since this is exposed to clients, we need to secure the hash generation:
 
@@ -1024,7 +1039,9 @@ async function handler(event) {
         Buffer.from(token.split('.')[1], 'base64url').toString()
     );
 
+// [!code ++]
     const keyValueStore = cf.kvs();
+// [!code ++]
     const secret = await keyValueStore.get('hmac-secret', { format: 'string' });
     const hash = crypto.createHmac('sha256', secret)
         .update(jwt.sub)
@@ -1069,11 +1086,11 @@ The only remaining part is to ask the client to insert the returned header back 
     }
 ```
 
-And honestly, even if you don't only have UI clients, you can embed this logic into all your SDKs, and still provide a lower rate limit for requests that don't include it. That is from a business standpoint, you can offer a low rate limit to make requests, block everything higher, and still allow users a reasonable upgrade path, without needing to change your architecture at all.
+And honestly, even if you don't only have UI clients, you can embed this logic into all your SDKs, and still provide a lower rate limit for requests that don't include it. That is, from a business standpoint, you can offer a low rate limit to make requests, block everything higher, and still allow users a reasonable upgrade path, without needing to change your architecture at all.
 
 However, there is actually a problem with this compared to the other strategy. And that's we can't rate limit differently on different endpoints, easily.
 
-That's because we need a different hash per endpoint, and we don't know which endpoint they are calling when they first call the `GET /ratelimit-user-id`. So depending on use case, this strategy might not work at all without a lot of extra complexity. That saying there are ways around this, and that's actually a simple matter for anyone who understands HMACs, but incredibly challenging for anyone who doesn't.
+That's because we need a different hash per endpoint, and we don't know which endpoint they are calling when they first call the `GET /ratelimit-user-id`. So depending on use case, this strategy might not work at all without a lot of extra complexity. That said, there are ways around this, and it's actually a simple matter for anyone who understands HMACs, but incredibly challenging for anyone who doesn't.
 
 The TL;DR of HMAC here, is that you can HMAC an HMAC using the hash as the secret key, and verify the HMAC of the HMAC using the same hash re-derived on the CF Function side:
 
@@ -1113,6 +1130,9 @@ async function handler(event) {
         }
     }
 
+    // [!code ++]
+    // Add the request.uri to the current HMAC
+    // [!code ++]
     const endpointHash = crypto.createHmac('sha256', hash).update(request.uri).digest('hex');
     if (endpointHash !== request.headers['x-ratelimit-user-id']) {
         return {
@@ -1133,7 +1153,7 @@ Given the nuanced and quite unobvious pitfalls with such an approach, and that t
 
 ## Wrapping up
 
-The thread running through every approach in this article is the same problem: the thing you need to rate limit on — the authenticated user identity — doesn't exist where rate limiting happens. APIGW Usage Plans need the identity at request time, but the authorizer cache needs significantly more than just the identity as part of the cache key, and the 10k requests-per-second ceiling doesn't care how carefully you've designed it. WAF needs the identity at the decision point, but WAF runs before your origin has processed the JWT. Rolling your own counter store relocates the problem to a smaller, more fragile target. And, a custom proxy just adds an operational surface to the same architectural mismatch.
+The thread running through every approach in this article is the same problem: the thing you need to rate limit on — the authenticated user identity — doesn't exist where rate limiting happens. APIGW Usage Plans need the identity at request time, but the authorizer cache needs significantly more than just the identity as part of the cache key, and the 10k requests-per-second ceiling doesn't care how carefully you've designed it. WAF needs the identity at the decision point, but a WAF running before your origin only has the unprocessed the JWT. Rolling your own counter store relocates the problem to a smaller, more fragile target. And, a custom proxy just adds an operational surface to the same architectural mismatch.
 
 CF Functions approach gets the closest to eliminating the gap. The rate limiting hash gets computed at the edge, after the JWT arrives, before the WAF decision point, without the origin being involved at all. And because the HMAC can include the endpoint type, you finally get per-user-per-endpoint rate limiting that actually works: `GET /items` and `POST /items` are separate buckets for each user, without the WCU cost of rules that aggregate on broken hashes.
 
@@ -1143,7 +1163,7 @@ But let's be honest about what's left.
 
 The first authenticated request per user still requires a round trip to establish the hash identifier from the JWT via the HMAC. You can cache it in a cookie and reduce subsequent overhead, but the bootstrap still happens. There's no architecture here that eliminates it entirely without severely restricting you on other aspects.
 
-The correct framing for what you've built isn't *rate limiting*, but rather a cost ceiling with a known failure mode. Once you’ve defined the blast radius, failure modes, actual costs, and what needs to be explicitly protected (the database, the downstream services, etc), and you know what can still be hit cheaply (the edge, the APIGW, the Lambda), you can build the right solution. That's really the only defensible position. And it's less bad than everything else I’ve brought up in this article.
+The correct framing for what you've built isn't *rate limiting*, but rather a cost ceiling with a known failure mode. Once you’ve defined the blast radius, failure modes, actual costs, what needs to be explicitly protected (the database, the downstream services, etc), and you know what can still be hit cheaply (the edge, the APIGW, the Lambda), **only then, can you build the right solution**. That's really the only defensible position. And it's less bad than everything else I’ve brought up in this article.
 
 Again, there are some clever solutions, but none of them are super great.
 

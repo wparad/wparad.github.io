@@ -17,6 +17,7 @@
   "mode": "production",
   "dependencies": {
     "@fontsource/inter": "^5.0.0",
+    "@shikijs/transformers": "^4.0.2",
     "@unhead/vue": "^1.9.15",
     "luxon": "^2.5.2",
     "pinia": "^2.1.7",

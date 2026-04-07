@@ -445,4 +445,27 @@ useHead(computed(() => {
   padding: 0;
   font-size: inherit;
 }
+
+.prose :deep(.shiki .highlighted),
+.prose :deep(.shiki .diff) {
+  margin: 0 -1.25rem;
+  padding: 0 1.25rem;
+  display: inline-block;
+  width: calc(100% + 2.5rem);
+}
+
+.prose :deep(.shiki .highlighted) {
+  background: color-mix(in srgb, var(--color-accent) 15%, transparent);
+  border-left: 2px solid var(--color-accent);
+}
+
+.prose :deep(.shiki .diff.add) {
+  background: color-mix(in srgb, #4ade80 12%, transparent);
+  border-left: 2px solid #4ade80;
+}
+
+.prose :deep(.shiki .diff.remove) {
+  background: color-mix(in srgb, #f87171 12%, transparent);
+  border-left: 2px solid #f87171;
+}
 </style>
