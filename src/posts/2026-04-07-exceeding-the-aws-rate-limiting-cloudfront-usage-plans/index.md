@@ -6,12 +6,12 @@ description: >-
 image: ./index.png
 image_alt: "Exceeding the rate limit for AWS-based application"
 tags:
-  - AWS
-  - CloudFront
-  - API Gateway
-  - Rate Limiting
-  - Security
-  - WAF
+  - aws
+  - cloudfront
+  - api gateway
+  - rate limiting
+  - security
+  - waf
 ---
 
 Full disclosure, it is still terrible. I don't promise it wouldn't be, just rather less terrible.
