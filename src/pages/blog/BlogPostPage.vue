@@ -1,5 +1,5 @@
 <template>
-  <main class="pt-14">
+  <main>
     <div class="article-container mx-auto px-4 py-12">
       <template v-if="post">
         <!-- Article column -->

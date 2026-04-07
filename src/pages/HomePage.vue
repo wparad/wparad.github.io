@@ -1,5 +1,5 @@
 <template>
-  <main class="pt-14">
+  <main>
     <!-- Hero -->
     <section class="relative overflow-hidden border-b border-border">
       <!-- Subtle radial glow behind content -->

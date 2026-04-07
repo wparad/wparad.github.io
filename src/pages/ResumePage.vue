@@ -1,5 +1,5 @@
 <template>
-  <main class="pt-14">
+  <main>
     <!-- Hero -->
     <section class="relative overflow-hidden border-b border-border">
       <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-accent/5 rounded-full blur-3xl pointer-events-none" />

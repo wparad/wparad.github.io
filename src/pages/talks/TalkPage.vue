@@ -1,5 +1,5 @@
 <template>
-  <main class="pt-14">
+  <main>
     <div class="max-w-3xl mx-auto px-4 py-8 sm:py-12">
       <!-- Back nav -->
       <button class="hidden sm:inline-flex items-center gap-2 text-muted hover:text-accent text-sm mb-8 transition-colors cursor-pointer bg-transparent border-none p-0" @click="goBack">

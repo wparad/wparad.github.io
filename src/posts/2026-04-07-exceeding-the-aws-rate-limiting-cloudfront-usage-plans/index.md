@@ -458,7 +458,7 @@ The core aspects of the solution require:
 
 Fundamentally, you'll want to increment a set of values for the user, return all the data, then aggregate and decide what to do in the authorizer.
 
-Authorizer? I never really talked about where you would even run this code. You need a full list of all the requests coming into your service, but your authorizer is likely caching. Which means the authorizer can't do it, since it will only see 1 request / TTL, and not all of them. So that means it is happening in your service. And if that's the place this is happening that means your APIGW and Lambda (or your container service) are getting the full request and processing at least part of it before returning. That's going to consume more resources, potentially defeating the purpose of Rate Limiting in the first place.
+Authorizer? I never really talked about where you would even run this code. You need a full list of all the requests coming into your service, but your authorizer is likely caching. Which means the authorizer can't do it, since it will only see 1 request / TTL, and not all of them. So that means it is happening in your service. And if that's the place this is happening that means your APIGW and Lambda (or your container service) are getting the full request and processing at least part of it before blocking the rate-limited request. That's going to consume more resources, potentially defeating the purpose of Rate Limiting in the first place.
 
 ## The custom gateway alternative
 
@@ -499,15 +499,15 @@ That's pretty broad. And WAF evaluates rules before the request reaches your ori
 
 It isn't.
 
-So of course we need to review why not.
+Or at least not entirely, so of course we need to review why not.
 
 ### WAF Rate-based rules
 
-Rate Based rules allow you to aggregate on incoming requests properties, and use those aggregate to block requests. For the most part, this is fire and forget, you don't think about users, you don't think about endpoints, and often you don't even think about APIs or services.
+Rate-Based rules allow you to aggregate on incoming requests' properties, and use those in aggregate to block requests. For the most part, this is fire and forget, you don't think about users, you don't think about endpoints, and often you don't even think about APIs or services.
 
-And that's sort of the problem, it's great for blocking threat actors and malicious attacks as [I have talked about at length](https://authress.io/knowledge-base/articles/2025/11/01/how-we-prevent-aws-downtime-impacts#helpful-rate-limiting). But it's just not great when you need granularity. And that's for a few different reasons.
+And that's sort of the problem, it's great for blocking threat actors and malicious attacks as [I have talked about at length](https://authress.io/knowledge-base/articles/2025/11/01/how-we-prevent-aws-downtime-impacts#helpful-rate-limiting). But it's just not great when you need granularity. And that is for a few different reasons.
 
-The goal of rate limiting is to restrict access to our resources, our endpoints, and our services as much as possible without getting the compute origin backend involved. Another problem is that actually the WAF cannot even be attached to the AWS APIGateway HTTP API V2. Unfortunate. But even if we could, we will see some problems with that as soon as we get to the implementation.
+The goal of rate limiting is to restrict access to our resources, our endpoints, and our services as much as possible without getting the compute origin backend involved. Another problem is that actually the WAF cannot even be attached to the AWS API Gateway HTTP API V2. Unfortunate. But even if we could, we will see some problems with that as soon as we get to the implementation.
 
 So let's try it out.
 
@@ -547,15 +547,15 @@ Here's a starting example that helps make it clear how rules work. Let's rate li
 }
 ```
 
-So this is nice and likely handles almost all of the scenarios you might run into. It allows for 600 requests over 60 seconds. Which means burst handling is included.
+So this is nice and likely handles almost all of the scenarios you might run into. It allows for 600 requests over 60 seconds. Which means burst handling is also included.
 
 But then where the usefulness ends. You know how we might want to have different rates for different endpoints?
 
-We'll there are three problems that fall out of here:
+We'll there are three problems that fall out here:
 
 1. The WAF is decoupled from our application, so it doesn't understand that `GET /orders/order_001` has the same route as `GET /orders/order_002`, and they are both really `GET /orders/{order_id}`. There is no way to bridge this gap. It may or may not be your desired state.
 
-2. The second problem, which you might have guessed is that WAFs have a rule capacity. Not surprisingly as all of these rules need to run on every request. If you don't hit one of the other [rate based rules limit quotas](https://docs.aws.amazon.com/waf/latest/developerguide/limits.html), then you surely will hit the rule limit of 5000 Web ACL Capacity Units (WCU). I tried the next one, and it came out to be 62 WCU. Which means we would get about 80 rules, and that after all the other things you might want to throw in there. From our production environment, we are using ~164 for one of them. Which means we would be allowed 60 rules. There is such a thing as [WAF Rule Scope-Down statements](https://docs.aws.amazon.com/waf/latest/developerguide/waf-rule-scope-down-statements.html), but I don't know how much that would help in practice here. It isn't the same as endpoint transparency you would get with an application level solution.
+2. The second problem, which you might have guessed is that WAFs have a rule capacity. Not surprisingly as all of these rules need to run on every request. If you don't hit one of the other [rate -based rules limit quotas](https://docs.aws.amazon.com/waf/latest/developerguide/limits.html), then you surely will hit the rule limit of 5000 Web ACL Capacity Units (WCU). The next WAF Rule below comes out to be `62 WCU`. Which means we would get about `80 rules`, and that's before all the other things you might want to throw in there. From our production environment, we are using `~164 WCU` for one of them. Which means we would be allowed `60 rules`. There is such a thing as [WAF Rule Scope-Down statements](https://docs.aws.amazon.com/waf/latest/developerguide/waf-rule-scope-down-statements.html), but I don't know how much that would help in practice here. It isn't the same endpoint transparency you would get with an application level solution.
 
 3. Even if we somehow managed to get around the first two things, here's the kicker, we don't want IP an address. Hopefully it is obvious why. But if not, let me clue you in. Are you building a solution where you will have customers or users connecting from the same location? Physical address? Or Business address? Businesses usually have a small fixed set of available IPs, demand to allowlist small IPv4 CIDR blocks, and heavily reuse them. Or maybe you have a client that is using a cloud provider or VPN where addresses are being shared.
 

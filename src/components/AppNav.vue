@@ -9,7 +9,7 @@
       <!-- Links — always visible -->
       <div class="flex items-center">
         <a href="/#appearances" class="nav-link text-xs sm:text-sm px-2 sm:px-4 py-1">Appearances</a>
-        <RouterLink :to="{ name: 'articles' }" class="nav-link text-xs sm:text-sm px-2 sm:px-4 py-1">Articles</RouterLink>
+        <RouterLink :to="{ name: 'articles' }" class="nav-link articles-nav text-xs sm:text-sm px-2 sm:px-4 py-1">Articles</RouterLink>
         <RouterLink :to="{ name: 'resume' }" class="nav-link text-xs sm:text-sm px-2 sm:px-4 py-1">Resume</RouterLink>
       </div>
     </div>
@@ -30,7 +30,8 @@ import { RouterLink } from 'vue-router';
 .nav-link.router-link-active {
   color: var(--color-text);
 }
-.nav-link.router-link-exact-active {
+.nav-link.router-link-exact-active,
+.articles-nav.router-link-active {
   color: var(--color-accent);
 }
 </style>

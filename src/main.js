@@ -1,3 +1,4 @@
+import { nextTick } from 'vue';
 import { ViteSSG } from 'vite-ssg';
 import { createPinia } from 'pinia';
 import posthog from 'posthog-js';
@@ -12,7 +13,19 @@ export const createApp = ViteSSG(
   App,
   {
     routes,
-    scrollBehavior() {
+    scrollBehavior(to, _from, savedPosition) {
+      if (savedPosition) { return savedPosition; }
+      if (to.hash) {
+        // Vue Router's { el } uses getBoundingClientRect math that ignores
+        // scroll-margin-top. Calling scrollIntoView() directly respects it.
+        // Resolve with false so Vue Router doesn't override our scroll.
+        return new Promise(resolve => {
+          nextTick(() => {
+            document.querySelector(to.hash)?.scrollIntoView();
+            resolve(false);
+          });
+        });
+      }
       return { top: 0 };
     },
   },
