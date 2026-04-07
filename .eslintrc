@@ -16,12 +16,11 @@
   "plugins": [
     "vue",
     "mocha",
-    "promise"
   ],
   "extends": [
     "plugin:vue/essential",
     "plugin:vue/recommended",
-    "cimpress-atsquad"
+    "@authress/eslint-config"
   ],
   "rules": {
     "arrow-parens": ["error", "as-needed"],

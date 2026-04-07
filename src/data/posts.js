@@ -15,12 +15,16 @@ export const posts = Object.keys(rawModules)
     const date = match[1]; // "2025-03-18"
     const slug = dirName.replace(DATE_PREFIX, ''); // "meeting-impossible-slas"
     const { data: fm } = matter(rawModules[path]);
+    const wordCount = matter(rawModules[path]).content.trim().split(/\s+/).length;
     return {
       slug,
       date,
       title: fm.title ?? slug,
       description: fm.description ?? '',
       tags: fm.tags ?? [],
+      image: fm.image ?? null,
+      imageAlt: fm.image_alt ?? '',
+      readingTime: Math.max(1, Math.round(wordCount / 250)),
       component: vueModules[path].default,
     };
   })

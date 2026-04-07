@@ -1,5 +1,6 @@
 import { ViteSSG } from 'vite-ssg';
 import { createPinia } from 'pinia';
+import posthog from 'posthog-js';
 
 import App from './App.vue';
 import routes from './router.js';
@@ -15,8 +16,21 @@ export const createApp = ViteSSG(
       return { top: 0 };
     },
   },
-  ({ app }) => {
+  ({ app, isClient, router }) => {
     app.use(createPinia());
+
+    if (isClient) {
+      posthog.init('phc_zSUdkkUcXMToQdah2tmTfZifTMaAAdg2nzcJpq4FhbRx', {
+        api_host: 'https://live.rhosys.ch',
+        ui_host: 'https://eu.posthog.com',
+        defaults: '2026-01-30',
+        capture_pageview: false,
+      });
+
+      router.afterEach((to) => {
+        posthog.capture('$pageview', { $current_url: to.fullPath });
+      });
+    }
   },
 );
 

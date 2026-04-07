@@ -4,7 +4,7 @@
     <section class="relative overflow-hidden border-b border-border">
       <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-accent/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div class="relative max-w-5xl mx-auto px-6 py-16 md:py-20 grid grid-cols-1 md:grid-cols-[auto_1fr] items-center gap-8 md:gap-12">
+      <div class="relative mx-auto px-6 py-16 md:py-20 grid grid-cols-1 md:grid-cols-[auto_1fr] items-center gap-8 md:gap-12" style="max-width: 76.8rem">
         <div class="relative shrink-0 justify-self-center md:justify-self-start">
           <div class="absolute -inset-1.5 rounded-full bg-gradient-to-br from-accent/40 to-teal/20 blur" />
           <img :src="profilePicture" class="relative rounded-full w-28 h-28 object-cover" alt="Warren Parad">
@@ -22,12 +22,21 @@
 
     <!-- Recognition -->
     <section class="py-10 px-4">
-      <div class="max-w-5xl mx-auto">
+      <div class="mx-auto" style="max-width: 76.8rem">
         <div class="flex items-center gap-3 mb-8">
           <span class="text-xs font-mono tracking-widest uppercase text-accent">Recognition</span>
           <div class="flex-1 h-px bg-border" />
         </div>
-        <div class="flex flex-wrap gap-6">
+        <div class="flex flex-wrap gap-6 justify-center">
+          
+          <div class="flex items-center gap-4 rounded-xl px-5 py-4 bg-surface">
+            <i class="fa-solid fa-microphone fa-xl text-accent shrink-0" />
+            <div>
+              <h3 class="font-semibold text-text text-sm">International Conference Speaker</h3>
+              <p class="text-xs text-muted mt-0.5">FOSDEM, Voxxed Days, AWS Summit, and more</p>
+            </div>
+          </div>
+
           <div class="flex items-center gap-4 rounded-xl px-5 py-4 bg-surface">
             <i class="fa-brands fa-aws fa-xl text-accent shrink-0" />
             <div>
@@ -42,20 +51,13 @@
               <p class="text-xs text-muted mt-0.5">Active contributor</p>
             </div>
           </div>
-          <div class="flex items-center gap-4 rounded-xl px-5 py-4 bg-surface">
-            <i class="fa-solid fa-microphone fa-xl text-accent shrink-0" />
-            <div>
-              <h3 class="font-semibold text-text text-sm">International Conference Speaker</h3>
-              <p class="text-xs text-muted mt-0.5">FOSDEM, Voxxed Days, AWS Summit, and more</p>
-            </div>
-          </div>
         </div>
       </div>
     </section>
 
     <!-- Focus areas -->
     <section id="focus" class="py-14 px-4">
-      <div class="max-w-5xl mx-auto">
+      <div class="mx-auto" style="max-width: 76.8rem">
         <div class="flex items-center gap-3 mb-10">
           <span class="text-xs font-mono tracking-widest uppercase text-accent">Focus areas</span>
           <div class="flex-1 h-px bg-border" />
@@ -109,7 +111,7 @@
 
     <!-- Experience -->
     <section id="experience" class="py-14 px-4">
-      <div class="max-w-5xl mx-auto">
+      <div class="mx-auto" style="max-width: 76.8rem">
         <div class="flex items-center gap-3 mb-10">
           <span class="text-xs font-mono tracking-widest uppercase text-accent">Experience</span>
           <div class="flex-1 h-px bg-border" />
@@ -245,7 +247,7 @@
 
     <!-- Skills -->
     <section id="skills" class="py-14 px-4">
-      <div class="max-w-5xl mx-auto">
+      <div class="mx-auto" style="max-width: 76.8rem">
         <div class="flex items-center gap-3 mb-10">
           <span class="text-xs font-mono tracking-widest uppercase text-accent">Skills and preferences</span>
           <div class="flex-1 h-px bg-border" />
@@ -286,7 +288,7 @@
 
     <!-- Community -->
     <section id="communities" class="py-14 px-4">
-      <div class="max-w-5xl mx-auto">
+      <div class="mx-auto" style="max-width: 76.8rem">
         <div class="flex items-center gap-3 mb-10">
           <span class="text-xs font-mono tracking-widest uppercase text-accent">Community</span>
           <div class="flex-1 h-px bg-border" />

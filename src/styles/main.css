@@ -36,4 +36,35 @@
     color: inherit;
     text-decoration: none;
   }
+
+  /* Offset all anchor targets by the fixed navbar height (h-14 = 3.5rem) */
+  [id] {
+    scroll-margin-top: 4.5rem;
+  }
+
+  /* Increase base font size across all pages to 20px */
+  main {
+    font-size: 1.25rem;
+  }
+}
+
+/* Override Tailwind text utilities to scale them up by 1.25× */
+@layer utilities {
+  @media (min-width: 0px) {
+    .text-xs {
+      font-size: 0.9375rem;
+    }
+    .text-sm {
+      font-size: 1.09375rem;
+    }
+    .text-base {
+      font-size: 1.25rem;
+    }
+    .text-lg {
+      font-size: 1.5625rem;
+    }
+    .text-xl {
+      font-size: 1.875rem;
+    }
+  }
 }

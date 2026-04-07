@@ -20,6 +20,7 @@
     "@unhead/vue": "^1.9.15",
     "luxon": "^2.5.2",
     "pinia": "^2.1.7",
+    "posthog-js": "^1.364.7",
     "short-uuid": "^4.2.0",
     "vue": "^3.3.4",
     "vue-router": "^4.2.5"
@@ -33,31 +34,33 @@
     "test": "vitest run"
   },
   "devDependencies": {
+    "@authress/eslint-config": "*",
     "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
     "@tailwindcss/postcss": "^4.0.0",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vue/compiler-sfc": "^3.3.4",
-    "aws-architect": "^6.6.37",
     "cfn-response": "^1.0.1",
     "commander": "^4.0.1",
+    "esbuild": "^0.28.0",
     "eslint": "^8.44.0",
-    "eslint-config-airbnb": "^18.2.1",
-    "eslint-config-cimpress-atsquad": "1",
-    "eslint-plugin-mocha": "^7.0.1",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-vue": "^7.17.0",
     "fs-extra": "^8.1.0",
     "glob": "^7.1.6",
     "gray-matter": "^4.0.3",
     "js-yaml": "^4.1.1",
+    "markdown-it-container": "^4.0.0",
+    "markdown-it-shiki": "^0.9.0",
+    "shiki": "^4.0.2",
     "tailwindcss": "^4.0.0",
+    "typescript": "^6.0.2",
+    "unhead": "^2.1.13",
     "unplugin-vue-markdown": "^30.0.0",
     "vite": "^5.4.21",
     "vite-ssg": "^0.23.0",
     "vitest": "^4.1.0"
   },
   "engines": {
-    "node": ">=22"
+    "node": ">=24"
   }
 }
