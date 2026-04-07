@@ -28,7 +28,7 @@
   "scripts": {
     "build": "vite-ssg build",
     "start": "vite --port=8080",
-    "serve": "vite preview --port=8080",
+    "serve": "vite-ssg build && vite preview --port=8080",
     "lint": "eslint --ext .js src make.js",
     "setup": "node make.js setup",
     "test": "vitest run"
@@ -49,6 +49,7 @@
     "glob": "^7.1.6",
     "gray-matter": "^4.0.3",
     "js-yaml": "^4.1.1",
+    "markdown-it-anchor": "^9.2.0",
     "markdown-it-container": "^4.0.0",
     "markdown-it-shiki": "^0.9.0",
     "shiki": "^4.0.2",

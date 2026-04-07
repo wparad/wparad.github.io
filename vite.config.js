@@ -3,6 +3,7 @@ import { writeFileSync, readFileSync, readdirSync, existsSync } from 'fs';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import Markdown from 'unplugin-vue-markdown/vite';
+import anchor from 'markdown-it-anchor';
 import container from 'markdown-it-container';
 import shiki from 'markdown-it-shiki';
 import NodeGlobalsPolyfillPlugin from '@esbuild-plugins/node-globals-polyfill';
@@ -66,6 +67,11 @@ export default defineConfig({
     Markdown({
       markdownItSetup(md) {
         md.use(shiki, { theme: 'github-dark' });
+        md.use(anchor, {
+          slugify: s => s.toLowerCase().replace(/[^\w\s-]/g, '').trim().replace(/\s+/g, '-'),
+          permalink: false,
+          tabIndex: false,
+        });
         md.use(codeTitlePlugin);
         md.use(container, 'info', {
           render(tokens, idx) {

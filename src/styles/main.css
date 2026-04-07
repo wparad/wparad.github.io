@@ -48,6 +48,12 @@
   }
 }
 
+/* Prose list overrides — must be unlayered to beat Tailwind preflight */
+.prose ul,
+.prose ol {
+  padding-left: 1.5rem;
+}
+
 /* Override Tailwind text utilities to scale them up by 1.25× */
 @layer utilities {
   @media (min-width: 0px) {

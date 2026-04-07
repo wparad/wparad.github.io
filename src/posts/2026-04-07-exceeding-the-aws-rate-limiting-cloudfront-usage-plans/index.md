@@ -14,35 +14,31 @@ tags:
   - WAF
 ---
 
-:::info
-For help understanding this article or how you can implement auth and similar security architectures in your services, feel free to reach out to me via the [community server](https://authress.io/community).
-:::
-
-Full disclosure, it is still terrible. I didn't promise it wouldn't be, just less terrible.
+Full disclosure, it is still terrible. I don't promise it wouldn't be, just rather less terrible.
 
 There are lots of bad ways to do this. I don't think there are any best practices unfortunately. Each comes with its own set of drawbacks.
 
-## Why rate limiting matters
-
 :::warn
-This is an article for those utilizing AWS in some capacity, and as such we can't avoid the elephant in the room, API Gateway. For the rest of the article, when I say `API Gateway` I mean the `AWS API Gateway` product, abbreviated by `APIGW`. This is an unfortunate naming since there are architectural components called `API Gateways` and in reality, what APIGW provides, actually isn't that. But when I need to make a distinction, I will, by calling that out.
+This is an article for those utilizing AWS in some capacity, and as such we can't avoid the elephant in the room, API Gateway. For the rest of the article, when I say `API Gateway`, I mean the `AWS API Gateway` product, abbreviated by `APIGW`. This is an unfortunate naming since there are architectural components called `API Gateways` and in reality, what APIGW provides, actually isn't that. But when I need to make a distinction, I will, by calling that out.
 :::
 
-Realistically, you have an API. You always have an API, if you didn't you probably wouldn't be reading this article in the first place. Your API may be deployed behind APIGW using Lambda. Or maybe it's an ALB handling your TLS Termination for your containerized compute. Rate limiting might be necessary for any regional compute you have sitting in your architecture or platform. At some point, you are going to figure out that you need rate limiting. It's not usually an **if**, but rather a **when**. And when that time comes, it's not per-IP or per authenticated user, but **per user** rate limiting.
+## Why rate limiting matters
+
+Realistically, you have an API. You always have an API, if you didn't you probably wouldn't be reading this article in the first place. Your API may be deployed behind APIGW using Lambda. Or maybe it's an ALB handling your TLS Termination for your containerized compute. At some point, you are going to figure out that you need rate limiting. It's not usually an **if**, but rather a **when**. And when that time comes, it's not per-IP or per authenticated account, but **per user** rate limiting.
 
 Too often the advice in AWS is **"Throw a WAF at it"**. And that's not exactly wrong, but it's not the nuanced answer you're looking for either. What if you did do per-IP — would that really not work? What about somehow rate limiting on the JWT the user is already sending? I'll get to all of that and more.
 
 But first, why do you even care?
 
-Rate limiting solves a real business problem. And usually more than one. And the reason you need to be clear about which problem you're solving is that different motivations lead to different architectural choices, and most of the bad solutions out there come from not being specific about what you're protecting.
+Rate limiting solves a real business problem. And usually more than one. And the reason you need to be clear about which problem you're solving is that different motivations lead to different architectural choices, and most of the bad solutions out there come from not being specific about what you're protecting and most importantly **why**.
 
-**Protecting expensive downstream resources.** Your API calls a database, a third-party service, or triggers compute that costs real money per invocation. One user hammering an endpoint can run up your [bill in minutes](https://chrisshort.net/the-aws-bill-heard-around-the-world/). Without rate limiting, your cost model is "whatever the most aggressive user decides to spend on your behalf." Where in the world of today, usually is some threat actor, just desiring to use your [solution as a database](https://github.com/fr34kyn01535/discord-fs) or as compute.
+**Protecting expensive downstream resources.** Your API calls a database, a third-party service, or triggers compute that costs real money per invocation. One user hammering an endpoint can run up your [bill in minutes](https://chrisshort.net/the-aws-bill-heard-around-the-world/). Without rate limiting, your cost model is "whatever the most aggressive user decides to spend on your behalf." In the world of today, usually there is some threat actor, just desiring to use your [solution as a database](https://github.com/fr34kyn01535/discord-fs) or as pure compute.
 
-**Maintaining your uptime SLA.** This is the one people underestimate. Rate limiting isn't just about cost or abuse, it's a real and vital [strategy for uptime](https://authress.io/knowledge-base/articles/2025/11/01/how-we-prevent-aws-downtime-impacts#helpful-rate-limiting). Blocking malicious traffic before it saturates your origin is what keeps your service viable for the users who actually matter. Your SLA doesn't care whether the outage was caused by an attacker or by one customer lambda-bombing themselves.
+**Maintaining your uptime SLA.** This is the one people underestimate. Rate limiting isn't just about cost or abuse, it's a real and vital [strategy for uptime](https://authress.io/knowledge-base/articles/2025/11/01/how-we-prevent-aws-downtime-impacts#helpful-rate-limiting). Blocking malicious traffic before it saturates your origin is what keeps your service viable for the users who actually matter.
 
 **Enforcing fair usage across tenants.** In a multi-tenant system, you'll have shared resources. And one tenant over consuming allocated capacity will degrade the experience for everyone else. Rate limiting is the mechanism that prevents that.
 
-**Protecting yourself from your own customers' bugs.** And not every spike is malicious. A customer could easily ship a mobile app with an infinite retry loop, or a misconfigured webhook fires on every event. Which then means, you're suddenly absorbing ten thousand requests per second from a single client.
+**Protecting yourself from your own customers' bugs.** And not every spike is malicious. A customer could easily ship a mobile app with an infinite retry loop, or a misconfigured webhook fires on every event. Which then means, you're suddenly absorbing ten thousand requests per second from a single client. Your SLA doesn't care whether the outage was caused by an attacker or by one customer lambda-bombing themselves.
 
 No matter where you go, rate limiting is not just a feature. Fundamentally, you will get to the point where it's required infrastructure that protects your system from what the outside world can throw at it. And the hard part isn't deciding you need it; but rather implementing it correctly without burying you with the mountain of cloud maintenance.
 

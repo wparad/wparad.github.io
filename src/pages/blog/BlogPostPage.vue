@@ -103,27 +103,11 @@ const resolvedImage = computed(() => {
   return key ? imageModules[key].default : null;
 });
 
-// ToC
+// ToC — pre-computed at build time in posts.js
 const proseEl = ref(null);
-const toc = ref([]);
+const toc = computed(() => post.value?.toc ?? []);
 const activeId = ref(null);
 let observer = null;
-
-function slugify(text) {
-  return text.toLowerCase().replace(/[^\w\s-]/g, '').trim().replace(/\s+/g, '-');
-}
-
-function buildToc() {
-  if (!proseEl.value) { return; }
-  const headings = [...proseEl.value.querySelectorAll('h2, h3')];
-  toc.value = headings.map(el => {
-    if (!el.id) { el.id = slugify(el.textContent); }
-    el.classList.add('heading-anchor');
-    el.style.cursor = 'pointer';
-    el.addEventListener('click', () => handleTocClick(el.id));
-    return { id: el.id, text: el.textContent, depth: el.tagName === 'H2' ? 2 : 3 };
-  });
-}
 
 function startObserver() {
   if (!proseEl.value || !toc.value.length) { return; }
@@ -164,8 +148,14 @@ async function handleTocClick(id) {
 
 onMounted(async () => {
   await nextTick();
-  buildToc();
   startObserver();
+  if (proseEl.value) {
+    [...proseEl.value.querySelectorAll('h2, h3')].forEach(el => {
+      el.classList.add('heading-anchor');
+      el.style.cursor = 'pointer';
+      el.addEventListener('click', () => handleTocClick(el.id));
+    });
+  }
 });
 
 onUnmounted(() => {
