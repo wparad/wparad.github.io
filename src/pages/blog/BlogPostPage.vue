@@ -32,7 +32,7 @@
           <hr class="border-border mb-8">
 
           <!-- Markdown content -->
-          <div ref="proseEl" class="prose">
+          <div ref="proseEl" class="prose" @click="handleProseClick">
             <component :is="post.component" />
           </div>
         </article>
@@ -130,32 +130,24 @@ function startObserver() {
 async function handleTocClick(id) {
   const el = document.getElementById(id);
   if (!el) { return; }
-
-  // Update URL hash without triggering a scroll jump
   history.pushState(null, '', `#${id}`);
   activeId.value = id;
-
-  // Smooth scroll
   el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-  // Copy full URL to clipboard
   try {
     await navigator.clipboard.writeText(window.location.href);
-  } catch {
-    // clipboard permission denied — silent fail
-  }
+  } catch { /* clipboard permission denied */ }
+}
+
+async function handleProseClick(e) {
+  const heading = e.target.closest('h2, h3, h4');
+  if (!heading?.id) { return; }
+  e.preventDefault();
+  await handleTocClick(heading.id);
 }
 
 onMounted(async () => {
   await nextTick();
   startObserver();
-  if (proseEl.value) {
-    [...proseEl.value.querySelectorAll('h2, h3')].forEach(el => {
-      el.classList.add('heading-anchor');
-      el.style.cursor = 'pointer';
-      el.addEventListener('click', () => handleTocClick(el.id));
-    });
-  }
 });
 
 onUnmounted(() => {
@@ -268,14 +260,29 @@ useHead(computed(() => {
 .prose :deep(h2) { font-size: 2rem; }
 .prose :deep(h3) { font-size: 1.6rem; }
 
-.prose :deep(.heading-anchor::after) {
-  content: ' #';
-  color: transparent;
-  font-weight: 400;
-  transition: color 0.15s;
+.prose :deep(h2),
+.prose :deep(h3),
+.prose :deep(h4) {
+  cursor: pointer;
 }
 
-.prose :deep(.heading-anchor:hover::after) {
+/* permalink anchor rendered by markdown-it-anchor */
+.prose :deep(h2 > a[aria-label="permalink"]),
+.prose :deep(h3 > a[aria-label="permalink"]),
+.prose :deep(h4 > a[aria-label="permalink"]) {
+  color: transparent;
+  font-weight: 400;
+  text-decoration: none;
+  transition: color 0.15s;
+  margin-left: 0.25rem;
+}
+
+.prose :deep(h2:hover > a[aria-label="permalink"]),
+.prose :deep(h3:hover > a[aria-label="permalink"]),
+.prose :deep(h4:hover > a[aria-label="permalink"]),
+.prose :deep(h2 > a[aria-label="permalink"]:focus),
+.prose :deep(h3 > a[aria-label="permalink"]:focus),
+.prose :deep(h4 > a[aria-label="permalink"]:focus) {
   color: var(--color-accent);
 }
 

@@ -68,8 +68,10 @@ export default defineConfig({
         md.use(shiki, { theme: 'github-dark' });
         md.use(anchor, {
           slugify: s => s.toLowerCase().replace(/[^\w\s-]/g, '').trim().replace(/\s+/g, '-'),
-          permalink: false,
-          tabIndex: false,
+          permalink: anchor.permalink.linkInsideHeader({
+            symbol: '#',
+            renderAttrs: () => ({ 'aria-label': 'permalink', 'tabindex': '-1' }),
+          }),
         });
         md.use(codeTitlePlugin);
         md.use(container, 'info', {

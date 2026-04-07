@@ -46,15 +46,15 @@ I don't know if this has been written before. But enough people get rate limitin
 
 ## AWS API Gateway Usage Plans
 
-There are so many things wrong with AWS API Gateway (**APIGW**), such that this article could be dedicated to just that. But instead I've taken a different focus. Though it still means I need to throw this out there, so at least reference the relevant parts.
+There are so many things wrong with AWS API Gateway (**APIGW**), such that this article could be dedicated to just that. But instead I've taken a different focus. But in order to that I still need to touch upon at least the relevant parts.
 
 APIGW has two forms: `REST` (V1, Legacy) and `HTTP` (V2). V1 is called REST because it supports OpenAPI Spec v2.0 for model validations, has a notion of documentation, lets you automatically deploy a CloudFront distribution on top of your API, and does rate limiting using what they call [Usage Plans](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html).
 
-In reality, `REST` is [3.5x the cost](https://aws.amazon.com/api-gateway/pricing/) of `HTTP` — $3.50/million vs $1.00/million. We're on v3.2 of the OpenAPI Spec. No one needs the built-in documentation, when portals like [OpenAPI Explorer](https://github.com/Authress-Engineering/openapi-explorer?tab=readme-ov-file#openapi-explorer) exist, And the CloudFront isn't a real CloudFront, you have no control over it, and thus don't get any of the benefits. And now I can actually get to usage plans.
+In reality, `REST` is [3.5x the cost](https://aws.amazon.com/api-gateway/pricing/) of `HTTP` — $3.50/million vs $1.00/million. The world has moved onto the v3.2 version of the OpenAPI Spec. No one needs the built-in documentation, when portals like [OpenAPI Explorer](https://github.com/Authress-Engineering/openapi-explorer?tab=readme-ov-file#openapi-explorer) exist, and the APIGW CloudFront isn't a real CloudFront, you have no control over it, and thus don't get any of the benefits. And now I can finally get to usage plan part.
 
 And perhaps the question is *What the heck are usage plans?*
 
-I'm so glad you asked. I've seen many people reach for APIGW explicitly for the usage plans even if they're not otherwise using APIGW, for example when they are currently utilizing an ALB. The truth is, the only good usage of APIGW is for Lambda Functions. Custom Domains, Certificates, maybe mTLS if you are using Lambda Functions. If you aren't using one, then you don't need APIGW, there is nothing it does, that it does well. That means there is nothing left which would justify any value by adding it to architecture, unless you are already using APIGW.
+I'm so glad you asked. I've seen many people reach for APIGW explicitly for the usage plans even if they're not otherwise using APIGW, for example when they are currently utilizing an ALB. The truth is, the only good usage of APIGW is for Lambda Functions. Custom Domains, Certificates, maybe mTLS — if you are using Lambda Functions. If you aren't using one, then you don't need APIGW, there is nothing it does, that it does well. That means there is nothing left which would justify any value by adding it to architecture, unless you are already using APIGW.
 
 *"I couldn't have done X before, but with APIGW I can!" — Someone out there on the internet*
 
@@ -62,7 +62,7 @@ And that's true, but you could also do X with likely CloudFront, or directly in 
 
 *What about usage plans?*
 
-Oh, right I lost the point.
+Oh, right, I lost the point.
 
 ### What usage plans are and how they work
 
@@ -74,7 +74,7 @@ Usage Plan "Standard Tier"
 └── Quota: 50,000 requests/month
 ```
 
-And then you create an "API key" and attach them to the plan. An API Key isn't actually an API key, it just what APIGW decided to use its infinite wisdom to call an **instance** of the use plan. It's the mapping of the usage plan to the user in question you want to rate limit. The problem is "How do you assign this mapping?"
+And then you create an "API key" and attach them to the plan. An API Key isn't actually an API key, it just what APIGW decided to use its infinite wisdom to call an **instance** of the usage plan. It's the mapping of the usage plan to the user in question you want to rate limit. The problem is "How do you assign this mapping?"
 
 APIGW usage plans work by letting you first create "API Keys", assign the key to a usage plan, and then later when a user interacts with your API, for every request you tell APIGW which API Key is being used.
 
@@ -84,12 +84,12 @@ More specifically:
 Usage Plan "Standard Tier"
 ├── Throttle: 100 requests/second, burst 200
 ├── Quota: 50,000 requests/month
-├── API Key: user-001  ← attached
-├── API Key: user-002  ← attached
-└── API Key: user-003  ← attached
+├── API Key: user_001  ← attached
+├── API Key: user_002  ← attached
+└── API Key: user_003  ← attached
 ```
 
-So for instance, when the user with JWT `sub` user_001 shows up at your API, you can tell APIGW that it should find the usage plan attached to the API Key `user-001`. You convey this critical information to APIGW via a custom lambda authorizer. You could also do this ridiculous thing of completely discarding any notion of security and asking the user to send you their API Key in a custom field and using that to key off. But I wouldn't recommend it.
+So for instance, when the user with JWT `sub` user_001 shows up at your API, you can tell APIGW that it should find the usage plan attached to the API Key `user_001`. You convey this critical information to APIGW via a custom lambda authorizer. You could also do this ridiculous thing of completely discarding any notion of security and asking the user to send you their API Key in a custom field and using that to key off. But I wouldn't recommend it. (It's worth noting this is probably what the original APIGW developers had in mind when they created it, but we know API keys are insecure by design, I've extensively covered that in how [machine to machine authentication works](https://authress.io/knowledge-base/academy/topics/how-does-machine-to-machine-auth-work).)
 
 ```js title="Example authorizer implementation"
 import { ApiGatewayClient } from 'aws';
@@ -108,31 +108,31 @@ It's not done.
 
 ### Hard limits on usage plan keys
 
-Usage plans have a hard cap on the number of API keys: [10,000 per account per region](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-execution-service-limits-table.html). This is not adjustable. You cannot request an increase. I'm sure there is some amount of money where that isn't true in practice, but it's fun to think about hard limits being actually unmovable, and you probably have better things to do than praying that some poor TAM will help you with your support case.
+Usage plans have a hard cap on the number of API keys: [10,000 per account per region](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-execution-service-limits-table.html). This is not adjustable. You cannot request an increase. I'm sure there is some amount of money where that isn't true in practice. But, it's fun to think about hard limits as actually being unmovable, and you probably have better things to do than praying that some poor TAM will help you with your support case.
 
 Now, you may be thinking: "But I only have 1,000 users." However, you need to look at this from a business perspective, not a technical one. To be successful you might only need 1,000 paying users. But if your churn is around 50%, that's 500 churned keys per year. Sign-ups that don't convert can easily be another 500–1,000 per year depending on scale. Which means in a few years, and it only takes one good ad campaign, your limit of 10,000 is completely insufficient.
 
-There is an exception here potentially for business customers. For B2B apps, you wouldn't likely be using the user ID as the key anyway, you'd use the business account ID. Which means, you'll likely have at least one factor of magnitude fewer account IDs than consumer user IDs, probably more. So this solution may actually be sufficient for those scenarios. All the other limitations still apply though.
+There is an exception here potentially for business customers. For B2B apps, you wouldn't likely be using the user ID as the key anyway, you'd use the business account ID. Which means, you'll likely have at least one factor of magnitude fewer account IDs than consumer user IDs, probably even fewer. So this solution may actually be sufficient for those scenarios. All the other limitations unfortunately still apply.
 
 For consumer apps, the user ID as the plan key violates the scaling needs of any real user base. And for most business apps as well.
 
 ### The bootstrap problem
 
-Forgetting about the hard limit, doesn't alleviate all our issues. Another obvious one that will immediately come up is that there is no `Default` Rate Limit. Once you enable a Usage Plan for an API, every request needs to be coupled back to a usage plan. That means there might be an API Key created for that user.
+Forgetting about the hard limit, doesn't alleviate all our issues however. Another obvious one that will immediately come up is that there is no `Default` Rate Limit. Once you enable a Usage Plan for an API, every request needs to be coupled back to a usage plan. That means there must be an API Key created for that user.
 
 Here lives a paradox. API calls require API Keys, but you won't know to create the API Key without there first being a call to your API. This leaves a couple of possible solutions:
 
-#### Option 1: Control Plane API
+#### Option 1: control plane API
 
-Utilize the APIGW control plane to check if an API Key exists in your custom lambda authorizer. If it doesn't exist, you can use the control plane to associate the api key with the right usage plan at that moment. APIGW hard limit for [CreateApiKey](https://docs.aws.amazon.com/apigateway/latest/developerguide/limits.html) is [5 rps per AWS Account](https://docs.aws.amazon.com/apigateway/latest/developerguide/limits.html). So there is no way you are going to be calling this directly in your authorizer for every request.
+Utilize the APIGW control plane to check if an API Key exists in your custom lambda authorizer. If it doesn't exist, you can use the control plane to associate the api key with the right usage plan at that moment. The APIGW hard limit for [CreateApiKey](https://docs.aws.amazon.com/apigateway/latest/developerguide/limits.html) is [5 RPS per AWS Account](https://docs.aws.amazon.com/apigateway/latest/developerguide/limits.html). So there is no way you are going to be calling this directly in your authorizer for every request.
 
-Thankfully we don't have to, but the GetApiKey api isn't even documented there. So we have no idea what that means. Assuming the rate limit is at some multiple of CreateApiKey, still leaves us with a situation where we will end up getting throttled in the Lambda Authorizer.
+Thankfully we don't have to, but the GetApiKey api isn't even documented there. So we have no idea what that means. Assuming the rate limit is at least some multiple of CreateApiKey, still leaves us with a situation where we will end up getting throttled in the Lambda Authorizer when we call the APIGW control plane.
 
 You might be thinking, well it's okay, but remember why we created this in the first place. You will end up getting throttled to your APIGW control plane at the exact moment where you are also getting spammed and need rate limiting to work. Not a great story.
 
-Now, you could attempt to turn on Authorizer Caching, and hope this reduces the load on GetApiKey down enough to ~once per hour, that's going to provide only limited value.
+Now, you could attempt to turn on Authorizer Caching to ~once per hour, and hope this reduces the load on GetApiKey down enough to provide breathing room. In reality that is going to provide only limited value.
 
-```js title="Updated authorizer"
+```js title="Authorizer: Just in time api key provisioning"
 import { ApiGatewayClient } from 'aws';
 
 const apiGatewayClient = new ApiGatewayClient();
@@ -140,17 +140,10 @@ const apiGatewayClient = new ApiGatewayClient();
 async function authorizer() {
     const userId = 'user_001';
 
-    const apiKey = await apiGatewayClient.getApiKeys({
-      nameQuery: userId, includeValues: true, limit: 1 });
+    const apiKey = await apiGatewayClient.getApiKeys({ nameQuery: userId, includeValues: true, limit: 1 });
     if (!apiKey.items.length) {
-        const apiKey = await apiGatewayClient.createApiKey({
-            name: userId,
-            value: userId
-        });
-        await apiGatewayClient.createUsagePlanKey({
-            keyId: apiKey.id,
-            usagePlanId
-        });
+        const apiKey = await apiGatewayClient.createApiKey({ name: userId, value: userId });
+        await apiGatewayClient.createUsagePlanKey({ keyId: apiKey.id, usagePlanId });
     }
     
     return {
@@ -160,11 +153,13 @@ async function authorizer() {
 }
 ```
 
-It's doable like this, but it isn't great. In essence it doesn't really fix the problem, you've just moved it somewhere else. It feels like it works, but remember, that this has the issue that we are creating a strategy that allows anyone to abuse your API just by creating new accounts. So in practice generating API keys and attaching them to usage plans isn't a real rate limiting strategy. We want to actually block new accounts from getting automatic api keys.
+It's doable like this, but it isn't great. In essence it doesn't really fix the problem, you've just moved it somewhere else. It feels like it works, but remember, that this has the issue that we are creating a strategy that allows anyone to abuse your API just by creating new accounts. So in practice generating API keys and attaching them to usage plans isn't a real rate-limiting strategy. We want to actually block new accounts from getting automatic api keys.
 
-There's also two subtle bugs in the above code. What happens if the api key is created, but is never attached to a usage plan. We'll have a critical failure for that user. This could happen and for sure will happen to any user who attempts to sign up while you are having an incident. The second is that now on every call you are going to be slowing down your authorizer by calling a control plane, and one that was not created to handle this exact thing. Want to slow an authorizer by multiple seconds? Not very sustainable.
+There's also two subtle bugs in the above code. What happens if the api key is created, but is never attached to a usage plan? We'll have a critical failure for that user. This could happen and for sure will happen to any user who attempts to sign up while you are having an incident. The second is that on every call you are going to be slowing down your authorizer by calling a control plane, and one that was not designed to handle this exact thing. Want to slow an authorizer by multiple seconds and definitely get rate limited yourself? Not very sustainable.
 
-One more thing on authorizing caching. Authorizing caching is extremely dangerous in its own way, since you might be allowing expired tokens to still be used with your API. However, focusing on our use case, Cache TTL does reduce calls, but the first request per user per cache window still hits the control plane. Some quick math: if you have 5,000 active users and a cache TTL of 5 minutes. That's 1,000 control plane calls per minute, just for the "does this key exist?" check (When the cache expires that's 5k every 5 minutes). Under traffic spikes, which are the exact scenario you're rate limiting for, cache misses increase. More unique users means more control plane calls means you're DDoSing the APIGW control plane while trying to prevent a DDoS on your API. At any sort of scale this isn't going to work in the first place.
+One more thing on authorizing caching. Authorizing caching is extremely dangerous in its own way, since you might be allowing expired tokens to still be used with your API. API Gateway Authorizer caching doesn't know to automatically expire the cache when the token expires! However, focusing on our use case, Cache TTL does reduce calls, but the first request per user per cache window still hits the control plane.
+
+Some quick math: if you have 5,000 active users and a cache TTL of 5 minutes. When the cache expires every ~5 minutes, that amounts to 1,000 control plane calls per minute (17 RPS), just for the "does this key exist?" check. Under traffic spikes, which are the exact scenario you're rate limiting for, cache misses increase. More unique users — means more control plane calls — means you're DDoSing the APIGW control plane while trying to prevent a DDoS on your API. At any sort of scale this isn't going to work in the first place, even theoretically.
 
 So let's move on.
 
@@ -178,43 +173,45 @@ I think the whole usage plan thing is a lost cause, but I'll try to provide some
 
 First of all, of course it's easy to generate some usage plan api keys and store them in a DB somewhere. I don't know if storing the keys in a DB is better than generating them at runtime in the authorizer. But if it is, you are swapping "generation" using the API Gateway API for "generation" using your own "API", which is probably just a query to a database. You might end up with some race conditions there on which key should be selected and given to whom.
 
-Another thing to be cognizant of, is who will own that key. See, keys aren't really owned by anyone. There is no way to assign individual users keys, and for sure not before you even know who the user is. So at what point do you give the user key, and what is the key value?
+Another thing to be cognizant of, is who will own that key. See, keys aren't really owned by anyone. There is no way to assign keys to individual users (how would that even work?), and for sure not before you even know who the user is. So at what point do you give the user key, and what is the key value?
 
-In my strategy above **Option 1**, and below in **Option 3** we're assigning keys to users based on the assumption that the api key exactly matches the user ID. But if it doesn't, how does the user even get the key in the first place in order to call your API?
+In the **Option 1** strategy above and the **Option 3** strategy below, we're assigning keys to users based on the assumption that the api key exactly matches the user ID. But if it doesn't, how does the user even get the key in the first place in order to call your API?
 
-The trivial answer is: *They call a dedicated endpoint, and that returns them they key*. Well that doesn't really make sense because it completely duplicates the problem that this Option was supposed to solve in the first place. Maybe there is a smarter answer here, but I honestly don't know what that would be.
+The trivial answer is: *They call a dedicated endpoint, and that returns them the key*. Well that doesn't really make sense because it completely duplicates the problem that this Option was supposed to solve in the first place. Maybe there is a smarter answer here, but I honestly don't know what that would be.
 
 The non-trivial answer is: *When users sign up, decide ahead of time what their user ID will be, so that you know also ahead of time what the API Key will be.*
 
-That's not really a solution, because it requires coupling your sign in process to your API Key generation process, and that might not even be on you are fully in control of.
+That's also not really a solution, because it requires coupling your sign-in process to your API Key generation process, and that might not even be something for which you are fully in control.
 
 The last thing that comes to mind for this solution is a long term problem. Users can "buy" keys. Since keys aren't coupled to users, they can sign up multiple times, get multiple keys and rotate through them to call your APIs. Since you do no sort of validation to make sure the user is using the right key.
 
-But this brings up another point. Where are users supposed to save their API Key? If we don't know who the user is before they call our API, then we can't create an API Key that can be determined from their user ID. That means the key value will be different. If it is different then it needs to be available somewhere. I suppose one thing you could do is maintain a list of user IDs to api key mappings in your database and create an endpoint called `GET /user-api-keys` returning a list of api keys available for the user, so that they can use that key for followup requests. Again at that point, you'll have an endpoint to return a key, might as well side-step that completely and just assume the key is the same as the user ID, and not bother even storing the keys in the first place.
+But this brings up another point. Where are users supposed to save their API Key? If we don't know who the user is before they call our API, then we can't create an API Key that can be determined from their user ID. That means the key value will be different from their user ID. If it is different then it needs to be available somewhere for the client to store. Someone has to be responsible for storing it somewhere. I suppose one thing you could do is maintain a list of user IDs to api key mappings in your database and create an endpoint called `GET /user-api-keys` returning a list of api keys available for the user, so that they can use that key for followup requests. Again at that point, you'll have an endpoint to return a key, might as well side-step that completely and just assume the key is the same as the user ID, and not bother even storing the keys in the first place.
 
 #### Option 3: Account Creation
 
-One genius thing you probably already thought about to solve the above problems is *what if we create the usage plan api key during account creation instead?*
+One genius thing you probably already thought of to solve the above problems is — *what if we create the usage plan api key during account creation instead?*
 
 Genius!
 
-To do that, all your endpoints would be rate limited, except for the Account Creation one. Right?
+To do that, you could rate limit all your endpoints without issue, except for the Account Creation one. Right?
 
 Wrong!
 
-Users will create accounts through your UI. When they do that, they will likely need to load a bunch of data from your service, that enables them to understand exactly how to do that. So in practice you'll have more than just the `POST /accounts` API that needs to be completely exposed. Of course you'll have an authorizer on that still to validate incoming JWTs.
+Users will create accounts through your UI. When they do that, they will likely need to load a bunch of data from your service, which would enable them to understand exactly how to do that. So in practice you'll have more than just the `POST /accounts` API that needs to be completely exposed. Of course you'll still have an authorizer on there to validate incoming JWTs, but rate limiting would be an unsolved issue, and rate limiting with the same API Key as the one for all other endpoints would be impossible. (Because the API Key wouldn't exist when those account creation endpoints are called.)
 
-Remember, you probably still thought about caching the authorizer result, so that you don't need to fetch an OAuth JWT-public key lists to validate tokens. But at that same time this means you baked in the result to the authorizer of the user not having an API Key. Wait, why is that?
+Remember, you probably still are caching the authorizer result, so that you don't need to fetch an OAuth JWT-public key lists to validate tokens. But at that same time this means you baked in the result of the authorizer into the cache. And that cached result says "No API Key available".
 
-How do you know to call `POST /accounts` in the first place? Well of course you know because first you called `GET /accounts`. Is `GET /accounts` rate limited? Is it rate limited using the same authorizer as your "account creation endpoint" authorizer or "all your other endpoints" authorizer?
+Wait, why is that again?
+
+How do you know to call `POST /accounts` in the first place? Well of course you know because first you called `GET /accounts`. Is `GET /accounts` rate limited? Is it rate limited using the same authorizer as your "account creation endpoint" authorizer or your "all other endpoints" authorizer? Depending on which authorizer you used, you might have already determined which endpoints were acceptable to be called and with which rate.
 
 Also you have a secondary problem here, is your account creation flow async? I know ours is. Which means that API Key might only be created minutes from now, but the user is sitting on the UI with a little spinner waiting for the account to be created.
 
 ![Account Creation in progress spinner](./account-creation-progress.png)
 
-The one weird trick that sort of works is in your authorizer, turn on caching. But also in there, look up the mapped user or B2B customer account in your database. If that account was just created in the last 5 minutes, give them a limited use API Key, otherwise use an API Key dedicated to their account.
+One trick that sort of works is in your authorizer, is turn on caching, but also, look up the mapped user or B2B customer account in your database. If that account was just created in the last 5 minutes, give them a limited use API Key, otherwise use an API Key dedicated to their account.
 
-This shifts the burden from your API resources to a custom Lambda authorizer that interacts with a database in a cached way. Depending on your needs you can also get pretty fancy here, but I wouldn't recommend it. The whole point is a hack to get these new users a temporary key that works, but long term isn't the key that they'll be using for 100% of their requests.
+This shifts the burden from your API resources (your backend origin compute) to a custom Lambda authorizer that interacts with a database in a cached way. Depending on your needs you can also get pretty fancy here, but I wouldn't recommend it. The whole point is a hack to get these new users a temporary key that works, but long term isn't the key that they'll be using for 100% of their requests.
 
 This avoids the unlimited fallback plan that would be a new security hole, and side-steps building a rate limiter with a bypass for the exact users you can't yet identify.
 
@@ -227,39 +224,37 @@ async function authorizer() {
     const userId = 'user_001';
 
     const account = await dynamoDBClient.get({ TableName: 'account', userId });
-    const accountWasRecentlyCreated =
-      account.createdTime < now.minus({ minutes: 5 });
+    const accountWasRecentlyCreated = account.createdTime < now.minus({ minutes: 5 });
     
     return {
         principalId: userId,
-        usageIdentifierKey:
-          accountWasRecentlyCreated ? 'Temporary-Usage-Plan-Key' : userId
+        usageIdentifierKey: accountWasRecentlyCreated ? 'Temporary-Usage-Plan-Key' : userId
     };
 }
 ```
 
 ### Usage Plans in practice
 
-And that works...well sort of. The API surface for managing usage plans is painful. And not the normal kind of painful,it's where you realize the API was designed for manual console clicks, not programmatic management.
+And that works ... sort of. The API surface for managing usage plans is painful. And not the normal kind of painful. It's the kind where you realize the API was designed for manual console clicks, not programmatic management.
 
-A key can be associated with up to 10 usage plans simultaneously. Yay, you might think, but actually only one usage plan applies per API stage. So if you need to change a user's tier, for instance to move the user or account from "Standard" to "Premium", you have to:
+A key can be associated with up to 10 usage plans simultaneously. Yay, you might think, but actually only one usage plan applies per API stage. So if you need to change a user's tier, for instance to move the user or account from **"Standard"** to **"Premium"**, you have to:
 
 1. Call `DeleteUsagePlanKey` to remove the key from the old plan
 2. Call `CreateUsagePlanKey` to add it to the new plan
 
 Two separate API calls. No transaction. No atomicity. Between step 1 and step 2, the key is unassociated — meaning the user has no access at all. Under load, that window matters.
 
-With caching the window matters less, but at a scale where rate limits feel like the responsible strategy, this feels like an irresponsible solution. While you aren't going to be doing this every day, the users who will be most affected are those who are your high frequency users.
+With caching, the window matters less, but at a scale where rate limits are a responsible strategy, this feels like an irresponsible solution. While you aren't going to be doing this every day, the users who will be most affected are those who are your high frequency users.
 
 Said differently, users that require a higher rate plan, that want to pay you for that, require you to temporarily delete their usage plan, so that you can upgrade them. Good Luck!
 
 #### Quotas
 
-Another area that is a straight pit of failure are the usage quotas that come with the usage plans. The rate-limiting part is nice, but you're encouraged to also set a fixed quota for resources. And it sounds like a very convincing idea!
+Another area that is a straight pit of failure are the usage `quotas` that come with the usage plans. The rate-limiting part is nice, but you're encouraged to also set a fixed quota for resources. And it sounds like a very convincing idea!
 
-However, you'll soon find out that these quotas only reset at the end of the day or month. Which seems incredibly arbitrary. But it's worse. As you are encouraged to set them, and what happens in practice is that some user will use up all of the quota. Success!
+However, you'll soon find out that these quotas only reset at the end of the day or month. Which seems incredibly arbitrary. But it's worse. As you are encouraged to set them, what happens in practice is that some user will use up all of the quota. Success!
 
-When that happens, they are blocked, just what we wanted. However, now comes the problem, is that really what you want? You probably have a much better business strategy in play.
+When that happens, they are blocked, just like we wanted. However, now comes the problem, is that really what you want? You probably have a much better business strategy in play.
 
 ![Underpants gnomes talk about rate limiting strategies](./gnomes.png)
 
@@ -268,15 +263,15 @@ But **the profit** in this case is — that user pays more. There are two proble
 1. You are likely blocking critical production access to your API, since the quota is consumed.
 2. Because the quota is blocked you are likely also blocking the access to your API to allow them to pay and increase the quota.
 
-What you have done here is introduced a technical solution to a business problem, where in reality these are completely separate concerns. I'll get more into this later, in the [Do you really need rate limiting section](#is-rate-limiting-required).
+What you have done here is introduced a technical solution to a business problem, where in reality these are completely separate concerns. But, I'll get more into this later, in the [Do you really need rate limiting section](#is-rate-limiting-required).
 
 ### Endpoint cardinality
 
-You'll be happy to know, you *can* define per-method throttle overrides — `GET /items` at 100/s, `POST /items` at 10/s,scoped to specific resource + method combinations within the plan. Sometimes if you are lucky the API will even allow 0.1/s or fewer, but often it will complain.
+You'll be happy to know, you *can* define per-method throttle overrides — `GET /items` at 100/s, `POST /items` at 10/s, scoped to specific resource + method combinations within the plan. Sometimes, if you are lucky the API will even allow specifying 0.1/s or slower, but often it will complain.
 
-And, so usage plans do support per-method throttle overrides. You can set different rates for `GET /items` vs `POST /items` at the resource + method level within a plan.
+And so, usage plans do support per-method throttle overrides. You can set different rates for `GET /items` vs `POST /items` at the resource + method level within a plan.
 
-But the problem in practice is that every user on the same plan gets the same per-method limits. If you want user A to have different endpoint limits than user B, you need different plans. It's likely that the combinatorial explosion of users × endpoint tiers makes this unworkable for anything beyond a handful of static tiers. And your plans will end up looking like:
+But the problem in practice is that every user on the same plan gets the same per-method limits. If you want user A to have different endpoint limits than user B, you need different plans. It's likely that the combinatorial explosion of users × endpoint tiers makes this unworkable for anything beyond a handful of static tiers. And each of your plans will end up looking like:
 
 ```js title="Usage Plan configuration"
 {
@@ -312,19 +307,21 @@ But the problem in practice is that every user on the same plan gets the same pe
 },
 ```
 
-What you actually want is instead per-user-per-endpoint granularity, which of course would require one plan per user per endpoint configuration. That's not rate limiting, that's a whole plan management system.
+What you actually want instead is per-user-per-endpoint granularity, which of course would require one plan per user per endpoint configuration. And to be able to dynamically update this based on their pricing plan and expected usage. That's not rate limiting, that's a whole plan management system.
 
-### The verdict on usage plans
+### The usage plan verdict
 
-I don't really understand the world where the usage plans architecture makes sense, but it isn't one I've been able to justify. To use it for actual rate limiting is building on a foundation that fights you at every step: hard limits, non-atomic updates, a terrible API, and a bootstrap problem that creates the exact hole you're trying to close.
+I don't really understand the world where the usage plans architecture makes sense, so it isn't one I've been able to justify. To use it for actual rate limiting is building on a foundation that fights you at every step: hard limits, non-atomic updates, a terrible API, and a bootstrap problem that creates the exact hole you're trying to close.
 
 It explains a lot when you understand that Usage Plans only exist for the legacy APIGW V1, and don't exist in V2. It's a good indicator to remember, if it doesn't exist on HTTP APIs you likely should think twice before going to production with it.
 
 ## Rolling your own rate limiter
 
-So, Usage Plans are out. The next place most people land is: build the rate limiter yourself. Do they, do they really? Everyone's got to know that building it yourself is rife with no shortage of challenges. But we can't exclude that there might be an actual good reason for the 0.1% use cases. So let's review it as a potential solution.
+So, Usage Plans are out. The next place most people land is: build the rate limiter yourself. Do they, do they really? Everyone's got to know that building it yourself is rife with no shortage of challenges. But we can't exclude that there might be an actual good reason for the 0.1% use cases. So let's review it as a potential solution. Which reduces to:
 
-Solution: **Store a counter somewhere, increment it on every request, block if exceeded. How hard could it be?**
+> **Store a counter somewhere, increment it on every request, block if exceeded.**
+
+How hard could it be?
 
 In a traditional server architecture, you could keep counters in memory. Nginx does this. Envoy does this. Rate limiting is a solved problem when you have a process that lives long enough to count. This requires legacy infrastructure coupled with fixed compute and a centralized reverse proxy layer to filter all requests through. We know fundamentally this isn't scalable.
 
@@ -348,7 +345,7 @@ Then you deploy it.
 
 ### Problem 1: Every request pays the tax
 
-Even if we throw out the complexity of managing this technology, where do we deploy it, what is the schema, how do we integrate with it, when do we upgrade, how do we gracefully fallback... The first thing you'll notice is latency. Every request, not just the ones you want to block, *every single one*, now has a mandatory round-trip to your counter store before it does anything useful. One of the worst mistakes inexperienced architects make is creating a solution that solves for an edge case by degrading the most common use case. It's only the edge case that should be affected by complexity, but here is it, everyone.
+Even if we throw out the complexity of managing this technology, where do we deploy it, what is the schema, how do we integrate with it, when do we upgrade, how do we gracefully fallback ... The first thing you'll notice is latency. Every request, not just the ones you want to block, *every single one*, now has a mandatory round-trip to your counter store before it does anything useful. One of the worst mistakes inexperienced architects make is creating a solution that solves for an edge case by degrading the most common use case. It's only the edge case that should be affected by complexity, but here is it, everyone.
 
 For DynamoDB in the same region, that's roughly 5–10ms. For ValKey, maybe 1–2ms. These aren't catastrophic numbers. But they're on every request. Your best customer making 10 requests per minute is paying the same latency tax as the abuser making 10,000. You're taxing 100% of your traffic to protect against the fraction that's problematic.
 
@@ -648,7 +645,7 @@ And while this doesn't work for reads. Your writes, which are usually the expens
 
 ### Batching
 
-I know I said it, I didn't want to. It's such a dirty word: `batch endpoints`. For almost two decades, I've been a staunch opponent to Batch. Fundamentally that's because batches are an antipattern in REST APIs (the real kind, not the AWS kind). It breaks resource-oriented design, complicates error handling, and makes caching impossible. But if your users legitimately need to perform N operations, a batch endpoint lets them do it in 1 request instead of N. You've reduced the request volume at the source, not by blocking, but by making the efficient path the easy path.
+I know I said it, I didn't want to. It's such a dirty word: `batch endpoints`. For almost two decades, I've been a staunch opponent to Batch. Fundamentally that's because batches are an anti-pattern in REST APIs (the real kind, not the AWS kind). It breaks resource-oriented design, complicates error handling, and makes caching impossible. But if your users legitimately need to perform N operations, a batch endpoint lets them do it in 1 request instead of N. You've reduced the request volume at the source, not by blocking, but by making the efficient path the easy path.
 
 You might be asking yourself, why was I so against batch operations, and what made me change my mind. The first part is simple, Like most incorrect uses of technology, inexperience engineers optimizing for made-up problems tend to switch to **batch**, just like they switch to **websockets**, **graphQL**, **K8s**. Sure there are their use cases, but most of the time it's led by misunderstanding rather than conscious thought. Batches are often a concept of the business domain or product management or UX decision that creeps into the API design. The acceptance of them is usually because at the same time an engineer says "I don't want to make more than one API call from the UI on any user action".
 
@@ -666,7 +663,7 @@ If your architecture can absorb the traffic through deduplication, batching, or 
 
 ### The hidden cost
 
-The flip side of the whole cost calculation is that the rate limiting infrastructure actually costs money as well. As identified earlier, most rate limiting solutions aren't free, they aren't even cheap. And they scale weirdly. Attackers cost you lots of money and as do users that pay you, but everyone takes a cut along the way. To prevent going over a rate limit of 10 rps, in a world where everyone uses exactly that limit, you are paying for 10 rps per user to DDB as writes with no benefit. That is, no one needs to be rate limited in that world, and yet you are running an expensive infra that provides no value. **ROI = Negative**
+The flip side of the whole cost calculation is that the rate limiting infrastructure actually costs money as well. As identified earlier, most rate limiting solutions aren't free, they aren't even cheap. And they scale weirdly. Attackers cost you lots of money and as do users that pay you, but everyone takes a cut along the way. To prevent going over a rate limit of 10 RPS, in a world where everyone uses exactly that limit, you are paying for 10 RPS per user to DDB as writes with no benefit. That is, no one needs to be rate limited in that world, and yet you are running an expensive infra that provides no value. **ROI = Negative**
 
 That **10 RPS is about $32.40** (30 days * 10 RPS * ~$1.25 per WRU) per user per month. There is no way this works for a solution for businesses for most non-enterprise software, let alone for consumers out there. This also tells you why so many B2B applications require a sales call before letting you onto the product in the first place. If you see `talk to sales` as part of onboarding, you can be sure their technology stack is not built to stand up against users accidentally calling their API too much, let alone to straightforward attacks from threat actors.
 
@@ -859,7 +856,7 @@ If you have a dedicated UI or even if only have API based user interactions, it'
 
 For malicious threat actors, this does not create a viable option. But for everyone else, whose goal isn't to DDoS your service, they have a desire to get value out of your endpoints. Which means it is enough to block all invalid `x-ratelimit-user-id`s in your origin.
 
-Since we have no way of conveying to the WAF which `x-ratelimit-user-id`s are valid in a scalable way (we can of course dynamically update WAF rules with a list of valid ones, which is neither scalable or desireable), we must resort to validating `x-ratelimit-user-id`s outside of the WAF.
+Since we have no way of conveying to the WAF which `x-ratelimit-user-id`s are valid in a scalable way (we can of course dynamically update WAF rules with a list of valid ones, which is neither scalable or desirable), we must resort to validating `x-ratelimit-user-id`s outside of the WAF.
 
 This leads us to the second category.
 
@@ -965,7 +962,7 @@ So maybe not so bad.
 Another problem we have to deal with is the user changing the endpoint in the request after a successful authorizer validation.
 
 
-```sh title="Authorizor endpoint-specific request"
+```sh title="Authorizer endpoint-specific request"
 # Request Malicious Request:
 
 Authorization: Bearer JWT-token-1
@@ -1045,7 +1042,7 @@ async function handler(event) {
 }
 ```
 
-Honestly, I would much prefer to do JWT verification using EdDSA public keys, but the CF function can neither access the internet, nor perform JWT signature validation...yet. Weirdly [it supports CWT signature verification](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cwt-support-cloudfront-functions.html), just not for JWTs. The limited cryptographic functions it has access to can be seen by reviewing [the custom javascript runtime](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/functions-javascript-runtime-20.html#writing-functions-javascript-features-builtin-modules-crypto-20) AWS has created for CF Functions. Maybe CWTs are coming to a SaaS Identity Provider near you, but I wouldn't know anything about that.
+Honestly, I would much prefer to do JWT verification using EdDSA public keys, but the CF function can neither access the internet, nor perform JWT signature validation ... yet. Weirdly [it supports CWT signature verification](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cwt-support-cloudfront-functions.html), just not for JWTs. The limited cryptographic functions it has access to can be seen by reviewing [the custom javascript runtime](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/functions-javascript-runtime-20.html#writing-functions-javascript-features-builtin-modules-crypto-20) AWS has created for CF Functions. Maybe CWTs are coming to a SaaS Identity Provider near you, but I wouldn't know anything about that.
 
 With the CF Function approach, the flow becomes:
 
@@ -1106,7 +1103,6 @@ async function handler(event) {
     const hash = crypto.createHmac('sha256', secret)
         .update(jwt.sub)
         .update(jwt.accountId)
-        .update(request.uri)
         .digest('hex');
 
     if (request.uri === '/ratelimit-user-id') {
@@ -1148,6 +1144,60 @@ The only remaining part is to ask the client to insert the returned header back 
 ```
 
 And honestly, even if you don't only have UI clients, you can embed this logic into all your SDKs, and still provide a lower rate limit for requests that don't include it. That is from a business standpoint, you can offer a low rate limit to make requests, block everything higher, and still allow users a reasonable upgrade path, without needing to change your architecture at all.
+
+However, there is actually a problem with this compared to the other strategy. And that's we can't rate limit differently on different endpoints, easily.
+
+That's because we need a different hash per endpoint, and we don't know which endpoint they are calling when they first call the `GET /ratelimit-user-id`. So depending on use case, this strategy might not work at all without a lot of extra complexity. That saying there are ways around this, and that's actually a simple matter for anyone who understands HMACs, but incredibly challenging for anyone who doesn't.
+
+The TL;DR of HMAC here, is that you can HMAC an HMAC using the hash as the secret key, and verify the HMAC of the HMAC using the same hash re-derived on the CF Function side:
+
+```js title="Secure hash generate per endpoint"
+import cf from 'cloudfront';
+import crypto from 'crypto';
+
+async function handler(event) {
+    const request = event.request;
+
+    if (!request.headers.authorization) {
+        return {
+            statusCode: 401,
+            statusDescription: 'Unauthorized'
+        };
+    }
+
+    const token = request.headers.authorization.value.replace('Bearer ', '');
+    const jwt = JSON.parse(
+        Buffer.from(token.split('.')[1], 'base64url').toString()
+    );
+
+    const keyValueStore = cf.kvs();
+    const secret = await keyValueStore.get('hmac-secret', { format: 'string' });
+    const hash = crypto.createHmac('sha256', secret)
+        .update(jwt.sub)
+        .update(jwt.accountId)
+        .digest('hex');
+
+    if (request.uri === '/ratelimit-user-id') {
+        return {
+            statusCode: 200,
+            statusDescription: 'OK',
+            headers: {
+                'x-ratelimit-user-id': { value: hash }
+            }
+        }
+    }
+
+    const endpointHash = crypto.createHmac('sha256', hash).update(request.uri).digest('hex');
+    if (endpointHash !== request.headers['x-ratelimit-user-id']) {
+        return {
+            statusCode: 429,
+            statusDescription: 'Too Many Requests'
+        };
+    }
+
+    return request;
+}
+```
 
 ### This one weird trick
 
