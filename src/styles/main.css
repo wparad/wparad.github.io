@@ -3,6 +3,10 @@
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 
+  /* Custom breakpoints not in Tailwind defaults */
+  --breakpoint-xs: 35.4375rem;    /* 567px — carousel/small-mobile collapse */
+  --breakpoint-toc-max: 96.75rem; /* 1548px — TOC sidebar upper bound */
+
   --color-bg:        #0f1117;
   --color-surface:   #1a1f2e;
   --color-surface-2: #242938;
@@ -55,7 +59,7 @@
   margin-left: 1rem;
 }
 
-@media (min-width: 768px) {
+@media (min-width: theme(--breakpoint-md)) {
   .prose ul,
   .prose ol {
     margin-left: 1.5rem;

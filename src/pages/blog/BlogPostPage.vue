@@ -211,6 +211,8 @@ useHead(computed(() => {
 </script>
 
 <style scoped>
+@reference "../../styles/main.css";
+
 .no-underline {
   text-decoration: none;
 }
@@ -221,7 +223,7 @@ useHead(computed(() => {
   max-width: 64rem; /* max-w-5xl below xl */
 }
 
-@media (min-width: 1280px) and (max-width: 1548px) {
+@media (min-width: theme(--breakpoint-xl)) and (max-width: theme(--breakpoint-toc-max)) {
   .article-container {
     max-width: 48rem; /* max-w-3xl when ToC is visible and space is tight */
   }
@@ -237,7 +239,7 @@ useHead(computed(() => {
   font-size: 0.875rem;
 }
 
-@media (min-width: 1280px) {
+@media (min-width: theme(--breakpoint-xl)) {
   .blog-toc {
     display: block;
     position: fixed;

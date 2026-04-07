@@ -60,6 +60,8 @@ import JustinAvatar from '../assets/avatar-justin.jpg';
 </script>
 
 <style scoped>
+@reference "../styles/main.css";
+
 .carousel-wrapper {
   width: 550px;
   overflow: hidden;
@@ -71,7 +73,7 @@ import JustinAvatar from '../assets/avatar-justin.jpg';
   height: 25rem;
 }
 
-@media screen and (max-width: 567px) {
+@media (max-width: theme(--breakpoint-xs)) {
   .carousel {
     height: 30rem;
   }
@@ -125,7 +127,7 @@ import JustinAvatar from '../assets/avatar-justin.jpg';
   transform: translateX(110%);
 }
 
-@media screen and (max-width: 567px) {
+@media (max-width: theme(--breakpoint-xs)) {
   .carousel > .testimonial-wrapper {
     align-items: center;
   }
