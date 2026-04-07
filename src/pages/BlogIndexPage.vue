@@ -1,7 +1,12 @@
 <template>
   <main>
     <div class="max-w-3xl mx-auto px-4 py-12">
-      <h1 class="text-3xl font-bold text-text mb-2">Articles</h1>
+      <div class="flex items-center gap-3 mb-2">
+        <h1 class="text-3xl font-bold text-text">Articles</h1>
+        <a href="/rss.xml" title="RSS Feed" class="text-muted hover:text-accent transition-colors">
+          <i class="fa-solid fa-rss" />
+        </a>
+      </div>
       <p class="text-muted mb-10">Thoughts on engineering, security, reliability, and technical leadership.</p>
 
       <!-- Tag filters -->
