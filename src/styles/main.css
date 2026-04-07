@@ -50,6 +50,7 @@
   main {
     font-size: 1.25rem;
   }
+
 }
 
 /* Prose list overrides — must be unlayered to beat Tailwind preflight */

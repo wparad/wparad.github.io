@@ -273,38 +273,29 @@ And so, usage plans do support per-method throttle overrides. You can set differ
 
 But the problem in practice is that every user on the same plan gets the same per-method limits. If you want user A to have different endpoint limits than user B, you need different plans. It's likely that the combinatorial explosion of users × endpoint tiers makes this unworkable for anything beyond a handful of static tiers. And each of your plans will end up looking like:
 
-```js title="Usage Plan configuration"
-{
-    Type: 'AWS::ApiGateway::UsagePlan',
-    Properties: {
-        UsagePlanName: 'TIER1',
-        Throttle: {
-            BurstLimit: 100,
-            RateLimit: 20
-        },
-        ApiStages: [{
-            ApiId: { Ref: 'ApiGateway' },
-            Stage: 'production',
-            Throttle: {
-                '/v1/records/GET': {
-                    BurstLimit: 1,
-                    RateLimit: 1
-                },
-                '/v1/accounts/POST': {
-                    BurstLimit: 1,
-                    RateLimit: 0.000001
-                }
-            }
-        }],
-        Quota: {
-            // Since quotas only reset once a full day,
-            //   it's going to be pain everywhere when a customer hits it.
-            // Instead we'll just pick something really really high.
-            Limit: 70000000,
-            Period: 'DAY'
-        }
-    }
-},
+```yaml title="Usage Plan configuration"
+Type: AWS::ApiGateway::UsagePlan
+Properties:
+  UsagePlanName: TIER1
+  Throttle:
+    BurstLimit: 100
+    RateLimit: 20
+  ApiStages:
+    - ApiId: !Ref ApiGateway
+      Stage: production
+      Throttle:
+        /v1/records/GET:
+          BurstLimit: 1
+          RateLimit: 1
+        /v1/accounts/POST:
+          BurstLimit: 1
+          RateLimit: 0.000001
+  Quota:
+    # Since quotas only reset once a full day,
+    #   it's going to be pain everywhere when a customer hits it.
+    # Instead we'll just pick something really really high.
+    Limit: 70000000
+    Period: DAY
 ```
 
 What you actually want instead is per-user-per-endpoint granularity, which of course would require one plan per user per endpoint configuration. And to be able to dynamically update this based on their pricing plan and expected usage. That's not rate limiting, that's a whole plan management system.
@@ -515,36 +506,22 @@ So let's try it out.
 
 Here's a starting example that helps make it clear how rules work. Let's rate limit by user IP address:
 
-```js title="IP Address Based Rate Limiting"
-{
-  Name: "PerIPPerEndpointRateLimit",
-  Priority: 1,
-  Statement: {
-    RateBasedStatement: {
-      Limit: 600,
-      EvaluationWindowSec: 60,
-      AggregateKeyType: "CUSTOM_KEYS",
-      CustomKeys: [
-        {
-          IP: {}
-        },
-        {
-          UriPath: {
-            TextTransformations: [
-              {
-                Priority: 0,
-                Type: "NONE"
-              }
-            ]
-          }
-        }
-      ]
-    }
-  },
-  Action: {
-    Block: {}
-  }
-}
+```yaml title="IP Address Based Rate Limiting"
+Name: PerIPPerEndpointRateLimit
+Priority: 1
+Action:
+  Block: {}
+Statement:
+  RateBasedStatement:
+    Limit: 600
+    EvaluationWindowSec: 60
+    AggregateKeyType: CUSTOM_KEYS
+    CustomKeys:
+      - IP: {}
+      - UriPath:
+          TextTransformations:
+            - Priority: 0
+              Type: NONE
 ```
 
 So this is nice and likely handles almost all of the scenarios you might run into. It allows for 600 requests over 60 seconds. Which means burst handling is also included.
@@ -563,44 +540,26 @@ For this last one, maybe that's all a feature and not a bug. But if you are like
 
 For users, you probably want to at least switch over to the JWT that is being sent. And we can do that by making this change:
 
-```js title="WAF Authorization Rate Limiting"
-{
-  Name: "PerUserPerEndpointRateLimit",
-  Priority: 1,
-  Statement: {
-    RateBasedStatement: {
-      Limit: 600,
-      EvaluationWindowSec: 60,
-      AggregateKeyType: "CUSTOM_KEYS",
-      CustomKeys: [
-        {
-          Header: {
-            Name: "Authorization",
-            TextTransformations: [
-              {
-                Priority: 0,
-                Type: "NONE"
-              }
-            ]
-          }
-        },
-        {
-          UriPath: {
-            TextTransformations: [
-              {
-                Priority: 0,
-                Type: "NONE"
-              }
-            ]
-          }
-        }
-      ]
-    }
-  },
-  Action: {
-    Block: {}
-  }
-}
+```yaml title="WAF Authorization Rate Limiting"
+Name: PerUserPerEndpointRateLimit
+Priority: 1
+Action:
+  Block: {}
+Statement:
+  RateBasedStatement:
+    Limit: 600
+    EvaluationWindowSec: 60
+    AggregateKeyType: CUSTOM_KEYS
+    CustomKeys:
+      - Header:
+          Name: Authorization
+          TextTransformations:
+            - Priority: 0
+              Type: NONE
+      - UriPath:
+          TextTransformations:
+            - Priority: 0
+              Type: NONE
 ```
 
 And that's great, and works for the most part. If you are happy with it, then I'm happy for you.
@@ -629,15 +588,15 @@ Does it cost hundreds, thousands, or millions of euros, francs, dollars? Underst
 
 If your concern is "users hammer an endpoint and cause expensive work", what if the work is all async?
 
-That is, what if it were possible to move all the expensive operations behind a queue. A common failure mode inexperienced engineers make is asking for APIGW allowed processing time and Lambda to be increased beyond the 30 seconds, and 15 minutes respective maximums. (And yes, I know each of these can go higher if you ask very politely, but that's not really the point.) Having the capability to do something that is costly, because it is cheap to implement is the crux of the most common human pit of failure.
+That is, what if it were possible to move all the expensive operations behind a queue. A common failure mode inexperienced engineers make is asking for APIGW allowed processing time and Lambda to be increased beyond the 30 seconds, and 15 minutes respective maximums. Having the capability to do something that is costly, because _it is cheap to implement_ is the crux of the most common human pit of failure.
 
-When you must do the right thing, even when it is hard, then you are for sure more likely to do it, than when the wrong thing is easy.
+Easy things are more likely to be done, even when they are wrong. The right thing is never done when it is harder.
 
-[SQS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html), [EventBridge](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html), [Step Functions](https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html), all support strategies to handle async processing of incoming requests.
+And [SQS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html), [EventBridge](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html), [Step Functions](https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html), all support strategies to handle async processing of incoming requests. This makes doing the right thing easy.
 
-You can't just throw the incoming requests into these async background queues and hope everything works out. But even taking the first step of doing so will take an incredible load off of your critical path compute. Imagine, having non-critical infrastructure being overwhelmed instead of your critical path compute?
+But, you can't just throw the incoming requests into these async background queues and hope everything works out. However, even taking the first step of doing so will take an incredible load off of your critical path compute. Imagine, having non-critical infrastructure being overwhelmed instead of your critical production endpoints?
 
-Further, with even a little bit of thinking you might realize that fundamentally async infrastructure components by design all support deduplication. This means the same user submitting the same thing 100 times results in 1 processed item. [SQS content-based deduplication](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagededuplicationid-property.html) or a simple idempotency key in DynamoDB, EventBridge, or Step Functions, and suddenly you don't care how many times they call the endpoint, because duplicate work is never performed more than once.
+Further, with even a little bit of thinking you might realize that, fundamentally async infrastructure components by design all support deduplication. This means — the same user submitting the same thing 100 times results in only 1 processed item. [SQS content-based deduplication](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagededuplicationid-property.html) or a simple idempotency key in DynamoDB, EventBridge, or Step Functions, and suddenly you don't care how many times they call the endpoint, because the duplicate work is never performed more than once.
 
 This fundamental strategy works out of the box in 99% of cases. And in the few it doesn't, read up on [Idempotency](https://en.wikipedia.org/wiki/Idempotence). The processing is never duplicated, and even when it does, there is no harm to your system. This converts expensive malicious or negligent writes back to simple and inexpensive.
 
@@ -645,15 +604,15 @@ And while this doesn't work for reads. Your writes, which are usually the expens
 
 ### Batching
 
-I know I said it, I didn't want to. It's such a dirty word: `batch endpoints`. For almost two decades, I've been a staunch opponent to Batch. Fundamentally that's because batches are an anti-pattern in REST APIs (the real kind, not the AWS kind). It breaks resource-oriented design, complicates error handling, and makes caching impossible. But if your users legitimately need to perform N operations, a batch endpoint lets them do it in 1 request instead of N. You've reduced the request volume at the source, not by blocking, but by making the efficient path the easy path.
+I know I said it, I didn't want to. It's such a dirty word: `batch endpoints`. For almost two decades, I've been a staunch opponent to Batch. Fundamentally, that's because batches are an anti-pattern in REST APIs (the real kind, not the APIGW kind). It breaks resource-oriented design, complicates error handling, and makes caching impossible. But if your users legitimately need to perform N operations, a batch endpoint lets them do it in 1 request instead of N. You've reduced the request volume at the source, not by blocking, but by making the efficient path the easy path.
 
-You might be asking yourself, why was I so against batch operations, and what made me change my mind. The first part is simple, Like most incorrect uses of technology, inexperience engineers optimizing for made-up problems tend to switch to **batch**, just like they switch to **websockets**, **graphQL**, **K8s**. Sure there are their use cases, but most of the time it's led by misunderstanding rather than conscious thought. Batches are often a concept of the business domain or product management or UX decision that creeps into the API design. The acceptance of them is usually because at the same time an engineer says "I don't want to make more than one API call from the UI on any user action".
+You might be asking yourself, why was I so against batch operations, and what made me change my mind. The first part is simple; like most incorrect uses of technology, inexperience engineers optimizing for made-up problems tend to switch to **batch**, just like they switch to **websockets**, **graphQL**, **K8s**. Sure there are reasonable use cases, but most of the time it's led by misunderstanding rather than conscious thought. Batches are often a concept of the business domain, product management, or UX decision that creeps into the API design. The acceptance of them is usually because at the same time an engineer says "I don't want to make more than one API call from the UI on any user action".
 
 But as soon as you let go of the notion of *a UI can only make one request at time*, you realize that a batch endpoint need not be necessary. GraphQL is so bad, that they even admit themselves how useless of a technology it is for most of the web in their [April 1st post](https://graphql.org/blog/2026-04-01-a-new-era-for-graphql-observability/).
 
 Discard your principles and stick to actual real business problems, not the imagined ones of 10 years from now.
 
-The second part, about what make me change my mind, is that there is a great way to handle batches in a RESTful API, you create resource called `batches` and let uses `POST /batches` or `POST /batch-processing`, which takes all the necessary inputs, you can validate in there. You let the notion of a batch be a resource itself. Once you do that the semantics in APIs work out of the box again. The only wrong thing to do is to create an endpoint called `/orders:batch` which takes a batch of orders. There's a reason why in REST the route should be a plural noun, and `/orders:batch` isn't it. And if you aren't sure why that is, please read [Building Microservices by Sam Newman](https://amzn.to/4cayHx3).
+The second part, about why I changed my mind, is that there is a great way to handle batches in a RESTful API compliant way. You create resource called `batches` and let users `POST /batches` or `POST /batch-processing`, which takes all the necessary inputs, and you can validate it there. You let the notion of a batch be a resource itself. Once you do that, the semantics in APIs work out of the box again. The only wrong thing to do is to create an endpoint called `/orders:batch` which takes a batch of orders. There's a reason why in REST the route should be a plural noun, and `/orders:batch` isn't it. And if you aren't sure why that is, please read [Building Microservices by Sam Newman](https://amzn.to/4cayHx3).
 
 And with this simple shift in mindset and perspective, the rate limit conversation changes from "how do I block 1,000 requests/min" to "how do I handle 1 batch request/min containing 1000 items, how do we add throttling in our architecture, and how do we manage errors in a user transparent way?"
 
@@ -663,17 +622,19 @@ If your architecture can absorb the traffic through deduplication, batching, or 
 
 ### The hidden cost
 
-The flip side of the whole cost calculation is that the rate limiting infrastructure actually costs money as well. As identified earlier, most rate limiting solutions aren't free, they aren't even cheap. And they scale weirdly. Attackers cost you lots of money and as do users that pay you, but everyone takes a cut along the way. To prevent going over a rate limit of 10 RPS, in a world where everyone uses exactly that limit, you are paying for 10 RPS per user to DDB as writes with no benefit. That is, no one needs to be rate limited in that world, and yet you are running an expensive infra that provides no value. **ROI = Negative**
+The flip side of the whole cost calculation is that the rate-limiting infrastructure actually costs money as well. As identified earlier, most rate limiting solutions aren't free, they aren't even cheap. And they scale weirdly. Attackers cost you lots of money and as do users that pay you, but everyone takes a cut along the way. To prevent going over a rate limit of 10 RPS, in a world where everyone uses exactly that limit, you are paying for 10 RPS per user to DDB as writes with no benefit. That is, no one needs to be rate limited in that world, and yet you are running an expensive infra that provides no value. **ROI = Negative**.
 
-That **10 RPS is about $32.40** (30 days * 10 RPS * ~$1.25 per WRU) per user per month. There is no way this works for a solution for businesses for most non-enterprise software, let alone for consumers out there. This also tells you why so many B2B applications require a sales call before letting you onto the product in the first place. If you see `talk to sales` as part of onboarding, you can be sure their technology stack is not built to stand up against users accidentally calling their API too much, let alone to straightforward attacks from threat actors.
+That **10 RPS is about $32.40** per user per month (30 days * 10 RPS * ~$1.25 per WRU, that's DynamoDB `Write Request Units`). There is no way this works as a solution for businesses for mostly non-enterprise software customers, let alone for private consumers out there. This also tells you why so many B2B applications require a sales call before letting you onto the product in the first place. If you see `talk to sales` as part of onboarding, you can be sure their technology stack is not built to stand up against users accidentally calling their API too much, let alone attacks from threat actors.
 
 *(I do have to admit, that number is a bit conservative and it could be less depending on if you are using provisioned or reserved capacity, but I don't think it is a real strategy to make business decisions based on optimizing for calculations like this. Case and point, you don't actually know what the usage is going to be in the end, so you can't go out and pre-provision your Rate-Limiting infrastructure, you have to pay for it on-demand in the first place.)*
 
-In any case, as I mentioned before, what needs to be evaluated is the cost of letting attackers call your endpoints or users abusing your service resources as compared to the cost to maintain a solution. Sure you might only be charging **$5 / month** for your service, but if the rate-limiting solution is going to cost $32.40 per user per month. It isn't even an option not to consider what your actual cost is. If it costs $0.10 / user / month at the 10 RPS. You can afford a 300x fold increased attack surface before even getting to the point of implementing rate limiting. And that's assuming every single user is malicious.
+In any case, as I mentioned before, what needs to be evaluated is the cost of letting attackers call your endpoints or users abusing your service resources as compared to the cost to maintain a solution. Sure you might only be charging **$5 / month** for your service, but if the rate-limiting solution is going to cost $32.40 per user per month, it isn't even an option not to consider what your actual cost is. If it costs $0.10 / user / month at the 10 RPS. You can afford a 300x fold increased attack surface before even getting to the point of implementing rate limiting. And that's assuming every single user is malicious.
 
-If you have 1000 users, each paying $5 / month. That's **$5k / month**. As a baseline, your cost is only **$100 / month**. Your monthly net profit is **$4.9k** per month.
+Let's break it down.
 
-At the cost of **$0.10 / month** for **10 RPS**, to eat your entire profit, that would require **490,000 RPS** of malicious requests. No way that is going to happen at this scale. If you set a global rate limit of 100 RPS per user, you won't even need to think about this problem ever again. No API Keys, no magic infrastructure, just ignore the problem.
+If you have 1000 users, each paying $5 / month. That's **$5k / month** in revenue. As a baseline, your cost is only **$100 / month**. Your monthly net profit is **$4.9k** per month.
+
+At your infrastructure cost of **$0.10 / month** for **10 RPS**, to eat your entire profit, that would require **490,000 RPS** of malicious requests. No way that is going to happen at this scale. If you set a global rate limit of 100 RPS per user, you won't even need to think about this problem ever again. No API Keys, no magic infrastructure, just ignore the problem.
 
 ### The business solution
 
@@ -684,13 +645,13 @@ So, you want to convince users to pay more money, as money solves everything. If
 At the end of the day, you want users to pay more, rather than pay less and rate limit. Rate limiting isn't a smart business strategy, it's a terrible one. But it is a technical means to an end that might make users purchase a premium plan. Do you even need to rate limit, or do you need to just tell your users that you will rate limit them?
 
 The real solution usually instead looks like:
-1. Throw a CDN, such as CloudFront on top of your API
-1. Use CDN logging to track how many requests, data, usage customers are using
+1. Throw a CDN, such as CloudFront, on top of your API
+1. Use CDN logging to track how many requests, data, and usage customers are using
 1. Convert that into trackable metrics
-1. Send emails to users that are reaching or have reached the next premium plan
+1. Send emails to users that are reaching or have reached the next premium plan usage volume
 1. Pray that they upgrade
 1. And if they don't upgrade you can rate limit them after the fact, or terminate their free account, I don't know, you do you.
-1. Or because rate limiting is expensive (see the previous section), just allow them to use your service below cost and hope that causes them to tell all their friends about it, or bring it to their companies, who will then pay you a lot.
+1. Or because rate limiting is expensive (see the previous section), just allow them to use your service below cost and hope that causes them to tell all their friends about it, or bring it to their companies, who will then pay you for it. And pay a lot.
 
 When you think like the business, you focus on real problems, rather than just the technical ones which might not be the right one to even focus on in the first place.
 
@@ -700,51 +661,32 @@ So we need the WAF to aggregate on the user ID.
 
 Can we parse it out of the Authorization Header? The header already contains a JWT, and JWTs contain user IDs. As a refresher the current rule looks like this:
 
-```js title="WAF Authorization Rate Limiting"
-{
-  Name: "PerUserPerEndpointRateLimit",
-  Priority: 1,
-  Statement: {
-    RateBasedStatement: {
-      Limit: 600,
-      EvaluationWindowSec: 60,
-      AggregateKeyType: "CUSTOM_KEYS",
-      CustomKeys: [
-        {
-          Header: {
-            Name: "Authorization",
-            TextTransformations: [
-              {
-                Priority: 0,
-                Type: "NONE"
-              }
-            ]
-          }
-        },
-        {
-          UriPath: {
-            TextTransformations: [
-              {
-                Priority: 0,
-                Type: "NONE"
-              }
-            ]
-          }
-        }
-      ]
-    }
-  },
-  Action: {
-    Block: {}
-  }
-}
+```yaml title="WAF Authorization Rate Limiting"
+Name: PerUserPerEndpointRateLimit
+Priority: 1
+Action:
+  Block: {}
+Statement:
+  RateBasedStatement:
+    Limit: 600
+    EvaluationWindowSec: 60
+    AggregateKeyType: CUSTOM_KEYS
+    CustomKeys:
+      - Header:
+          Name: Authorization
+          TextTransformations:
+            - Priority: 0
+              Type: NONE
+      - UriPath:
+          TextTransformations:
+            - Priority: 0
+              Type: NONE
 ```
 
 And that `TextTransformations` object looks pretty appealing. Remember, JWTs are there base64url encoded strings joined together using the separator: `.`
 
 ```bash title="Example JWT"
-eyJhbGciOiJFZERTQSIsImtpZCI6InB2ZTQ3OGlHU3g4VzJnc3p6UVlta1QiLCJ0eXAiOiJhdCtqd3QifQ.
-eyJpc3MiOiJodHRwczovL2xvZ2luLmF1dGhyZXNzLmlvIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCIsInN1YiI6InV
+eyJhbGciOiJFZERTQSIsImtpZCI6InB2ZTQ3OGlHU3g4VzJnc3p6UVlta1QiLCJ0eXAiOiJhdCtqd3QifQ.eyJpc3MiOiJodHRwczovL2xvZ2luLmF1dGhyZXNzLmlvIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCIsInN1YiI6InV
 zZXJfaWQiLCJpYXQiOjE2ODUwMjEzOTAsImV4cCI6MTY4NTEwNzc5MCwiYXVkIjpbImh0dHBzOi8vYXBpLmF1dGhyZXNzLmlvIl19.
 ciKCNA8PzPfKGGEiGVbbOumGu64Ft55Sh0lOl8IBl9KEuYUaSCw
 ```
@@ -778,19 +720,15 @@ UTF8_TO_UNICODE
 We can get really close with `BASE64_DECODE_EXT`, to handle base64url, and you might think we can plug the JWT into that `BASE64_DECODE_EXT(AuthorizationHeader)`, except for two things, we actually need those *invalid base64* characters because they are valid base64url, just not valid base64. And second if you try to decode the above JWT without first splitting it by the separator, you'll end up with this:
 
 ```json title="Unfortunate Decoding"
-{"alg":"EdDSA","kid":"pve478iGSx8W2gszzQYmkT",
-"typ":"at+jwt"}\x07�&�72#�&�GG\x073�����v���\x17WF�&W72��"�'66�\x06R#�&�
-\x06V�B\x07\x07&�f��R\x06V�\x16��"�'7V"#�'
+{"alg":"EdDSA","kid":"pve478iGSx8W2gszzQYmkT","typ":"at+jwt"}\x07�&�72#�&�GG\x073�����v���\x17WF�&W72��"�'66�\x06R#�&�\x06V�B\x07\x07&�f��R\x06V�\x16��"�'7V"#�'
 ```
 
-Everything up until the separator works, for the most part. But everything after that, the part that includes the user ID (`sub`), is garbage now.
+Everything up until the separator works, for the most part. But everything after that, the part that includes the user ID (`sub`), turns into garbage.
 
 And even if we could get that out, we'd be left with a string like:
 
 ```json
-`{"iss":"https://login.authress.io","scope":"openid profile email",
-"sub":"user_id","iat":1685021390,"exp":1685107790,
-"aud":["https://api.authress.io"]}`
+`{"iss":"https://login.authress.io","scope":"openid profile email","sub":"user_id","iat":1685021390,"exp":1685107790,"aud":["https://api.authress.io"]}`
 ```
 
 There'd have to be some other way to find a matcher inside of a string.
@@ -800,7 +738,7 @@ To recap, we are missing the following functions:
 * BASE64 Decode for URLs — not just plain base64 decode
 * `Find in string()` OR `string to JSON()` OR `property of JSON string()`
 
-For which we have none of those.
+For which, we have none of those.
 
 ### Starting from scratch
 
@@ -810,41 +748,29 @@ Any chance you can convince all your users, unauthenticated users, and malicious
 
 Well I suppose not, so we'll need to do that for them. The AWS WAF supports rules that looks at a custom header, so you can [aggregate on a custom header](https://docs.aws.amazon.com/waf/latest/developerguide/waf-rule-statement-type-rate-based-high-level-settings.html). We can call it `x-ratelimit-user-id`, and at the very least we can take the first step of updating our WAF rule to depend on this new option.
 
-```js title="WAF rule aggregating on x-ratelimit-user-id"
-{
-  Name: "PerUserRateLimit",
-  Priority: 1,
-  Statement: {
-    RateBasedStatement: {
-      Limit: 600,
-      EvaluationWindowSec: 60,
-      AggregateKeyType: "CUSTOM_KEYS",
-      CustomKeys: [
-        {
-          Header: {
-            Name: "x-ratelimit-user-id",
-            TextTransformations: [
-              {
-                Priority: 0,
-                Type: "NONE"
-              }
-            ]
-          }
-        }
-      ]
-    }
-  },
-  Action: {
-    Block: {}
-  }
-}
+```yaml title="WAF rule aggregating on x-ratelimit-user-id"
+Name: PerUserRateLimit
+Priority: 1
+Action:
+  Block: {}
+Statement:
+  RateBasedStatement:
+    Limit: 600
+    EvaluationWindowSec: 60
+    AggregateKeyType: CUSTOM_KEYS
+    CustomKeys:
+      - Header:
+          Name: x-ratelimit-user-id
+          TextTransformations:
+            - Priority: 0
+              Type: NONE
 ```
 
 So now there are two goals, figure out how to calculate the `x-ratelimit-user-id`, and second, how to get it into every request.
 
-No matter how you have your architecture set up nor what sort of product or service you are offering it is going to fall into two categories for handling this.
+No matter how you have your architecture set up nor what sort of product or service you are offering, it is going to fall into two categories:
 
-**Category 1: Unauthenticated Users**
+#### Category 1: Unauthenticated Users
 
 Since WAFs in AWS always execute *before* your origin compute is run, there must be some endpoint exposed that allows returning valid `x-ratelimit-user-id`s while at the same time not blocking requests for lack of them.
 
@@ -860,9 +786,9 @@ Since we have no way of conveying to the WAF which `x-ratelimit-user-id`s are va
 
 This leads us to the second category.
 
-**Category 2: Authenticated Users**
+#### Category 2: Authenticated Users
 
-We need a way to validate the incoming `x-ratelimit-user-id`s to ensure that users aren't just stuffing random values into the headers and hoping it works. Even if these aren't real threat actors, users who want to use your service will abuse any mechanism which grants them value. Additionally, we know that we can't just utilize the token or some token value, as they would just generate new tokens. Users figuring out that "logging out and then back in"will enable them to continue to use your service, will continue to use your service.
+We need a way to validate the incoming `x-ratelimit-user-id`s to ensure that users aren't just stuffing random values into the headers and hoping it works. Even if these aren't real threat actors, users who want to use your service will abuse any mechanism which grants them value. Additionally, we know that we can't just utilize the token or some token value, as they would just generate new tokens. Users figuring out that "logging out and then back in" enables them to continue to use your service, will log out and log back in to continue to use your service.
 
 Let's assume for the moment it would be sufficient to stuff the user ID (`sub`) from the JWT into the `x-ratelimit-user-id` token, and then validate that the user ID from the JWT matches the header in your APIGW Authorizer. We could do that.
 
@@ -891,15 +817,15 @@ Mostly.
 
 Three problems:
 
-**Problem 1** — We don't have the capacity to rate limit individual endpoints for the users. All endpoints are using the same rate limit. `GET`s are likely going to prevent `POST`s, not great.
+**Problem 1** — With the user ID in the `x-ratelimit-user-id` we get to avoid telling the user which value to stick in there, but we are going to see that with solutions to Problems 2 and 3, we'll have to add this endpoint back in.
 
-**Problem 2** — With the user ID in the `x-ratelimit-user-id` we get to avoid telling the user which value to stick in there, but we are going to see that with solutions to Problems 1 and 3, we'll have to add this endpoint back in.
+**Problem 2** — We don't have the capacity to rate limit individual endpoints for the users. All endpoints are using the same rate limit. `GET`s are likely going to prevent `POST`s, not great.
 
-**Problem 3** — Since `x-ratelimit-user-id` are predictable, malicious attackers can grief your users by taking leaked user IDs, which are probably not sensitive according to you and your platform, and injecting them into their requests. Said differently, if an attacker gains knowledge of a list of your platform's user IDs, they can cause a DoS for all your users, simply by calling your endpoints, and passing in the `x-ratelimit-user-id` value.
+**Problem 3** — Since `x-ratelimit-user-id` are predictable, malicious attackers can grief your users by taking leaked user IDs, which are probably not sensitive according to you and your platform, and injecting them into their requests. Said differently, if an attacker gains knowledge of a list of your platform's user IDs, they can cause a DoS for all your users, simply by calling your endpoints, and passing in the `x-ratelimit-user-id` value. And remember, they can do this because the authorizer runs after the rate limiter.
 
 Letting malicious users deprive paying users of using your solution is not a great look. And especially not, when we actually could be doing something about it.
 
-As soon as we are in the land of customized header values that need to be kept a secret, that means generating them on the backend origin side, and we are back to an endpoint that has `GET /ratelimit-user-id`.
+As soon as we are in the land of customized header values that need to be kept a secret, that means generating them on the backend origin side, and thus we are back to an endpoint that is essentially: `GET /ratelimit-user-id`.
 
 But now we are in a good place because we can securely generate a value in a way that can't be abused by attackers, is usable by all users, provides the benefits we need, and also supports whatever complexity you want, such as rate limiting per endpoint. A common strategy is to use the HMAC hashing method.
 
@@ -916,7 +842,7 @@ const hash = createHmac('sha256', privateSecureKey)
 
 Since your secure key is private to you and your authorizer, no one can fake `x-ratelimit-user-id`s and you can be sure your WAF is working correctly. One other accidental benefit here is that you can even include additional prefixes in this hash to help your WAF rules scope-down to using the right rule. If the wrong rule is selected because someone messes with the hash, then your authorizer will throw an error.
 
-Downside: authorizer needs both values as keys.
+Downside: authorizer needs both values as identity cache keys, as we have to rerun the authorizer every time one of the critical values used for authorization is different.
 
 At this point we've solved a number of problems that have been stacking up.
 
@@ -950,7 +876,7 @@ You need to make sure that the authorizer knows to recalculate the hash for the 
 
 Authorization: Bearer JWT-token-1
 Endpoint: GET /orders
-x-ratelimit-user-id: HASH-2
+x-ratelimit-user-id: MANUALLY-CRAFTED-HASH
 ```
 
 Since the authorizer was cached it will ignore all future requests until the cache expires. You need to change your authorizer identity key to include the new header as part of the request as well. For exactly how and why to do this, I've gone into quite the detail in this [API Gateway Security Review](https://authress.io/knowledge-base/articles/2025/05/25/api-gateway-authorizers-vulnerable-by-design).

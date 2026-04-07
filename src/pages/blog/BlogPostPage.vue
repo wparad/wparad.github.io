@@ -294,6 +294,10 @@ useHead(computed(() => {
 
 .prose :deep(a) {
   color: var(--color-accent);
+  text-decoration: none;
+}
+
+.prose :deep(a:hover) {
   text-decoration: underline;
   text-underline-offset: 2px;
 }
@@ -312,8 +316,9 @@ useHead(computed(() => {
   border: 1px solid var(--color-border);
   border-radius: 8px;
   padding: 1.25rem;
-  overflow-x: auto;
   margin-bottom: 1.25rem;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
 }
 
 .prose :deep(pre code) {
@@ -428,10 +433,11 @@ useHead(computed(() => {
   border: 1px solid var(--color-border);
   border-radius: 8px;
   padding: 1.25rem;
-  overflow-x: auto;
   margin-bottom: 1.25rem;
   font-size: 0.875rem;
   font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, monospace;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
 }
 
 .prose :deep(.shiki code) {

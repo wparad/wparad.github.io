@@ -5,7 +5,6 @@ import vue from '@vitejs/plugin-vue';
 import Markdown from 'unplugin-vue-markdown/vite';
 import anchor from 'markdown-it-anchor';
 import container from 'markdown-it-container';
-import shiki from 'markdown-it-shiki';
 
 // Wraps the fence renderer to prepend a title bar when `title="..."` is present in the info string
 function codeTitlePlugin(md) {
@@ -64,8 +63,14 @@ export default defineConfig({
   },
   plugins: [
     Markdown({
-      markdownItSetup(md) {
-        md.use(shiki, { theme: 'github-dark' });
+      async markdownItSetup(md) {
+        const { createHighlighter } = await import('shiki');
+        const { fromHighlighter } = await import('@shikijs/markdown-it');
+        const highlighter = await createHighlighter({
+          themes: ['github-dark'],
+          langs: ['javascript', 'typescript', 'json', 'jsonc', 'bash', 'shell', 'yaml', 'html', 'css', 'markdown', 'python'],
+        });
+        md.use(fromHighlighter(highlighter, { theme: 'github-dark' }));
         md.use(anchor, {
           slugify: s => s.toLowerCase().replace(/[^\w\s-]/g, '').trim().replace(/\s+/g, '-'),
           permalink: anchor.permalink.linkInsideHeader({
@@ -94,6 +99,9 @@ export default defineConfig({
     sitemapPlugin(),
   ],
   base: '/',
+  ssr: {
+    noExternal: ['shiki', '@shikijs/markdown-it'],
+  },
   build: {
     outDir: 'dist',
   },

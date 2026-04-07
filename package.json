@@ -35,6 +35,7 @@
   },
   "devDependencies": {
     "@authress/eslint-config": "*",
+    "@shikijs/markdown-it": "^4.0.2",
     "@tailwindcss/postcss": "^4.0.0",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vue/compiler-sfc": "^3.3.4",
@@ -49,7 +50,6 @@
     "js-yaml": "^4.1.1",
     "markdown-it-anchor": "^9.2.0",
     "markdown-it-container": "^4.0.0",
-    "markdown-it-shiki": "^0.9.0",
     "shiki": "^4.0.2",
     "tailwindcss": "^4.0.0",
     "typescript": "^6.0.2",
