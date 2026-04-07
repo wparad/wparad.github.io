@@ -618,7 +618,7 @@ And even for legitimate users, the counting is just wrong. A user makes 100 requ
 
 **Can we actually get to user ID based rate limiting using a WAF?**
 
-And before I answer that question, I want to revisit the premise of this whole article. (Of course if you are impatient feel free to skip this next section and scroll directly to [Configuring the WAF for User IDs](#waf-before-cloudfront)).
+And before I answer that question, I want to revisit the premise of this whole article. (Of course if you are impatient feel free to skip this next section and scroll directly to [Configuring the WAF for User IDs](#waf-before)).
 
 ## Alternative 1: Is rate limiting required?
 
@@ -1006,7 +1006,7 @@ The good thing with functions is that they aren't Lambda functions, they are pri
 
 There are two solution paths here. WAF before CloudFront, WAF after CloudFront.
 
-### WAF after CloudFront
+### WAF after
 
 WAF after CloudFront is easier to reason about, but harder to deal with. It requires attaching the WAF to a piece of infrastructure that accepts a WAF. That means you significantly limit your potential architecture solutions based on this decision, and it might not actually get you anything. The good part about it however is that you can spin up your CloudFront, attach a CloudFront Function, and use that to generate the `x-ratelimit-user-id` based on the incoming request. The client never needs to know about it.
 
@@ -1067,7 +1067,7 @@ So there are real, very tangible benefits.
 
 It's worth calling out that [CF Functions have compute limits](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cloudfront-functions-event-structure.html) — the execution ceiling is tight. HMAC validation at the edge is feasible but constrained, and if your function exceeds the limit, CloudFront drops the request entirely.
 
-### WAF before CloudFront
+### WAF before
 
 If there is a way to put the WAF before CloudFront, we will have solved every problem in the book. When I say before I mean executes before the CloudFront Function executes. It would grant us the ability to rate limit with any origin configuration, not just ones that accept a WAF, and it would allow us to do it without the user needing to understand how rate limiting works.
 

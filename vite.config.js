@@ -6,7 +6,6 @@ import Markdown from 'unplugin-vue-markdown/vite';
 import anchor from 'markdown-it-anchor';
 import container from 'markdown-it-container';
 import shiki from 'markdown-it-shiki';
-import NodeGlobalsPolyfillPlugin from '@esbuild-plugins/node-globals-polyfill';
 
 // Wraps the fence renderer to prepend a title bar when `title="..."` is present in the info string
 function codeTitlePlugin(md) {
@@ -96,18 +95,7 @@ export default defineConfig({
   build: {
     outDir: 'dist',
   },
-  optimizeDeps: {
-    esbuildOptions: {
-      define: {
-        global: 'globalThis'
-      },
-      plugins: [
-        NodeGlobalsPolyfillPlugin({ buffer: true })
-      ]
-    }
-  },
   define: {
-    global: 'globalThis',
     VERSION_INFO: JSON.stringify({
       releaseDate: new Date().toISOString(),
       buildNumber: process.env.CI_PIPELINE_ID,

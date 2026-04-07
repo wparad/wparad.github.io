@@ -35,7 +35,6 @@
   },
   "devDependencies": {
     "@authress/eslint-config": "*",
-    "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
     "@tailwindcss/postcss": "^4.0.0",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vue/compiler-sfc": "^3.3.4",
@@ -47,7 +46,6 @@
     "eslint-plugin-vue": "^7.17.0",
     "fs-extra": "^8.1.0",
     "glob": "^7.1.6",
-    "gray-matter": "^4.0.3",
     "js-yaml": "^4.1.1",
     "markdown-it-anchor": "^9.2.0",
     "markdown-it-container": "^4.0.0",
