@@ -306,11 +306,11 @@
           <div>
             <ul class="space-y-3">
               <li class="flex items-baseline gap-3">
-                <span class="text-3xl font-bold text-text">{{ pricingSymbol }}8k</span>
+                <span class="text-3xl font-bold text-text">{{ pricingSymbol }}14k</span>
                 <span class="text-muted text-sm">/ month — guarantees ~4 hours / week</span>
               </li>
               <li class="flex items-baseline gap-3">
-                <span class="text-xl font-semibold text-text">{{ pricingSymbol }}380</span>
+                <span class="text-xl font-semibold text-text">{{ pricingSymbol }}420</span>
                 <span class="text-muted text-sm">/ hour — standard rate</span>
               </li>
             </ul>
