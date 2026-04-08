@@ -1,7 +1,7 @@
 <template>
   <div class="bg-bg text-text flex flex-col" style="height: 100dvh; overflow: hidden">
     <AppNav />
-    <div class="flex-1 min-w-0 overflow-y-auto">
+    <div id="scroll-container" class="flex-1 min-w-0 overflow-y-auto">
       <RouterView v-slot="{ Component }">
         <Transition name="page" mode="out-in">
           <component :is="Component" />

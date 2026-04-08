@@ -14,7 +14,6 @@ export const createApp = ViteSSG(
   {
     routes,
     scrollBehavior(to, _from, savedPosition) {
-      if (savedPosition) { return savedPosition; }
       if (to.hash) {
         // Vue Router's { el } uses getBoundingClientRect math that ignores
         // scroll-margin-top. Calling scrollIntoView() directly respects it.
@@ -26,7 +25,15 @@ export const createApp = ViteSSG(
           });
         });
       }
-      return { top: 0 };
+      // The page scroll container is a div, not window — { top: 0 } would target
+      // window which has no scroll (outer shell is overflow:hidden). Drive the
+      // container directly so both fresh navigations and back/forward work.
+      return new Promise(resolve => {
+        nextTick(() => {
+          document.getElementById('scroll-container')?.scrollTo({ top: savedPosition?.top ?? 0 });
+          resolve(false);
+        });
+      });
     },
   },
   ({ app, isClient, router }) => {
