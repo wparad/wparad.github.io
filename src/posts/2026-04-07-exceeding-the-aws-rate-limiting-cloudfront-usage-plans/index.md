@@ -9,7 +9,7 @@ tags:
   - aws
   - cloudfront
   - api gateway
-  - rate limiting
+  - architecture
   - security
   - waf
 ---
