@@ -1167,6 +1167,12 @@ The correct framing for what you've built isn't *rate limiting*, but rather a co
 
 Again, there are some clever solutions, but none of them are super great.
 
+### The optimal solution
+
+And as always, I feel it is only responsible to end with a recommendation back to AWS. The best solution here would be for WAFs to be able to do JWT verification, and EdDSA + PQC signatures at that, and to do dynamic rate limiting key verification directly in the WAF. WAF Functions if you will.
+
+Realistically this would be solved if the WAF + CloudFront were one building block, and the functions were extended to support JWT verification. Is that going to happen, if it is, it would be probably under NDA.
+
 :::info
 For help understanding this article or how you can implement auth and similar security architectures in your services, feel free to reach out to me via the [community server](https://authress.io/community).
 :::
