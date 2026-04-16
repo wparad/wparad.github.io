@@ -81,6 +81,7 @@ import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue';
 import { useRoute, RouterLink } from 'vue-router';
 import { useHead } from '@unhead/vue';
 import { posts } from '../../data/posts.js';
+import { SITE_URL as BASE_URL } from '../../config.js';
 
 const route = useRoute();
 const post = computed(() => posts.find(p => p.slug === route.params.slug));
@@ -154,8 +155,6 @@ onUnmounted(() => {
   observer?.disconnect();
 });
 
-const BASE_URL = 'https://warrenparad.net';
-
 useHead(computed(() => {
   const p = post.value;
   if (!p) { return { title: 'Articles — Warren Parad' }; }
@@ -195,6 +194,18 @@ useHead(computed(() => {
           'author': { '@type': 'Person', 'name': 'Warren Parad', 'url': BASE_URL },
           'url': `${BASE_URL}/articles/${p.slug}`,
           ...(ogImage ? { 'image': ogImage } : {}),
+        }),
+      },
+      {
+        type: 'application/ld+json',
+        innerHTML: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          'itemListElement': [
+            { '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': BASE_URL },
+            { '@type': 'ListItem', 'position': 2, 'name': 'Articles', 'item': `${BASE_URL}/articles` },
+            { '@type': 'ListItem', 'position': 3, 'name': p.title, 'item': `${BASE_URL}/articles/${p.slug}` },
+          ],
         }),
       },
     ],

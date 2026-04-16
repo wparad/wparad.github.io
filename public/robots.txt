@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://warrenparad.net/sitemap.xml
+llms.txt: https://warrenparad.net/llms.txt

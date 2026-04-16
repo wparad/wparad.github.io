@@ -186,6 +186,7 @@ import { useRoute, useRouter, RouterLink } from 'vue-router';
 import { useHead } from '@unhead/vue';
 import { talks, youtubeEmbedUrl } from '../../data/talks.js';
 import profilePicture from '../../assets/profile.jpg';
+import { SITE_URL as BASE_URL } from '../../config.js';
 
 const route = useRoute();
 const router = useRouter();
@@ -205,12 +206,41 @@ const shareTalk = () => {
   navigator.share({ title: talk.value?.title, url: window.location.href });
 };
 
-useHead(computed(() => ({
-  title: talk.value ? `${talk.value.title} — Warren Parad` : 'Talk — Warren Parad',
-  link: talk.value?.canonicalUrl
-    ? [{ rel: 'canonical', href: talk.value.canonicalUrl }]
-    : [],
-})));
+useHead(computed(() => {
+  const t = talk.value;
+  if (!t) { return { title: 'Talk — Warren Parad' }; }
+  return {
+    title: `${t.title} — Warren Parad`,
+    link: t.canonicalUrl ? [{ rel: 'canonical', href: t.canonicalUrl }] : [],
+    script: [
+      {
+        type: 'application/ld+json',
+        innerHTML: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Event',
+          'name': t.title,
+          'description': t.description,
+          'startDate': t.date,
+          'url': t.eventUrl || `${BASE_URL}/talks/${t.slug}`,
+          'location': { '@type': 'Place', 'name': `${t.conference}${t.location ? `, ${t.location}` : ''}` },
+          'organizer': { '@type': 'Organization', 'name': t.conference },
+          'performer': { '@type': 'Person', 'name': 'Warren Parad', 'url': BASE_URL },
+        }),
+      },
+      {
+        type: 'application/ld+json',
+        innerHTML: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          'itemListElement': [
+            { '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': BASE_URL },
+            { '@type': 'ListItem', 'position': 2, 'name': t.title, 'item': `${BASE_URL}/talks/${t.slug}` },
+          ],
+        }),
+      },
+    ],
+  };
+}));
 </script>
 
 <style scoped>
