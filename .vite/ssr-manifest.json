@@ -987,6 +987,19 @@
     "/assets/avatar-justin-BCBDbnaK.jpg",
     "/assets/index-C-wg_Veq.png"
   ],
+  "src/config.js": [
+    "/assets/profile-C4OvL-ns.jpg",
+    "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-B-vI3_Be.jpg",
+    "/assets/account-creation-progress-BEyjw2dB.png",
+    "/assets/gnomes-DGk8WrVP.png",
+    "/assets/were-not-on-my-planet-Bz5M-TR4.gif",
+    "/assets/waf-after-cloudfront-CHdcYxLA.png",
+    "/assets/avatar-andrej-BB2SG8F7.jpeg",
+    "/assets/avatar-hal-CE5sbnrf.jpeg",
+    "/assets/avatar-justin-BCBDbnaK.jpg",
+    "/assets/index-C-wg_Veq.png"
+  ],
   "src/data/externalPosts.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
@@ -1078,6 +1091,19 @@
     "/assets/avatar-justin-BCBDbnaK.jpg",
     "/assets/index-C-wg_Veq.png"
   ],
+  "src/pages/ForLlmsPage.vue": [
+    "/assets/profile-C4OvL-ns.jpg",
+    "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-B-vI3_Be.jpg",
+    "/assets/account-creation-progress-BEyjw2dB.png",
+    "/assets/gnomes-DGk8WrVP.png",
+    "/assets/were-not-on-my-planet-Bz5M-TR4.gif",
+    "/assets/waf-after-cloudfront-CHdcYxLA.png",
+    "/assets/avatar-andrej-BB2SG8F7.jpeg",
+    "/assets/avatar-hal-CE5sbnrf.jpeg",
+    "/assets/avatar-justin-BCBDbnaK.jpg",
+    "/assets/index-C-wg_Veq.png"
+  ],
   "src/pages/FractionalPage.vue": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
@@ -1156,7 +1182,7 @@
     "/assets/avatar-justin-BCBDbnaK.jpg",
     "/assets/index-C-wg_Veq.png"
   ],
-  "src/pages/blog/BlogPostPage.vue?vue&type=style&index=0&scoped=d22f4393&lang.css": [
+  "src/pages/blog/BlogPostPage.vue?vue&type=style&index=0&scoped=011957de&lang.css": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
     "/assets/index-B-vI3_Be.jpg",
@@ -1182,7 +1208,7 @@
     "/assets/avatar-justin-BCBDbnaK.jpg",
     "/assets/index-C-wg_Veq.png"
   ],
-  "src/pages/talks/TalkPage.vue?vue&type=style&index=0&scoped=afe4a28c&lang.css": [
+  "src/pages/talks/TalkPage.vue?vue&type=style&index=0&scoped=abb18b58&lang.css": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
     "/assets/index-B-vI3_Be.jpg",
