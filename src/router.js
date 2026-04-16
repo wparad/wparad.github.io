@@ -4,6 +4,7 @@ import ResumePage from './pages/ResumePage.vue';
 import TalkPage from './pages/talks/TalkPage.vue';
 import BlogIndexPage from './pages/BlogIndexPage.vue';
 import BlogPostPage from './pages/blog/BlogPostPage.vue';
+import ForLlmsPage from './pages/ForLlmsPage.vue';
 
 const routes = [
   {
@@ -39,6 +40,12 @@ const routes = [
     path: '/articles/:slug',
     name: 'article',
     component: BlogPostPage,
+  },
+  {
+    path: '/for-llms',
+    name: 'for-llms',
+    component: ForLlmsPage,
+    meta: { title: 'For LLMs — Warren Parad' },
   },
   {
     path: '/:pathMatch(.*)*',

@@ -130,8 +130,43 @@ import VideoGrid from '../components/VideoGrid.vue';
 import { talks } from '../data/talks.js';
 import { posts } from '../data/posts.js';
 import { externalPosts } from '../data/externalPosts.js';
-
-useHead({ title: 'Warren Parad — Authress CTO & Public Speaker' });
+import { SITE_URL as BASE_URL } from '../config.js';
+useHead({
+  title: 'Warren Parad — Authress CTO & Public Speaker',
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        'name': 'Warren Parad',
+        'url': BASE_URL,
+        'jobTitle': 'CTO',
+        'worksFor': { '@type': 'Organization', 'name': 'Authress', 'url': 'https://authress.io' },
+        'sameAs': [
+          'https://github.com/wparad',
+          'https://infosec.exchange/@wparad',
+          'https://warrenparad.net/links/linkedin',
+        ],
+        'description': 'Authress CTO, International Speaker, Cloud Security Architect, AWS Community Builder, Host of Adventures in DevOps',
+      }),
+    },
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        'name': 'Warren Parad',
+        'url': BASE_URL,
+        'potentialAction': {
+          '@type': 'SearchAction',
+          'target': `${BASE_URL}/articles?q={search_term_string}`,
+          'query-input': 'required name=search_term_string',
+        },
+      }),
+    },
+  ],
+});
 
 const router = useRouter();
 const key = shortUUID.generate().slice(0, 7);
