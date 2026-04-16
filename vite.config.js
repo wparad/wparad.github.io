@@ -2,6 +2,7 @@ import { resolve } from 'path';
 import { writeFile, readFile, readdir, stat, mkdir, access } from 'fs/promises';
 import { defineConfig } from 'vite';
 import { SITE_URL } from './src/config.js';
+import tailwindcss from '@tailwindcss/vite';
 import vue from '@vitejs/plugin-vue';
 import Markdown from 'unplugin-vue-markdown/vite';
 import anchor from 'markdown-it-anchor';
@@ -404,6 +405,7 @@ export default defineConfig({
     }
   },
   plugins: [
+    tailwindcss(),
     Markdown({
       async markdownItSetup(md) {
         const { createHighlighter } = await import('shiki');

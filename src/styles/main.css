@@ -90,6 +90,17 @@
   }
 }
 
+/* description-clamp: in @layer components so Tailwind utilities (@layer utilities) always override it.
+   This means sm:hidden correctly hides the clamped mobile paragraph on desktop. */
+@layer components {
+  .description-clamp {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 11;
+    overflow: hidden;
+  }
+}
+
 /* Override Tailwind text utilities to scale them up by 1.25× */
 @layer utilities {
   @media (min-width: 0px) {

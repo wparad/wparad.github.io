@@ -37,8 +37,9 @@
   "devDependencies": {
     "@authress/eslint-config": "*",
     "@shikijs/markdown-it": "^4.0.2",
-    "@tailwindcss/postcss": "^4.0.0",
-    "@vitejs/plugin-vue": "^4.2.3",
+    "@tailwindcss/vite": "^4.2.2",
+    "@types/markdown-it": "^14.1.2",
+    "@vitejs/plugin-vue": "^6.0.0",
     "@vue/compiler-sfc": "^3.3.4",
     "cfn-response": "^1.0.1",
     "cheerio": "^1.2.0",
@@ -59,9 +60,9 @@
     "typescript": "^6.0.2",
     "unhead": "^2.1.13",
     "unplugin-vue-markdown": "^30.0.0",
-    "vite": "^5.4.21",
-    "vite-ssg": "^0.23.0",
-    "vitest": "^4.1.0"
+    "vite": "^8.0.0",
+    "vite-ssg": "^28.3.0",
+    "vitest": "^4.1.4"
   },
   "engines": {
     "node": ">=24"

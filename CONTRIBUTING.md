@@ -26,12 +26,12 @@ This is a statically-generated personal site built with Vue 3, Vue Router, Tailw
 | Concern | Tool | Notes |
 |---|---|---|
 | Framework | Vue 3 (Composition API) | `<script setup>` throughout |
-| SSG | `vite-ssg` | Pre-renders one `.html` per route |
+| SSG | `vite-ssg` | Pre-renders flat `.html` per route (e.g. `dist/fractional.html`) |
 | Router | `vue-router@4` | Real URL paths, no hash routing |
-| Styling | Tailwind CSS v4 | `@theme` design tokens, no config file |
+| Styling | Tailwind CSS v4 | `@theme` design tokens; `@tailwindcss/vite` plugin (no PostCSS config needed) |
 | SEO/Head | `@unhead/vue` | Per-page `<title>`, `<meta>`, canonical |
 | Markdown | `unplugin-vue-markdown` | `.md` → Vue SFC at build time |
-| Frontmatter | `gray-matter` | YAML parsing for blog posts |
+| Frontmatter | YAML (regex + `js-yaml`) | Parsed in `vite.config.js` via regex; `js-yaml` used in tests |
 | Pricing timezone | `luxon` | Detects NA vs EU timezone |
 | Unique IDs | `short-uuid` | Speaker booking email tokens |
 | State | `pinia` | Registered; use if shared state needed |
@@ -84,7 +84,7 @@ vite.config.js               — Build config: Markdown plugin, sitemap generato
 ## Local Development
 
 ```bash
-# Install dependencies (Node 22+ required)
+# Install dependencies (Node 24+ required)
 yarn install
 
 # Start dev server with hot reload
@@ -138,8 +138,13 @@ src/posts/
 ```yaml
 ---
 title: My New Post
+authors: warren-parad
 description: A concise one-sentence summary for SEO and the post list.
+image: ./index.png
+image_alt: Alt text for the cover image (also used for og:image:alt)
 tags: [security, architecture]
+hide_table_of_contents: false    # optional; default false
+toc_max_heading_level: 3         # optional; default 3 (h2 + h3 only)
 ---
 
 Your markdown content here...
@@ -147,11 +152,13 @@ Your markdown content here...
 
 **Rules:**
 - The directory name `YYYY-MM-DD-` prefix is the **canonical date** — do not put a date in frontmatter
-- The part after the date prefix becomes the URL slug: `2025-06-01-my-new-post` → `/blog/my-new-post`
+- The part after the date prefix becomes the URL slug: `2025-06-01-my-new-post` → `/articles/my-new-post`
 - Directories without a valid `YYYY-MM-DD-` prefix are silently ignored by `posts.js`
 - `title` and `description` are required for SEO; `tags` is optional but helps filtering
-- Posts appear in the blog index and recent posts on the home page automatically on next build
-- The canonical URL (`https://warrenparad.net/blog/{slug}`) is injected automatically by `BlogPostPage.vue`
+- `authors` should be `warren-parad` (slug format — this is the author identifier, not display name)
+- `image` and `image_alt` are required for og:image social sharing; reference with a relative path
+- Posts appear in the articles index and recent posts on the home page automatically on next build
+- The canonical URL (`https://warrenparad.net/articles/{slug}`) is injected automatically by `BlogPostPage.vue`
 - Co-locate images and assets in the same directory; reference them with relative paths in markdown
 
 **Markdown styling:** Block-level elements (headings, paragraphs, lists, code blocks, blockquotes) are styled via `.prose :deep(...)` in `BlogPostPage.vue`. Inline links get accent color + underline.
@@ -203,8 +210,13 @@ Edit **`src/data/externalPosts.js`** and add an entry:
 ```yaml
 ---
 title: Required — post heading and SEO title
+authors: warren-parad                        # required — author slug
 description: Required — one sentence for post list and meta description
+image: ./index.png                           # required — relative path to cover image
+image_alt: Alt text for og:image             # required — accessibility + social sharing
 tags: [optional, array, of, tags]
+hide_table_of_contents: false                # optional, default false
+toc_max_heading_level: 3                     # optional, default 3
 ---
 ```
 
@@ -278,7 +290,7 @@ text-teal      — #3E6077  secondary accent (Authress badge)
 
 `AppNav.vue` uses a hidden `<input type="checkbox" id="nav-toggle">` and CSS sibling selectors (`:checked ~ ...`) to toggle the mobile menu. No JavaScript is involved. This means:
 - The hamburger menu works with JavaScript disabled
-- The nav links (`/#appearances`, `/blog`, `/resume`, `/fractional`) must work as plain `<a href>` or `RouterLink` — no click handlers
+- The nav links (`/#appearances`, `/articles`, `/resume`, `/fractional`) must work as plain `<a href>` or `RouterLink` — no click handlers
 - **Do not** convert this to a `v-show`/`v-if` toggle — that breaks JS-disabled functionality
 
 ### Appearances Nav Link Targets `#appearances`, Not `#engagements`
@@ -291,11 +303,15 @@ The "Appearances" link in `AppNav.vue` points to `/#appearances`. The wrapping `
 
 ### `vite.config.js` Cannot Import from `src/data/`
 
-The data files (`talks.js`, `posts.js`) use `import.meta.glob` which is a Vite-only runtime feature not available in the Vite config file (which runs in Node/CJS context). The sitemap plugin in `vite.config.js` reads slugs via:
+The data files (`talks.js`, `posts.js`) use `import.meta.glob` which is a Vite-only runtime feature not available in the Vite config file (which runs in Node context at build time). The sitemap/RSS/llms.txt plugins in `vite.config.js` read slugs via:
 - `talks.js` — regex over the raw file source (`/slug:\s*'([^']+)'/g`)
-- `posts/` — directory listing with `readdirSync`
+- `posts/` — `readdir` on the posts directory
 
 If you change the `slug:` field format in `talks.js`, update the regex in `vite.config.js` accordingly.
+
+### Tailwind CSS is Processed by the Vite Plugin, Not PostCSS
+
+Tailwind v4 styling goes through `@tailwindcss/vite` (registered in `vite.config.js`), not through `postcss.config.cjs`. The `postcss.config.cjs` file exists but is empty — do not add `@tailwindcss/postcss` back to it. The Vite plugin handles both the client and SSR build passes correctly; the PostCSS path breaks on SSR builds.
 
 ### Post Dates Come From Directory Names Only
 
@@ -321,13 +337,15 @@ All navigation scrolls to `{ top: 0 }` — there is no saved-position restoratio
 
 ## Testing
 
-Run tests with:
-
 ```bash
+# Run all tests
 yarn test
+
+# Build then validate the output
+yarn build && yarn test
 ```
 
-Tests live in `src/__tests__/`. The suite covers data integrity and utility functions — the areas most likely to silently break when editing data files.
+Tests live in `src/__tests__/`. **`yarn build && yarn test` is the complete validation workflow** — `build.test.js` reads the compiled `dist/` files and verifies semantic correctness, making manual `grep` verification unnecessary.
 
 ### What Is Tested
 
@@ -337,10 +355,27 @@ Tests live in `src/__tests__/`. The suite covers data integrity and utility func
 | `posts.test.js` | Date/slug regex parsing; posts sorted newest-first; invalid directories filtered |
 | `externalPosts.test.js` | Required fields present; dates in ISO format; no duplicate URLs |
 | `sitemapPlugin.test.js` | `getTalkSlugs` regex extracts slugs from talks.js source; `getPostSlugs` strips date prefix from directory names |
+| `build.test.js` | Validates the compiled `dist/` output: SEO meta tags, Open Graph, JSON-LD schema.org, canonical URLs, nav/footer links, internal link resolution, CSS correctness (exact theme colors, responsive breakpoints, component styles), sitemap.xml and rss.xml validity, llms.txt content, per-article frontmatter, per-talk page rendering, all SSG-rendered HTML pages |
+
+`build.test.js` uses `cheerio` for HTML querying, `fast-xml-parser` for XML validation, and `js-yaml` for frontmatter parsing. It only runs against already-built `dist/` — run `yarn build` first if you have changed source files.
+
+### What `build.test.js` Replaces
+
+Before this test file existed, build correctness was checked manually with `grep`. Those checks are now automated:
+- SEO title/description/canonical on every page
+- og:title, og:description, og:image present and non-empty
+- JSON-LD `@type: "Person"` on homepage, `@type: "Article"` on article pages
+- All internal `href` values resolve to actual files in `dist/`
+- Compiled CSS contains exact theme color hex values (e.g. `#4e9af1`, `#0f1117`)
+- CSS contains responsive `@media` breakpoints and component-scoped styles
+- `sitemap.xml` and `rss.xml` parse as valid XML with expected entries
+- `llms.txt` contains all required sections and article/talk links
 
 ### Adding New Tests
 
 Place test files in `src/__tests__/`. The vitest config uses the `node` environment (no DOM). For Vue component tests you would need to add `@vue/test-utils` and switch to the `jsdom` environment.
+
+When adding a new page or data field, add corresponding assertions to `build.test.js` — the test file structure mirrors the site structure.
 
 ---
 
@@ -353,34 +388,26 @@ yarn build
 ```
 
 Runs `vite-ssg build`, which:
-1. Pre-renders all routes to `dist/` (one `index.html` per route)
-2. Runs the `sitemapPlugin` `closeBundle` hook → writes `dist/sitemap.xml`
+1. Pre-renders all routes to flat `.html` files in `dist/` (e.g. `dist/fractional.html`, `dist/talks/slug.html`)
+2. Runs `closeBundle` hooks → writes `dist/sitemap.xml`, `dist/rss.xml`, `dist/llms.txt`, and `dist/articles/<slug>.md`
 3. Copies `public/` contents to `dist/` (CNAME, 404.html, payments.html, etc.)
 
-Total output: ~20 pre-rendered HTML pages + sitemap + assets.
+Total output: ~20 pre-rendered HTML pages + sitemap + RSS feed + llms.txt + assets.
+
+Note: `dist/` contains both SSG-rendered pages (identifiable by `data-server-rendered="true"` on the `<div id="app">`) and legacy static files from `public/` (404.html, payments.html, links/linkedin/index.html). Tests only validate the SSG-rendered pages.
 
 ### Verify the Build
 
 ```bash
-# Per-page SEO titles are baked in
-grep '<title>' dist/index.html
-grep '<title>' dist/fractional/index.html
-grep '<title>' dist/blog/your-post-slug/index.html
-
-# Canonical links present on blog posts
-grep 'canonical' dist/blog/your-post-slug/index.html
-
-# Sitemap contains all routes
-cat dist/sitemap.xml
-
-# Custom domain marker present
-cat dist/CNAME
+yarn build && yarn test
 ```
+
+`build.test.js` validates all meaningful output: SEO tags, JSON-LD, canonical URLs, internal links, CSS correctness, XML validity, and more. No manual grepping needed.
 
 ### CI/CD
 
 Pushes to `master` or `main` trigger `.github/workflows/build.yml`:
-1. Installs Node 22, runs `yarn --frozen-lockfile`
+1. Installs Node 24, runs `yarn --frozen-lockfile`
 2. Runs `yarn setup && yarn build`
 3. Deploys `dist/` to the `production` branch via `JamesIves/github-pages-deploy-action`
 4. GitHub Pages serves the `production` branch at `warrenparad.net`

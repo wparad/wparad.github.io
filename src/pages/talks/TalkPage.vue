@@ -81,9 +81,9 @@
 
         <!-- Description -->
         <div v-if="talk.description" :class="['text-muted leading-relaxed', isEventMode && 'mb-8']">
-          <!-- Event mode mobile: flattened + clamped at ~300px -->
+          <!-- Mobile event mode: single clamped paragraph -->
           <p v-if="isEventMode" class="sm:hidden description-clamp">{{ talk.description.replace(/\n\n/g, ' ') }}</p>
-          <!-- Normal mode (all sizes) + event mode desktop: multi-paragraph -->
+          <!-- Desktop (always) / mobile normal mode: full multi-paragraph -->
           <div :class="isEventMode ? 'hidden sm:block space-y-4' : 'space-y-4'">
             <p v-for="(paragraph, i) in talk.description.split('\n\n')" :key="i">{{ paragraph }}</p>
           </div>
@@ -246,12 +246,5 @@ useHead(computed(() => {
 <style scoped>
 .no-underline {
   text-decoration: none;
-}
-
-.description-clamp {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 11;
-  overflow: hidden;
 }
 </style>

@@ -237,7 +237,7 @@ describe('all HTML pages: shared invariants', () => {
   // Iterate and test each file
   const checks = [
     ['is server-rendered by vite-ssg', html => expect(html).toContain('data-server-rendered="true"')],
-    ['has UTF-8 charset', html => expect(html).toContain('charset="UTF-8"')],
+    ['has UTF-8 charset', html => expect(html.toLowerCase()).toContain('charset="utf-8"')],
     ['has viewport meta tag', html => expect(html).toContain('name="viewport"')],
     ['links to compiled CSS bundle', html => expect(html).toMatch(/href="\/assets\/[^"]+\.css"/)],
     ['links to compiled JS bundle', html => expect(html).toMatch(/src="\/assets\/[^"]+\.js"/)],
@@ -632,6 +632,14 @@ describe('dist/talks/<slug>.html (all talks)', () => {
         // First sentence of description must appear somewhere
         const firstSentence = talk.description.trim().split(/[.\n]/)[0].trim().slice(0, 40);
         expect(doc('main').text()).toContain(firstSentence);
+      });
+
+      it('description is not duplicated (event-mode clamp paragraph absent in SSG output)', () => {
+        // SSG renders with isEventMode=false, so the sm:hidden clamped <p> must not be present.
+        // If .description-clamp were unlayered scoped CSS it would override sm:hidden and show twice.
+        const firstSentence = talk.description.trim().split(/[.\n]/)[0].trim().slice(0, 30);
+        const occurrences = (doc('main').html().split(firstSentence) || []).length - 1;
+        expect(occurrences).toBe(1);
       });
 
       it('nav has /#appearances link', () => {
