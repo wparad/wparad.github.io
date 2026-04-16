@@ -131,13 +131,6 @@ export const externalPosts = [
     tags: ['aws', 'security', 'infrastructure'],
   },
   {
-    title: 'Marketing your Product effectively',
-    url: 'https://dev.to/wparad/marketing-your-product-effectively-3l89',
-    date: '2023-07-10', source: 'devto',
-    description: 'How technical founders and engineering leaders can approach product marketing without becoming marketers — focusing on the channels and messages that actually convert developers.',
-    tags: ['leadership'],
-  },
-  {
     title: 'The Devastating Failure of Technical Leadership',
     url: 'https://dev.to/wparad/the-devastating-failure-of-technical-leadership-3d1d',
     date: '2023-07-10', source: 'devto',
@@ -146,8 +139,8 @@ export const externalPosts = [
   },
   {
     title: 'Denylists and Invaliding user access',
-    url: 'https://dev.to/authress/denylists-and-invaliding-user-access-1cgl',
-    date: '2023-07-05', source: 'devto',
+    url: 'https://authress.io/knowledge-base/academy/topics/invalidating-user-access',
+    date: '2023-07-05', source: 'authress',
     description: 'How to implement instant access revocation with short-lived JWTs — token denylists, distributed cache invalidation, and the trade-offs of each approach.',
     tags: ['auth', 'security'],
   },
@@ -186,7 +179,7 @@ export const externalPosts = [
     url: 'https://dev.to/authress/breaking-up-the-monolith-breaking-changes-14dd',
     date: '2022-08-05', source: 'devto',
     description: 'How to introduce breaking API changes during a microservices migration without taking down dependent consumers — versioning strategies and parallel-run patterns.',
-    tags: ['architecture', 'api'],
+    tags: ['architecture', 'api', 'monoliths'],
   },
   {
     title: 'AWS CloudWatch: How to scale your logging infrastructure',
@@ -207,7 +200,7 @@ export const externalPosts = [
     url: 'https://dev.to/authress/breaking-up-the-monolith-zero-downtime-migrations-57ap',
     date: '2022-05-24', source: 'devto',
     description: 'Database migration patterns that let you extract services from a monolith without any downtime — strangler fig, dual writes, and live traffic cutover strategies.',
-    tags: ['architecture', 'devops'],
+    tags: ['architecture', 'devops', 'monoliths'],
   },
   {
     title: 'Adding Custom Domains to your SaaS',
@@ -251,7 +244,7 @@ export const externalPosts = [
     url: 'https://dev.to/authress/breaking-up-the-monolith-magic-identifiers-3082',
     date: '2021-10-20', source: 'devto',
     description: 'How poorly designed IDs — auto-increment integers, opaque hashes — create coupling that makes monolith decomposition painful, and what to use instead.',
-    tags: ['architecture'],
+    tags: ['architecture', 'devops', 'monoliths'],
   },
   {
     title: "Can't connect to service running in EC2",
@@ -289,25 +282,11 @@ export const externalPosts = [
     tags: ['auth', 'security', 'architecture'],
   },
   {
-    title: 'AWS + Gitlab — Leveling up security of your CICD platform',
-    url: 'https://authress.io/knowledge-base/articles/aws-gitlab-cicd-login-authentication',
-    date: '2021-06-14', source: 'authress',
-    description: 'Replacing long-lived AWS credentials in GitLab CI with OIDC-based short-lived tokens — the setup, the IAM trust policy, and eliminating secrets from your pipeline.',
-    tags: ['aws', 'security', 'devops'],
-  },
-  {
     title: 'Creating resources in custom AWS accounts',
     url: 'https://dev.to/wparad/creating-resources-in-custom-aws-accounts-50b0',
     date: '2021-06-14', source: 'devto',
     description: 'Cross-account resource provisioning patterns in AWS — role assumption, permission boundaries, and how to automate account vending in a multi-account organization.',
     tags: ['aws', 'infrastructure'],
-  },
-  {
-    title: 'AWS DynamoDB: Single or Multitable',
-    url: 'https://dev.to/wparad/aws-dynamodb-single-or-multitable-54np',
-    date: '2021-06-07', source: 'devto',
-    description: 'The single-table vs. multi-table DynamoDB debate — access patterns, operational complexity, and when the pragmatic choice is to ignore the dogma.',
-    tags: ['aws', 'architecture'],
   },
   {
     title: 'To message bus or not to message bus',
