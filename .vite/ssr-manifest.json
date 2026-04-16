@@ -1,31 +1,18 @@
 {
-  "\u0000/home/runner/work/wparad.github.io/wparad.github.io/node_modules/uuid/dist/esm-browser/index.js?commonjs-proxy": [
-    "/assets/profile-C4OvL-ns.jpg",
-    "/assets/oauth-BaRAULWV.svg",
-    "/assets/index-B-vI3_Be.jpg",
-    "/assets/account-creation-progress-BEyjw2dB.png",
-    "/assets/gnomes-DGk8WrVP.png",
-    "/assets/were-not-on-my-planet-Bz5M-TR4.gif",
-    "/assets/waf-after-cloudfront-CHdcYxLA.png",
-    "/assets/avatar-andrej-BB2SG8F7.jpeg",
-    "/assets/avatar-hal-CE5sbnrf.jpeg",
-    "/assets/avatar-justin-BCBDbnaK.jpg",
-    "/assets/index-C-wg_Veq.png"
-  ],
-  "\u0000commonjsHelpers.js": [
-    "/assets/profile-C4OvL-ns.jpg",
-    "/assets/oauth-BaRAULWV.svg",
-    "/assets/index-B-vI3_Be.jpg",
-    "/assets/account-creation-progress-BEyjw2dB.png",
-    "/assets/gnomes-DGk8WrVP.png",
-    "/assets/were-not-on-my-planet-Bz5M-TR4.gif",
-    "/assets/waf-after-cloudfront-CHdcYxLA.png",
-    "/assets/avatar-andrej-BB2SG8F7.jpeg",
-    "/assets/avatar-hal-CE5sbnrf.jpeg",
-    "/assets/avatar-justin-BCBDbnaK.jpg",
-    "/assets/index-C-wg_Veq.png"
-  ],
   "\u0000plugin-vue:export-helper": [
+    "/assets/profile-C4OvL-ns.jpg",
+    "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-B-vI3_Be.jpg",
+    "/assets/account-creation-progress-BEyjw2dB.png",
+    "/assets/gnomes-DGk8WrVP.png",
+    "/assets/were-not-on-my-planet-Bz5M-TR4.gif",
+    "/assets/waf-after-cloudfront-CHdcYxLA.png",
+    "/assets/avatar-andrej-BB2SG8F7.jpeg",
+    "/assets/avatar-hal-CE5sbnrf.jpeg",
+    "/assets/avatar-justin-BCBDbnaK.jpg",
+    "/assets/index-C-wg_Veq.png"
+  ],
+  "\u0000rolldown/runtime.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
     "/assets/index-B-vI3_Be.jpg",
@@ -52,19 +39,6 @@
     "/assets/index-C-wg_Veq.png"
   ],
   "index.html": [
-    "/assets/profile-C4OvL-ns.jpg",
-    "/assets/oauth-BaRAULWV.svg",
-    "/assets/index-B-vI3_Be.jpg",
-    "/assets/account-creation-progress-BEyjw2dB.png",
-    "/assets/gnomes-DGk8WrVP.png",
-    "/assets/were-not-on-my-planet-Bz5M-TR4.gif",
-    "/assets/waf-after-cloudfront-CHdcYxLA.png",
-    "/assets/avatar-andrej-BB2SG8F7.jpeg",
-    "/assets/avatar-hal-CE5sbnrf.jpeg",
-    "/assets/avatar-justin-BCBDbnaK.jpg",
-    "/assets/index-C-wg_Veq.png"
-  ],
-  "node_modules/@unhead/dom/dist/index.mjs": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
     "/assets/index-B-vI3_Be.jpg",
@@ -558,6 +532,84 @@
     "/assets/avatar-justin-BCBDbnaK.jpg",
     "/assets/index-C-wg_Veq.png"
   ],
+  "node_modules/unhead/dist/client.mjs": [
+    "/assets/profile-C4OvL-ns.jpg",
+    "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-B-vI3_Be.jpg",
+    "/assets/account-creation-progress-BEyjw2dB.png",
+    "/assets/gnomes-DGk8WrVP.png",
+    "/assets/were-not-on-my-planet-Bz5M-TR4.gif",
+    "/assets/waf-after-cloudfront-CHdcYxLA.png",
+    "/assets/avatar-andrej-BB2SG8F7.jpeg",
+    "/assets/avatar-hal-CE5sbnrf.jpeg",
+    "/assets/avatar-justin-BCBDbnaK.jpg",
+    "/assets/index-C-wg_Veq.png"
+  ],
+  "node_modules/unhead/dist/shared/unhead.B5FWS6X0.mjs": [
+    "/assets/profile-C4OvL-ns.jpg",
+    "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-B-vI3_Be.jpg",
+    "/assets/account-creation-progress-BEyjw2dB.png",
+    "/assets/gnomes-DGk8WrVP.png",
+    "/assets/were-not-on-my-planet-Bz5M-TR4.gif",
+    "/assets/waf-after-cloudfront-CHdcYxLA.png",
+    "/assets/avatar-andrej-BB2SG8F7.jpeg",
+    "/assets/avatar-hal-CE5sbnrf.jpeg",
+    "/assets/avatar-justin-BCBDbnaK.jpg",
+    "/assets/index-C-wg_Veq.png"
+  ],
+  "node_modules/unhead/dist/shared/unhead.CbpEuj3y.mjs": [
+    "/assets/profile-C4OvL-ns.jpg",
+    "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-B-vI3_Be.jpg",
+    "/assets/account-creation-progress-BEyjw2dB.png",
+    "/assets/gnomes-DGk8WrVP.png",
+    "/assets/were-not-on-my-planet-Bz5M-TR4.gif",
+    "/assets/waf-after-cloudfront-CHdcYxLA.png",
+    "/assets/avatar-andrej-BB2SG8F7.jpeg",
+    "/assets/avatar-hal-CE5sbnrf.jpeg",
+    "/assets/avatar-justin-BCBDbnaK.jpg",
+    "/assets/index-C-wg_Veq.png"
+  ],
+  "node_modules/unhead/dist/shared/unhead.Ct24BOby.mjs": [
+    "/assets/profile-C4OvL-ns.jpg",
+    "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-B-vI3_Be.jpg",
+    "/assets/account-creation-progress-BEyjw2dB.png",
+    "/assets/gnomes-DGk8WrVP.png",
+    "/assets/were-not-on-my-planet-Bz5M-TR4.gif",
+    "/assets/waf-after-cloudfront-CHdcYxLA.png",
+    "/assets/avatar-andrej-BB2SG8F7.jpeg",
+    "/assets/avatar-hal-CE5sbnrf.jpeg",
+    "/assets/avatar-justin-BCBDbnaK.jpg",
+    "/assets/index-C-wg_Veq.png"
+  ],
+  "node_modules/unhead/dist/shared/unhead.yem5I2v_.mjs": [
+    "/assets/profile-C4OvL-ns.jpg",
+    "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-B-vI3_Be.jpg",
+    "/assets/account-creation-progress-BEyjw2dB.png",
+    "/assets/gnomes-DGk8WrVP.png",
+    "/assets/were-not-on-my-planet-Bz5M-TR4.gif",
+    "/assets/waf-after-cloudfront-CHdcYxLA.png",
+    "/assets/avatar-andrej-BB2SG8F7.jpeg",
+    "/assets/avatar-hal-CE5sbnrf.jpeg",
+    "/assets/avatar-justin-BCBDbnaK.jpg",
+    "/assets/index-C-wg_Veq.png"
+  ],
+  "node_modules/unhead/node_modules/hookable/dist/index.mjs": [
+    "/assets/profile-C4OvL-ns.jpg",
+    "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-B-vI3_Be.jpg",
+    "/assets/account-creation-progress-BEyjw2dB.png",
+    "/assets/gnomes-DGk8WrVP.png",
+    "/assets/were-not-on-my-planet-Bz5M-TR4.gif",
+    "/assets/waf-after-cloudfront-CHdcYxLA.png",
+    "/assets/avatar-andrej-BB2SG8F7.jpeg",
+    "/assets/avatar-hal-CE5sbnrf.jpeg",
+    "/assets/avatar-justin-BCBDbnaK.jpg",
+    "/assets/index-C-wg_Veq.png"
+  ],
   "node_modules/uuid/dist/esm-browser/index.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
@@ -766,7 +818,7 @@
     "/assets/avatar-justin-BCBDbnaK.jpg",
     "/assets/index-C-wg_Veq.png"
   ],
-  "node_modules/vite-ssg/dist/shared/vite-ssg.5912142e.mjs": [
+  "node_modules/vite-ssg/dist/shared/vite-ssg.C6pK7rvr.mjs": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
     "/assets/index-B-vI3_Be.jpg",
@@ -779,7 +831,33 @@
     "/assets/avatar-justin-BCBDbnaK.jpg",
     "/assets/index-C-wg_Veq.png"
   ],
-  "node_modules/vite-ssg/dist/shared/vite-ssg.a009fbf1.mjs": [
+  "node_modules/vite-ssg/dist/shared/vite-ssg.ETIvV-80.mjs": [
+    "/assets/profile-C4OvL-ns.jpg",
+    "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-B-vI3_Be.jpg",
+    "/assets/account-creation-progress-BEyjw2dB.png",
+    "/assets/gnomes-DGk8WrVP.png",
+    "/assets/were-not-on-my-planet-Bz5M-TR4.gif",
+    "/assets/waf-after-cloudfront-CHdcYxLA.png",
+    "/assets/avatar-andrej-BB2SG8F7.jpeg",
+    "/assets/avatar-hal-CE5sbnrf.jpeg",
+    "/assets/avatar-justin-BCBDbnaK.jpg",
+    "/assets/index-C-wg_Veq.png"
+  ],
+  "node_modules/vite-ssg/node_modules/@unhead/vue/dist/client.mjs": [
+    "/assets/profile-C4OvL-ns.jpg",
+    "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-B-vI3_Be.jpg",
+    "/assets/account-creation-progress-BEyjw2dB.png",
+    "/assets/gnomes-DGk8WrVP.png",
+    "/assets/were-not-on-my-planet-Bz5M-TR4.gif",
+    "/assets/waf-after-cloudfront-CHdcYxLA.png",
+    "/assets/avatar-andrej-BB2SG8F7.jpeg",
+    "/assets/avatar-hal-CE5sbnrf.jpeg",
+    "/assets/avatar-justin-BCBDbnaK.jpg",
+    "/assets/index-C-wg_Veq.png"
+  ],
+  "node_modules/vite-ssg/node_modules/@unhead/vue/dist/shared/vue.Cr7xSEtD.mjs": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
     "/assets/index-B-vI3_Be.jpg",
@@ -1208,7 +1286,7 @@
     "/assets/avatar-justin-BCBDbnaK.jpg",
     "/assets/index-C-wg_Veq.png"
   ],
-  "src/pages/talks/TalkPage.vue?vue&type=style&index=0&scoped=abb18b58&lang.css": [
+  "src/pages/talks/TalkPage.vue?vue&type=style&index=0&scoped=4fefc3af&lang.css": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
     "/assets/index-B-vI3_Be.jpg",
