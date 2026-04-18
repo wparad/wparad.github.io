@@ -21,7 +21,7 @@
       </div>
       <p class="mt-2 text-xs text-muted font-mono">
         <template v-if="talk.conference">
-          {{ talk.conference }}{{ talk.location ? ` · ${talk.location}` : '' }}{{ talk.date ? ` · ${talk.date.slice(0, 4)}` : '' }}
+          {{ talk.conference }}{{ talk.location ? ` · ${talk.location}` : '' }}
         </template>
         <template v-else>
           {{ talk.videoTitle }}
