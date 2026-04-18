@@ -159,7 +159,7 @@ content_license:
 Copyright © Warren Parad. Short excerpts may be quoted with attribution.
 LLMs may reference and summarize this work with proper attribution to "Warren Parad (warrenparad.net)".
 
-last_updated: 2026-04-17
+last_updated: 2026-04-18
 
 ## Articles
 
@@ -167,19 +167,20 @@ last_updated: 2026-04-17
 
 ## Talks
 
+- [Building Bulletproof Systems: Engineering for High Availability](https://warrenparad.net/talks/overcommitted-podcast-2026)
 - [Meeting Impossible SLAs: How we made our uptime 99.999%](https://warrenparad.net/talks/voxxed-days-zurich-2026)
 - [What the @#!? is Auth](https://warrenparad.net/talks/techtalkthursday-zurich-2025)
 - [What the @#!? is Auth](https://warrenparad.net/talks/tech-internals-berlin-2025)
 - [Meeting Impossible SLAs: How we made our uptime 99.999%](https://warrenparad.net/talks/l8conf-warsaw-2025)
 - [Meeting SLAs: What it takes to be 99.999% reliable](https://warrenparad.net/talks/aws-global-summit-zurich-2024)
 - [Why you Should Check Your Secrets Into Git](https://warrenparad.net/talks/dwx24-nuremberg-2024)
+- [The Challenges of Open Source](https://warrenparad.net/talks/challenges-of-open-source)
 - [Build a Security-First API](https://warrenparad.net/talks/techspot-warsaw-2024)
 - [Adding security to your architecture and mindset](https://warrenparad.net/talks/decompiled-dresden-2024)
 - [Stopping all the attacks](https://warrenparad.net/talks/fosdem-brussels-2024)
 - [Why you should check your secrets into Git](https://warrenparad.net/talks/codemotion-madrid-2023)
 - [Why you should check your secrets into Git](https://warrenparad.net/talks/codemotion-milan-2023)
 - [Adding security to your architecture one step at a time](https://warrenparad.net/talks/agile-meets-architecture-berlin-2022)
-- [The Challenges of Open Source](https://warrenparad.net/talks/challenges-of-open-source)
 
 ## Links
 

@@ -5,7 +5,7 @@
     <link>https://warrenparad.net</link>
     <description>Articles by Warren Parad, Authress CTO | Tech Entertainer | International Speaker | Cloud Security Architect | AWS Community Builder | Host of Adventures In DevOps</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 17 Apr 2026 19:28:46 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 18 Apr 2026 20:19:58 GMT</lastBuildDate>
     <ttl>10080</ttl>
     <sy:updatePeriod>weekly</sy:updatePeriod>
     <sy:updateFrequency>1</sy:updateFrequency>
@@ -16,7 +16,7 @@
     <link>https://warrenparad.net/articles/exceeding-the-aws-rate-limiting-cloudfront-usage-plans</link>
     <guid>https://warrenparad.net/articles/exceeding-the-aws-rate-limiting-cloudfront-usage-plans</guid>
     <pubDate>Tue, 07 Apr 2026 00:00:00 GMT</pubDate>
-    <atom:updated>2026-04-17T19:28:23.465Z</atom:updated>
+    <atom:updated>2026-04-18T20:19:35.564Z</atom:updated>
     <description>APIGW Usage Plans won't get you the per-user rate limiting you need. And using a WAF is an incomplete solution. But rolling your own is of course fraught with the usual challenges.</description>
     <category>aws</category>
     <category>cloudfront</category>
