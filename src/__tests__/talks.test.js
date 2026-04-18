@@ -19,11 +19,17 @@ describe('talks data integrity', () => {
   });
 
   it('all talks have the expected shape (no missing keys)', () => {
-    const requiredKeys = ['slug', 'title', 'conference', 'location', 'date', 'eventUrl', 'articleUrl', 'canonicalUrl', 'videoUrl', 'videoTitle', 'description'];
+    const requiredKeys = ['slug', 'type', 'title', 'conference', 'location', 'date', 'eventUrl', 'articleUrl', 'canonicalUrl', 'videoUrl', 'videoTitle', 'description'];
     for (const talk of talks) {
       for (const key of requiredKeys) {
         expect(Object.hasOwn(talk, key), `key "${key}" missing on "${talk.slug}"`).toBe(true);
       }
+    }
+  });
+
+  it('type is either "talk" or "podcast"', () => {
+    for (const talk of talks) {
+      expect(['talk', 'podcast'], `invalid type on "${talk.slug}"`).toContain(talk.type);
     }
   });
 
@@ -74,16 +80,17 @@ describe('talks ordering', () => {
 });
 
 describe('featuredTalks', () => {
-  it('only includes talks with a videoUrl', () => {
+  it('only includes talks (not podcasts) with a videoUrl', () => {
     for (const talk of featuredTalks) {
       expect(talk.videoUrl, `"${talk.slug}" in featuredTalks has no videoUrl`).toBeTruthy();
+      expect(talk.type, `"${talk.slug}" is a podcast but appears in featuredTalks`).toBe('talk');
     }
   });
 
-  it('all talks with videoUrl appear in featuredTalks', () => {
+  it('all talks of type "talk" with videoUrl appear in featuredTalks', () => {
     const featuredSlugs = new Set(featuredTalks.map(t => t.slug));
     for (const talk of talks) {
-      if (talk.videoUrl) {
+      if (talk.type === 'talk' && talk.videoUrl) {
         expect(featuredSlugs.has(talk.slug), `"${talk.slug}" has videoUrl but is not in featuredTalks`).toBe(true);
       }
     }

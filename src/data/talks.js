@@ -3,7 +3,24 @@ import voxxedZurich2026Image from './talks/voxxed-days-zurich-2026/index.jpg';
 export const talks = [
   // 2026
   {
+    slug: 'overcommitted-podcast-2026',
+    type: 'podcast',
+    title: 'Building Bulletproof Systems: Engineering for High Availability',
+    conference: 'Overcommitted',
+    location: null,
+    date: '2026-04-07',
+    eventUrl: 'https://overcommitted.dev/building-bulletproof-systems-warren-parad-on-software-engineering-for-high-availability/',
+    articleUrl: null,
+    canonicalUrl: 'https://overcommitted.dev/building-bulletproof-systems-warren-parad-on-software-engineering-for-high-availability/',
+    videoUrl: null,
+    videoTitle: null,
+    description: `In this episode of the Overcommitted Podcast, hosts Bethany and Erika sit down with Warren Parad, CTO and co-founder of Authress, a user authorization API built for reliability. Warren shares how his team stayed fully operational during the massive AWS US-East-1 outage in October 2025 using DNS failover and multi-region strategies, and what the delayed alert logs taught them about timestamp trust.
+
+The conversation kicks off with a candid discussion on AI agents and critical thinking, whether managing multiple coding agents is really multitasking or just micromanagement, and what the trade-offs mean for early-career engineers. Warren traces his reliability-first mindset back to his roots in electrical engineering and healthcare IT, where late-night on-call pages through Citrix proxies and hospital billing systems shaped how he thinks about uptime today. The group also explores what it really takes to build a Five Nines organization and how hiring practices need to match the reliability culture you want. The episode wraps up with a round of Never Have I Ever: SRE Edition, featuring Friday deploys gone wrong, blaming DNS, and discovering outages from customer tweets.`,
+  },
+  {
     slug: 'voxxed-days-zurich-2026',
+    type: 'talk',
     title: 'Meeting Impossible SLAs: How we made our uptime 99.999%',
     conference: 'Voxxed Days',
     location: 'Zurich',
@@ -25,6 +42,7 @@ export const talks = [
   // 2025
   {
     slug: 'techtalkthursday-zurich-2025',
+    type: 'talk',
     title: 'What the @#!? is Auth',
     conference: 'TechTalkThursday',
     location: 'Zurich',
@@ -38,6 +56,7 @@ export const talks = [
   },
   {
     slug: 'tech-internals-berlin-2025',
+    type: 'talk',
     title: 'What the @#!? is Auth',
     conference: 'Tech Internals',
     location: 'Berlin',
@@ -51,6 +70,7 @@ export const talks = [
   },
   {
     slug: 'l8conf-warsaw-2025',
+    type: 'talk',
     title: 'Meeting Impossible SLAs: How we made our uptime 99.999%',
     conference: 'L8Conf',
     location: 'Warsaw',
@@ -66,6 +86,7 @@ export const talks = [
   // 2024
   {
     slug: 'aws-global-summit-zurich-2024',
+    type: 'talk',
     title: 'Meeting SLAs: What it takes to be 99.999% reliable',
     conference: 'AWS Global Summit',
     location: 'Zurich',
@@ -79,6 +100,7 @@ export const talks = [
   },
   {
     slug: 'dwx24-nuremberg-2024',
+    type: 'talk',
     title: 'Why you Should Check Your Secrets Into Git',
     conference: 'DWX24',
     location: 'Nuremberg',
@@ -91,7 +113,22 @@ export const talks = [
     description: 'In any software that involves more than one user, you will have to deal with authentication. And when you have more than one service, you will have to deal with credentials. This talk makes the case for encrypted, auditable secrets in git.',
   },
   {
+    slug: 'challenges-of-open-source',
+    type: 'podcast',
+    title: 'The Challenges of Open Source',
+    conference: 'Adventures in DevOps Podcast',
+    location: null,
+    date: '2024-01-01',
+    eventUrl: null,
+    articleUrl: null,
+    canonicalUrl: null,
+    videoUrl: 'https://www.youtube.com/watch?v=exSYwiVKK88',
+    videoTitle: 'The Challenges of Open Source',
+    description: 'What happens when your project goes open source — the governance challenges, security responsibilities, community dynamics, and sustainability questions that nobody warns you about beforehand.',
+  },
+  {
     slug: 'techspot-warsaw-2024',
+    type: 'talk',
     title: 'Build a Security-First API',
     conference: 'TechSpot',
     location: 'Warsaw',
@@ -105,6 +142,7 @@ export const talks = [
   },
   {
     slug: 'decompiled-dresden-2024',
+    type: 'talk',
     title: 'Adding security to your architecture and mindset',
     conference: 'Decompiled',
     location: 'Dresden',
@@ -118,6 +156,7 @@ export const talks = [
   },
   {
     slug: 'fosdem-brussels-2024',
+    type: 'talk',
     title: 'Stopping all the attacks',
     conference: 'FOSDEM',
     location: 'Brussels',
@@ -133,6 +172,7 @@ export const talks = [
   // 2023
   {
     slug: 'codemotion-madrid-2023',
+    type: 'talk',
     title: 'Why you should check your secrets into Git',
     conference: 'Codemotion',
     location: 'Madrid',
@@ -146,6 +186,7 @@ export const talks = [
   },
   {
     slug: 'codemotion-milan-2023',
+    type: 'talk',
     title: 'Why you should check your secrets into Git',
     conference: 'Codemotion',
     location: 'Milan',
@@ -161,6 +202,7 @@ export const talks = [
   // 2022
   {
     slug: 'agile-meets-architecture-berlin-2022',
+    type: 'talk',
     title: 'Adding security to your architecture one step at a time',
     conference: 'Agile Meets Architecture',
     location: 'Berlin',
@@ -171,21 +213,6 @@ export const talks = [
     videoUrl: 'https://www.youtube.com/watch?v=hccFB6uqTIE',
     videoTitle: 'Adding Security to your Architecture',
     description: 'Security and agile delivery don\'t have to be in tension. This talk presents a practical, incremental approach to hardening your architecture without pausing feature development or creating a separate security track.',
-  },
-
-  // Other recordings
-  {
-    slug: 'challenges-of-open-source',
-    title: 'The Challenges of Open Source',
-    conference: 'Adventures in DevOps Podcast',
-    location: 'Switzerland',
-    date: '2024-01-01',
-    eventUrl: null,
-    articleUrl: null,
-    canonicalUrl: null,
-    videoUrl: 'https://www.youtube.com/watch?v=exSYwiVKK88',
-    videoTitle: 'The Challenges of Open Source',
-    description: 'What happens when your project goes open source — the governance challenges, security responsibilities, community dynamics, and sustainability questions that nobody warns you about beforehand.',
   },
 ];
 
@@ -208,7 +235,7 @@ function youtubeEmbedUrl(videoUrl, { keepParams = false } = {}) {
 talks.sort((a, b) => (b.date ?? '').localeCompare(a.date ?? ''));
 
 export const featuredTalks = talks
-  .filter(t => t.videoUrl)
+  .filter(t => t.type === 'talk' && t.videoUrl)
   .map(t => ({ ...t, embedUrl: youtubeEmbedUrl(t.videoUrl, { keepParams: true }) }));
 
 export { youtubeEmbedUrl };
