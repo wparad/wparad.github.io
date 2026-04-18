@@ -69,7 +69,12 @@
           <ul class="space-y-4 max-w-2xl">
             <li v-for="talk in talks" :key="talk.slug" class="border-l border-border pl-4 hover:border-accent transition-colors group">
               <RouterLink :to="{ name: 'talk', params: { slug: talk.slug } }" class="block no-underline">
-                <span class="text-xs text-muted font-mono">{{ talk.conference }}{{ talk.location ? ` · ${talk.location}` : '' }}{{ talk.date ? ` · ${talk.date.slice(0, 4)}` : '' }}</span>
+                <span class="inline-flex items-center gap-2 flex-wrap">
+                  <span :class="['text-xs font-medium px-1.5 py-0.5 rounded', talk.type === 'podcast' ? 'bg-emerald-900/40 text-emerald-400' : 'bg-accent/15 text-accent']">
+                    {{ talk.type === 'podcast' ? 'Podcast' : 'Talk' }}
+                  </span>
+                  <span class="text-xs text-muted font-mono">{{ talk.conference }}{{ talk.location ? ` · ${talk.location}` : '' }}{{ talk.date ? ` · ${monthYear(talk.date)}` : '' }}</span>
+                </span>
                 <p class="text-text group-hover:text-accent transition-colors mt-0.5 text-sm">{{ talk.title }}</p>
               </RouterLink>
             </li>
@@ -171,6 +176,7 @@ useHead({
 const router = useRouter();
 const key = shortUUID.generate().slice(0, 7);
 const copied = ref(null);
+const monthYear = date => new Date(date).toLocaleDateString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' });
 
 const copyAnchor = id => {
   const url = `${window.location.origin}${window.location.pathname}#${id}`;
