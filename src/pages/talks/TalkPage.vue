@@ -42,7 +42,7 @@
             rel="noopener noreferrer"
             class="inline-flex items-center gap-2 px-4 py-2 text-sm rounded-lg bg-accent text-white font-medium hover:bg-accent/80 transition-colors no-underline">
             <i class="fa-solid fa-calendar-days" />
-            {{ [talk.conference, talk.location, talk.date ? monthYear(talk.date) : null].filter(Boolean).join(' · ') }} Event
+            {{ [talk.conference, talk.location].filter(Boolean).join(' · ') }}
           </a>
           <a
             v-if="talk.articleUrl"
