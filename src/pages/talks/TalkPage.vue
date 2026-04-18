@@ -10,7 +10,7 @@
         <!-- Conference header -->
         <div class="mb-2 text-xs font-mono text-accent tracking-widest uppercase">
           {{ [talk.conference, talk.location].filter(Boolean).join(' · ') }}
-          <span v-if="talk.date"> · {{ talk.date.slice(0, 4) }}</span>
+          <span v-if="talk.date"> · {{ monthYear(talk.date) }}</span>
         </div>
 
         <!-- Talk title -->
@@ -25,7 +25,7 @@
             rel="noopener noreferrer"
             class="inline-flex items-center gap-2 px-4 py-2 text-sm rounded-lg bg-accent text-white font-medium hover:bg-accent/80 transition-colors no-underline">
             <i class="fa-solid fa-calendar-days" />
-            {{ [talk.conference, talk.location, talk.date?.slice(0, 4)].filter(Boolean).join(' · ') }} Event
+            {{ [talk.conference, talk.location, talk.date ? monthYear(talk.date) : null].filter(Boolean).join(' · ') }} Event
           </a>
           <a
             v-if="talk.articleUrl"
@@ -197,6 +197,7 @@ const goBack = () => {
 };
 const embedUrl = computed(() => youtubeEmbedUrl(talk.value?.videoUrl));
 
+const monthYear = date => new Date(date).toLocaleDateString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' });
 const videoLoading = ref(true);
 const onVideoLoad = () => { videoLoading.value = false; };
 
