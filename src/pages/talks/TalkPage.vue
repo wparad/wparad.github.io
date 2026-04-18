@@ -14,12 +14,29 @@
         </div>
 
         <!-- Talk title -->
-        <h1 class="text-3xl font-bold text-text mb-6 leading-tight">{{ talk.title }}</h1>
+        <h1 class="text-3xl font-bold text-text mb-3 leading-tight">{{ talk.title }}</h1>
+
+        <!-- Type badge -->
+        <div class="mb-6">
+          <span :class="['text-xs font-medium px-1.5 py-0.5 rounded', talk.type === 'podcast' ? 'bg-emerald-900/40 text-emerald-400' : 'bg-accent/15 text-accent']">
+            {{ talk.type === 'podcast' ? 'Podcast' : 'Talk' }}
+          </span>
+        </div>
 
         <!-- Normal mode: links row -->
         <div v-if="!isEventMode && (talk.eventUrl || talk.articleUrl || talk.canonicalUrl || talk.slidesUrl)" class="flex flex-wrap gap-3 mb-8">
           <a
-            v-if="talk.eventUrl"
+            v-if="talk.eventUrl && talk.type === 'podcast'"
+            :href="talk.eventUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-4 py-2 text-sm rounded-lg font-medium text-white hover:opacity-80 transition-opacity no-underline"
+            style="background-color:#1db954">
+            <i class="fa-solid fa-podcast" />
+            {{ talk.conference }} · Listen to Episode
+          </a>
+          <a
+            v-if="talk.eventUrl && talk.type !== 'podcast'"
             :href="talk.eventUrl"
             target="_blank"
             rel="noopener noreferrer"
@@ -36,7 +53,7 @@
             <i class="fa-solid fa-file-lines" /> Full article &amp; transcript
           </a>
           <a
-            v-if="talk.slidesUrl || talk.canonicalUrl"
+            v-if="talk.type !== 'podcast' && (talk.slidesUrl || talk.canonicalUrl)"
             :href="talk.slidesUrl ?? talk.canonicalUrl"
             target="_blank"
             rel="noopener noreferrer"
