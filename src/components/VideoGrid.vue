@@ -1,6 +1,6 @@
 <template>
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
-    <div v-for="talk in featuredTalks" :key="talk.slug" class="flex flex-col w-full">
+  <div class="flex flex-wrap justify-center gap-6">
+    <div v-for="talk in featuredTalks" :key="talk.slug" class="flex flex-col w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
       <div class="relative aspect-video w-full rounded-xl overflow-hidden bg-surface">
         <!-- Spinner overlay -->
         <div
