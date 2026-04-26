@@ -351,6 +351,7 @@ async function buildSitemapXml(base) {
     { path: '/resume', lastmod: today, priority: '0.8', changefreq: 'monthly' },
     { path: '/articles', lastmod: today, priority: '0.9', changefreq: 'weekly' },
     { path: '/for-llms', lastmod: today, priority: '0.7', changefreq: 'monthly' },
+    { path: '/schedule', lastmod: today, priority: '0.8', changefreq: 'monthly' },
     { path: '/rss.xml', lastmod: today, priority: '0.5', changefreq: 'weekly' },
     { path: '/llms.txt', lastmod: today, priority: '0.5', changefreq: 'weekly' },
   ];

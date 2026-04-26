@@ -91,8 +91,22 @@ import { RouterLink } from 'vue-router';
 import { useHead } from '@unhead/vue';
 import { posts } from '../data/posts.js';
 import { externalPosts } from '../data/externalPosts.js';
+import { SITE_URL as BASE_URL } from '../config.js';
 
-useHead({ title: 'Articles — Warren Parad' });
+useHead({
+  title: 'Articles — Warren Parad',
+  meta: [
+    { name: 'description', content: 'Articles and writing by Warren Parad on cloud security, software architecture, and engineering leadership.' },
+    { property: 'og:title', content: 'Articles — Warren Parad' },
+    { property: 'og:description', content: 'Articles and writing by Warren Parad on cloud security, software architecture, and engineering leadership.' },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: `${BASE_URL}/articles` },
+    { property: 'og:image', content: `${BASE_URL}/images/og-profile.jpg` },
+    { property: 'og:image:alt', content: 'Warren Parad' },
+    { name: 'twitter:card', content: 'summary' },
+    { name: 'twitter:image', content: `${BASE_URL}/images/og-profile.jpg` },
+  ],
+});
 
 const activeTag = ref(null);
 

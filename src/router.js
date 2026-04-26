@@ -5,6 +5,7 @@ import TalkPage from './pages/talks/TalkPage.vue';
 import BlogIndexPage from './pages/BlogIndexPage.vue';
 import BlogPostPage from './pages/blog/BlogPostPage.vue';
 import ForLlmsPage from './pages/ForLlmsPage.vue';
+import SchedulePage from './pages/SchedulePage.vue';
 
 const routes = [
   {
@@ -46,6 +47,12 @@ const routes = [
     name: 'for-llms',
     component: ForLlmsPage,
     meta: { title: 'For LLMs — Warren Parad' },
+  },
+  {
+    path: '/schedule',
+    name: 'schedule',
+    component: SchedulePage,
+    meta: { title: 'Schedule a Meeting — Warren Parad' },
   },
   {
     path: '/:pathMatch(.*)*',

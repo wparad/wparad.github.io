@@ -138,6 +138,17 @@ import { externalPosts } from '../data/externalPosts.js';
 import { SITE_URL as BASE_URL } from '../config.js';
 useHead({
   title: 'Warren Parad — Authress CTO & Public Speaker',
+  meta: [
+    { name: 'description', content: 'Authress CTO, International Speaker, Cloud Security Architect, AWS Community Builder, Host of Adventures in DevOps' },
+    { property: 'og:title', content: 'Warren Parad — Authress CTO & Public Speaker' },
+    { property: 'og:description', content: 'Authress CTO, International Speaker, Cloud Security Architect, AWS Community Builder, Host of Adventures in DevOps' },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: BASE_URL },
+    { property: 'og:image', content: `${BASE_URL}/images/og-profile.jpg` },
+    { property: 'og:image:alt', content: 'Warren Parad' },
+    { name: 'twitter:card', content: 'summary' },
+    { name: 'twitter:image', content: `${BASE_URL}/images/og-profile.jpg` },
+  ],
   script: [
     {
       type: 'application/ld+json',

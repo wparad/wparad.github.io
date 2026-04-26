@@ -319,9 +319,22 @@
 
 <script setup>
 import { useHead } from '@unhead/vue';
-import profilePicture from '../assets/profile.jpg';
+import { SITE_URL as BASE_URL } from '../config.js';
 
-useHead({ title: 'Resume — Warren Parad' });
+useHead({
+  title: 'Resume — Warren Parad',
+  meta: [
+    { name: 'description', content: 'Resume of Warren Parad — Authress CTO, Cloud Security Architect, and AWS Community Builder.' },
+    { property: 'og:title', content: 'Resume — Warren Parad' },
+    { property: 'og:description', content: 'Resume of Warren Parad — Authress CTO, Cloud Security Architect, and AWS Community Builder.' },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: `${BASE_URL}/resume` },
+    { property: 'og:image', content: `${BASE_URL}/images/og-profile.jpg` },
+    { property: 'og:image:alt', content: 'Warren Parad' },
+    { name: 'twitter:card', content: 'summary' },
+    { name: 'twitter:image', content: `${BASE_URL}/images/og-profile.jpg` },
+  ],
+});
 </script>
 
 <style scoped>

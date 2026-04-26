@@ -230,6 +230,19 @@ useHead(computed(() => {
   return {
     title: `${t.title} — Warren Parad`,
     link: t.canonicalUrl ? [{ rel: 'canonical', href: t.canonicalUrl }] : [],
+    meta: [
+      { name: 'description', content: t.description },
+      { property: 'og:title', content: `${t.title} — Warren Parad` },
+      { property: 'og:description', content: t.description },
+      { property: 'og:type', content: 'article' },
+      { property: 'og:url', content: `${BASE_URL}/talks/${t.slug}` },
+      ...(t.imageUrl ? [
+        { property: 'og:image', content: t.imageUrl },
+        { property: 'og:image:alt', content: t.title },
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:image', content: t.imageUrl },
+      ] : []),
+    ],
     script: [
       {
         type: 'application/ld+json',

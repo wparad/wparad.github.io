@@ -334,10 +334,23 @@ import { useHead } from '@unhead/vue';
 import shortUUID from 'short-uuid';
 import { DateTime, IANAZone } from 'luxon';
 
-import profilePicture from '../assets/profile.jpg';
 import TestimonialCarousel from '../components/TestimonialCarousel.vue';
+import { SITE_URL as BASE_URL } from '../config.js';
 
-useHead({ title: 'Fractional CTO — Warren Parad' });
+useHead({
+  title: 'Fractional CTO — Warren Parad',
+  meta: [
+    { name: 'description', content: 'Fractional CTO services by Warren Parad — technical strategy, team leadership, and cloud architecture for growing companies.' },
+    { property: 'og:title', content: 'Fractional CTO — Warren Parad' },
+    { property: 'og:description', content: 'Fractional CTO services by Warren Parad — technical strategy, team leadership, and cloud architecture for growing companies.' },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: `${BASE_URL}/fractional` },
+    { property: 'og:image', content: `${BASE_URL}/images/og-profile.jpg` },
+    { property: 'og:image:alt', content: 'Warren Parad' },
+    { name: 'twitter:card', content: 'summary' },
+    { name: 'twitter:image', content: `${BASE_URL}/images/og-profile.jpg` },
+  ],
+});
 
 const openSchedulingPage = () => {
   window.open('https://calendar.google.com/calendar/appointments/schedules/AcZssZ1L4ydEJ2y99C8uDGwI2eoIeu7DVwX9a1slXrRQUquyNAZ-CHGkX98GQk5TDkEEuhZ7QvjFGYvp');
