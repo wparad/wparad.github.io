@@ -216,11 +216,18 @@ The conversation kicks off with a candid discussion on AI agents and critical th
   },
 ];
 
+function youtubeVideoId(videoUrl) {
+  if (!videoUrl) { return null; }
+  const url = new URL(videoUrl);
+  const isShort = url.hostname === 'youtu.be';
+  return isShort ? url.pathname.slice(1) : url.searchParams.get('v');
+}
+
 function youtubeEmbedUrl(videoUrl, { keepParams = false } = {}) {
   if (!videoUrl) { return null; }
   const url = new URL(videoUrl);
   const isShort = url.hostname === 'youtu.be';
-  const videoId = isShort ? url.pathname.slice(1) : url.searchParams.get('v');
+  const videoId = youtubeVideoId(videoUrl);
   if (!videoId) { return null; }
   if (!keepParams) { return `https://www.youtube.com/embed/${videoId}`; }
 
@@ -238,4 +245,4 @@ export const featuredTalks = talks
   .filter(t => t.type === 'talk' && t.videoUrl)
   .map(t => ({ ...t, embedUrl: youtubeEmbedUrl(t.videoUrl, { keepParams: true }) }));
 
-export { youtubeEmbedUrl };
+export { youtubeEmbedUrl, youtubeVideoId };

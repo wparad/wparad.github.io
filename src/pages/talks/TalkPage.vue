@@ -201,7 +201,7 @@
 import { ref, computed } from 'vue';
 import { useRoute, useRouter, RouterLink } from 'vue-router';
 import { useHead } from '@unhead/vue';
-import { talks, youtubeEmbedUrl } from '../../data/talks.js';
+import { talks, youtubeEmbedUrl, youtubeVideoId } from '../../data/talks.js';
 import profilePicture from '../../assets/profile.jpg';
 import { SITE_URL as BASE_URL } from '../../config.js';
 
@@ -258,6 +258,19 @@ useHead(computed(() => {
           'performer': { '@type': 'Person', 'name': 'Warren Parad', 'url': BASE_URL },
         }),
       },
+      ...(t.videoUrl ? [{
+        type: 'application/ld+json',
+        innerHTML: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'VideoObject',
+          name: t.videoTitle || t.title,
+          description: t.description,
+          thumbnailUrl: `https://img.youtube.com/vi/${youtubeVideoId(t.videoUrl)}/maxresdefault.jpg`,
+          uploadedDate: t.date,
+          embedUrl: `https://www.youtube.com/embed/${youtubeVideoId(t.videoUrl)}`,
+          url: t.videoUrl,
+        }),
+      }] : []),
       {
         type: 'application/ld+json',
         innerHTML: JSON.stringify({
