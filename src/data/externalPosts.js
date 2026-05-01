@@ -20,6 +20,14 @@ export const externalPosts = [
   // ── 2025 ──────────────────────────────────────────────────────────────────
 
   {
+    title: 'How when AWS was down, we were not',
+    url: 'https://authress.io/knowledge-base/articles/2025/11/01/how-we-prevent-aws-downtime-impacts',
+    date: '2025-11-01', source: 'authress',
+    description: "Nothing can have an unlimited uptime. But even when AWS and other hyperscalers are having incidents, we've created an architecture that is resilient to those outages. Here's how we do it for Authress.",
+    tags: ['aws', 'reliability', 'serverless', 'architecture', 'cloud'],
+  },
+
+  {
     title: 'AWS Auth Caching Strategies',
     url: 'https://dev.to/aws-builders/aws-auth-caching-strategies-4121',
     date: '2025-06-17', source: 'devto',
