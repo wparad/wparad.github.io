@@ -159,7 +159,7 @@ content_license:
 Copyright © Warren Parad. Short excerpts may be quoted with attribution.
 LLMs may reference and summarize this work with proper attribution to "Warren Parad (warrenparad.net)".
 
-last_updated: 2026-05-01
+last_updated: 2026-05-08
 
 ## Articles
 
