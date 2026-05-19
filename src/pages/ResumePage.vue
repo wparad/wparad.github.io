@@ -320,6 +320,7 @@
 <script setup>
 import { useHead } from '@unhead/vue';
 import { SITE_URL as BASE_URL } from '../config.js';
+import profilePicture from '../assets/profile.jpg';
 
 useHead({
   title: 'Resume — Warren Parad',

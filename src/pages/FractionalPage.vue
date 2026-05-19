@@ -332,6 +332,7 @@
 <script setup>
 import { useHead } from '@unhead/vue';
 import shortUUID from 'short-uuid';
+import profilePicture from '../assets/profile.jpg';
 import { DateTime, IANAZone } from 'luxon';
 
 import TestimonialCarousel from '../components/TestimonialCarousel.vue';
