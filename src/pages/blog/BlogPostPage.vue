@@ -31,6 +31,15 @@
 
           <hr class="border-border mb-8">
 
+          <!-- Mobile ToC — visible below xl only -->
+          <nav v-if="toc.length" class="mobile-toc">
+            <ul>
+              <li v-for="item in toc.filter(t => t.depth === 2)" :key="item.id">
+                <a :href="`#${item.id}`" class="no-underline" @click.prevent="handleTocClick(item.id)">{{ item.text }}</a>
+              </li>
+            </ul>
+          </nav>
+
           <!-- Markdown content -->
           <div ref="proseEl" class="prose" @click="handleProseClick">
             <component :is="post.component" />
@@ -218,6 +227,37 @@ useHead(computed(() => {
 
 .no-underline {
   text-decoration: none;
+}
+
+/* ── Mobile ToC ───────────────────────────────── */
+
+.mobile-toc {
+  margin-bottom: 1.5rem;
+}
+
+.mobile-toc ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.mobile-toc a {
+  color: var(--color-muted);
+  font-size: 0.875rem;
+  transition: color 0.15s;
+}
+
+.mobile-toc a:hover {
+  color: var(--color-accent);
+}
+
+@media (min-width: theme(--breakpoint-xl)) {
+  .mobile-toc {
+    display: none;
+  }
 }
 
 /* ── Article container width ─────────────────── */
