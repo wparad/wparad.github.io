@@ -1,7 +1,24 @@
+import awsSummitZurich2026Image from './talks/aws-summit-zurich-2026/index.png';
 import voxxedZurich2026Image from './talks/voxxed-days-zurich-2026/index.jpg';
 
 export const talks = [
   // 2026
+  {
+    slug: 'aws-summit-zurich-2026',
+    type: 'talk',
+    title: 'Calculation Burden: The Struggle to Capture Uptime Metrics',
+    conference: 'AWS Summit',
+    location: 'Zurich',
+    date: '2026-09-02',
+    eventUrl: 'https://aws.amazon.com/events/summits/zurich/agenda/',
+    articleUrl: 'https://authress.io/knowledge-base/articles/2025/11/01/how-we-prevent-aws-downtime-impacts',
+    slidesUrl: 'https://docs.google.com/presentation/d/e/2PACX-1vRBnG4F4dnsHgfsv_maLY0e6Mk_3ueUY1i0p_bHzr-VlH5dXUV-mlqeohHLJRAWMA8CaOfNlWB1zTGv/pub?start=false&loop=false&delayms=5000',
+    canonicalUrl: null,
+    videoUrl: null,
+    videoTitle: 'AWS Summit Zurich — Calculation Burden: The Struggle to Capture Uptime Metrics',
+    imageUrl: awsSummitZurich2026Image,
+    description: `"Is the system up?" is a deceptively simple question that hides a Swiss mountain's worth of architectural and financial anxiety. For our high-scale SaaS, uptime isn't binary, but rather a spectrum of partial degradations, silent 4XX spikes, and mismatched customer expectations. But in the AWS ecosystem, the pursuit of perfecting our uptime metric led us on a journey where the cost and complexity of monitoring and observability rival the service itself.`,
+  },
   {
     slug: 'overcommitted-podcast-2026',
     type: 'podcast',
