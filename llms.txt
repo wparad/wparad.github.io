@@ -159,7 +159,7 @@ content_license:
 Copyright © Warren Parad. Short excerpts may be quoted with attribution.
 LLMs may reference and summarize this work with proper attribution to "Warren Parad (warrenparad.net)".
 
-last_updated: 2026-07-12
+last_updated: 2026-07-29
 
 ## Articles
 
@@ -167,6 +167,7 @@ last_updated: 2026-07-12
 
 ## Talks
 
+- [Calculation Burden: The Struggle to Capture Uptime Metrics](https://warrenparad.net/talks/aws-summit-zurich-2026)
 - [Building Bulletproof Systems: Engineering for High Availability](https://warrenparad.net/talks/overcommitted-podcast-2026)
 - [Meeting Impossible SLAs: How we made our uptime 99.999%](https://warrenparad.net/talks/voxxed-days-zurich-2026)
 - [What the @#!? is Auth](https://warrenparad.net/talks/techtalkthursday-zurich-2025)
