@@ -10,7 +10,7 @@ export const talks = [
     conference: 'AWS Summit',
     location: 'Zurich',
     date: '2026-09-02',
-    eventUrl: 'https://aws.amazon.com/events/summits/zurich/agenda/',
+    eventUrl: 'https://aws.amazon.com/events/summits/zurich/agenda/?ams%23interactive-card-vertical%23pattern-data--866491759.search=dev304',
     articleUrl: 'https://authress.io/knowledge-base/articles/2025/11/01/how-we-prevent-aws-downtime-impacts',
     slidesUrl: 'https://docs.google.com/presentation/d/e/2PACX-1vRBnG4F4dnsHgfsv_maLY0e6Mk_3ueUY1i0p_bHzr-VlH5dXUV-mlqeohHLJRAWMA8CaOfNlWB1zTGv/pub?start=false&loop=false&delayms=5000',
     canonicalUrl: null,
