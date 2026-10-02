@@ -18,9 +18,7 @@
 
         <!-- Type badge -->
         <div class="mb-6">
-          <span :class="['text-xs font-medium px-1.5 py-0.5 rounded', talk.type === 'podcast' ? 'bg-emerald-900/40 text-emerald-400' : 'bg-accent/15 text-accent']">
-            {{ talk.type === 'podcast' ? 'Podcast' : 'Conference' }}
-          </span>
+          <TalkTypeBadge :type="talk.type" />
         </div>
 
         <!-- Normal mode: links row -->
@@ -204,6 +202,7 @@ import { useHead } from '@unhead/vue';
 import { talks, youtubeEmbedUrl, youtubeVideoId } from '../../data/talks.js';
 import profilePicture from '../../assets/profile.jpg';
 import { SITE_URL as BASE_URL } from '../../config.js';
+import TalkTypeBadge from '../../components/TalkTypeBadge.vue';
 
 const route = useRoute();
 const router = useRouter();

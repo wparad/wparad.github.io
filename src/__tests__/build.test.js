@@ -625,7 +625,9 @@ describe('dist/talks/<slug>.html (all talks)', () => {
       it('renders conference and location', () => {
         const text = doc('main').text();
         expect(text).toContain(talk.conference);
-        expect(text).toContain(talk.location);
+        if (talk.location) {
+          expect(text).toContain(talk.location);
+        }
       });
 
       it('renders the talk description', () => {

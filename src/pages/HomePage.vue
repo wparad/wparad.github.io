@@ -70,9 +70,7 @@
             <li v-for="talk in talks" :key="talk.slug" class="border-l border-border pl-4 hover:border-accent transition-colors group">
               <RouterLink :to="{ name: 'talk', params: { slug: talk.slug } }" class="block no-underline">
                 <span class="inline-flex items-center gap-2 flex-wrap">
-                  <span :class="['text-xs font-medium px-1.5 py-0.5 rounded', talk.type === 'podcast' ? 'bg-emerald-900/40 text-emerald-400' : 'bg-accent/15 text-accent']">
-                    {{ talk.type === 'podcast' ? 'Podcast' : 'Talk' }}
-                  </span>
+                  <TalkTypeBadge :type="talk.type" />
                   <span class="text-xs text-muted font-mono">{{ talk.conference }}{{ talk.location ? ` · ${talk.location}` : '' }}{{ talk.date ? ` · ${monthYear(talk.date)}` : '' }}</span>
                 </span>
                 <p class="text-text group-hover:text-accent transition-colors mt-0.5 text-sm">{{ talk.title }}</p>
@@ -132,6 +130,7 @@ import shortUUID from 'short-uuid';
 import profilePicture from '../assets/profile.jpg';
 import oauthImage from '../components/oauth.svg';
 import VideoGrid from '../components/VideoGrid.vue';
+import TalkTypeBadge from '../components/TalkTypeBadge.vue';
 import { talks } from '../data/talks.js';
 import { posts } from '../data/posts.js';
 import { externalPosts } from '../data/externalPosts.js';
