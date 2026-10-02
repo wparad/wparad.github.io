@@ -19,7 +19,7 @@
         <!-- Type badge -->
         <div class="mb-6">
           <span :class="['text-xs font-medium px-1.5 py-0.5 rounded', talk.type === 'podcast' ? 'bg-emerald-900/40 text-emerald-400' : 'bg-accent/15 text-accent']">
-            {{ talk.type === 'podcast' ? 'Podcast' : 'Talk' }}
+            {{ talk.type === 'podcast' ? 'Podcast' : 'Conference' }}
           </span>
         </div>
 
