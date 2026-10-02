@@ -1091,6 +1091,20 @@
     "/assets/avatar-justin-BCBDbnaK.jpg",
     "/assets/index-C-wg_Veq.png"
   ],
+  "src/components/TalkTypeBadge.vue": [
+    "/assets/profile-C4OvL-ns.jpg",
+    "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-GSptaPoQ.png",
+    "/assets/index-B-vI3_Be.jpg",
+    "/assets/account-creation-progress-BEyjw2dB.png",
+    "/assets/gnomes-DGk8WrVP.png",
+    "/assets/were-not-on-my-planet-Bz5M-TR4.gif",
+    "/assets/waf-after-cloudfront-CHdcYxLA.png",
+    "/assets/avatar-andrej-BB2SG8F7.jpeg",
+    "/assets/avatar-hal-CE5sbnrf.jpeg",
+    "/assets/avatar-justin-BCBDbnaK.jpg",
+    "/assets/index-C-wg_Veq.png"
+  ],
   "src/components/TestimonialCarousel.vue": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
@@ -1413,7 +1427,7 @@
     "/assets/avatar-justin-BCBDbnaK.jpg",
     "/assets/index-C-wg_Veq.png"
   ],
-  "src/pages/talks/TalkPage.vue?vue&type=style&index=0&scoped=766781fb&lang.css": [
+  "src/pages/talks/TalkPage.vue?vue&type=style&index=0&scoped=94f3f627&lang.css": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
     "/assets/index-GSptaPoQ.png",
