@@ -4,6 +4,25 @@ import voxxedZurich2026Image from './talks/voxxed-days-zurich-2026/index.jpg';
 export const talks = [
   // 2026
   {
+    slug: 'agentic-days-zurich-2026',
+    type: 'talk',
+    title: 'Migration or migraine: What no one tells you about using LLMs',
+    conference: 'Agentic Engineering Days',
+    location: 'Zurich',
+    date: '2026-11-20',
+    eventUrl: 'https://www.agenticdays.com/session/1241628-migration-or-migraine-what-no-one-tells-you-about-using-llms',
+    articleUrl: null,
+    slidesUrl: null,
+    canonicalUrl: null,
+    videoUrl: null,
+    videoTitle: 'Agentic Engineering Days Zurich — Migration or migraine: What no one tells you about using LLMs',
+    description: `We had a task stuck forever in our backlog. A task so simple, yet so tedious that our team just kept postponing it. Even our bored intern didn't want to do it. The task: upgrade each framework used in our managed authentication solution to the latest version, without ruining our test coverage or breaking production. A task perfect for AI. Or so we thought...
+
+    As it turns out, some coding tasks lend themselves to AI application better than others. Is a one-time migration involving ~100 components of a system actively used in production a good use case? How does the hype compare to the reality?
+
+    In this talk, I'll share our experience using LLMs to perform a seemingly simple but surprisingly challenging migration. I'll discuss what went as expected, what surprised us, share the takeaways related to developer experience, efficiency, and quality, and go over what both skeptics and optimists get wrong about AI.`,
+  },
+  {
     slug: 'aws-summit-zurich-2026',
     type: 'talk',
     title: 'Calculation Burden: The Struggle to Capture Uptime Metrics',
