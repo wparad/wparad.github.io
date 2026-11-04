@@ -1,3 +1,4 @@
+import agenticDaysZurich2026Image from './talks/agentic-days-zurich-2026/index.png';
 import awsSummitZurich2026Image from './talks/aws-summit-zurich-2026/index.png';
 import voxxedZurich2026Image from './talks/voxxed-days-zurich-2026/index.jpg';
 
@@ -16,6 +17,7 @@ export const talks = [
     canonicalUrl: null,
     videoUrl: null,
     videoTitle: 'Agentic Engineering Days Zurich — Migration or migraine: What no one tells you about using LLMs',
+    imageUrl: agenticDaysZurich2026Image,
     description: `We had a task stuck forever in our backlog. A task so simple, yet so tedious that our team just kept postponing it. Even our bored intern didn't want to do it. The task: upgrade each framework used in our managed authentication solution to the latest version, without ruining our test coverage or breaking production. A task perfect for AI. Or so we thought...
 
     As it turns out, some coding tasks lend themselves to AI application better than others. Is a one-time migration involving ~100 components of a system actively used in production a good use case? How does the hype compare to the reality?
