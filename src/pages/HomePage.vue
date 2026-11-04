@@ -104,8 +104,7 @@
               <component
                 :is="post.external ? 'a' : RouterLink"
                 v-bind="post.external ? { href: post.url, target: '_blank', rel: 'noopener noreferrer' } : { to: { name: 'article', params: { slug: post.slug } } }"
-                class="block no-underline"
-              >
+                class="block no-underline">
                 <div class="flex items-start gap-2">
                   <span class="text-xs text-muted font-mono mt-0.5 shrink-0">{{ post.date }}</span>
                   <span v-if="post.source === 'authress'" class="text-xs px-1.5 py-0.5 rounded bg-teal/20 text-teal font-medium shrink-0">Authress Engineering KB</span>

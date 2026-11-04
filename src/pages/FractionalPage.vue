@@ -22,14 +22,12 @@
               href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1L4ydEJ2y99C8uDGwI2eoIeu7DVwX9a1slXrRQUquyNAZ-CHGkX98GQk5TDkEEuhZ7QvjFGYvp"
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 px-4 py-2 text-sm rounded-lg bg-accent text-white font-medium hover:bg-accent/80 transition-colors cursor-pointer"
-            >
+              class="inline-flex items-center gap-2 px-4 py-2 text-sm rounded-lg bg-accent text-white font-medium hover:bg-accent/80 transition-colors cursor-pointer">
               <i class="fa-regular fa-calendar-check" /> Schedule a meeting
             </a>
             <button
               class="js-only inline-flex items-center gap-2 px-4 py-2 text-sm rounded-lg border border-border text-muted hover:border-accent hover:text-accent transition-colors cursor-pointer"
-              @click="openEmail"
-            >
+              @click="openEmail">
               <i class="fa-solid fa-envelope" /> Drop me a message
             </button>
             <noscript><span class="inline-flex items-center gap-2 px-4 py-2 text-sm rounded-lg border border-border text-muted">Enable JavaScript to send email</span></noscript>
@@ -282,8 +280,7 @@
                 href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1L4ydEJ2y99C8uDGwI2eoIeu7DVwX9a1slXrRQUquyNAZ-CHGkX98GQk5TDkEEuhZ7QvjFGYvp"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 px-4 py-2 text-sm rounded-lg border border-border text-muted hover:border-accent hover:text-accent transition-colors cursor-pointer"
-              >
+                class="inline-flex items-center gap-2 px-4 py-2 text-sm rounded-lg border border-border text-muted hover:border-accent hover:text-accent transition-colors cursor-pointer">
                 Think this is an opportunity for collaboration? Schedule a meeting <i class="fa-solid fa-circle-chevron-right" />
               </a>
             </div>
@@ -318,8 +315,7 @@
               href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1L4ydEJ2y99C8uDGwI2eoIeu7DVwX9a1slXrRQUquyNAZ-CHGkX98GQk5TDkEEuhZ7QvjFGYvp"
               target="_blank"
               rel="noopener noreferrer"
-              class="mt-6 inline-flex items-center gap-2 px-4 py-2 text-sm rounded-lg bg-accent text-white font-medium hover:bg-accent/80 transition-colors cursor-pointer"
-            >
+              class="mt-6 inline-flex items-center gap-2 px-4 py-2 text-sm rounded-lg bg-accent text-white font-medium hover:bg-accent/80 transition-colors cursor-pointer">
               <i class="fa-regular fa-calendar-check" /> Schedule a meeting
             </a>
           </div>
@@ -352,10 +348,6 @@ useHead({
     { name: 'twitter:image', content: `${BASE_URL}/images/og-profile.jpg` },
   ],
 });
-
-const openSchedulingPage = () => {
-  window.open('https://calendar.google.com/calendar/appointments/schedules/AcZssZ1L4ydEJ2y99C8uDGwI2eoIeu7DVwX9a1slXrRQUquyNAZ-CHGkX98GQk5TDkEEuhZ7QvjFGYvp');
-};
 
 const openEmail = () => {
   const email = `"Warren Parad<fractional+${shortUUID.generate().slice(0, 7)}`;

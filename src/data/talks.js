@@ -38,7 +38,7 @@ export const talks = [
     videoUrl: null,
     videoTitle: 'AWS Summit Zurich — Calculation Burden: The Struggle to Capture Uptime Metrics',
     imageUrl: awsSummitZurich2026Image,
-    description: `"Is the system up?" is a deceptively simple question that hides a Swiss mountain's worth of architectural and financial anxiety. For our high-scale SaaS, uptime isn't binary, but rather a spectrum of partial degradations, silent 4XX spikes, and mismatched customer expectations. But in the AWS ecosystem, the pursuit of perfecting our uptime metric led us on a journey where the cost and complexity of monitoring and observability rival the service itself.`,
+    description: '"Is the system up?" is a deceptively simple question that hides a Swiss mountain\'s worth of architectural and financial anxiety. For our high-scale SaaS, uptime isn\'t binary, but rather a spectrum of partial degradations, silent 4XX spikes, and mismatched customer expectations. But in the AWS ecosystem, the pursuit of perfecting our uptime metric led us on a journey where the cost and complexity of monitoring and observability rival the service itself.',
   },
   {
     slug: 'overcommitted-podcast-2026',

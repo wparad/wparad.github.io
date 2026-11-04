@@ -47,7 +47,7 @@ export const createApp = ViteSSG(
         capture_pageview: false,
       });
 
-      router.afterEach((to) => {
+      router.afterEach(to => {
         posthog.capture('$pageview', { $current_url: to.fullPath });
       });
     }

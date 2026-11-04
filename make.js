@@ -44,6 +44,5 @@ commander.on('*', () => {
   if (commander.args.join(' ') === 'tests/**/*.js') { return; }
   console.log(`Unknown Command: ${commander.args.join(' ')}`);
   commander.help();
-  process.exit(0);
 });
 commander.parse(process.argv[2] ? process.argv : process.argv.concat(['build']));

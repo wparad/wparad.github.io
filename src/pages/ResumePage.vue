@@ -131,7 +131,8 @@
               Pioneered security at Authress by building multiple B2B products and scaling engineering teams in the SaaS security space, focused on user access control and authorization. Collaborated with executives across the business to align strategic initiatives, and developed the engineering division by recruiting, hiring, and growing talent across geographic locations.
             </p>
             <div class="flex flex-wrap gap-1.5 mt-3">
-              <span v-for="tag in ['IaC', 'DevOps', 'AWS', 'Typescript', 'Rust', 'OpenTofu', 'GDPR']" :key="tag"
+              <span
+v-for="tag in ['IaC', 'DevOps', 'AWS', 'Typescript', 'Rust', 'OpenTofu', 'GDPR']" :key="tag"
                 class="text-xs px-2 py-0.5 rounded-full bg-surface-2 text-muted">{{ tag }}</span>
             </div>
           </div>
@@ -149,7 +150,8 @@
               Fractional tech leadership and CTO services for companies scaling effectiveness and engineering teams. Helped build and lead impactful, cohesive technology teams delivering world-class software. Focused on architecture that drives business decisions, improving technology platforms, and rapidly delivering the next innovation.
             </p>
             <div class="flex flex-wrap gap-1.5 mt-3">
-              <span v-for="tag in ['Org design', 'Leadership development', 'Architecture', 'DevSecOps', 'AWS', 'ZeroTrust', 'Agile / Kanban', 'OKRs', 'IaC', 'Migrations', 'Security audits', 'Build vs buy']" :key="tag"
+              <span
+v-for="tag in ['Org design', 'Leadership development', 'Architecture', 'DevSecOps', 'AWS', 'ZeroTrust', 'Agile / Kanban', 'OKRs', 'IaC', 'Migrations', 'Security audits', 'Build vs buy']" :key="tag"
                 class="text-xs px-2 py-0.5 rounded-full bg-surface-2 text-muted">{{ tag }}</span>
             </div>
           </div>
@@ -167,7 +169,8 @@
               Led a team of software engineers developing microservices for the Mass Customization Platform — connecting fulfillers, merchants, and content artists across the world at billions of requests per day. Fostered collaboration across distributed teams on multiple continents. Created cross-team programs including IaC, security reviews, and cross-team design sessions.
             </p>
             <div class="flex flex-wrap gap-1.5 mt-3">
-              <span v-for="tag in ['Microservices', 'IaC', 'Agile', 'DDD', 'TDD', 'Javascript', 'Typescript', 'C#', 'GDPR']" :key="tag"
+              <span
+v-for="tag in ['Microservices', 'IaC', 'Agile', 'DDD', 'TDD', 'Javascript', 'Typescript', 'C#', 'GDPR']" :key="tag"
                 class="text-xs px-2 py-0.5 rounded-full bg-surface-2 text-muted">{{ tag }}</span>
             </div>
           </div>
@@ -185,7 +188,8 @@
               Founded and built a revitalized healthcare platform addressing concerning trends related to dating apps. Built the initial engineering team and the original mobile apps (Android and iOS), websites, and services. Researched and implemented integrations between healthcare providers across the US for secure patient data exchange.
             </p>
             <div class="flex flex-wrap gap-1.5 mt-3">
-              <span v-for="tag in ['CI/CD', 'Javascript', 'Java', 'GCP', 'HIPAA']" :key="tag"
+              <span
+v-for="tag in ['CI/CD', 'Javascript', 'Java', 'GCP', 'HIPAA']" :key="tag"
                 class="text-xs px-2 py-0.5 rounded-full bg-surface-2 text-muted">{{ tag }}</span>
             </div>
           </div>
@@ -203,7 +207,8 @@
               Led teams in production manufacturing, software development, and manufacturing integration to create automated software solutions for building flight vehicles. Implemented agile software design, RESTful APIs, lean manufacturing, and cross-department collaboration to deliver at scale.
             </p>
             <div class="flex flex-wrap gap-1.5 mt-3">
-              <span v-for="tag in ['CI/CD', 'Javascript', 'Python', 'AWS', 'Distributed teams']" :key="tag"
+              <span
+v-for="tag in ['CI/CD', 'Javascript', 'Python', 'AWS', 'Distributed teams']" :key="tag"
                 class="text-xs px-2 py-0.5 rounded-full bg-surface-2 text-muted">{{ tag }}</span>
             </div>
           </div>
@@ -221,7 +226,8 @@
               Designed and architected manufacturing plants' software including volume forecasting, scheduling optimization, and hardware automation. Led an engineering book club, introduced Kanban, git, and CI/CD across a distributed multicultural team.
             </p>
             <div class="flex flex-wrap gap-1.5 mt-3">
-              <span v-for="tag in ['Kanban', 'Jenkins', 'C#', 'Ruby', 'IaC', 'WCF']" :key="tag"
+              <span
+v-for="tag in ['Kanban', 'Jenkins', 'C#', 'Ruby', 'IaC', 'WCF']" :key="tag"
                 class="text-xs px-2 py-0.5 rounded-full bg-surface-2 text-muted">{{ tag }}</span>
             </div>
           </div>

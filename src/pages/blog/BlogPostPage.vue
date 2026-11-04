@@ -11,7 +11,7 @@
 
           <!-- Header image -->
           <div v-if="resolvedImage" class="mb-8">
-            <img :src="resolvedImage" :alt="post.imageAlt" class="w-full object-cover max-h-80 rounded-lg" />
+            <img :src="resolvedImage" :alt="post.imageAlt" class="w-full object-cover max-h-80 rounded-lg">
           </div>
 
           <!-- Post header -->
@@ -131,7 +131,7 @@ function startObserver() {
         activeId.value = visible[0].id;
       }
     },
-    { rootMargin: '0px 0px -60% 0px', threshold: 0 }
+    { rootMargin: '0px 0px -60% 0px', threshold: 0 },
   );
 
   headingEls.forEach(el => observer.observe(el));
@@ -202,7 +202,7 @@ useHead(computed(() => {
           'datePublished': p.date,
           'author': { '@type': 'Person', 'name': 'Warren Parad', 'url': BASE_URL },
           'url': `${BASE_URL}/articles/${p.slug}`,
-          ...(ogImage ? { 'image': ogImage } : {}),
+          ...(ogImage ? { image: ogImage } : {}),
         }),
       },
       {

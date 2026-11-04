@@ -30,12 +30,12 @@
     "build": "vite-ssg build",
     "start": "vite --port=8080",
     "serve": "vite-ssg build && vite preview --port=8080",
-    "lint": "eslint --ext .js src make.js",
+    "lint": "eslint src make.js eslint.config.mjs",
     "setup": "node make.js setup",
     "test": "vitest run"
   },
   "devDependencies": {
-    "@authress/eslint-config": "*",
+    "@authress/eslint-config": "^2.0.23",
     "@shikijs/markdown-it": "^4.0.2",
     "@tailwindcss/vite": "^4.2.2",
     "@types/markdown-it": "^14.1.2",
@@ -45,12 +45,12 @@
     "cheerio": "^1.2.0",
     "commander": "^4.0.1",
     "esbuild": "^0.28.0",
-    "eslint": "^8.44.0",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-vue": "^7.17.0",
+    "eslint": "^10.14.0",
+    "eslint-plugin-vue": "^10.12.0",
     "fast-xml-parser": "^5.7.3",
     "fs-extra": "^8.1.0",
     "glob": "^7.1.6",
+    "globals": "^17.14.0",
     "js-yaml": "^4.2.0",
     "markdown-it": "^14.1.1",
     "markdown-it-anchor": "^9.2.0",
@@ -59,10 +59,11 @@
     "tailwindcss": "^4.0.0",
     "typescript": "^6.0.2",
     "unhead": "^2.1.13",
-    "unplugin-vue-markdown": "^30.0.0",
+    "unplugin-vue-markdown": "^32.1.1",
     "vite": "^8.0.0",
     "vite-ssg": "^28.3.0",
-    "vitest": "^4.1.4"
+    "vitest": "^4.1.4",
+    "vue-eslint-parser": "^10.4.1"
   },
   "engines": {
     "node": ">=24"

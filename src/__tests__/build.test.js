@@ -11,19 +11,19 @@ const SITE_URL = 'https://warrenparad.net';
 
 // Custom theme colors defined in src/styles/main.css
 const THEME_COLORS = {
-  accent:    '#4e9af1',
-  bg:        '#0f1117',
-  surface:   '#1a1f2e',
+  'accent': '#4e9af1',
+  'bg': '#0f1117',
+  'surface': '#1a1f2e',
   'surface-2': '#242938',
-  border:    '#2d3348',
-  text:      '#e8eaf0',
-  muted:     '#8b94b0',
-  teal:      '#3E6077',
+  'border': '#2d3348',
+  'text': '#e8eaf0',
+  'muted': '#8b94b0',
+  'teal': '#3E6077',
 };
 
 // ─── helpers ────────────────────────────────────────────────────────────────
 
-async function readText(rel) {
+function readText(rel) {
   return readFile(join(DIST, rel), 'utf-8');
 }
 
@@ -44,19 +44,19 @@ function jsonLdObjects(html) {
 
 /** Map a root-relative href to a dist/ file path that should exist. */
 function hrefToDistFile(href) {
-  if (!href || href.startsWith('http') || href.startsWith('mailto')) return null;
+  if (!href || href.startsWith('http') || href.startsWith('mailto')) {return null;}
   const path = href.split('#')[0]; // strip hash fragment
-  if (!path || path === '/') return 'index.html';
+  if (!path || path === '/') {return 'index.html';}
   const clean = path.replace(/^\//, '');
   // Routes ending in known extensions are file paths
-  if (clean.match(/\.(xml|txt|html|json|ico|jpg|png|svg)$/)) return clean;
+  if (clean.match(/\.(xml|txt|html|json|ico|jpg|png|svg)$/)) {return clean;}
   // SPA routes → flat html files or index.html inside directory
-  return clean + '.html';
+  return `${clean}.html`;
 }
 
 /** Extract YouTube video ID from youtu.be or youtube.com URL. */
 function youtubeId(url) {
-  if (!url) return null;
+  if (!url) {return null;}
   const m = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|watch\?v=))([A-Za-z0-9_-]+)/);
   return m?.[1] ?? null;
 }
@@ -67,7 +67,7 @@ async function getAllHtmlFiles() {
   async function walk(dir) {
     const entries = await readdir(dir, { withFileTypes: true });
     for (const e of entries) {
-      if (e.name.startsWith(':')) continue; // skip :pathMatch(.*)*.html
+      if (e.name.startsWith(':')) {continue;} // skip :pathMatch(.*)*.html
       const full = join(dir, e.name);
       if (e.isDirectory()) {
         await walk(full);
@@ -92,7 +92,7 @@ async function getPostSlugs() {
 /** Parse YAML frontmatter from a markdown string. Returns { data, body }. */
 function parseFrontmatter(md) {
   const match = md.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
-  if (!match) throw new Error('No YAML frontmatter found');
+  if (!match) {throw new Error('No YAML frontmatter found');}
   return { data: yaml.load(match[1]), body: match[2] };
 }
 
@@ -230,7 +230,7 @@ describe('all HTML pages: shared invariants', () => {
   let htmlFiles;
   beforeAll(async () => { htmlFiles = await getAllHtmlFiles(); });
 
-  it('finds at least 19 rendered HTML files', async () => {
+  it('finds at least 19 rendered HTML files', () => {
     expect(htmlFiles.length).toBeGreaterThanOrEqual(19);
   });
 
@@ -251,15 +251,13 @@ describe('all HTML pages: shared invariants', () => {
     ['has LLMs.txt alternate link', html => expect(html).toContain('href="/llms.txt"')],
   ];
 
-  for (const [label, assertion] of checks) {
-    it(label, async () => {
-      for (const file of htmlFiles) {
-        let html;
-        try { html = await readText(file); } catch { continue; }
-        assertion(html);
-      }
-    });
-  }
+  it.each(checks)('%s', async (_label, assertion) => {
+    for (const file of htmlFiles) {
+      let html;
+      try { html = await readText(file); } catch { continue; }
+      assertion(html);
+    }
+  });
 });
 
 // ─── internal link resolution ────────────────────────────────────────────────
@@ -384,7 +382,7 @@ describe('images and assets resolve to real files', () => {
 // ─── homepage ────────────────────────────────────────────────────────────────
 
 describe('dist/index.html', () => {
-  let html, doc;
+  let html; let doc;
   beforeAll(async () => { html = await readText('index.html'); doc = $(html); });
 
   it('title is "Warren Parad — Authress CTO & Public Speaker"', () => {
@@ -576,7 +574,7 @@ describe('dist/articles/<slug>.html (all articles)', () => {
 
       // JSON-LD Article
       const article = jsonLdObjects(html).find(o =>
-        o['@type'] === 'Article' || o['@type'] === 'BlogPosting'
+        o['@type'] === 'Article' || o['@type'] === 'BlogPosting',
       );
       expect(article, `${slug}: JSON-LD Article missing`).toBeTruthy();
       expect(article.headline, `${slug}: JSON-LD headline missing`).toBeTruthy();
@@ -604,7 +602,7 @@ describe('dist/articles/<slug>.html (all articles)', () => {
 describe('dist/talks/<slug>.html (all talks)', () => {
   for (const talk of talks) {
     describe(talk.slug, () => {
-      let html, doc;
+      let html; let doc;
       beforeAll(async () => {
         html = await readText(`talks/${talk.slug}.html`);
         doc = $(html);
@@ -692,7 +690,7 @@ describe('dist/talks/<slug>.html (all talks)', () => {
 // ─── sitemap.xml ─────────────────────────────────────────────────────────────
 
 describe('dist/sitemap.xml', () => {
-  let xml, parsed;
+  let xml; let parsed;
   const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '@_' });
 
   beforeAll(async () => {
@@ -743,7 +741,7 @@ describe('dist/sitemap.xml', () => {
 
   it('all priority values are between 0.0 and 1.0', () => {
     for (const u of parsed.urlset.url) {
-      if (u.priority != null) {
+      if (u.priority !== undefined) {
         expect(Number(u.priority)).toBeGreaterThanOrEqual(0);
         expect(Number(u.priority)).toBeLessThanOrEqual(1);
       }
@@ -792,7 +790,7 @@ describe('dist/sitemap.xml', () => {
 // ─── rss.xml ──────────────────────────────────────────────────────────────────
 
 describe('dist/rss.xml', () => {
-  let xml, parsed;
+  let xml; let parsed;
   const parser = new XMLParser({
     ignoreAttributes: false,
     attributeNamePrefix: '@_',
@@ -874,7 +872,7 @@ describe('dist/rss.xml', () => {
 
   it('every item for a local article has at least one category tag', () => {
     const localItems = parsed.rss.channel.item.filter(i =>
-      i.link.startsWith(SITE_URL)
+      i.link.startsWith(SITE_URL),
     );
     for (const item of localItems) {
       const categories = item.category;
@@ -891,11 +889,9 @@ describe('dist/llms.txt', () => {
   beforeAll(async () => { txt = await readText('llms.txt'); });
 
   const requiredFields = ['name', 'website', 'github', 'linkedin', 'aliases', 'tone', 'audience'];
-  for (const field of requiredFields) {
-    it(`has ${field}: field`, () => {
-      expect(txt).toMatch(new RegExp(`^${field}:`, 'm'));
-    });
-  }
+  it.each(requiredFields)('has %s: field', field => {
+    expect(txt).toMatch(new RegExp(`^${field}:`, 'm'));
+  });
 
   it('name is Warren Parad', () => {
     expect(txt).toContain('name: Warren Parad');
@@ -917,11 +913,9 @@ describe('dist/llms.txt', () => {
     '## Articles', '## Talks', '## Links',
     'primary_topics:', 'fractional_cto:', 'expertise_areas:', 'known_for:',
   ];
-  for (const section of requiredSections) {
-    it(`has section: ${section}`, () => {
-      expect(txt).toContain(section);
-    });
-  }
+  it.each(requiredSections)('has section: %s', section => {
+    expect(txt).toContain(section);
+  });
 
   it('Articles section contains at least one markdown link', () => {
     const after = txt.slice(txt.indexOf('## Articles'));
@@ -988,7 +982,6 @@ describe('dist/articles/<slug>.md (raw markdown, all articles)', () => {
       expect(data.description.length, `${slug}: fm description too short`).toBeGreaterThan(20);
       expect(doc('meta[property="og:description"]').attr('content'), `${slug}: og:desc != fm desc`)
         .toBe(data.description);
-
 
       // authors: non-empty slug
       expect(data.authors, `${slug}: authors missing`).toBeTruthy();

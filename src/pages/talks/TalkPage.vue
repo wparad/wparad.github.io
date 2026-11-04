@@ -262,12 +262,12 @@ useHead(computed(() => {
         innerHTML: JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'VideoObject',
-          name: t.videoTitle || t.title,
-          description: t.description,
-          thumbnailUrl: `https://img.youtube.com/vi/${youtubeVideoId(t.videoUrl)}/maxresdefault.jpg`,
-          uploadedDate: t.date,
-          embedUrl: `https://www.youtube.com/embed/${youtubeVideoId(t.videoUrl)}`,
-          url: t.videoUrl,
+          'name': t.videoTitle || t.title,
+          'description': t.description,
+          'thumbnailUrl': `https://img.youtube.com/vi/${youtubeVideoId(t.videoUrl)}/maxresdefault.jpg`,
+          'uploadedDate': t.date,
+          'embedUrl': `https://www.youtube.com/embed/${youtubeVideoId(t.videoUrl)}`,
+          'url': t.videoUrl,
         }),
       }] : []),
       {
