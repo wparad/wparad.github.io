@@ -12,7 +12,7 @@ export const talks = [
     date: '2026-11-20',
     eventUrl: 'https://www.agenticdays.com/session/1241628-migration-or-migraine-what-no-one-tells-you-about-using-llms',
     articleUrl: null,
-    slidesUrl: null,
+    slidesUrl: 'https://docs.google.com/presentation/d/e/2PACX-1vTLeQnilW6NCj8johlUD1kHwAI9yqlCVu7m6C1Vny3nTLr5lt4D1VXk2jkly_6sasTkcix0ko5u4Ilg/pub?start=false&loop=false&delayms=5000',
     canonicalUrl: null,
     videoUrl: null,
     videoTitle: 'Agentic Engineering Days Zurich — Migration or migraine: What no one tells you about using LLMs',
