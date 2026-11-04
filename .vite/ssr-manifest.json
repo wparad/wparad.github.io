@@ -2,6 +2,7 @@
   "\u0000plugin-vue:export-helper": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -16,6 +17,7 @@
   "\u0000rolldown/runtime.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -30,6 +32,7 @@
   "\u0000vite/modulepreload-polyfill.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -44,6 +47,7 @@
   "index.html": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -58,6 +62,7 @@
   "node_modules/@unhead/shared/dist/index.mjs": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -72,6 +77,7 @@
   "node_modules/@unhead/vue/dist/shared/vue.-sixQ7xP.mjs": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -86,6 +92,7 @@
   "node_modules/@unhead/vue/dist/shared/vue.ziyDaVMR.mjs": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -100,6 +107,7 @@
   "node_modules/@unhead/vue/node_modules/unhead/dist/index.mjs": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -114,6 +122,7 @@
   "node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -128,6 +137,7 @@
   "node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -142,6 +152,7 @@
   "node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -156,6 +167,7 @@
   "node_modules/@vue/shared/dist/shared.esm-bundler.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -170,6 +182,7 @@
   "node_modules/any-base/index.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -184,6 +197,7 @@
   "node_modules/any-base/src/converter.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -198,6 +212,7 @@
   "node_modules/hookable/dist/index.mjs": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -212,6 +227,7 @@
   "node_modules/luxon/src/datetime.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -226,6 +242,7 @@
   "node_modules/luxon/src/duration.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -240,6 +257,7 @@
   "node_modules/luxon/src/errors.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -254,6 +272,7 @@
   "node_modules/luxon/src/impl/conversions.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -268,6 +287,7 @@
   "node_modules/luxon/src/impl/diff.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -282,6 +302,7 @@
   "node_modules/luxon/src/impl/digits.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -296,6 +317,7 @@
   "node_modules/luxon/src/impl/english.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -310,6 +332,7 @@
   "node_modules/luxon/src/impl/formats.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -324,6 +347,7 @@
   "node_modules/luxon/src/impl/formatter.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -338,6 +362,7 @@
   "node_modules/luxon/src/impl/invalid.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -352,6 +377,7 @@
   "node_modules/luxon/src/impl/locale.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -366,6 +392,7 @@
   "node_modules/luxon/src/impl/regexParser.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -380,6 +407,7 @@
   "node_modules/luxon/src/impl/tokenParser.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -394,6 +422,7 @@
   "node_modules/luxon/src/impl/util.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -408,6 +437,7 @@
   "node_modules/luxon/src/impl/zoneUtil.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -422,6 +452,7 @@
   "node_modules/luxon/src/info.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -436,6 +467,7 @@
   "node_modules/luxon/src/interval.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -450,6 +482,7 @@
   "node_modules/luxon/src/settings.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -464,6 +497,7 @@
   "node_modules/luxon/src/zone.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -478,6 +512,7 @@
   "node_modules/luxon/src/zones/IANAZone.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -492,6 +527,7 @@
   "node_modules/luxon/src/zones/fixedOffsetZone.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -506,6 +542,7 @@
   "node_modules/luxon/src/zones/invalidZone.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -520,6 +557,7 @@
   "node_modules/luxon/src/zones/systemZone.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -534,6 +572,7 @@
   "node_modules/pinia/dist/pinia.mjs": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -548,6 +587,7 @@
   "node_modules/posthog-js/dist/module.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -562,6 +602,7 @@
   "node_modules/short-uuid/index.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -576,6 +617,7 @@
   "node_modules/unhead/dist/client.mjs": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -590,6 +632,7 @@
   "node_modules/unhead/dist/shared/unhead.B5FWS6X0.mjs": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -604,6 +647,7 @@
   "node_modules/unhead/dist/shared/unhead.CbpEuj3y.mjs": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -618,6 +662,7 @@
   "node_modules/unhead/dist/shared/unhead.Ct24BOby.mjs": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -632,6 +677,7 @@
   "node_modules/unhead/dist/shared/unhead.yem5I2v_.mjs": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -646,6 +692,7 @@
   "node_modules/unhead/node_modules/hookable/dist/index.mjs": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -660,6 +707,7 @@
   "node_modules/uuid/dist/esm-browser/index.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -674,6 +722,7 @@
   "node_modules/uuid/dist/esm-browser/md5.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -688,6 +737,7 @@
   "node_modules/uuid/dist/esm-browser/nil.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -702,6 +752,7 @@
   "node_modules/uuid/dist/esm-browser/parse.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -716,6 +767,7 @@
   "node_modules/uuid/dist/esm-browser/regex.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -730,6 +782,7 @@
   "node_modules/uuid/dist/esm-browser/rng.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -744,6 +797,7 @@
   "node_modules/uuid/dist/esm-browser/sha1.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -758,6 +812,7 @@
   "node_modules/uuid/dist/esm-browser/stringify.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -772,6 +827,7 @@
   "node_modules/uuid/dist/esm-browser/v1.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -786,6 +842,7 @@
   "node_modules/uuid/dist/esm-browser/v3.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -800,6 +857,7 @@
   "node_modules/uuid/dist/esm-browser/v35.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -814,6 +872,7 @@
   "node_modules/uuid/dist/esm-browser/v4.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -828,6 +887,7 @@
   "node_modules/uuid/dist/esm-browser/v5.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -842,6 +902,7 @@
   "node_modules/uuid/dist/esm-browser/validate.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -856,6 +917,7 @@
   "node_modules/uuid/dist/esm-browser/version.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -870,6 +932,7 @@
   "node_modules/vite-ssg/dist/index.mjs": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -884,6 +947,7 @@
   "node_modules/vite-ssg/dist/shared/vite-ssg.C6pK7rvr.mjs": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -898,6 +962,7 @@
   "node_modules/vite-ssg/dist/shared/vite-ssg.ETIvV-80.mjs": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -912,6 +977,7 @@
   "node_modules/vite-ssg/node_modules/@unhead/vue/dist/client.mjs": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -926,6 +992,7 @@
   "node_modules/vite-ssg/node_modules/@unhead/vue/dist/shared/vue.Cr7xSEtD.mjs": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -940,6 +1007,7 @@
   "node_modules/vue-router/dist/devtools-EWN81iOl.mjs": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -954,6 +1022,7 @@
   "node_modules/vue-router/dist/vue-router.mjs": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -968,6 +1037,7 @@
   "src/App.vue": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -982,6 +1052,7 @@
   "src/App.vue?vue&type=style&index=0&lang.css": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -996,6 +1067,7 @@
   "src/assets/avatar-andrej.jpeg": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -1010,6 +1082,7 @@
   "src/assets/avatar-hal.jpeg": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -1024,6 +1097,7 @@
   "src/assets/avatar-justin.jpg": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -1038,6 +1112,7 @@
   "src/assets/profile.jpg": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -1052,6 +1127,7 @@
   "src/components/AppFooter.vue": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -1066,6 +1142,7 @@
   "src/components/AppNav.vue": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -1080,6 +1157,7 @@
   "src/components/AppNav.vue?vue&type=style&index=0&scoped=e6cf01fb&lang.css": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -1094,6 +1172,7 @@
   "src/components/TalkTypeBadge.vue": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -1108,6 +1187,7 @@
   "src/components/TestimonialCarousel.vue": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -1122,6 +1202,7 @@
   "src/components/TestimonialCarousel.vue?vue&type=style&index=0&scoped=2b933ab1&lang.css": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -1136,6 +1217,7 @@
   "src/components/VideoGrid.vue": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -1150,6 +1232,7 @@
   "src/components/oauth.svg": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -1164,6 +1247,7 @@
   "src/config.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -1178,6 +1262,7 @@
   "src/data/externalPosts.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -1192,6 +1277,7 @@
   "src/data/posts.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -1206,6 +1292,22 @@
   "src/data/talks.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
+    "/assets/index-GSptaPoQ.png",
+    "/assets/index-B-vI3_Be.jpg",
+    "/assets/account-creation-progress-BEyjw2dB.png",
+    "/assets/gnomes-DGk8WrVP.png",
+    "/assets/were-not-on-my-planet-Bz5M-TR4.gif",
+    "/assets/waf-after-cloudfront-CHdcYxLA.png",
+    "/assets/avatar-andrej-BB2SG8F7.jpeg",
+    "/assets/avatar-hal-CE5sbnrf.jpeg",
+    "/assets/avatar-justin-BCBDbnaK.jpg",
+    "/assets/index-C-wg_Veq.png"
+  ],
+  "src/data/talks/agentic-days-zurich-2026/index.png": [
+    "/assets/profile-C4OvL-ns.jpg",
+    "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -1220,6 +1322,7 @@
   "src/data/talks/aws-summit-zurich-2026/index.png": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -1234,6 +1337,7 @@
   "src/data/talks/voxxed-days-zurich-2026/index.jpg": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -1248,6 +1352,7 @@
   "src/main.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -1262,6 +1367,7 @@
   "src/pages/BlogIndexPage.vue": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -1276,6 +1382,7 @@
   "src/pages/BlogIndexPage.vue?vue&type=style&index=0&scoped=06dde5bc&lang.css": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -1290,6 +1397,7 @@
   "src/pages/ForLlmsPage.vue": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -1304,6 +1412,7 @@
   "src/pages/FractionalPage.vue": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -1318,6 +1427,7 @@
   "src/pages/FractionalPage.vue?vue&type=style&index=0&scoped=8c970aa5&lang.css": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -1332,6 +1442,7 @@
   "src/pages/HomePage.vue": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -1346,6 +1457,7 @@
   "src/pages/ResumePage.vue": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -1360,6 +1472,7 @@
   "src/pages/ResumePage.vue?vue&type=style&index=0&scoped=a134db98&lang.css": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -1374,6 +1487,7 @@
   "src/pages/SchedulePage.vue": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -1388,6 +1502,7 @@
   "src/pages/blog/BlogPostPage.vue": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -1402,6 +1517,7 @@
   "src/pages/blog/BlogPostPage.vue?vue&type=style&index=0&scoped=318761d2&lang.css": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -1416,6 +1532,7 @@
   "src/pages/talks/TalkPage.vue": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -1430,6 +1547,7 @@
   "src/pages/talks/TalkPage.vue?vue&type=style&index=0&scoped=94f3f627&lang.css": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -1444,6 +1562,7 @@
   "src/posts/2026-04-07-exceeding-the-aws-rate-limiting-cloudfront-usage-plans/account-creation-progress.png": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -1458,6 +1577,7 @@
   "src/posts/2026-04-07-exceeding-the-aws-rate-limiting-cloudfront-usage-plans/gnomes.png": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -1472,6 +1592,7 @@
   "src/posts/2026-04-07-exceeding-the-aws-rate-limiting-cloudfront-usage-plans/index.md": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -1486,6 +1607,7 @@
   "src/posts/2026-04-07-exceeding-the-aws-rate-limiting-cloudfront-usage-plans/index.md?raw": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -1500,6 +1622,7 @@
   "src/posts/2026-04-07-exceeding-the-aws-rate-limiting-cloudfront-usage-plans/index.png": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -1514,6 +1637,7 @@
   "src/posts/2026-04-07-exceeding-the-aws-rate-limiting-cloudfront-usage-plans/waf-after-cloudfront.png": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -1528,6 +1652,7 @@
   "src/posts/2026-04-07-exceeding-the-aws-rate-limiting-cloudfront-usage-plans/were-not-on-my-planet.gif": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -1542,6 +1667,7 @@
   "src/router.js": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
@@ -1556,6 +1682,7 @@
   "src/styles/main.css": [
     "/assets/profile-C4OvL-ns.jpg",
     "/assets/oauth-BaRAULWV.svg",
+    "/assets/index-BzNS2CZn.png",
     "/assets/index-GSptaPoQ.png",
     "/assets/index-B-vI3_Be.jpg",
     "/assets/account-creation-progress-BEyjw2dB.png",
