@@ -97,11 +97,10 @@
         <!-- Description -->
         <div v-if="talk.description" :class="['text-muted leading-relaxed', isEventMode && 'mb-8']">
           <!-- Mobile event mode: single clamped paragraph -->
-          <p v-if="isEventMode" class="sm:hidden description-clamp">{{ talk.description.replace(/\n\n/g, ' ') }}</p>
+          <p v-if="isEventMode" class="sm:hidden description-clamp">{{ ogDescription }}</p>
           <!-- Desktop (always) / mobile normal mode: full multi-paragraph -->
-          <div :class="isEventMode ? 'hidden sm:block space-y-4' : 'space-y-4'">
-            <p v-for="(paragraph, i) in talk.description.split('\n\n')" :key="i">{{ paragraph }}</p>
-          </div>
+          <!-- eslint-disable-next-line vue/no-v-html -- description is authored markdown from talks.js, not user input -->
+          <div :class="['talk-description', isEventMode ? 'hidden sm:block space-y-4' : 'space-y-4']" v-html="descriptionHtml" />
         </div>
 
         <!-- Event mode: connect cards (desktop) / buttons (mobile) -->
@@ -199,7 +198,7 @@
 import { ref, computed } from 'vue';
 import { useRoute, useRouter, RouterLink } from 'vue-router';
 import { useHead } from '@unhead/vue';
-import { talks, youtubeEmbedUrl, youtubeVideoId } from '../../data/talks.js';
+import { talks, youtubeEmbedUrl, youtubeVideoId, talkDescriptionHtml, talkOgDescription } from '../../data/talks.js';
 import profilePicture from '../../assets/profile.jpg';
 import { SITE_URL as BASE_URL } from '../../config.js';
 import TalkTypeBadge from '../../components/TalkTypeBadge.vue';
@@ -207,6 +206,8 @@ import TalkTypeBadge from '../../components/TalkTypeBadge.vue';
 const route = useRoute();
 const router = useRouter();
 const talk = computed(() => talks.find(t => t.slug === route.params.slug));
+const descriptionHtml = computed(() => talk.value && talkDescriptionHtml(talk.value));
+const ogDescription = computed(() => talk.value && talkOgDescription(talk.value));
 const isEventMode = computed(() => route.query.E !== undefined);
 const goBack = () => {
   if (window.history.length > 1) { router.back(); } else { router.push({ name: 'home' }); }
@@ -230,9 +231,9 @@ useHead(computed(() => {
     title: `${t.title} — Warren Parad`,
     link: t.canonicalUrl ? [{ rel: 'canonical', href: t.canonicalUrl }] : [],
     meta: [
-      { name: 'description', content: t.description },
+      { name: 'description', content: ogDescription.value },
       { property: 'og:title', content: `${t.title} — Warren Parad` },
-      { property: 'og:description', content: t.description },
+      { property: 'og:description', content: ogDescription.value },
       { property: 'og:type', content: 'article' },
       { property: 'og:url', content: `${BASE_URL}/talks/${t.slug}` },
       ...(t.imageUrl ? [
@@ -249,7 +250,7 @@ useHead(computed(() => {
           '@context': 'https://schema.org',
           '@type': 'Event',
           'name': t.title,
-          'description': t.description,
+          'description': ogDescription.value,
           'startDate': t.date,
           'url': t.eventUrl || `${BASE_URL}/talks/${t.slug}`,
           'location': { '@type': 'Place', 'name': `${t.conference}${t.location ? `, ${t.location}` : ''}` },
@@ -263,7 +264,7 @@ useHead(computed(() => {
           '@context': 'https://schema.org',
           '@type': 'VideoObject',
           'name': t.videoTitle || t.title,
-          'description': t.description,
+          'description': ogDescription.value,
           'thumbnailUrl': `https://img.youtube.com/vi/${youtubeVideoId(t.videoUrl)}/maxresdefault.jpg`,
           'uploadedDate': t.date,
           'embedUrl': `https://www.youtube.com/embed/${youtubeVideoId(t.videoUrl)}`,
@@ -289,5 +290,29 @@ useHead(computed(() => {
 <style scoped>
 .no-underline {
   text-decoration: none;
+}
+
+/* Markdown description: match blog prose links and lists, which Tailwind preflight otherwise strips */
+.talk-description :deep(a) {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.talk-description :deep(a:hover) {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.talk-description :deep(ul),
+.talk-description :deep(ol) {
+  padding-left: 1.5rem;
+}
+
+.talk-description :deep(ul) {
+  list-style-type: disc;
+}
+
+.talk-description :deep(ol) {
+  list-style-type: decimal;
 }
 </style>

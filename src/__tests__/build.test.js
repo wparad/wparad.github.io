@@ -4,7 +4,8 @@ import { load as cheerioLoad } from 'cheerio';
 import { XMLParser, XMLValidator } from 'fast-xml-parser';
 import yaml from 'js-yaml';
 import { describe, it, expect, beforeAll } from 'vitest';
-import { talks } from '../data/talks.js';
+import MarkdownIt from 'markdown-it';
+import { talks, talkOgDescription } from '../data/talks.js';
 
 const DIST = resolve(process.cwd(), 'dist');
 const SITE_URL = 'https://warrenparad.net';
@@ -1032,4 +1033,17 @@ describe('dist/CNAME', () => {
     const cname = (await readText('CNAME')).trim();
     expect(cname).toBe('warrenparad.net');
   });
+});
+
+describe('talk og descriptions', () => {
+  const markdown = new MarkdownIt({ linkify: true });
+
+  // Meta tags and JSON-LD can't render markdown, so a talk whose description uses markdown must set a plain-text ogDescription
+  for (const talk of talks) {
+    it(`${talk.slug}: ogDescription || description is plain text, not markdown`, () => {
+      const html = markdown.render(talkOgDescription(talk) ?? '');
+      const tags = (html.match(/<\/?[a-z][a-z0-9]*/gi) ?? []).filter(tag => !(/^<\/?p$/i).test(tag));
+      expect(tags, `${talk.slug}: set ogDescription, the description contains markdown`).toEqual([]);
+    });
+  }
 });
