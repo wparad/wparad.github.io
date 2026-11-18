@@ -36,7 +36,10 @@ In this talk, I'll share our experience using LLMs to perform a seemingly simple
 
 - [The Emperor's New Mind](https://link.amazon/B05OCtRtt) — Roger Penrose, humans don't think through computation
 - [Minds, Brains and Science](https://link.amazon/B09bq515B) — John Searle, A virtual simulation of a brain cannot think
-- [Maximum Effective Context](https://arxiv.org/abs/2509.21361) — More context is almost never better.`,
+- [Effectiveness of Magic Phrases](https://arxiv.org/html/2311.10054v3)
+- [Maximum Effective Context](https://arxiv.org/abs/2509.21361) — More context is almost never better.
+- [Agent skills work until they don't](https://arxiv.org/html/2608.14036v1)
+- [Failures to generate valuable unit tests](https://arxiv.org/html/2610.13065v1)`,
   },
   {
     slug: 'aws-summit-zurich-2026',
